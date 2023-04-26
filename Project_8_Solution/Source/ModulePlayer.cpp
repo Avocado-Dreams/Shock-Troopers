@@ -10,6 +10,22 @@
 #include "ModuleFadeToBlack.h"
 #include "SDL/include/SDL_timer.h"
 
+enum DIRECTION
+{
+	NONE = -1,
+	LEFT,
+	RIGHT,
+	DOWN,
+	UP,
+	DOWNLEFT,
+	DOWNRIGHT,
+	UPLEFT,
+	UPRIGHT,
+
+
+	MAX
+};
+
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 
@@ -461,11 +477,63 @@ Update_Status ModulePlayer::Update()
 	case 7:UpdateZoneE();
 	}
 
+	//SHOOTING
+
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
 		App->audio->PlayFx(laserFx);
 	}
+	/*if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_REPEAT && isDodging == false)
+	{
+		if (App->player->shootCoolDown > 5 && isDodging == false) {
+			switch (bulletDir)
+			{
+			case LEFT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, -5, 0, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case RIGHT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 5, 0, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case DOWN:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 0, 5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case UP:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 0, -5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case DOWNLEFT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, -5, 5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case DOWNRIGHT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 5, 5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case UPLEFT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, -5, -5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case UPRIGHT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 5, -5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			}
+		}
+
+
+	}*/
 
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE

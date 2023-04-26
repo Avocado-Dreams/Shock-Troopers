@@ -62,7 +62,8 @@ public:
 	Animation idleAnim;
 	Animation upAnim;
 	Animation downAnim;
-
+	int bulletdir = 0;
+	int movedir = 0;
 	// The player's collider
 	Collider* collider = nullptr;
 
