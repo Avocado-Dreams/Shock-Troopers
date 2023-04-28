@@ -2,6 +2,7 @@
 #define __ENEMY_REDBIRD_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class Enemy_RedBird : public Enemy
 {
@@ -15,17 +16,11 @@ public:
 	void Update() override;
 
 private:
-	// The position (as ratio) in the wave at a specific moment
-	float waveRatio = 0.0f;
-
+	// The position (as ratio) in the wave at a specific momen
 	// The speed at which the wave ratio is increased
-	float waveRatioSpeed = 0.05f;
-
 	// The original spawning position. The wave will be calculated from that
-	int spawn_y = 0;
-
+	Path path;
 	// The total height of the wave
-	int waveHeight = 15;
 
 	// The enemy animation
 	Animation flyAnim;
