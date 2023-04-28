@@ -96,8 +96,11 @@ Update_Status ModuleCollisions::PreUpdate()
 
 Update_Status ModuleCollisions::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
 		debug = !debug;
+
+	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
+		GodMode = !GodMode;
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -107,6 +110,8 @@ Update_Status ModuleCollisions::PostUpdate()
 	if (debug)
 		DebugDraw();
 
+	if (GodMode)
+		God_Mode();
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -139,6 +144,17 @@ void ModuleCollisions::DebugDraw()
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 			break;
 		}
+	}
+}
+
+void ModuleCollisions::God_Mode()
+{
+	Collider::Type::PLAYER;
+	if (IsEnabled())
+		App->collisions->Disable();
+	else if (IsEnabled())
+	{
+		App->collisions->Enable();
 	}
 }
 
