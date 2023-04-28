@@ -149,13 +149,18 @@ void ModuleCollisions::DebugDraw()
 
 void ModuleCollisions::God_Mode()
 {
-	Collider::Type::PLAYER;
-	if (IsEnabled())
-		App->collisions->Disable();
-	else if (IsEnabled())
+	if (GodMode)
 	{
-		App->collisions->Enable();
+		matrix[Collider::Type::PLAYER][Collider::Type::WALL] = false;
+		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = false;
+		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = false;
 	}
+	else {
+		matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
+		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
+		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
+	}
+	
 }
 
 // Called before quitting
