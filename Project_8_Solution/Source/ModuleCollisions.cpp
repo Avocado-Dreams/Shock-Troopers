@@ -101,7 +101,7 @@ Update_Status ModuleCollisions::Update()
 
 	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
 		GodMode = !GodMode;
-
+	
 	return Update_Status::UPDATE_CONTINUE;
 }
 

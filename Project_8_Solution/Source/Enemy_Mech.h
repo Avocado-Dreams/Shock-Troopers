@@ -15,6 +15,12 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
+	void Attack();
+
+	//Timer to control the enemy attack cooldown
+	float timer = 0.0f;
+	float SHOOT_INTERVAL = 3;
+	int bullet_dir = 0;
 private:
 	// The path that will define the position in the world
 	Path path;
