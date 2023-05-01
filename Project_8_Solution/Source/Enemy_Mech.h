@@ -15,6 +15,10 @@ public:
 	float angle;
 	float shotX;
 	float shotY;
+	int numShots = 0;
+	int MAXSHOTS = 5;
+	bool moveToPlayer = false;
+	bool melee = false;
 	// Constructor (x y coordinates in the world)
 	// Creates animation and movement data and the collider
 	Enemy_Mech(int x, int y);
