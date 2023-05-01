@@ -7,6 +7,14 @@
 class Enemy_Mech : public Enemy
 {
 public:
+	double playerX;
+	double playerY;
+	double dx;
+	double dy;
+	int distance;
+	float angle;
+	float shotX;
+	float shotY;
 	// Constructor (x y coordinates in the world)
 	// Creates animation and movement data and the collider
 	Enemy_Mech(int x, int y);
@@ -16,6 +24,8 @@ public:
 	void Update() override;
 
 	void Attack();
+
+	void find_player();
 
 	//Timer to control the enemy attack cooldown
 	float timer = 0.0f;

@@ -46,12 +46,12 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 775, 120);
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 790, 120);
 
-	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 300, 2600);
+	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 300, 2400);
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 850, 100);
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 870, 100);
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);
 
-	App->enemies->AddEnemy(Enemy_Type::MECH, 200, 2800);
+	App->enemies->AddEnemy(Enemy_Type::MECH, 200, 2600);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 2715 * 3;

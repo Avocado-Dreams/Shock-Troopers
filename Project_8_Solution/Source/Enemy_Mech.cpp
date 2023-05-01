@@ -37,17 +37,22 @@ void Enemy_Mech::Update()
 	Enemy::Update();
 }
 
+void Enemy_Mech::find_player()
+{
+	playerX = App->player->position.x;
+	playerY = App->player->position.y;
+	dx = position.x - playerX;
+	dy = position.y - playerY;
+	distance = sqrt(dx * dx + dy * dy);
+	angle = atan2(dy, dx);
+	shotX = dx * 0.03f;
+	shotY = dy * 0.03f;
+}
+
 void Enemy_Mech::Attack()
 {
+	find_player();
 	
-	double playerX = App->player->position.x;
-	double playerY = App->player->position.y;
-	double dx = position.x - playerX;
-	double dy = position.y - playerY;
-	int distance = sqrt(dx * dx + dy * dy);
-	float angle = atan2(dy, dx);
-	float shotX = dx * 0.03f;
-	float shotY = dy * 0.03f;
 
 	//if(distance > 100)
 	//{
@@ -55,7 +60,7 @@ void Enemy_Mech::Attack()
 	//	position.y += sin(angle) * 3;
 	//}
 	
-	if (distance <= 200 && timer <= 0.0f)
+	if (distance <= 150 && timer <= 0.0f)
 	{
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 20, position.y, -shotX, -shotY, Collider::Type::ENEMY_SHOT);
 		timer = SHOOT_INTERVAL;
