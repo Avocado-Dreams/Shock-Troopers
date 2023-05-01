@@ -46,16 +46,18 @@ void Enemy_Mech::Attack()
 	double dy = position.y - playerY;
 	int distance = sqrt(dx * dx + dy * dy);
 	float angle = atan2(dy, dx);
+	float shotX = dx * 0.03f;
+	float shotY = dy * 0.03f;
 
-	if(distance > 100)
+	//if(distance > 100)
+	//{
+	//	position.x += cos(angle) * 3;
+	//	position.y += sin(angle) * 3;
+	//}
+	
+	if (distance <= 200 && timer <= 0.0f)
 	{
-		position.x += cos(angle) * 0.3f;
-		position.y += sin(angle) * 0.3f;
-	}
-
-	else if (distance <= 100 && timer <= 0.0f)
-	{
-		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 20, position.y, -shotX, -shotY, Collider::Type::ENEMY_SHOT);
 		timer = SHOOT_INTERVAL;
 	}
 }

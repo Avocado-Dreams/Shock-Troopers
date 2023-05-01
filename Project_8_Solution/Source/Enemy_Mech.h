@@ -19,8 +19,8 @@ public:
 
 	//Timer to control the enemy attack cooldown
 	float timer = 0.0f;
-	float SHOOT_INTERVAL = 3;
-	int bullet_dir = 0;
+	float SHOOT_INTERVAL = 5;
+
 private:
 	// The path that will define the position in the world
 	Path path;

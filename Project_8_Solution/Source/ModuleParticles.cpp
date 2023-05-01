@@ -40,6 +40,13 @@ bool ModuleParticles::Start()
 	laser.lifetime = 180;
 	laser.anim.speed = 0.2f;
 
+	enemyShot.anim.PushBack({ 232, 103, 16, 12 });
+	enemyShot.anim.PushBack({ 249, 103, 16, 12 });
+	enemyShot.speed.x = 0.01f;
+	enemyShot.speed.y = 0.01f;
+	enemyShot.lifetime = 180;
+	enemyShot.anim.speed = 0.2f;
+
 	return true;
 }
 
@@ -109,19 +116,21 @@ Update_Status ModuleParticles::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, int speedx, int speedy,Collider::Type colliderType, uint delay)
 {
+	Particle* p = new Particle(particle);
+
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		//Finding an empty slot for a new particle
 		if (particles[i] == nullptr)
 		{
-			Particle* p = new Particle(particle);
 
 			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
 			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
 			p->position.y = y;
-
+			p->speed.x = speedx;
+			p->speed.y = speedy;
 			//Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)
 				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
@@ -130,4 +139,5 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collid
 			break;
 		}
 	}
+	return p;
 }
