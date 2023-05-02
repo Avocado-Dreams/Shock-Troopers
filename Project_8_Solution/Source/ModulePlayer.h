@@ -21,6 +21,9 @@ public:
 	// Loads the necessary textures for the player
 	bool Start() override;
 
+	//Animation
+	void UpdateAnim();
+
 	//Zones
 	void UpdateZoneA();
 	void UpdateZoneAB();
@@ -45,6 +48,9 @@ public:
 	// Position of the player in the map
 	iPoint position;
 
+	// burst counter
+	int shot;
+
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
 
@@ -53,15 +59,19 @@ public:
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
+	SDL_Texture* textureL = nullptr;
 	
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
+	Animation* currentLAnimation = nullptr;
 
 	// A set of animations
-	Animation idleAnim;
-	Animation upAnim;
-	Animation downAnim;
+	//Animation idleAnim;
+	Animation upAnim, downAnim, rightAnim, leftAnim, norestAnim, noroestAnim, sudestAnim, sudoestAnim;
+	Animation upLAnim, downLAnim, rightLAnim, leftLAnim, norestLAnim, noroestLAnim, sudestLAnim, sudoestLAnim;
+	Animation upWAnim, downWAnim, rightWAnim, leftWAnim, norestWAnim, noroestWAnim, sudestWAnim, sudoestWAnim;
+	Animation upSAnim, downSAnim, rightSAnim, leftSAnim, norestSAnim, noroestSAnim, sudestSAnim, sudoestSAnim;
 
 	// The player's collider
 	Collider* collider = nullptr;

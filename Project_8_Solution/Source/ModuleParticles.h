@@ -60,7 +60,7 @@ public:
 	Particle explosion;
 
 	//Template particle for a laser
-	Particle laser;
+	Particle sUp, sDown, sLeft, sRight, sNorest, sNoroest, sSudest, sSudoest;
 };
 
 #endif // !__MODULEPARTICLES_H__
