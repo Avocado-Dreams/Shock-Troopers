@@ -19,16 +19,17 @@ struct EnemySpawnpoint
 	int x, y;
 };
 
+class Enemy;
 struct SDL_Texture;
 
-class PickUp
+class ModuleEnemies : public Module
 {
 public:
 	// Constructor
-	PickUp(bool startEnabled);
+	ModuleEnemies(bool startEnabled);
 
 	// Destructor
-	~PickUp();
+	~ModuleEnemies();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the enemies

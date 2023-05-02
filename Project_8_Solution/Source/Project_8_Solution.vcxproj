@@ -91,6 +91,8 @@
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModulePickUps.h" />
+    <ClInclude Include="PickUps.h" />
+    <ClInclude Include="PickUps_BLUEDIAMOND.h" />
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="SceneLevel1.h" />
     <ClInclude Include="ModuleInput.h" />
@@ -119,6 +121,8 @@
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModulePickUps.cpp" />
+    <ClCompile Include="PickUps.cpp" />
+    <ClCompile Include="PickUps_BLUEDIAMOND.cpp" />
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="SceneLevel1.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
