@@ -103,6 +103,9 @@
     <ClInclude Include="SceneIntro.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="ModulePickUps.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -172,6 +175,9 @@
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="SceneIntro.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePickUps.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
