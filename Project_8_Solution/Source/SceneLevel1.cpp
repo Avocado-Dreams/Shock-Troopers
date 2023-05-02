@@ -7,6 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModulePickUps.h"
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
@@ -36,7 +37,7 @@ bool SceneLevel1::Start()
 	//App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 250, 2400);
+	/*App->enemies->AddEnemy(Enemy_Type::REDBIRD, 250, 2400);
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 625, 80);
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 640, 80);
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 665, 80);
@@ -49,9 +50,10 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 300, 2400);
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 850, 100);
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 870, 100);
-	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);
+	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);*/
 
 	App->enemies->AddEnemy(Enemy_Type::MECH, 200, 2600);
+	//App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, 210, 2600);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 2715 * 3;
@@ -59,6 +61,7 @@ bool SceneLevel1::Start()
 	// TODO 2: Enable (and properly disable) the player module
 	App->player->Enable();
 	App->enemies->Enable();
+	//App->pickUps->Enable();
 
 	return ret;
 }
@@ -84,6 +87,7 @@ bool SceneLevel1::CleanUp()
 	// TODO 2: Enable (and properly disable) the player module
 	App->player->Disable();
 	App->enemies->Disable();
+	//App->pickUps->Disable();
 
 	// TODO 5: Remove All Memory Leaks - no solution here guys ;)
 

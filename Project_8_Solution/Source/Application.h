@@ -18,6 +18,7 @@ class ModuleCollisions;
 class ModuleEnemies;
 class ModuleFadeToBlack;
 class ModuleRender;
+class ModulePickUps;
 
 class Application
 {
@@ -56,6 +57,8 @@ public:
 
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;
+
+	ModulePickUps* pickUps = nullptr;
 
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
