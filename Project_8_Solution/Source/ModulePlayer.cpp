@@ -776,14 +776,14 @@ Update_Status ModulePlayer::Update()
 	{
 		if (shot % 4 == 0)
 		{
-			if (currentAnimation == &upSAnim) App->particles->AddParticle(App->particles->sUp, position.x + 16, position.y, Collider::Type::PLAYER_SHOT);
-			if (currentAnimation == &downSAnim) App->particles->AddParticle(App->particles->sDown, position.x + 6, position.y + 20, Collider::Type::PLAYER_SHOT);
-			if (currentAnimation == &rightSAnim) App->particles->AddParticle(App->particles->sRight, position.x + 22, position.y + 17, Collider::Type::PLAYER_SHOT);
-			if (currentAnimation == &leftSAnim) App->particles->AddParticle(App->particles->sLeft, position.x - 5, position.y + 13, Collider::Type::PLAYER_SHOT);
-			if (currentAnimation == &norestSAnim) App->particles->AddParticle(App->particles->sNorest, position.x + 20, position.y + 4, Collider::Type::PLAYER_SHOT);
-			if (currentAnimation == &noroestSAnim) App->particles->AddParticle(App->particles->sNoroest, position.x + 3, position.y + 2, Collider::Type::PLAYER_SHOT);
-			if (currentAnimation == &sudestSAnim) App->particles->AddParticle(App->particles->sSudest, position.x + 10, position.y + 20, Collider::Type::PLAYER_SHOT);
-			if (currentAnimation == &sudoestSAnim) App->particles->AddParticle(App->particles->sSudoest, position.x, position.y + 18, Collider::Type::PLAYER_SHOT);
+			if (currentAnimation == &upSAnim) App->particles->AddParticle(App->particles->sUp, position.x + 16, position.y, NULL, NULL, Collider::Type::PLAYER_SHOT);
+			if (currentAnimation == &downSAnim) App->particles->AddParticle(App->particles->sDown, position.x + 6, position.y + 20, NULL, NULL, Collider::Type::PLAYER_SHOT);
+			if (currentAnimation == &rightSAnim) App->particles->AddParticle(App->particles->sRight, position.x + 22, position.y + 17, NULL, NULL, Collider::Type::PLAYER_SHOT);
+			if (currentAnimation == &leftSAnim) App->particles->AddParticle(App->particles->sLeft, position.x - 5, position.y + 13, NULL, NULL, Collider::Type::PLAYER_SHOT);
+			if (currentAnimation == &norestSAnim) App->particles->AddParticle(App->particles->sNorest, position.x + 20, position.y + 4, NULL, NULL, Collider::Type::PLAYER_SHOT);
+			if (currentAnimation == &noroestSAnim) App->particles->AddParticle(App->particles->sNoroest, position.x + 3, position.y + 2, NULL, NULL, Collider::Type::PLAYER_SHOT);
+			if (currentAnimation == &sudestSAnim) App->particles->AddParticle(App->particles->sSudest, position.x + 10, position.y + 20, NULL, NULL, Collider::Type::PLAYER_SHOT);
+			if (currentAnimation == &sudoestSAnim) App->particles->AddParticle(App->particles->sSudoest, position.x, position.y + 18, NULL, NULL, Collider::Type::PLAYER_SHOT);
 			App->audio->PlayFx(laserFx);
 			
 		}
