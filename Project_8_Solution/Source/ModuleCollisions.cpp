@@ -96,9 +96,12 @@ Update_Status ModuleCollisions::PreUpdate()
 
 Update_Status ModuleCollisions::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
 		debug = !debug;
 
+	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
+		GodMode = !GodMode;
+	
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -107,6 +110,8 @@ Update_Status ModuleCollisions::PostUpdate()
 	if (debug)
 		DebugDraw();
 
+	if (GodMode)
+		God_Mode();
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -140,6 +145,22 @@ void ModuleCollisions::DebugDraw()
 			break;
 		}
 	}
+}
+
+void ModuleCollisions::God_Mode()
+{
+	if (GodMode)
+	{
+		matrix[Collider::Type::PLAYER][Collider::Type::WALL] = false;
+		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = false;
+		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = false;
+	}
+	else {
+		matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
+		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
+		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
+	}
+	
 }
 
 // Called before quitting

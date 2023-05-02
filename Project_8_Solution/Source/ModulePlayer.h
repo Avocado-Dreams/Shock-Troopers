@@ -73,6 +73,9 @@ public:
 	Animation upWAnim, downWAnim, rightWAnim, leftWAnim, norestWAnim, noroestWAnim, sudestWAnim, sudoestWAnim;
 	Animation upSAnim, downSAnim, rightSAnim, leftSAnim, norestSAnim, noroestSAnim, sudestSAnim, sudoestSAnim;
 
+	Animation idleAnim;
+	int bulletdir = 0;
+	int movedir = 0;
 	// The player's collider
 	Collider* collider = nullptr;
 

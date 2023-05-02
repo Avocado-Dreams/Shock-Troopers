@@ -37,6 +37,7 @@ public:
 
 	// Draws all existing colliders with some transparency
 	void DebugDraw();
+	void God_Mode();
 
 private:
 	// All existing colliders in the scene
@@ -47,6 +48,7 @@ private:
 	bool matrix[Collider::Type::MAX][Collider::Type::MAX];
 
 	// Simple debugging flag to draw all colliders
+	bool GodMode = false;
 	bool debug = false;
 };
 

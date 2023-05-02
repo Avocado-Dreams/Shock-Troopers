@@ -26,6 +26,9 @@
     <Filter Include="Source Files\Entities\Enemies">
       <UniqueIdentifier>{c465321a-28ed-404a-aa97-e9d0c6f722ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entities\PickUps">
+      <UniqueIdentifier>{f32fc576-dfea-48d7-a352-6d24e84c8570}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -103,6 +106,15 @@
     <ClInclude Include="SceneIntro.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="ModulePickUps.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="PickUps_BLUEDIAMOND.h">
+      <Filter>Source Files\Entities\PickUps</Filter>
+    </ClInclude>
+    <ClInclude Include="PickUps.h">
+      <Filter>Source Files\Entities\PickUps</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -173,6 +185,15 @@
     </ClCompile>
     <ClCompile Include="SceneIntro.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePickUps.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="PickUps_BLUEDIAMOND.cpp">
+      <Filter>Source Files\Entities\PickUps</Filter>
+    </ClCompile>
+    <ClCompile Include="PickUps.cpp">
+      <Filter>Source Files\Entities\PickUps</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -17,15 +17,16 @@ Enemy_RedBird::Enemy_RedBird(int x, int y) : Enemy(x, y)
 
 	currentAnim = &flyAnim;
 
+	path.PushBack({ -1.0f, 0.0f }, 100);
+	path.PushBack({ 1.0f, 0.0f }, 80);
+
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_RedBird::Update()
 {
-	waveRatio += waveRatioSpeed;
-
-	position.y = spawnPos.y + (waveHeight * sinf(waveRatio));
-	position.x -= 1;
+	path.Update();
+	position = spawnPos + path.GetRelativePosition();
 
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position

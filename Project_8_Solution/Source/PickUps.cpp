@@ -1,4 +1,4 @@
-#include "Enemy.h"
+#include "PickUps.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
@@ -6,23 +6,23 @@
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
 
-Enemy::Enemy(int x, int y) : position(x, y)
+PickUps::PickUps(int x, int y) : position(x, y)
 {
 	spawnPos = position;
 }
 
-Enemy::~Enemy()
+PickUps::~PickUps()
 {
 	if (collider != nullptr)
 		collider->pendingToDelete = true;
 }
 
-const Collider* Enemy::GetCollider() const
+const Collider* PickUps::GetCollider() const
 {
 	return collider;
 }
 
-void Enemy::Update()
+void PickUps::Update()
 {
 	if (currentAnim != nullptr)
 		currentAnim->Update();
@@ -31,14 +31,14 @@ void Enemy::Update()
 		collider->SetPos(position.x, position.y);
 }
 
-void Enemy::Draw()
+void PickUps::Draw()
 {
 	if (currentAnim != nullptr)
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 }
 
-void Enemy::OnCollision(Collider* collider)
+void PickUps::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
-	App->audio->PlayFx(destroyedFx);
+	App->audio->PlayFx(getPickUps);
 }

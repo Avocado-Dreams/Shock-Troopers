@@ -10,6 +10,22 @@
 #include "ModuleFadeToBlack.h"
 #include "SDL/include/SDL_timer.h"
 
+enum DIRECTION
+{
+	NONE = -1,
+	LEFT,
+	RIGHT,
+	DOWN,
+	UP,
+	DOWNLEFT,
+	DOWNRIGHT,
+	UPLEFT,
+	UPRIGHT,
+
+
+	MAX
+};
+
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 
@@ -741,7 +757,9 @@ Update_Status ModulePlayer::Update()
 	case 6:UpdateZoneD(); break;
 	case 7:UpdateZoneE();
 	}
-	
+
+	//SHOOTING
+
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		shot = 12;
@@ -782,7 +800,61 @@ Update_Status ModulePlayer::Update()
 		if (currentAnimation == &sudestSAnim) currentAnimation = &sudestAnim;
 		if (currentAnimation == &sudoestSAnim) currentAnimation = &sudoestAnim;
 	}
+		//App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 5, 0, Collider::Type::PLAYER_SHOT);
+		//App->audio->PlayFx(laserFx);
+	//}
+	/*if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_REPEAT && isDodging == false)
+	{
+		if (App->player->shootCoolDown > 5 && isDodging == false) {
+			switch (bulletDir)
+			{
+			case LEFT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, -5, 0, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case RIGHT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 5, 0, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case DOWN:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 0, 5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case UP:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 0, -5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case DOWNLEFT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, -5, 5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case DOWNRIGHT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 5, 5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case UPLEFT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, -5, -5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			case UPRIGHT:
+				App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, 5, -5, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				shootCoolDown = 0;
+				break;
+			}
+		}
 
+
+	}*/
+
+	
 	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
@@ -808,11 +880,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, 9);
+		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, NULL, NULL, Collider::Type::NONE, 14);
+		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, NULL, NULL, Collider::Type::NONE, 40);
+		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, NULL, NULL, Collider::Type::NONE, 28);
+		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, NULL, NULL, Collider::Type::NONE, 21);
 
 		App->audio->PlayFx(explosionFx);
 

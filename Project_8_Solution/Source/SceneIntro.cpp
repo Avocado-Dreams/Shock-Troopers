@@ -24,7 +24,8 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/startScreen.png");
+	/*bgTexture = App->textures->Load("Assets/Sprites/startScreen.png");*/
+	bgTexture = App->textures->Load("Assets/Sprites/intro_sprites/shocktro004.png");
 	App->audio->PlayMusic("Assets/Music/STIntro.ogg", 1.0f);
 
 	App->render->camera.x = 0;
