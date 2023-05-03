@@ -27,39 +27,14 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 
 void Enemy_Mech::Update()
 {
-	
-	if (App->player->position.y <= 2800)
-	{
-		find_player();
-		if (distance <= 150 && timer <= 0.0f)
-		{
-			App->particles->AddParticle(App->particles->enemyShot, position.x + 20, position.y, -shotX, -shotY, Collider::Type::ENEMY_SHOT);
-			timer = SHOOT_INTERVAL;
-		}
-
-		if (distance > 100)
-		{
-			// Si el jugador está lo suficientemente lejos, mueve el enemigo hacia su posición
-			position.x -= cos(angle) * 3;
-			position.y -= sin(angle) * 3;
-		}
-
-		path.Update();
-		currentAnim = path.GetCurrentAnimation();
-		// Call to the base class. It must be called at the end
-		// It will update the collider depending on the position
-		Enemy::Update();
-	}
-	
-	
-	//Attack();
-	//path.Update();
-	//position = spawnPos + path.GetRelativePosition();
-	//currentAnim = path.GetCurrentAnimation();
-	//timer -= 1.0f / 60.0f;
-	//// Call to the base class. It must be called at the end
-	//// It will update the collider depending on the position
-	//Enemy::Update();
+	Attack();
+	path.Update();
+	position = spawnPos + path.GetRelativePosition();
+	currentAnim = path.GetCurrentAnimation();
+	timer -= 1.0f / 60.0f;
+	// Call to the base class. It must be called at the end
+	// It will update the collider depending on the position
+	Enemy::Update();
 }
 
 void Enemy_Mech::find_player()
@@ -74,20 +49,20 @@ void Enemy_Mech::find_player()
 	shotY = dy*0.02f;
 }
 
-//void Enemy_Mech::Attack()
-//{
-//	find_player();
-//	
-//
-//	//if(distance > 100)
-//	//{
-//	//	position.x += cos(angle) * 3;
-//	//	position.y += sin(angle) * 3;
-//	//}
-//	
-//	if (distance <= 150 && timer <= 0.0f)
-//	{
-//		App->particles->AddParticle(App->particles->enemyShot, position.x + 20, position.y, -shotX, -shotY, Collider::Type::ENEMY_SHOT);
-//		timer = SHOOT_INTERVAL;
-//	}
-//}
+void Enemy_Mech::Attack()
+{
+	find_player();
+	
+
+	//if(distance > 100)
+	//{
+	//	position.x += cos(angle) * 3;
+	//	position.y += sin(angle) * 3;
+	//}
+	
+	if (distance <= 150 && timer <= 0.0f)
+	{
+		App->particles->AddParticle(App->particles->enemyShot, position.x - 10, position.y, -shotX, -shotY, Collider::Type::ENEMY_SHOT);
+		timer = SHOOT_INTERVAL;
+	}
+}
