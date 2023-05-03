@@ -106,14 +106,14 @@
     <ClInclude Include="SceneIntro.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="ModulePickUps.h">
-      <Filter>Source Files\Modules\Gameplay</Filter>
+    <ClInclude Include="PickUps.h">
+      <Filter>Source Files\Entities\PickUps</Filter>
     </ClInclude>
     <ClInclude Include="PickUps_BLUEDIAMOND.h">
       <Filter>Source Files\Entities\PickUps</Filter>
     </ClInclude>
-    <ClInclude Include="PickUps.h">
-      <Filter>Source Files\Entities\PickUps</Filter>
+    <ClInclude Include="ModulePickUps.h">
+      <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -186,14 +186,14 @@
     <ClCompile Include="SceneIntro.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="ModulePickUps.cpp">
-      <Filter>Source Files\Modules\Gameplay</Filter>
+    <ClCompile Include="PickUps.cpp">
+      <Filter>Source Files\Entities\PickUps</Filter>
     </ClCompile>
     <ClCompile Include="PickUps_BLUEDIAMOND.cpp">
       <Filter>Source Files\Entities\PickUps</Filter>
     </ClCompile>
-    <ClCompile Include="PickUps.cpp">
-      <Filter>Source Files\Entities\PickUps</Filter>
+    <ClCompile Include="ModulePickUps.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 #include "SceneLevel1.h"
 
+#include "ModulePickUps.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -7,7 +8,6 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
-#include "ModulePickUps.h"
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
@@ -54,6 +54,7 @@ bool SceneLevel1::Start()
 
 	App->enemies->AddEnemy(Enemy_Type::MECH, 200, 2600);
 	//App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, 210, 2600);
+	
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 2715 * 3;

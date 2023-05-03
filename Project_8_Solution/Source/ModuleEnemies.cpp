@@ -6,6 +6,10 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
+#include "ModulePickUps.h"
+
+#include "PickUps.h"
+
 #include "Enemy.h"
 #include "Enemy_RedBird.h"
 #include "Enemy_BrownShip.h"
