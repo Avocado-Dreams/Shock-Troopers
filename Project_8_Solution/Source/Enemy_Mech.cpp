@@ -7,20 +7,11 @@
 
 Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 {
-	front.PushBack({5, 108, 31, 29});
-	/*front.PushBack({4, 141, 31, 29});
-	front.PushBack({38, 108, 31, 29});*/
-	front.speed = 0.1f;
+	idleDown.PushBack({ 23, 41, 30, 48 });
+	currentAnim = &idleDown;
 	//front.pingpong = true;
 
-	back.PushBack({170, 108, 31, 29});
-	/*back.PushBack({170, 141, 31, 29});
-	back.PushBack({137, 108, 31, 29});*/
-	back.speed = 0.1f;
-	//back.pingpong = true;
-
-	path.PushBack({-0.0f, 0.0f}, 0, &front);
-	/*path.PushBack({0.3f, 0.0f}, 0, &back);*/
+	path.PushBack({0.0f, 0.0f}, 0, &idleDown);
 
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
@@ -30,7 +21,7 @@ void Enemy_Mech::Update()
 	Attack();
 	path.Update();
 	position = spawnPos + path.GetRelativePosition();
-	currentAnim = path.GetCurrentAnimation();
+	//currentAnim = path.GetCurrentAnimation();
 	timer -= 1.0f / 60.0f;
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
@@ -60,9 +51,14 @@ void Enemy_Mech::Attack()
 	//	position.y += sin(angle) * 3;
 	//}
 	
-	if (distance <= 150 && timer <= 0.0f)
+	if (distance <= 70 && timer <= 0.0f)
 	{
+		shootDown.PushBack({ 23, 41, 30, 48 });
+		shootDown.PushBack({ 101, 41, 30, 49 });
+		shootDown.speed = 0.1f;
+		currentAnim = &shootDown;
 		App->particles->AddParticle(App->particles->enemyShot, position.x - 10, position.y, -shotX, -shotY, Collider::Type::ENEMY_SHOT);
 		timer = SHOOT_INTERVAL;
+
 	}
 }

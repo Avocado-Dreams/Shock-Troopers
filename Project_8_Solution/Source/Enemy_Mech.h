@@ -40,7 +40,7 @@ private:
 	Path path;
 
 	// Enemy animations
-	Animation front, back;
+	Animation idleDown,shootDown;
 };
 
 #endif // __ENEMY_MECH_H__
