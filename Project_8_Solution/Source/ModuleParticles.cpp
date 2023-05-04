@@ -88,12 +88,16 @@ bool ModuleParticles::Start()
 	sSudoest.lifetime = 180;
 	sSudoest.anim.speed = 0.5f;
 
-	enemyShot.anim.PushBack({ 232, 103, 16, 12 });
-	enemyShot.anim.PushBack({ 249, 103, 16, 12 });
+
+	/*texture = App->textures->Load("Assets/Sprites/Enemies/SHOT_spritesheet-2.png");
+
+	enemyShot.anim.PushBack({ 14, 2, 10, 10 });
+	enemyShot.anim.PushBack({ 1, 2, 10, 10 });
+	enemyShot.anim.PushBack({ 26, 2, 10, 10 });
 	enemyShot.speed.x = 1;
 	enemyShot.speed.y = 1;
 	enemyShot.lifetime = 180;
-	enemyShot.anim.speed = 0.2f;
+	enemyShot.anim.speed = 0.2f;*/
 
 	return true;
 }

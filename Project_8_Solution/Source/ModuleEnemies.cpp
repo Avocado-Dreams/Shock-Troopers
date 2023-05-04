@@ -6,6 +6,10 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
+#include "ModulePickUps.h"
+
+#include "PickUps.h"
+
 #include "Enemy.h"
 #include "Enemy_RedBird.h"
 #include "Enemy_BrownShip.h"
@@ -27,7 +31,7 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("Assets/Sprites/enemies.png");
+	texture = App->textures->Load("Assets/Sprites/Enemies/soldado_sprites.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
 	return true;
