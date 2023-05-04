@@ -8,6 +8,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModulePickUps.h"
+#include "SceneLayer2.h"
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
@@ -27,6 +28,7 @@ bool SceneLevel1::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Sprites/Background/Mapa.png");
+	sky = App->textures->Load("Assets/Sprites/Background/Cielo.png");
 	App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
 
 	////Bottomside collider
@@ -61,6 +63,7 @@ bool SceneLevel1::Start()
 	// TODO 2: Enable (and properly disable) the player module
 	App->player->Enable();
 	App->enemies->Enable();
+	App->sceneLayer2->Enable();
 	//App->pickUps->Enable();
 
 	return ret;
@@ -77,6 +80,9 @@ Update_Status SceneLevel1::Update()
 Update_Status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
+	SDL_Rect cielo{ 0, 0, 433, 142 };
+	App->render->Blit(sky, 890, 1795, &cielo);
+	
 	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -87,6 +93,7 @@ bool SceneLevel1::CleanUp()
 	// TODO 2: Enable (and properly disable) the player module
 	App->player->Disable();
 	App->enemies->Disable();
+	App->sceneLayer2->Disable();
 	//App->pickUps->Disable();
 
 	// TODO 5: Remove All Memory Leaks - no solution here guys ;)

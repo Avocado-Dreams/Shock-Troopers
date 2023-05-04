@@ -284,8 +284,8 @@ bool ModulePlayer::Start()
 	textureL = App->textures->Load("Assets/Sprites/Animations/legsF2.png");
 	currentLAnimation = &upLAnim;
 
-	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
+	laserFx = App->audio->LoadFx("Assets/Fx/Main gun shots.wav");
+	deathFx = App->audio->LoadFx("Assets/Fx/Milky death.wav");
 
 	position.x = 150;
 	position.y = (120 + 2715);
@@ -597,9 +597,9 @@ void ModulePlayer::UpdateZoneBC()
 
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y > -130)
+		if ((App->render->camera.y / 3) - position.y > -100)
 		{
-			position.y = (App->render->camera.y / 3) + 130;
+			position.y = (App->render->camera.y / 3) + 100;
 		}
 
 		position.y -= speed;
@@ -886,10 +886,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, NULL, NULL, Collider::Type::NONE, 28);
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, NULL, NULL, Collider::Type::NONE, 21);
 
-		App->audio->PlayFx(explosionFx);
+		App->audio->PlayFx(deathFx);
 
 		//TODO 3: Go back to the intro scene when the player gets killed
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneOver, 60);
 
 		destroyed = true;
 	}
