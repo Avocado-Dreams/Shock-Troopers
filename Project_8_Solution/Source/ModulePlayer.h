@@ -57,6 +57,8 @@ public:
 	//init map zones
 	int zone = 1; //1 = zone A; 2 = zone AB; 3 = zone B; 4 = zone BC; 5 = zone C; 6 = zone D; 7 = zone E
 
+	int vida = 3;
+
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
 	SDL_Texture* textureL = nullptr;

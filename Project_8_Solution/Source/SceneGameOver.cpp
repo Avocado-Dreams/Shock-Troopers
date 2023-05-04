@@ -8,6 +8,7 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleCollisions.h"
 
 
 SceneGameOver::SceneGameOver(bool startEnabled) : Module(startEnabled)
@@ -48,6 +49,8 @@ Update_Status SceneGameOver::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
 
+	App->collisions->CleanUp();
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -56,6 +59,5 @@ Update_Status SceneGameOver::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(teamTexture, 0, 0, NULL);
-
 	return Update_Status::UPDATE_CONTINUE;
 }
