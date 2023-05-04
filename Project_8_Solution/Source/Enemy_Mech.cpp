@@ -46,14 +46,14 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 	idleNE1.PushBack({ 829, 41, 40, 48 });
 
 	shootNE1.PushBack({ 829, 41, 40, 48 });
-	shootNE1.PushBack({ 917, 42, 38, 47 });
+	shootNE1.PushBack({ 917, 41, 38, 47 });
 	shootNE1.loop = true;
 	shootNE1.speed = 0.1f;
 
 	idleNE2.PushBack({ 1003, 41, 37, 48 });
 
 	shootNE2.PushBack({ 1003, 41, 37, 48 });
-	shootNE2.PushBack({ 1088, 42, 37, 47 });
+	shootNE2.PushBack({ 1088, 41, 37, 47 });
 	shootNE2.loop = true;
 	shootNE2.speed = 0.1f;
 
