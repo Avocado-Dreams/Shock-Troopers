@@ -295,6 +295,7 @@ bool ModulePlayer::Start()
 
 	collider = App->collisions->AddCollider({ position.x-800, position.y, 33, 43 }, Collider::Type::PLAYER, this);
 
+
 	return ret;
 }
 void ModulePlayer::UpdateAnim()
@@ -878,7 +879,7 @@ Update_Status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false)
+	if (c1 == collider && destroyed == false && vida == 0)
 	{
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, 9);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, NULL, NULL, Collider::Type::NONE, 14);
@@ -890,7 +891,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		//TODO 3: Go back to the intro scene when the player gets killed
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneOver, 60);
-
 		destroyed = true;
+		vida = 3;
 	}
+	vida--;
 }

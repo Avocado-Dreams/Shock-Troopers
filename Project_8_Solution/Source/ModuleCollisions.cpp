@@ -2,6 +2,9 @@
 
 #include "Application.h"
 
+#include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
+#include "SceneGameOver.h"
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "SDL/include/SDL_Scancode.h"
@@ -101,7 +104,13 @@ Update_Status ModuleCollisions::Update()
 
 	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
 		GodMode = !GodMode;
-	
+
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneOver, 60);
+    
+	}
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
