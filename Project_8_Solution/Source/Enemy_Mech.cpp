@@ -61,7 +61,6 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 	shootNE2.PushBack({ 1003, 41, 37, 48 });
 	shootNE2.PushBack({ 1088, 41, 37, 47 });
 	shootNE2.PushBack({ 1003, 41, 37, 48 });
-
 	shootNE2.loop = false;
 	shootNE2.speed = 0.1f;
 
@@ -72,6 +71,31 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 	shootUp.PushBack({ 1173, 41, 30, 48 });
 	shootUp.loop = false;
 	shootUp.speed = 0.1f;
+
+	idleSW1.PushBack({ 1173, 41, 30, 48 });
+
+	shootSW1.PushBack({ 1173, 41, 30, 48 });
+	shootSW1.PushBack({ 1252, 41, 30, 47 });
+	shootSW1.PushBack({ 1173, 41, 30, 48 });
+	shootSW1.loop = false;
+	shootSW1.speed = 0.1f;
+
+	idleSW2.PushBack({ 1173, 41, 30, 48 });
+
+	shootSW2.PushBack({ 1173, 41, 30, 48 });
+	shootSW2.PushBack({ 1252, 41, 30, 47 });
+	shootSW2.PushBack({ 1173, 41, 30, 48 });
+	shootSW2.loop = false;
+	shootSW2.speed = 0.1f;
+
+	idleLeft.PushBack({ 1173, 41, 30, 48 });
+
+	shootLeft.PushBack({ 1173, 41, 30, 48 });
+	shootLeft.PushBack({ 1252, 41, 30, 47 });
+	shootLeft.PushBack({ 1173, 41, 30, 48 });
+	shootLeft.loop = false;
+	shootLeft.speed = 0.1f;
+
 
 	path.PushBack({0.0f, 0.0f}, 0, &idleDownL);
 	currentAnim = &idleDownR;

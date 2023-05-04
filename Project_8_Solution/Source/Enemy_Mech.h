@@ -43,7 +43,7 @@ private:
 	Path path;
 
 	// Enemy animations
-	Animation idleDownL,shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleUp,shootUp;
+	Animation idleDownL,shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleUp,shootUp,idleSW1,shootSW1,idleSW2,shootSW2,idleLeft,shootLeft;
 };
 
 #endif // __ENEMY_MECH_H__
