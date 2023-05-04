@@ -29,7 +29,7 @@ bool SceneLevel1::Start()
 
 	bgTexture = App->textures->Load("Assets/Sprites/Background/Mapa.png");
 	sky = App->textures->Load("Assets/Sprites/Background/Cielo.png");
-	App->audio->PlayMusic("Assets/Music/RideOn.wav", 1.0f);
+	App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
 
 	////Bottomside collider
 	//App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);     //Eliminados porque eran del otro juego y destruyen el jugador cuando no deben
