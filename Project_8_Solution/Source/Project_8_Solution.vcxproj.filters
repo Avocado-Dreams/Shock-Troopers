@@ -118,6 +118,9 @@
     <ClInclude Include="SceneGameOver.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="ModulePickUps.h" />
+    <ClInclude Include="PickUps.h" />
+    <ClInclude Include="PickUps_BLUEDIAMOND.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -200,6 +203,15 @@
     </ClCompile>
     <ClCompile Include="SceneGameOver.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePickUps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PickUps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PickUps_BLUEDIAMOND.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

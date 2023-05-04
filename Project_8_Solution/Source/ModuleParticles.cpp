@@ -22,17 +22,17 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/Sprites/Weapons/shots.png");
+	texture = App->textures->Load("Assets/Sprites/Enemies/particulas.png");
 
 	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	//explosion.anim.PushBack({274, 296, 33, 30});
+	//explosion.anim.PushBack({313, 296, 33, 30});
+	//explosion.anim.PushBack({346, 296, 33, 30});
+	//explosion.anim.PushBack({382, 296, 33, 30});
+	//explosion.anim.PushBack({419, 296, 33, 30});
+	//explosion.anim.PushBack({457, 296, 33, 30});
+	//explosion.anim.loop = false;
+	//explosion.anim.speed = 0.3f;
 
 	//BURST
 	//shoot up
@@ -88,16 +88,13 @@ bool ModuleParticles::Start()
 	sSudoest.lifetime = 180;
 	sSudoest.anim.speed = 0.5f;
 
-
-	/*texture = App->textures->Load("Assets/Sprites/Enemies/SHOT_spritesheet-2.png");
-
-	enemyShot.anim.PushBack({ 14, 2, 10, 10 });
-	enemyShot.anim.PushBack({ 1, 2, 10, 10 });
-	enemyShot.anim.PushBack({ 26, 2, 10, 10 });
+	enemyShot.anim.PushBack({ 18, 32, 8, 9 });
+	enemyShot.anim.PushBack({ 5, 32, 8, 9 });
+	enemyShot.anim.PushBack({ 30, 32, 8, 9 });
 	enemyShot.speed.x = 1;
 	enemyShot.speed.y = 1;
 	enemyShot.lifetime = 180;
-	enemyShot.anim.speed = 0.2f;*/
+	enemyShot.anim.speed = 0.2f;
 
 	return true;
 }
