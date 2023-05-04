@@ -88,11 +88,69 @@ bool ModuleParticles::Start()
 	sSudoest.lifetime = 180;
 	sSudoest.anim.speed = 0.5f;
 
-	enemyShot.anim.PushBack({ 18, 32, 8, 9 });
-	enemyShot.anim.PushBack({ 5, 32, 8, 9 });
-	enemyShot.anim.PushBack({ 30, 32, 8, 9 });
-	enemyShot.lifetime = 180;
-	enemyShot.anim.speed = 0.2f;
+	enemyShotDownL.anim.PushBack({ 18, 32, 8, 9 });
+	enemyShotDownL.anim.PushBack({ 5, 32, 8, 9 });
+	enemyShotDownL.anim.PushBack({ 30, 32, 8, 9 });
+	enemyShotDownL.speed.x = 0;
+	enemyShotDownL.speed.y = 1;
+	enemyShotDownL.lifetime = 180;
+	enemyShotDownL.anim.speed = 0.2f;
+
+	enemyShotDownR.anim.PushBack({ 18, 32, 8, 9 });
+	enemyShotDownR.anim.PushBack({ 5, 32, 8, 9 });
+	enemyShotDownR.anim.PushBack({ 30, 32, 8, 9 });
+	enemyShotDownR.speed.x = 0;
+	enemyShotDownR.speed.y = 1;
+	enemyShotDownR.lifetime = 180;
+	enemyShotDownR.anim.speed = 0.2f;
+
+	enemyShotSE1.anim.PushBack({ 18, 32, 8, 9 });
+	enemyShotSE1.anim.PushBack({ 5, 32, 8, 9 });
+	enemyShotSE1.anim.PushBack({ 30, 32, 8, 9 });
+	//enemyShotSE1.speed.x = 0.5;
+	//enemyShotSE1.speed.y = 0.5;
+	enemyShotSE1.lifetime = 180;
+	enemyShotSE1.anim.speed = 0.2f;
+
+	enemyShotSE2.anim.PushBack({ 18, 32, 8, 9 });
+	enemyShotSE2.anim.PushBack({ 5, 32, 8, 9 });
+	enemyShotSE2.anim.PushBack({ 30, 32, 8, 9 });
+	//enemyShotSE2.speed.x = 0.75f;
+	//enemyShotSE2.speed.y = 0.25f;
+	enemyShotSE2.lifetime = 180;
+	enemyShotSE2.anim.speed = 0.2f;
+
+	enemyShotRight.anim.PushBack({ 18, 32, 8, 9 });
+	enemyShotRight.anim.PushBack({ 5, 32, 8, 9 });
+	enemyShotRight.anim.PushBack({ 30, 32, 8, 9 });
+	enemyShotRight.speed.x = 1;
+	enemyShotRight.speed.y = 0;
+	enemyShotRight.lifetime = 180;
+	enemyShotRight.anim.speed = 0.2f;
+
+	enemyShotNE1.anim.PushBack({ 18, 32, 8, 9 });
+	enemyShotNE1.anim.PushBack({ 5, 32, 8, 9 });
+	enemyShotNE1.anim.PushBack({ 30, 32, 8, 9 });
+	//enemyShotNE1.speed.x = 0.5;
+	//enemyShotNE1.speed.y = -0.5;
+	enemyShotNE1.lifetime = 180;
+	enemyShotNE1.anim.speed = 0.2f;
+
+	enemyShotNE2.anim.PushBack({ 18, 32, 8, 9 });
+	enemyShotNE2.anim.PushBack({ 5, 32, 8, 9 });
+	enemyShotNE2.anim.PushBack({ 30, 32, 8, 9 });
+	//enemyShotNE2.speed.x = 0.25;
+	//enemyShotNE2.speed.y = -0.75;
+	enemyShotNE2.lifetime = 180;
+	enemyShotNE2.anim.speed = 0.2f;
+
+	enemyShotUp.anim.PushBack({ 18, 32, 8, 9 });
+	enemyShotUp.anim.PushBack({ 5, 32, 8, 9 });
+	enemyShotUp.anim.PushBack({ 30, 32, 8, 9 });
+	enemyShotUp.speed.x = 0;
+	enemyShotUp.speed.y = -1;
+	enemyShotUp.lifetime = 180;
+	enemyShotUp.anim.speed = 0.2f;
 
 	return true;
 }
@@ -163,7 +221,7 @@ Update_Status ModuleParticles::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, int speedx, int speedy,Collider::Type colliderType, uint delay)
+Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, float speedx, float speedy,Collider::Type colliderType, uint delay)
 {
 	Particle* p = new Particle(particle);
 

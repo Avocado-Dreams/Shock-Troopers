@@ -13,8 +13,6 @@ public:
 	double dy;
 	int distance;
 	float angle;
-	float shotX;
-	float shotY;
 	int numShots = 0;
 	int MAXSHOTS = 5;
 	bool moveToPlayer = false;
