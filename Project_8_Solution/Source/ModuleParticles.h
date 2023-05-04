@@ -62,7 +62,7 @@ public:
 
 	//Template particle for a laser
 	Particle laser;
-	Particle enemyShotDownL, enemyShotDownR, enemyShotSE1, enemyShotSE2, enemyShotRight, enemyShotNE1, enemyShotNE2, enemyShotUp;
+	Particle enemyShot;
 	Particle sUp, sDown, sLeft, sRight, sNorest, sNoroest, sSudest, sSudoest;
 };
 
