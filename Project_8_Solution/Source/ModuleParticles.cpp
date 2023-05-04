@@ -91,8 +91,6 @@ bool ModuleParticles::Start()
 	enemyShot.anim.PushBack({ 18, 32, 8, 9 });
 	enemyShot.anim.PushBack({ 5, 32, 8, 9 });
 	enemyShot.anim.PushBack({ 30, 32, 8, 9 });
-	enemyShot.speed.x = 1;
-	enemyShot.speed.y = 1;
 	enemyShot.lifetime = 180;
 	enemyShot.anim.speed = 0.2f;
 

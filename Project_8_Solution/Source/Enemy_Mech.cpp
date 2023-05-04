@@ -135,14 +135,25 @@ void Enemy_Mech::Attack()
 	if (timer <= 0.0f)
 	{
 		if (Enemy_Mech::calculateAngle() >= -90 && Enemy_Mech::calculateAngle() < -80) currentAnim = &shootDownL;
-		else if (Enemy_Mech::calculateAngle() >= -100 && Enemy_Mech::calculateAngle() < -90) currentAnim = &shootDownR;
-		else if (Enemy_Mech::calculateAngle() >= -135 && Enemy_Mech::calculateAngle() < -100) currentAnim = &shootSE1;
-		else if (Enemy_Mech::calculateAngle() >= -170 && Enemy_Mech::calculateAngle() < -135) currentAnim = &shootSE2;
-		else if ((Enemy_Mech::calculateAngle() >= -179 && Enemy_Mech::calculateAngle() < -170) || (Enemy_Mech::calculateAngle() >= 170 && Enemy_Mech::calculateAngle() < 180)) currentAnim = &shootRight;
+		else if (Enemy_Mech::calculateAngle() >= -100 && Enemy_Mech::calculateAngle() < -90) {
+			currentAnim = &shootDownR;
+			App->particles->AddParticle(App->particles->enemyShot, position.x+2, position.y+10, NULL, 1, Collider::Type::ENEMY_SHOT);
+		}
+		else if (Enemy_Mech::calculateAngle() >= -135 && Enemy_Mech::calculateAngle() < -100) {
+			currentAnim = &shootSE1;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 2, position.y + 10, 1, 1, Collider::Type::ENEMY_SHOT);
+		}
+		else if (Enemy_Mech::calculateAngle() >= -170 && Enemy_Mech::calculateAngle() < -135) {
+			currentAnim = &shootSE2;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 2, position.y + 10, 2, 1, Collider::Type::ENEMY_SHOT);
+		}
+		else if ((Enemy_Mech::calculateAngle() >= -179 && Enemy_Mech::calculateAngle() < -170) || (Enemy_Mech::calculateAngle() >= 170 && Enemy_Mech::calculateAngle() < 180)){
+			currentAnim = &shootRight;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 2, position.y + 10, 1, 0, Collider::Type::ENEMY_SHOT);
+		}
 		else if (Enemy_Mech::calculateAngle() <= 170 && Enemy_Mech::calculateAngle() > 135) currentAnim = &shootNE1;
 		else if (Enemy_Mech::calculateAngle() <= 135 && Enemy_Mech::calculateAngle() > 100) currentAnim = &shootNE2;
 		else if (Enemy_Mech::calculateAngle() <= 100 && Enemy_Mech::calculateAngle() > 80) currentAnim = &shootUp;
-		App->particles->AddParticle(App->particles->enemyShot, position.x - 10, position.y, -shotX, -shotY, Collider::Type::ENEMY_SHOT);
 		timer = SHOOT_INTERVAL;
 
 	}
