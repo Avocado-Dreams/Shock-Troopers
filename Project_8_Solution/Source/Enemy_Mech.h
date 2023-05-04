@@ -29,7 +29,11 @@ public:
 
 	void Attack();
 
-	void find_player();
+	void Idle();
+
+	bool find_player();
+
+	double  Enemy_Mech::calculateAngle();
 
 	//Timer to control the enemy attack cooldown
 	float timer = 0.0f;
@@ -40,7 +44,7 @@ private:
 	Path path;
 
 	// Enemy animations
-	Animation idleDown,shootDown;
+	Animation idleDownL,shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleUp,shootUp;
 };
 
 #endif // __ENEMY_MECH_H__
