@@ -64,37 +64,61 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 	shootNE2.loop = false;
 	shootNE2.speed = 0.1f;
 
-	idleUp.PushBack({ 1173, 41, 30, 48 });
+	idleUpL.PushBack({ 1173, 41, 30, 48 });
 
-	shootUp.PushBack({ 1173, 41, 30, 48 });
-	shootUp.PushBack({ 1252, 41, 30, 47 });
-	shootUp.PushBack({ 1173, 41, 30, 48 });
-	shootUp.loop = false;
-	shootUp.speed = 0.1f;
+	shootUpL.PushBack({ 1173, 41, 30, 48 });
+	shootUpL.PushBack({ 1252, 41, 30, 47 });
+	shootUpL.PushBack({ 1173, 41, 30, 48 });
+	shootUpL.loop = false;
+	shootUpL.speed = 0.1f;
 
-	idleSW1.PushBack({ 1173, 41, 30, 48 });
+	idleUpR.PushBack({ 24, 105, 30, 47 });
 
-	shootSW1.PushBack({ 1173, 41, 30, 48 });
-	shootSW1.PushBack({ 1252, 41, 30, 47 });
-	shootSW1.PushBack({ 1173, 41, 30, 48 });
+	shootUpR.PushBack({ 24, 105, 30, 47 });
+	shootUpR.PushBack({ 103, 105, 30, 48 });
+	shootUpR.PushBack({ 24, 105, 30, 47 });
+	shootUpR.loop = false;
+	shootUpR.speed = 0.1f;
+
+	idleNW1.PushBack({ 181, 105, 38, 47 });
+
+	shootNW1.PushBack({ 181, 105, 38, 47 });
+	shootNW1.PushBack({ 266, 105, 37, 48 });
+	shootNW1.PushBack({ 181, 105, 38, 47 });
+	shootNW1.loop = false;
+	shootNW1.speed = 0.1f;
+
+	idleNW2.PushBack({ 351, 105, 38, 47 });
+
+	shootNW2.PushBack({ 351, 105, 38, 47 });
+	shootNW2.PushBack({ 439, 105, 40, 48 });
+	shootNW2.PushBack({ 351, 105, 38, 47 });
+	shootNW2.loop = false;
+	shootNW2.speed = 0.1f;
+
+	idleLeft.PushBack({ 525, 103, 43, 49 });
+
+	shootLeft.PushBack({ 525, 103, 43, 49 });
+	shootLeft.PushBack({ 618, 103, 45, 49 });
+	shootLeft.PushBack({ 525, 103, 43, 49 });
+	shootLeft.loop = false;
+	shootLeft.speed = 0.1f;
+
+	idleSW1.PushBack({ 709, 102, 33, 50 });
+
+	shootSW1.PushBack({ 709, 102, 33, 50 });
+	shootSW1.PushBack({ 792, 102, 34, 49 });
+	shootSW1.PushBack({ 709, 102, 33, 50 });
 	shootSW1.loop = false;
 	shootSW1.speed = 0.1f;
 
-	idleSW2.PushBack({ 1173, 41, 30, 48 });
+	idleSW2.PushBack({ 872, 102, 25, 50 });
 
-	shootSW2.PushBack({ 1173, 41, 30, 48 });
-	shootSW2.PushBack({ 1252, 41, 30, 47 });
-	shootSW2.PushBack({ 1173, 41, 30, 48 });
+	shootSW2.PushBack({ 872, 102, 25, 50 });
+	shootSW2.PushBack({ 947, 102, 26, 49 });
+	shootSW2.PushBack({ 872, 102, 25, 50 });
 	shootSW2.loop = false;
 	shootSW2.speed = 0.1f;
-
-	idleLeft.PushBack({ 1173, 41, 30, 48 });
-
-	shootLeft.PushBack({ 1173, 41, 30, 48 });
-	shootLeft.PushBack({ 1252, 41, 30, 47 });
-	shootLeft.PushBack({ 1173, 41, 30, 48 });
-	shootLeft.loop = false;
-	shootLeft.speed = 0.1f;
 
 
 	path.PushBack({0.0f, 0.0f}, 0, &idleDownL);
@@ -155,7 +179,14 @@ void Enemy_Mech::Idle()
 	else if ((Enemy_Mech::calculateAngle() >= -179 && Enemy_Mech::calculateAngle() < -170) || (Enemy_Mech::calculateAngle() >= 170 && Enemy_Mech::calculateAngle() < 180)) currentAnim = &idleRight;
 	else if (Enemy_Mech::calculateAngle() <= 170 && Enemy_Mech::calculateAngle() > 135) currentAnim = &idleNE1;
 	else if (Enemy_Mech::calculateAngle() <= 135 && Enemy_Mech::calculateAngle() > 100) currentAnim = &idleNE2;
-	else if (Enemy_Mech::calculateAngle() <= 100 && Enemy_Mech::calculateAngle() > 80) currentAnim = &idleUp;
+	else if (Enemy_Mech::calculateAngle() <= 100 && Enemy_Mech::calculateAngle() > 90) currentAnim = &idleUpL;
+	
+	else if (Enemy_Mech::calculateAngle() <= 90 && Enemy_Mech::calculateAngle() > 80) currentAnim = &idleUpR;
+	else if (Enemy_Mech::calculateAngle() <= 80 && Enemy_Mech::calculateAngle() > 45) currentAnim = &idleNW1;
+	else if (Enemy_Mech::calculateAngle() <= 45 && Enemy_Mech::calculateAngle() > 10) currentAnim = &idleNW2;
+	else if ((Enemy_Mech::calculateAngle() <= 10 && Enemy_Mech::calculateAngle() > 0) || (Enemy_Mech::calculateAngle() >= -10 && Enemy_Mech::calculateAngle() < -1)) currentAnim = &idleLeft;
+	else if (Enemy_Mech::calculateAngle() >= -45 && Enemy_Mech::calculateAngle() < -10) currentAnim = &idleSW1;
+	else if (Enemy_Mech::calculateAngle() >= -80 && Enemy_Mech::calculateAngle() < -45) currentAnim = &idleSW2;
 }
 
 void Enemy_Mech::Attack()
@@ -173,51 +204,94 @@ void Enemy_Mech::Attack()
 		shootDownL.Reset();
 		currentAnim = &shootDownL;
 		isShooting = true;
-		App->particles->AddParticle(App->particles->enemyShotDownL, position.x + 9, position.y + 30, NULL, NULL, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 9, position.y + 30, NULL, 1, Collider::Type::ENEMY_SHOT);
 	}
 	else if (Enemy_Mech::calculateAngle() >= -100 && Enemy_Mech::calculateAngle() < -90) {
 		shootDownR.Reset();
 		currentAnim = &shootDownR;
 		isShooting = true;
-		App->particles->AddParticle(App->particles->enemyShotDownR, position.x + 16, position.y + 31, NULL, NULL, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y + 31, NULL, 1, Collider::Type::ENEMY_SHOT);
 	}
 	else if (Enemy_Mech::calculateAngle() >= -135 && Enemy_Mech::calculateAngle() < -100) {
 		shootSE1.Reset();
 		currentAnim = &shootSE1;
 		isShooting = true;
-		App->particles->AddParticle(App->particles->enemyShotSE1, position.x + 19, position.y + 28, 1, 1, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 19, position.y + 28, 1, 1, Collider::Type::ENEMY_SHOT);
 	}
 	else if (Enemy_Mech::calculateAngle() >= -170 && Enemy_Mech::calculateAngle() < -135) {
 		shootSE2.Reset();
 		currentAnim = &shootSE2;
 		isShooting = true;
-		App->particles->AddParticle(App->particles->enemyShotSE2, position.x + 26, position.y + 26, 2, 1, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 26, position.y + 26, 2, 1, Collider::Type::ENEMY_SHOT);
 	}
 	else if ((Enemy_Mech::calculateAngle() >= -179 && Enemy_Mech::calculateAngle() < -170) || (Enemy_Mech::calculateAngle() >= 170 && Enemy_Mech::calculateAngle() < 180)){
 		shootRight.Reset();
 		currentAnim = &shootRight;
 		isShooting = true;
-		App->particles->AddParticle(App->particles->enemyShotRight, position.x + 41, position.y + 16, NULL, NULL, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 41, position.y + 16, 1, 0, Collider::Type::ENEMY_SHOT);
 	}
 	else if (Enemy_Mech::calculateAngle() <= 170 && Enemy_Mech::calculateAngle() > 135) {
 		shootNE1.Reset();
 		currentAnim = &shootNE1;
 		isShooting = true;
-		App->particles->AddParticle(App->particles->enemyShotNE1, position.x + 34, position.y + 5, 2, -1, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 34, position.y + 5, 2, -1, Collider::Type::ENEMY_SHOT);
 	}
 
 	else if (Enemy_Mech::calculateAngle() <= 135 && Enemy_Mech::calculateAngle() > 100) {
 		shootNE2.Reset();
 		currentAnim = &shootNE2;
 		isShooting = true;
-		App->particles->AddParticle(App->particles->enemyShotNE2, position.x + 28, position.y + 4, 1, -1, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 28, position.y + 4, 1, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Mech::calculateAngle() <= 100 && Enemy_Mech::calculateAngle() > 80) {
-		shootUp.Reset();
-		currentAnim = &shootUp;
+	else if (Enemy_Mech::calculateAngle() <= 100 && Enemy_Mech::calculateAngle() > 90) {
+		shootUpL.Reset();
+		currentAnim = &shootUpL;
 		isShooting = true;
-		App->particles->AddParticle(App->particles->enemyShotUp, position.x + 16, position.y -5, NULL, NULL, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y -5, NULL, -1, Collider::Type::ENEMY_SHOT);
 	}
+
+	else if (Enemy_Mech::calculateAngle() <= 90 && Enemy_Mech::calculateAngle() > 80) {
+		shootUpR.Reset();
+		currentAnim = &shootUpR;
+		isShooting = true;
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, NULL, -1, Collider::Type::ENEMY_SHOT);
+	}
+
+	else if (Enemy_Mech::calculateAngle() <= 80 && Enemy_Mech::calculateAngle() > 45) {
+		shootNW1.Reset();
+		currentAnim = &shootNW1;
+		isShooting = true;
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, -1, -1, Collider::Type::ENEMY_SHOT);
+	}
+
+	else if (Enemy_Mech::calculateAngle() <= 45 && Enemy_Mech::calculateAngle() > 10) {
+		shootNW2.Reset();
+		currentAnim = &shootNW2;
+		isShooting = true;
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, -2, -1, Collider::Type::ENEMY_SHOT);
+	}
+
+	else if ((Enemy_Mech::calculateAngle() <= 10 && Enemy_Mech::calculateAngle() > 0) || (Enemy_Mech::calculateAngle() >= -10 && Enemy_Mech::calculateAngle() < -1)) {
+		shootLeft.Reset();
+		currentAnim = &shootLeft;
+		isShooting = true;
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, -2, NULL, Collider::Type::ENEMY_SHOT);
+	}
+
+	else if (Enemy_Mech::calculateAngle() <= -10 && Enemy_Mech::calculateAngle() > -45) {
+		shootSW1.Reset();
+		currentAnim = &shootSW1;
+		isShooting = true;
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, -2, 1, Collider::Type::ENEMY_SHOT);
+	}
+
+	else if (Enemy_Mech::calculateAngle() <= -45 && Enemy_Mech::calculateAngle() > -90) {
+		shootSW2.Reset();
+		currentAnim = &shootSW2;
+		isShooting = true;
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, -1, 1, Collider::Type::ENEMY_SHOT);
+	}
+
 	timer = SHOOT_INTERVAL;
 }
