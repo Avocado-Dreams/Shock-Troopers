@@ -34,8 +34,6 @@ public:
 
 	bool find_player();
 
-	void shootingDownR();
-
 	double  Enemy_Mech::calculateAngle();
 
 	//Timer to control the enemy attack cooldown
