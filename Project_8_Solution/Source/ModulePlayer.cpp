@@ -738,12 +738,12 @@ Update_Status ModulePlayer::Update()
 	else if (zone == 6 && App->render->camera.y < 6)
 	{
 		zone = 7;
-		App->audio->PlayMusic("Assets/Music/DarkMatter.ogg", 1.0f);
+		App->audio->PlayMusic("Assets/Music/DarkMatter.wav", 1.0f);
 	}
 	else if (zone == 7 && (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN))  //C = continue, until we have the enemy condition
 	{
 		//END OF LEVEL (After defeating enemies)
-		App->audio->PlayMusic("Assets/Music/StageClear.ogg", 1.0f);
+		App->audio->PlayMusic("Assets/Music/StageClear.wav", 1.0f);
 	}
 	
 	UpdateAnim();
