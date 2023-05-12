@@ -44,6 +44,8 @@ private:
 
 	// Enemy animations
 	Animation idleDownL,shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleUpL,shootUpL,idleUpR,shootUpR,idleSW1,shootSW1,idleSW2,shootSW2,idleLeft,shootLeft,idleNW1,shootNW1,idleNW2,shootNW2;
+
+	uint enemyShotFx = 0;
 };
 
 #endif // __ENEMY_MECH_H__
