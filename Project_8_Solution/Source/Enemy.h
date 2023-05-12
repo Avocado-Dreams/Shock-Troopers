@@ -39,7 +39,7 @@ public:
 	SDL_Texture* texture = nullptr;
 
 	// Sound fx when destroyed
-	int destroyedFx = 0;
+	int damagedEnemy = 0;
 
 
 protected:

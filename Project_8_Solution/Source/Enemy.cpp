@@ -9,6 +9,8 @@
 Enemy::Enemy(int x, int y) : position(x, y)
 {
 	spawnPos = position;
+
+	damagedEnemy = App->audio->LoadFx("Assets/Fx/damaged_enemy.wav");
 }
 
 Enemy::~Enemy()
@@ -40,5 +42,5 @@ void Enemy::Draw()
 void Enemy::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
-	App->audio->PlayFx(destroyedFx);
+	App->audio->PlayFx(damagedEnemy);
 }
