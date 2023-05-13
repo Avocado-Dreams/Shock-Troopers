@@ -266,6 +266,134 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	sudoestWAnim.loop = true;
 	sudoestWAnim.speed = 0.1f;
 
+	//WIN ANIMATION
+	winAnim.PushBack({ 1, 0, 29, 59 });
+	winAnim.PushBack({ 29, 0, 29, 59 });
+	winAnim.PushBack({ 58, 0, 29, 59 });
+	winAnim.PushBack({ 85, 0, 30, 59 });
+	winAnim.PushBack({ 115, 0, 27, 59 });
+	winAnim.PushBack({ 142, 0, 27, 59 });
+	winAnim.PushBack({ 169, 0, 27, 59 });
+
+	winAnim.PushBack({ 2, 59, 30, 59 });
+	winAnim.PushBack({ 32, 59, 29, 59 });
+	winAnim.PushBack({ 60, 59, 29, 59 });
+	winAnim.PushBack({ 89, 59, 29, 59 });
+	winAnim.PushBack({ 117, 59, 29, 59 });
+	winAnim.PushBack({ 146, 59, 29, 59 });
+	winAnim.PushBack({ 175, 59, 29, 59 });
+
+	winAnim.PushBack({ 27, 117, 29, 59 });
+	winAnim.PushBack({ 59, 117, 29, 59 });
+	winAnim.PushBack({ 93, 117, 29, 59 });
+	winAnim.PushBack({ 126, 117, 29, 59 });
+	winAnim.loop = false;
+	winAnim.speed = 0.15f; 
+
+	//DEATH ANIMATION up
+	upDAnim.PushBack({ 1, 0, 29, 59 });
+	upDAnim.PushBack({ 29, 0, 29, 59 });
+	upDAnim.PushBack({ 58, 0, 29, 59 });
+	upDAnim.PushBack({ 85, 0, 30, 59 });
+	upDAnim.PushBack({ 115, 0, 27, 59 });
+	upDAnim.PushBack({ 142, 0, 27, 59 });
+	upDAnim.PushBack({ 169, 0, 27, 59 });
+	upDAnim.PushBack({ 169, 0, 27, 59 });
+	upDAnim.PushBack({ 169, 0, 27, 59 });
+	upDAnim.loop = false;
+	upDAnim.speed = 0.1f;
+
+	//DEATH ANIMATION norest
+	norestDAnim.PushBack({ 1, 0, 29, 59 });
+	norestDAnim.PushBack({ 29, 0, 29, 59 });
+	norestDAnim.PushBack({ 58, 0, 29, 59 });
+	norestDAnim.PushBack({ 85, 0, 30, 59 });
+	norestDAnim.PushBack({ 115, 0, 27, 59 });
+	norestDAnim.PushBack({ 142, 0, 27, 59 });
+	norestDAnim.PushBack({ 169, 0, 27, 59 });
+	norestDAnim.PushBack({ 169, 0, 27, 59 });
+	norestDAnim.PushBack({ 169, 0, 27, 59 });
+	norestDAnim.loop = false;
+	norestDAnim.speed = 0.1f;
+
+	//DEATH ANIMATION right
+	rightDAnim.PushBack({ 1, 0, 29, 59 });
+	rightDAnim.PushBack({ 29, 0, 29, 59 });
+	rightDAnim.PushBack({ 58, 0, 29, 59 });
+	rightDAnim.PushBack({ 85, 0, 30, 59 });
+	rightDAnim.PushBack({ 115, 0, 27, 59 });
+	rightDAnim.PushBack({ 142, 0, 27, 59 });
+	rightDAnim.PushBack({ 169, 0, 27, 59 });
+	rightDAnim.PushBack({ 169, 0, 27, 59 });
+	rightDAnim.PushBack({ 169, 0, 27, 59 });
+	rightDAnim.loop = false;
+	rightDAnim.speed = 0.1f;
+
+	//DEATH ANIMATION sudest
+	sudestDAnim.PushBack({ 1, 0, 29, 59 });
+	sudestDAnim.PushBack({ 29, 0, 29, 59 });
+	sudestDAnim.PushBack({ 58, 0, 29, 59 });
+	sudestDAnim.PushBack({ 85, 0, 30, 59 });
+	sudestDAnim.PushBack({ 115, 0, 27, 59 });
+	sudestDAnim.PushBack({ 142, 0, 27, 59 });
+	sudestDAnim.PushBack({ 169, 0, 27, 59 });
+	sudestDAnim.PushBack({ 169, 0, 27, 59 });
+	sudestDAnim.PushBack({ 169, 0, 27, 59 });
+	sudestDAnim.loop = false;
+	sudestDAnim.speed = 0.1f;
+
+	//DEATH ANIMATION down
+	downDAnim.PushBack({ 1, 0, 29, 59 });
+	downDAnim.PushBack({ 29, 0, 29, 59 });
+	downDAnim.PushBack({ 58, 0, 29, 59 });
+	downDAnim.PushBack({ 85, 0, 30, 59 });
+	downDAnim.PushBack({ 115, 0, 27, 59 });
+	downDAnim.PushBack({ 142, 0, 27, 59 });
+	downDAnim.PushBack({ 169, 0, 27, 59 });
+	downDAnim.PushBack({ 169, 0, 27, 59 });
+	downDAnim.PushBack({ 169, 0, 27, 59 });
+	downDAnim.loop = false;
+	downDAnim.speed = 0.1f;
+
+	//DEATH ANIMATION sudoest
+	sudoestDAnim.PushBack({ 1, 0, 29, 59 });
+	sudoestDAnim.PushBack({ 29, 0, 29, 59 });
+	sudoestDAnim.PushBack({ 58, 0, 29, 59 });
+	sudoestDAnim.PushBack({ 85, 0, 30, 59 });
+	sudoestDAnim.PushBack({ 115, 0, 27, 59 });
+	sudoestDAnim.PushBack({ 142, 0, 27, 59 });
+	sudoestDAnim.PushBack({ 169, 0, 27, 59 });
+	sudoestDAnim.PushBack({ 169, 0, 27, 59 });
+	sudoestDAnim.PushBack({ 169, 0, 27, 59 });
+	sudoestDAnim.loop = false;
+	sudoestDAnim.speed = 0.1f;
+
+	//DEATH ANIMATION left
+	leftDAnim.PushBack({ 1, 0, 29, 59 });
+	leftDAnim.PushBack({ 29, 0, 29, 59 });
+	leftDAnim.PushBack({ 58, 0, 29, 59 });
+	leftDAnim.PushBack({ 85, 0, 30, 59 });
+	leftDAnim.PushBack({ 115, 0, 27, 59 });
+	leftDAnim.PushBack({ 142, 0, 27, 59 });
+	leftDAnim.PushBack({ 169, 0, 27, 59 });
+	leftDAnim.PushBack({ 169, 0, 27, 59 });
+	leftDAnim.PushBack({ 169, 0, 27, 59 });
+	leftDAnim.loop = false;
+	leftDAnim.speed = 0.15f;
+
+	//DEATH ANIMATION noroest
+	noroestDAnim.PushBack({ 1, 0, 29, 59 });
+	noroestDAnim.PushBack({ 29, 0, 29, 59 });
+	noroestAnim.PushBack({ 58, 0, 29, 59 });
+	noroestDAnim.PushBack({ 85, 0, 30, 59 });
+	noroestDAnim.PushBack({ 115, 0, 27, 59 });
+	noroestDAnim.PushBack({ 142, 0, 27, 59 });
+	noroestDAnim.PushBack({ 169, 0, 27, 59 });
+	noroestDAnim.PushBack({ 169, 0, 27, 59 });
+	noroestDAnim.PushBack({ 169, 0, 27, 59 });
+	noroestDAnim.loop = false;
+	noroestDAnim.speed = 0.15f;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -283,9 +411,13 @@ bool ModulePlayer::Start()
 	currentAnimation = &upAnim;
 	textureL = App->textures->Load("Assets/Sprites/Animations/legsF2.png");
 	currentLAnimation = &upLAnim;
+	textureState = App->textures->Load("Assets/Sprites/Animations/stateAnim.png");
+	currentStateAnimation = &winAnim;
 
 	laserFx = App->audio->LoadFx("Assets/Fx/Main gun shots.wav");
 	deathFx = App->audio->LoadFx("Assets/Fx/Milky death.wav");
+	winFx = App->audio->LoadFx("Assets/Fx/winLine.wav");
+	
 
 	position.x = 150;
 	position.y = (120 + 2715);
@@ -741,10 +873,12 @@ Update_Status ModulePlayer::Update()
 		zone = 7;
 		App->audio->PlayMusic("Assets/Music/DarkMatter.ogg", 1.0f);
 	}
-	else if (zone == 7 && (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN))  //C = continue, until we have the enemy condition
+	else if (/*zone == 7 &&*/ (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN))  //C = continue, until we have the enemy condition
 	{
 		//END OF LEVEL (After defeating enemies)
-		App->audio->PlayMusic("Assets/Music/StageClear.ogg", 1.0f);
+		win = 1; 
+		winAnim.Reset();
+		App->audio->PlayMusic("Assets/Music/silence.wav", 0.0f);
 	}
 	
 	UpdateAnim();
@@ -866,7 +1000,21 @@ Update_Status ModulePlayer::Update()
 
 Update_Status ModulePlayer::PostUpdate()
 {
-	if (!destroyed)
+ 	if (win > 0)
+	{
+			currentStateAnimation->Update();
+			SDL_Rect rectS = currentStateAnimation->GetCurrentFrame();
+			App->render->Blit(textureState, position.x, position.y, &rectS);
+			if (win < 151) { win++; }
+			if (win == 70) { App->audio->PlayFx(winFx); }
+			if (win == 150) { 
+
+				App->audio->PlayMusic("Assets/Music/StageClear.ogg", 0.0f);
+				SDL_Delay(3600);
+				App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+			}
+	}
+	else if (!destroyed)
 	{
 		SDL_Rect rectL = currentLAnimation->GetCurrentFrame();
 		App->render->Blit(textureL, position.x, position.y + 18, &rectL);
@@ -881,11 +1029,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false && vida == 0)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, NULL, NULL, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, NULL, NULL, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, NULL, NULL, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, NULL, NULL, Collider::Type::NONE, 21);
 
 		App->audio->PlayFx(deathFx);
 
