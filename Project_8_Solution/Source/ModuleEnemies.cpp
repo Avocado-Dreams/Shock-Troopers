@@ -157,7 +157,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 			}
 			enemies[i]->texture = texture;
-			enemies[i]->destroyedFx = enemyDestroyedFx;
+			//enemies[i]->destroyedFx = enemyDestroyedFx;
 			break;
 		}
 	}
