@@ -286,6 +286,7 @@ bool ModulePlayer::Start()
 
 	laserFx = App->audio->LoadFx("Assets/Fx/Main gun shots.wav");
 	deathFx = App->audio->LoadFx("Assets/Fx/Milky death.wav");
+	damageFx = App->audio->LoadFx("Assets/Fx/Damaged milky.wav");
 
 	position.x = 150;
 	position.y = (120 + 2715);
@@ -881,11 +882,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false && vida == 0)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, NULL, NULL, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, NULL, NULL, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, NULL, NULL, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, NULL, NULL, Collider::Type::NONE, 21);
+		App->particles->AddParticle(App->particles->enemy_death, position.x, position.y, NULL, NULL, Collider::Type::NONE, 9);
+		App->particles->AddParticle(App->particles->enemy_death, position.x + 8, position.y + 11, NULL, NULL, Collider::Type::NONE, 14);
+		App->particles->AddParticle(App->particles->enemy_death, position.x - 7, position.y + 12, NULL, NULL, Collider::Type::NONE, 40);
+		App->particles->AddParticle(App->particles->enemy_death, position.x + 5, position.y - 5, NULL, NULL, Collider::Type::NONE, 28);
+		App->particles->AddParticle(App->particles->enemy_death, position.x - 4, position.y - 4, NULL, NULL, Collider::Type::NONE, 21);
 
 		App->audio->PlayFx(deathFx);
 
@@ -894,5 +895,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		destroyed = true;
 		vida = 3;
 	}
+	else App->audio->PlayFx(damageFx);
 	vida--;
 }

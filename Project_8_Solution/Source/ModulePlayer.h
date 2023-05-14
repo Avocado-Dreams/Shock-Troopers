@@ -88,6 +88,7 @@ public:
 	uint laserFx = 0;
 	uint explosionFx = 0;
 	uint deathFx = 0;
+	uint damageFx = 0;
 
 	//timer callback
 	//SDL_TimerCallback callbackBC(Uint32 interval, void* name);

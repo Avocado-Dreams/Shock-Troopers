@@ -58,8 +58,8 @@ private:
 
 public:
 	//Template particle for an explosion
-	Particle explosion;
-
+	Particle enemy_death;
+	Particle enemy_airspawn;
 	//Template particle for a laser
 	Particle laser;
 	Particle enemyShot;

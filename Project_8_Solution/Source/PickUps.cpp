@@ -39,6 +39,6 @@ void PickUps::Draw()
 
 void PickUps::OnCollision(Collider* collider)
 {
-	App->particles->AddParticle(App->particles->explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
+	App->particles->AddParticle(App->particles->enemy_death, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
 	App->audio->PlayFx(getPickUps);
 }

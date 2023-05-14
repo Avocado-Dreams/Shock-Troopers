@@ -24,15 +24,23 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	texture = App->textures->Load("Assets/Sprites/Enemies/particulas.png");
 
-	// Explosion particle
-	//explosion.anim.PushBack({274, 296, 33, 30});
-	//explosion.anim.PushBack({313, 296, 33, 30});
-	//explosion.anim.PushBack({346, 296, 33, 30});
-	//explosion.anim.PushBack({382, 296, 33, 30});
-	//explosion.anim.PushBack({419, 296, 33, 30});
-	//explosion.anim.PushBack({457, 296, 33, 30});
-	//explosion.anim.loop = false;
-	//explosion.anim.speed = 0.3f;
+	//enemy_death particle
+	enemy_death.anim.PushBack({23, 201, 27, 37});
+	enemy_death.anim.PushBack({ 74, 180, 37, 55 });
+	enemy_death.anim.PushBack({ 128, 182, 37, 52 });
+	enemy_death.anim.PushBack({ 176, 185, 43, 39 });
+	enemy_death.anim.PushBack({ 231, 194, 37, 37 });
+	enemy_death.anim.PushBack({ 282, 195, 43, 39 });
+	enemy_death.anim.PushBack({ 339, 194, 39, 40 });
+	enemy_death.anim.loop = false;
+	enemy_death.anim.speed = 0.1f;
+	enemy_death.lifetime = 100;
+	//App->textures->Unload(texture);
+	enemy_airspawn.anim.PushBack({ 16, 272, 92, 100 });
+	enemy_airspawn.anim.loop = false;
+	enemy_airspawn.anim.speed = 0.1f;
+	enemy_airspawn.lifetime = 200;
+	//texture = App->textures->Load("Assets/Sprites/Enemies/particulas.png");
 
 	//BURST
 	//shoot up

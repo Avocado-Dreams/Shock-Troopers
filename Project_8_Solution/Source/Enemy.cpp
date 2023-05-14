@@ -41,6 +41,6 @@ void Enemy::Draw()
 
 void Enemy::OnCollision(Collider* collider)
 {
-	App->particles->AddParticle(App->particles->explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
+	App->particles->AddParticle(App->particles->enemy_death, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
 	App->audio->PlayFx(damagedEnemy);
 }

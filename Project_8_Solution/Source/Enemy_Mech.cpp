@@ -159,7 +159,7 @@ bool Enemy_Mech::find_player()
 	dx = position.x - playerX;
 	dy = position.y - playerY;
 	distance = sqrt(dx * dx + dy * dy);
-	if (distance < 100) return true;
+	if (distance < 150) return true;
 	else return false;
 	//angle = atan2(dy, dx);
 	//shotX = dx*0.02f;
