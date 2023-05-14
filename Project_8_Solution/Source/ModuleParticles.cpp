@@ -36,10 +36,7 @@ bool ModuleParticles::Start()
 	enemy_death.anim.speed = 0.1f;
 	enemy_death.lifetime = 100;
 	//App->textures->Unload(texture);
-	enemy_airspawn.anim.PushBack({ 16, 272, 92, 100 });
-	enemy_airspawn.anim.loop = false;
-	enemy_airspawn.anim.speed = 0.1f;
-	enemy_airspawn.lifetime = 200;
+
 	//texture = App->textures->Load("Assets/Sprites/Enemies/particulas.png");
 
 	//BURST

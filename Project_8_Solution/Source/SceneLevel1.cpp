@@ -54,7 +54,7 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 870, 100);
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);*/
 
-	App->enemies->AddEnemy(Enemy_Type::MECH, 200, 2600);
+
 	//App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, 210, 2600);
 	
 
@@ -67,13 +67,18 @@ bool SceneLevel1::Start()
 	App->sceneLayer2->Enable();
 	//App->pickUps->Enable();
 
+
+
 	return ret;
 }
 
 Update_Status SceneLevel1::Update()
 {
 	//App->render->camera.y -= 3;
-
+	if (App->player->position.y < 2700 && enemy1Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::MECH, 200, 2600);
+		enemy1Spawned = true;
+	}
 	return Update_Status::UPDATE_CONTINUE;
 }
 

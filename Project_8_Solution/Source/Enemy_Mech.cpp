@@ -122,18 +122,67 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 	shootSW2.loop = false;
 	shootSW2.speed = 0.1f;
 
+	enemy_airspawnL.PushBack({ 16, 272, 92, 100 });
+	enemy_airspawnL.loop = false;
+	enemy_airspawnL.speed = 0.1f;
 
-	path.PushBack({0.0f, 0.0f}, 0, &idleDownL);
-	currentAnim = &idleDownR;
+	getUpL.PushBack({ 127, 334, 36, 38 });
+	getUpL.loop = false;
+	getUpL.speed = 0.1f;
 
-	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
+	enemy_airspawnR.PushBack({ 201, 272, 92, 100 });
+	enemy_airspawnR.loop = false;
+	enemy_airspawnR.speed = 0.1f;
+
+	getUpR.PushBack({ 324, 334, 36, 38 });
+	getUpR.loop = false;
+	getUpR.speed = 0.1f;
 
 	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
+
+	path.PushBack({ 0.0f, 0.0f }, 0, & idleDownL);
+
+	isSpawning = true;
+
+	if (isSpawning == true && (Enemy_Mech::calculateAngle() <= 90 && Enemy_Mech::calculateAngle() >= 0) || (Enemy_Mech::calculateAngle() <= -1 && Enemy_Mech::calculateAngle() >= -90)) {
+		currentAnim = &enemy_airspawnR;
+	}
+	
+	else if (isSpawning == true && (Enemy_Mech::calculateAngle() <= 180 && Enemy_Mech::calculateAngle() > 90) || (Enemy_Mech::calculateAngle() < -90 && Enemy_Mech::calculateAngle() >= -179)) {
+		currentAnim = &enemy_airspawnL;
+	}
+
+	timer = 2.0f;
 }
 
 void Enemy_Mech::Update()
 {
-	if (Enemy_Mech::find_player())
+	
+	if (currentAnim == &enemy_airspawnL && timer <= 0) {
+		currentAnim = &getUpL;
+		timer = 0.5f;
+	}
+	else if (currentAnim == &getUpL && timer <= 0)
+	{
+		isSpawning = false;
+		currentAnim = &idleDownL;
+		timer = 0.0f;
+		collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	}
+
+	else if (currentAnim == &enemy_airspawnR && timer <= 0) {
+		currentAnim = &getUpR;
+		timer = 0.5f;
+	}
+	else if (currentAnim == &getUpR && timer <= 0)
+	{
+		isSpawning = false;
+		currentAnim = &idleDownR;
+		timer = 0.0f;
+		collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	}
+
+	else if (isSpawning ==false && Enemy_Mech::find_player())
 	{
 		if (timer <= 0.0f && isShooting == false)
 		{
@@ -256,31 +305,31 @@ void Enemy_Mech::Attack()
 	else if (Enemy_Mech::calculateAngle() <= 80 && Enemy_Mech::calculateAngle() > 45) {
 		shootNW1.Reset();
 		currentAnim = &shootNW1;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, -1, -1, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 6, position.y + 4, -1, -1, Collider::Type::ENEMY_SHOT);
 	}
 
 	else if (Enemy_Mech::calculateAngle() <= 45 && Enemy_Mech::calculateAngle() > 10) {
 		shootNW2.Reset();
 		currentAnim = &shootNW2;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, -2, -1, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x + 3, position.y + 6, -2, -1, Collider::Type::ENEMY_SHOT);
 	}
 
 	else if ((Enemy_Mech::calculateAngle() <= 10 && Enemy_Mech::calculateAngle() > 0) || (Enemy_Mech::calculateAngle() >= -10 && Enemy_Mech::calculateAngle() < -1)) {
 		shootLeft.Reset();
 		currentAnim = &shootLeft;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, -2, NULL, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x-5, position.y + 17, -2, NULL, Collider::Type::ENEMY_SHOT);
 	}
 
 	else if (Enemy_Mech::calculateAngle() <= -10 && Enemy_Mech::calculateAngle() > -45) {
 		shootSW1.Reset();
 		currentAnim = &shootSW1;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, -2, 1, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x-5, position.y + 32, -2, 1, Collider::Type::ENEMY_SHOT);
 	}
 
 	else if (Enemy_Mech::calculateAngle() <= -45 && Enemy_Mech::calculateAngle() > -90) {
 		shootSW2.Reset();
 		currentAnim = &shootSW2;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, -1, 1, Collider::Type::ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyShot, position.x-8, position.y +32, -1, 1, Collider::Type::ENEMY_SHOT);
 	}
 	isShooting = true;
 	App->audio->PlayFx(enemyShotFx);

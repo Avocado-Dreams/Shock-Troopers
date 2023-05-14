@@ -35,15 +35,17 @@ public:
 	double  Enemy_Mech::calculateAngle();
 
 	//Timer to control the enemy attack cooldown
-	float timer = 0.0f;
+	float timer;
 	float SHOOT_INTERVAL = 5;
+	bool isSpawning;
+	float scale;
 
 private:
 	// The path that will define the position in the world
 	Path path;
 
 	// Enemy animations
-	Animation idleDownL,shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleUpL,shootUpL,idleUpR,shootUpR,idleSW1,shootSW1,idleSW2,shootSW2,idleLeft,shootLeft,idleNW1,shootNW1,idleNW2,shootNW2;
+	Animation enemy_airspawnL,getUpL, enemy_airspawnR, getUpR, idleDownL,shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleUpL,shootUpL,idleUpR,shootUpR,idleSW1,shootSW1,idleSW2,shootSW2,idleLeft,shootLeft,idleNW1,shootNW1,idleNW2,shootNW2;
 
 	uint enemyShotFx = 0;
 };
