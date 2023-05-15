@@ -1,5 +1,5 @@
 #include "Application.h"
-
+#include "SDL/include/SDL.h"
 #include "Module.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
@@ -15,6 +15,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
+#include "ModulePickUps.h"
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
 
@@ -41,7 +42,8 @@ Application::Application()
 	modules[12] =	collisions =	new ModuleCollisions(true);
 	modules[13] =	fade =			new ModuleFadeToBlack(true);
 	modules[14] =   fonts =         new ModuleFonts(true);
-	modules[15] =	render =		new ModuleRender(true);
+	modules[15] =	pickUps =		new ModulePickUps(true);
+	modules[16] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()
@@ -54,6 +56,7 @@ Application::~Application()
 		modules[i] = nullptr;
 	}
 }
+
 
 bool Application::Init()
 {
@@ -83,7 +86,10 @@ Update_Status Application::Update()
 	for (int i = 0; i < NUM_MODULES && ret == Update_Status::UPDATE_CONTINUE; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
 
+	SDL_Delay(16.66);
+
 	return ret;
+
 }
  
 bool Application::CleanUp()
