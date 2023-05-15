@@ -123,7 +123,7 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 	shootSW2.speed = 0.1f;
 
 	enemy_airspawnL.PushBack({ 17, 260, 64, 69 });
-	enemy_airspawnL.PushBack({ 80, 261, 62, 67 });
+	enemy_airspawnL.PushBack({ 80, 261, 63, 67 });
 	enemy_airspawnL.PushBack({ 143, 263, 59, 62 });
 	enemy_airspawnL.PushBack({ 206, 264, 58, 61 });
 	enemy_airspawnL.PushBack({ 270, 264, 54, 60 });
@@ -136,20 +136,32 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 	enemy_airspawnL.PushBack({ 707, 269, 47, 50 });
 	enemy_airspawnL.PushBack({ 770, 270, 46, 49 });
 	enemy_airspawnL.PushBack({ 834, 271, 42, 47 });
-	enemy_airspawnL.PushBack({ 961, 275, 36, 38 });
 	enemy_airspawnL.loop = false;
-	enemy_airspawnL.speed = 0.1f;
+	enemy_airspawnL.speed = 0.2f;
 
-	getUpL.PushBack({ 127, 334, 36, 38 });
+	getUpL.PushBack({ 961, 275, 36, 38 });
 	getUpL.loop = false;
 	getUpL.speed = 0.1f;
 
-	enemy_airspawnR.PushBack({ 24, 362, 36, 38 });
+	enemy_airspawnR.PushBack({ 940, 347, 64, 69 });
+	enemy_airspawnR.PushBack({ 879, 348, 63, 67 });
+	enemy_airspawnR.PushBack({ 819, 350, 59, 62 });
+	enemy_airspawnR.PushBack({ 757, 351, 58, 61 });
+	enemy_airspawnR.PushBack({ 697, 351, 54, 60 });
+	enemy_airspawnR.PushBack({ 636, 352, 53, 58 });
+	enemy_airspawnR.PushBack({ 574, 353, 52, 57 });
+	enemy_airspawnR.PushBack({ 513, 354, 51, 55 });
+	enemy_airspawnR.PushBack({ 451, 354, 50, 54 });
+	enemy_airspawnR.PushBack({ 390, 355, 49, 53 });
+	enemy_airspawnR.PushBack({ 328, 355, 48, 52 });
+	enemy_airspawnR.PushBack({ 267, 356, 47, 50 });
+	enemy_airspawnR.PushBack({ 145, 357, 46, 49 });
+	enemy_airspawnL.PushBack({ 84, 358, 42, 47 });
 	//enemy_airspawnL.PushBack({ 834, 271, 42, 47 });
 	enemy_airspawnR.loop = false;
-	enemy_airspawnR.speed = 0.1f;
+	enemy_airspawnR.speed = 0.2f;
 
-	getUpR.PushBack({ 324, 334, 36, 38 });
+	getUpR.PushBack({ 24, 362, 36, 38 });
 	getUpR.loop = false;
 	getUpR.speed = 0.1f;
 
@@ -167,7 +179,7 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 		currentAnim = &enemy_airspawnL;
 	}
 
-	timer = 2.0f;
+	timer = 1.0f;
 }
 
 void Enemy_Mech::Update()
@@ -182,7 +194,7 @@ void Enemy_Mech::Update()
 		isSpawning = false;
 		currentAnim = &idleDownL;
 		timer = 0.0f;
-		collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
+		collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::MECH, (Module*)App->enemies);
 	}
 
 	else if (currentAnim == &enemy_airspawnR && timer <= 0) {
@@ -194,7 +206,7 @@ void Enemy_Mech::Update()
 		isSpawning = false;
 		currentAnim = &idleDownR;
 		timer = 0.0f;
-		collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
+		collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::MECH, (Module*)App->enemies);
 	}
 
 	else if (isSpawning ==false && Enemy_Mech::find_player())
@@ -349,4 +361,10 @@ void Enemy_Mech::Attack()
 	isShooting = true;
 	App->audio->PlayFx(enemyShotFx);
 	timer = SHOOT_INTERVAL;
+}
+
+void Enemy::OnCollision(Collider* collider)
+{
+	App->particles->AddParticle(App->particles->enemy_death, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+	App->audio->PlayFx(damagedEnemy);
 }
