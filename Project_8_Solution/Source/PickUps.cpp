@@ -1,5 +1,5 @@
 #include "PickUps.h"
-
+#include "ModulePickUps.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
 #include "ModuleParticles.h"
@@ -37,8 +37,8 @@ void PickUps::Draw()
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 }
 
-void PickUps::OnCollision(Collider* collider)
-{
-	App->particles->AddParticle(App->particles->enemy_death, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
-	App->audio->PlayFx(getPickUps);
-}
+//void PickUps::OnCollision(Collider* collider)
+//{
+//
+//		
+//}

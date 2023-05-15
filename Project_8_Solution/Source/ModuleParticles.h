@@ -63,6 +63,7 @@ public:
 	Particle laser;
 	Particle enemyShot;
 	Particle sUp, sDown, sLeft, sRight, sNorest, sNoroest, sSudest, sSudoest;
+	Particle BlueDiamond;
 };
 
 #endif // !__MODULEPARTICLES_H__
