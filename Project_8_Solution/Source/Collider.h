@@ -12,7 +12,7 @@ struct Collider
 		NONE = -1,
 		WALL,
 		PLAYER,
-		ENEMY,
+		MECH,
 		PLAYER_SHOT,
 		ENEMY_SHOT,
 		PICKUPS,
