@@ -1,4 +1,4 @@
-#include "Enemy_Mech.h"
+#include "Enemy_Soldier.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
@@ -7,7 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 
-Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
+Enemy_Soldier::Enemy_Soldier(int x, int y) : Enemy(x, y)
 {
 	idleDownL.PushBack({ 23, 41, 30, 48 });
 
@@ -171,22 +171,23 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 
 	isSpawning = true;
 
-	if (isSpawning == true && (Enemy_Mech::calculateAngle() <= 90 && Enemy_Mech::calculateAngle() >= 0) || (Enemy_Mech::calculateAngle() <= -1 && Enemy_Mech::calculateAngle() >= -90)) {
+	if (isSpawning == true && (Enemy_Soldier::calculateAngle() <= 90 && Enemy_Soldier::calculateAngle() >= 0) || (Enemy_Soldier::calculateAngle() <= -1 && Enemy_Soldier::calculateAngle() >= -90)) {
 		currentAnim = &enemy_airspawnR;
 	}
 	
-	else if (isSpawning == true && (Enemy_Mech::calculateAngle() <= 180 && Enemy_Mech::calculateAngle() > 90) || (Enemy_Mech::calculateAngle() < -90 && Enemy_Mech::calculateAngle() >= -179)) {
+	else if (isSpawning == true && (Enemy_Soldier::calculateAngle() <= 180 && Enemy_Soldier::calculateAngle() > 90) || (Enemy_Soldier::calculateAngle() < -90 && Enemy_Soldier::calculateAngle() >= -179)) {
 		currentAnim = &enemy_airspawnL;
 	}
 
 	timer = 1.0f;
 }
 
-void Enemy_Mech::Update()
+void Enemy_Soldier::Update()
 {
 
 	if (currentAnim == &enemy_airspawnL && timer <= 0) {
 		currentAnim = &getUpL;
+		collider = App->collisions->AddCollider({ 0, 0, 24, 34 }, Collider::Type::MECH, (Module*)App->enemies);
 		timer = 0.5f;
 	}
 	else if (currentAnim == &getUpL && timer <= 0)
@@ -194,11 +195,11 @@ void Enemy_Mech::Update()
 		isSpawning = false;
 		currentAnim = &idleDownL;
 		timer = 0.0f;
-		collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::MECH, (Module*)App->enemies);
 	}
 
 	else if (currentAnim == &enemy_airspawnR && timer <= 0) {
 		currentAnim = &getUpR;
+		collider = App->collisions->AddCollider({ 0, 0, 24, 34 }, Collider::Type::MECH, (Module*)App->enemies);
 		timer = 0.5f;
 	}
 	else if (currentAnim == &getUpR && timer <= 0)
@@ -206,10 +207,10 @@ void Enemy_Mech::Update()
 		isSpawning = false;
 		currentAnim = &idleDownR;
 		timer = 0.0f;
-		collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::MECH, (Module*)App->enemies);
+		
 	}
 
-	else if (isSpawning ==false && Enemy_Mech::find_player())
+	else if (isSpawning ==false && Enemy_Soldier::find_player())
 	{
 		if (timer <= 0.0f && isShooting == false)
 		{
@@ -228,7 +229,7 @@ void Enemy_Mech::Update()
 	Enemy::Update();
 }
 
-bool Enemy_Mech::find_player()
+bool Enemy_Soldier::find_player()
 {
 	playerX = App->player->position.x;
 	playerY = App->player->position.y;
@@ -242,7 +243,7 @@ bool Enemy_Mech::find_player()
 	//shotY = dy*0.02f;
 }
 
-double  Enemy_Mech::calculateAngle()
+double  Enemy_Soldier::calculateAngle()
 {
 	dx = position.x - playerX;
 	dy = position.y - playerY;
@@ -250,26 +251,26 @@ double  Enemy_Mech::calculateAngle()
 	return angle;
 }
 
-void Enemy_Mech::Idle()
+void Enemy_Soldier::Idle()
 {
-	if (Enemy_Mech::calculateAngle() >= -90 && Enemy_Mech::calculateAngle() < -80) currentAnim = &idleDownL;
-	else if (Enemy_Mech::calculateAngle() >= -100 && Enemy_Mech::calculateAngle() < -90) currentAnim = &idleDownR;
-	else if (Enemy_Mech::calculateAngle() >= -135 && Enemy_Mech::calculateAngle() < -100) currentAnim = &idleSE1;
-	else if (Enemy_Mech::calculateAngle() >= -170 && Enemy_Mech::calculateAngle() < -135) currentAnim = &idleSE2;
-	else if ((Enemy_Mech::calculateAngle() >= -179 && Enemy_Mech::calculateAngle() < -170) || (Enemy_Mech::calculateAngle() >= 170 && Enemy_Mech::calculateAngle() < 180)) currentAnim = &idleRight;
-	else if (Enemy_Mech::calculateAngle() <= 170 && Enemy_Mech::calculateAngle() > 135) currentAnim = &idleNE1;
-	else if (Enemy_Mech::calculateAngle() <= 135 && Enemy_Mech::calculateAngle() > 100) currentAnim = &idleNE2;
-	else if (Enemy_Mech::calculateAngle() <= 100 && Enemy_Mech::calculateAngle() > 90) currentAnim = &idleUpL;
+	if (Enemy_Soldier::calculateAngle() >= -90 && Enemy_Soldier::calculateAngle() < -80) currentAnim = &idleDownL;
+	else if (Enemy_Soldier::calculateAngle() >= -100 && Enemy_Soldier::calculateAngle() < -90) currentAnim = &idleDownR;
+	else if (Enemy_Soldier::calculateAngle() >= -135 && Enemy_Soldier::calculateAngle() < -100) currentAnim = &idleSE1;
+	else if (Enemy_Soldier::calculateAngle() >= -170 && Enemy_Soldier::calculateAngle() < -135) currentAnim = &idleSE2;
+	else if ((Enemy_Soldier::calculateAngle() >= -179 && Enemy_Soldier::calculateAngle() < -170) || (Enemy_Soldier::calculateAngle() >= 170 && Enemy_Soldier::calculateAngle() < 180)) currentAnim = &idleRight;
+	else if (Enemy_Soldier::calculateAngle() <= 170 && Enemy_Soldier::calculateAngle() > 135) currentAnim = &idleNE1;
+	else if (Enemy_Soldier::calculateAngle() <= 135 && Enemy_Soldier::calculateAngle() > 100) currentAnim = &idleNE2;
+	else if (Enemy_Soldier::calculateAngle() <= 100 && Enemy_Soldier::calculateAngle() > 90) currentAnim = &idleUpL;
 	
-	else if (Enemy_Mech::calculateAngle() <= 90 && Enemy_Mech::calculateAngle() > 80) currentAnim = &idleUpR;
-	else if (Enemy_Mech::calculateAngle() <= 80 && Enemy_Mech::calculateAngle() > 45) currentAnim = &idleNW1;
-	else if (Enemy_Mech::calculateAngle() <= 45 && Enemy_Mech::calculateAngle() > 10) currentAnim = &idleNW2;
-	else if ((Enemy_Mech::calculateAngle() <= 10 && Enemy_Mech::calculateAngle() > 0) || (Enemy_Mech::calculateAngle() >= -10 && Enemy_Mech::calculateAngle() < -1)) currentAnim = &idleLeft;
-	else if (Enemy_Mech::calculateAngle() >= -45 && Enemy_Mech::calculateAngle() < -10) currentAnim = &idleSW1;
-	else if (Enemy_Mech::calculateAngle() >= -80 && Enemy_Mech::calculateAngle() < -45) currentAnim = &idleSW2;
+	else if (Enemy_Soldier::calculateAngle() <= 90 && Enemy_Soldier::calculateAngle() > 80) currentAnim = &idleUpR;
+	else if (Enemy_Soldier::calculateAngle() <= 80 && Enemy_Soldier::calculateAngle() > 45) currentAnim = &idleNW1;
+	else if (Enemy_Soldier::calculateAngle() <= 45 && Enemy_Soldier::calculateAngle() > 10) currentAnim = &idleNW2;
+	else if ((Enemy_Soldier::calculateAngle() <= 10 && Enemy_Soldier::calculateAngle() > 0) || (Enemy_Soldier::calculateAngle() >= -10 && Enemy_Soldier::calculateAngle() < -1)) currentAnim = &idleLeft;
+	else if (Enemy_Soldier::calculateAngle() >= -45 && Enemy_Soldier::calculateAngle() < -10) currentAnim = &idleSW1;
+	else if (Enemy_Soldier::calculateAngle() >= -80 && Enemy_Soldier::calculateAngle() < -45) currentAnim = &idleSW2;
 }
 
-void Enemy_Mech::Attack()
+void Enemy_Soldier::Attack()
 {
 	//find_player();
 
@@ -280,80 +281,80 @@ void Enemy_Mech::Attack()
 	//	position.y += sin(angle) * 3;
 	//}
 
-	if (Enemy_Mech::calculateAngle() >= -90 && Enemy_Mech::calculateAngle() < -80) {
+	if (Enemy_Soldier::calculateAngle() >= -90 && Enemy_Soldier::calculateAngle() < -80) {
 		shootDownL.Reset();
 		currentAnim = &shootDownL;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 9, position.y + 30, NULL, 1, Collider::Type::ENEMY_SHOT);
 	}
-	else if (Enemy_Mech::calculateAngle() >= -100 && Enemy_Mech::calculateAngle() < -90) {
+	else if (Enemy_Soldier::calculateAngle() >= -100 && Enemy_Soldier::calculateAngle() < -90) {
 		shootDownR.Reset();
 		currentAnim = &shootDownR;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y + 31, NULL, 1, Collider::Type::ENEMY_SHOT);
 	}
-	else if (Enemy_Mech::calculateAngle() >= -135 && Enemy_Mech::calculateAngle() < -100) {
+	else if (Enemy_Soldier::calculateAngle() >= -135 && Enemy_Soldier::calculateAngle() < -100) {
 		shootSE1.Reset();
 		currentAnim = &shootSE1;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 19, position.y + 28, 1, 1, Collider::Type::ENEMY_SHOT);
 	}
-	else if (Enemy_Mech::calculateAngle() >= -170 && Enemy_Mech::calculateAngle() < -135) {
+	else if (Enemy_Soldier::calculateAngle() >= -170 && Enemy_Soldier::calculateAngle() < -135) {
 		shootSE2.Reset();
 		currentAnim = &shootSE2;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 26, position.y + 26, 2, 1, Collider::Type::ENEMY_SHOT);
 	}
-	else if ((Enemy_Mech::calculateAngle() >= -179 && Enemy_Mech::calculateAngle() < -170) || (Enemy_Mech::calculateAngle() >= 170 && Enemy_Mech::calculateAngle() < 180)){
+	else if ((Enemy_Soldier::calculateAngle() >= -179 && Enemy_Soldier::calculateAngle() < -170) || (Enemy_Soldier::calculateAngle() >= 170 && Enemy_Soldier::calculateAngle() < 180)){
 		shootRight.Reset();
 		currentAnim = &shootRight;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 41, position.y + 16, 1, 0, Collider::Type::ENEMY_SHOT);
 	}
-	else if (Enemy_Mech::calculateAngle() <= 170 && Enemy_Mech::calculateAngle() > 135) {
+	else if (Enemy_Soldier::calculateAngle() <= 170 && Enemy_Soldier::calculateAngle() > 135) {
 		shootNE1.Reset();
 		currentAnim = &shootNE1;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 34, position.y + 5, 2, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Mech::calculateAngle() <= 135 && Enemy_Mech::calculateAngle() > 100) {
+	else if (Enemy_Soldier::calculateAngle() <= 135 && Enemy_Soldier::calculateAngle() > 100) {
 		shootNE2.Reset();
 		currentAnim = &shootNE2;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 28, position.y + 4, 1, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Mech::calculateAngle() <= 100 && Enemy_Mech::calculateAngle() > 90) {
+	else if (Enemy_Soldier::calculateAngle() <= 100 && Enemy_Soldier::calculateAngle() > 90) {
 		shootUpL.Reset();
 		currentAnim = &shootUpL;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y -5, NULL, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Mech::calculateAngle() <= 90 && Enemy_Mech::calculateAngle() > 80) {
+	else if (Enemy_Soldier::calculateAngle() <= 90 && Enemy_Soldier::calculateAngle() > 80) {
 		shootUpR.Reset();
 		currentAnim = &shootUpR;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, NULL, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Mech::calculateAngle() <= 80 && Enemy_Mech::calculateAngle() > 45) {
+	else if (Enemy_Soldier::calculateAngle() <= 80 && Enemy_Soldier::calculateAngle() > 45) {
 		shootNW1.Reset();
 		currentAnim = &shootNW1;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 6, position.y + 4, -1, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Mech::calculateAngle() <= 45 && Enemy_Mech::calculateAngle() > 10) {
+	else if (Enemy_Soldier::calculateAngle() <= 45 && Enemy_Soldier::calculateAngle() > 10) {
 		shootNW2.Reset();
 		currentAnim = &shootNW2;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 3, position.y + 6, -2, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if ((Enemy_Mech::calculateAngle() <= 10 && Enemy_Mech::calculateAngle() > 0) || (Enemy_Mech::calculateAngle() >= -10 && Enemy_Mech::calculateAngle() < -1)) {
+	else if ((Enemy_Soldier::calculateAngle() <= 10 && Enemy_Soldier::calculateAngle() > 0) || (Enemy_Soldier::calculateAngle() >= -10 && Enemy_Soldier::calculateAngle() < -1)) {
 		shootLeft.Reset();
 		currentAnim = &shootLeft;
 		App->particles->AddParticle(App->particles->enemyShot, position.x-5, position.y + 17, -2, NULL, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Mech::calculateAngle() <= -10 && Enemy_Mech::calculateAngle() > -45) {
+	else if (Enemy_Soldier::calculateAngle() <= -10 && Enemy_Soldier::calculateAngle() > -45) {
 		shootSW1.Reset();
 		currentAnim = &shootSW1;
 		App->particles->AddParticle(App->particles->enemyShot, position.x-5, position.y + 32, -2, 1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Mech::calculateAngle() <= -45 && Enemy_Mech::calculateAngle() > -90) {
+	else if (Enemy_Soldier::calculateAngle() <= -45 && Enemy_Soldier::calculateAngle() > -90) {
 		shootSW2.Reset();
 		currentAnim = &shootSW2;
 		App->particles->AddParticle(App->particles->enemyShot, position.x-8, position.y +32, -1, 1, Collider::Type::ENEMY_SHOT);
