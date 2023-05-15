@@ -23,7 +23,6 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	texture = App->textures->Load("Assets/Sprites/Enemies/particulas.png");
-
 	//enemy_death particle
 	enemy_death.anim.PushBack({23, 201, 27, 37});
 	enemy_death.anim.PushBack({ 74, 180, 37, 55 });
@@ -36,8 +35,6 @@ bool ModuleParticles::Start()
 	enemy_death.anim.speed = 0.1f;
 	enemy_death.lifetime = 100;
 	//App->textures->Unload(texture);
-
-	//texture = App->textures->Load("Assets/Sprites/Enemies/particulas.png");
 
 	//BURST
 	//shoot up
@@ -100,6 +97,12 @@ bool ModuleParticles::Start()
 	//enemyShot.speed.y = 1;
 	enemyShot.lifetime = 180;
 	enemyShot.anim.speed = 0.2f;
+
+	BlueDiamond.anim.PushBack({ 215,318,28,16 });
+	BlueDiamond.anim.PushBack({ 243,318,28,16 });
+	BlueDiamond.anim.PushBack({ 271,318,28,16 });
+	BlueDiamond.anim.speed = 0.2f;
+	BlueDiamond.lifetime = 50;
 
 	return true;
 }
