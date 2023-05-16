@@ -152,7 +152,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case Enemy_Type::BROWNSHIP:
 					enemies[i] = new Enemy_BrownShip(info.x, info.y);
 					break;
-				case Enemy_Type::MECH:
+				case Enemy_Type::SOLDIER:
 					enemies[i] = new Enemy_Soldier(info.x, info.y);
 					break;
 			}

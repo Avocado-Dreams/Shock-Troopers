@@ -20,7 +20,7 @@ Enemy_RedBird::Enemy_RedBird(int x, int y) : Enemy(x, y)
 	path.PushBack({ -1.0f, 0.0f }, 100);
 	path.PushBack({ 1.0f, 0.0f }, 80);
 
-	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::MECH, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::SOLDIER, (Module*)App->enemies);
 }
 
 void Enemy_RedBird::Update()
