@@ -1,4 +1,4 @@
-#include "Enemy_Soldier.h"
+#include "Enemy_Soldier_Static.h"
 #include "ModulePickUps.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
@@ -7,7 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 
-Enemy_Soldier::Enemy_Soldier(int x, int y) : Enemy(x, y)
+Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 {
 	
 	idleDownL.PushBack({ 23, 41, 30, 48 });
@@ -172,19 +172,20 @@ Enemy_Soldier::Enemy_Soldier(int x, int y) : Enemy(x, y)
 
 	isSpawning = true;
 
-	if (isSpawning == true && (Enemy_Soldier::calculateAngle() <= 90 && Enemy_Soldier::calculateAngle() >= 0) || (Enemy_Soldier::calculateAngle() <= -1 && Enemy_Soldier::calculateAngle() >= -90)) {
+	if (isSpawning == true && spawnPos.x - App->player->position.x > 0){
 		currentAnim = &enemy_airspawnR;
 	}
 	
-	else if (isSpawning == true && (Enemy_Soldier::calculateAngle() <= 180 && Enemy_Soldier::calculateAngle() > 90) || (Enemy_Soldier::calculateAngle() < -90 && Enemy_Soldier::calculateAngle() >= -179)) {
+	else if (isSpawning == true && spawnPos.x - App->player->position.x < 0){
 		currentAnim = &enemy_airspawnL;
 	}
 
 	timer = 1.0f;
 }
 
-void Enemy_Soldier::Update()
+void Enemy_Soldier_Static::Update()
 {
+
 
 	if (currentAnim == &enemy_airspawnL && timer <= 0) {
 		currentAnim = &getUpL;
@@ -211,7 +212,7 @@ void Enemy_Soldier::Update()
 		
 	}
 
-	else if (isSpawning ==false && Enemy_Soldier::find_player())
+	else if (isSpawning ==false && Enemy_Soldier_Static::find_player())
 	{
 		if (timer <= 0.0f && isShooting == false)
 		{
@@ -230,7 +231,7 @@ void Enemy_Soldier::Update()
 	Enemy::Update();
 }
 
-bool Enemy_Soldier::find_player()
+bool Enemy_Soldier_Static::find_player()
 {
 	playerX = App->player->position.x;
 	playerY = App->player->position.y;
@@ -244,7 +245,7 @@ bool Enemy_Soldier::find_player()
 	//shotY = dy*0.02f;
 }
 
-double  Enemy_Soldier::calculateAngle()
+double  Enemy_Soldier_Static::calculateAngle()
 {
 	dx = position.x - playerX;
 	dy = position.y - playerY;
@@ -252,26 +253,26 @@ double  Enemy_Soldier::calculateAngle()
 	return angle;
 }
 
-void Enemy_Soldier::Idle()
+void Enemy_Soldier_Static::Idle()
 {
-	if (Enemy_Soldier::calculateAngle() >= -90 && Enemy_Soldier::calculateAngle() < -80) currentAnim = &idleDownL;
-	else if (Enemy_Soldier::calculateAngle() >= -100 && Enemy_Soldier::calculateAngle() < -90) currentAnim = &idleDownR;
-	else if (Enemy_Soldier::calculateAngle() >= -135 && Enemy_Soldier::calculateAngle() < -100) currentAnim = &idleSE1;
-	else if (Enemy_Soldier::calculateAngle() >= -170 && Enemy_Soldier::calculateAngle() < -135) currentAnim = &idleSE2;
-	else if ((Enemy_Soldier::calculateAngle() >= -179 && Enemy_Soldier::calculateAngle() < -170) || (Enemy_Soldier::calculateAngle() >= 170 && Enemy_Soldier::calculateAngle() < 180)) currentAnim = &idleRight;
-	else if (Enemy_Soldier::calculateAngle() <= 170 && Enemy_Soldier::calculateAngle() > 135) currentAnim = &idleNE1;
-	else if (Enemy_Soldier::calculateAngle() <= 135 && Enemy_Soldier::calculateAngle() > 100) currentAnim = &idleNE2;
-	else if (Enemy_Soldier::calculateAngle() <= 100 && Enemy_Soldier::calculateAngle() > 90) currentAnim = &idleUpL;
+	if (Enemy_Soldier_Static::calculateAngle() >= -90 && Enemy_Soldier_Static::calculateAngle() < -80) currentAnim = &idleDownL;
+	else if (Enemy_Soldier_Static::calculateAngle() >= -100 && Enemy_Soldier_Static::calculateAngle() < -90) currentAnim = &idleDownR;
+	else if (Enemy_Soldier_Static::calculateAngle() >= -135 && Enemy_Soldier_Static::calculateAngle() < -100) currentAnim = &idleSE1;
+	else if (Enemy_Soldier_Static::calculateAngle() >= -170 && Enemy_Soldier_Static::calculateAngle() < -135) currentAnim = &idleSE2;
+	else if ((Enemy_Soldier_Static::calculateAngle() >= -179 && Enemy_Soldier_Static::calculateAngle() < -170) || (Enemy_Soldier_Static::calculateAngle() >= 170 && Enemy_Soldier_Static::calculateAngle() < 180)) currentAnim = &idleRight;
+	else if (Enemy_Soldier_Static::calculateAngle() <= 170 && Enemy_Soldier_Static::calculateAngle() > 135) currentAnim = &idleNE1;
+	else if (Enemy_Soldier_Static::calculateAngle() <= 135 && Enemy_Soldier_Static::calculateAngle() > 100) currentAnim = &idleNE2;
+	else if (Enemy_Soldier_Static::calculateAngle() <= 100 && Enemy_Soldier_Static::calculateAngle() > 90) currentAnim = &idleUpL;
 	
-	else if (Enemy_Soldier::calculateAngle() <= 90 && Enemy_Soldier::calculateAngle() > 80) currentAnim = &idleUpR;
-	else if (Enemy_Soldier::calculateAngle() <= 80 && Enemy_Soldier::calculateAngle() > 45) currentAnim = &idleNW1;
-	else if (Enemy_Soldier::calculateAngle() <= 45 && Enemy_Soldier::calculateAngle() > 10) currentAnim = &idleNW2;
-	else if ((Enemy_Soldier::calculateAngle() <= 10 && Enemy_Soldier::calculateAngle() > 0) || (Enemy_Soldier::calculateAngle() >= -10 && Enemy_Soldier::calculateAngle() < -1)) currentAnim = &idleLeft;
-	else if (Enemy_Soldier::calculateAngle() >= -45 && Enemy_Soldier::calculateAngle() < -10) currentAnim = &idleSW1;
-	else if (Enemy_Soldier::calculateAngle() >= -80 && Enemy_Soldier::calculateAngle() < -45) currentAnim = &idleSW2;
+	else if (Enemy_Soldier_Static::calculateAngle() <= 90 && Enemy_Soldier_Static::calculateAngle() > 80) currentAnim = &idleUpR;
+	else if (Enemy_Soldier_Static::calculateAngle() <= 80 && Enemy_Soldier_Static::calculateAngle() > 45) currentAnim = &idleNW1;
+	else if (Enemy_Soldier_Static::calculateAngle() <= 45 && Enemy_Soldier_Static::calculateAngle() > 10) currentAnim = &idleNW2;
+	else if ((Enemy_Soldier_Static::calculateAngle() <= 10 && Enemy_Soldier_Static::calculateAngle() > 0) || (Enemy_Soldier_Static::calculateAngle() >= -10 && Enemy_Soldier_Static::calculateAngle() < -1)) currentAnim = &idleLeft;
+	else if (Enemy_Soldier_Static::calculateAngle() >= -45 && Enemy_Soldier_Static::calculateAngle() < -10) currentAnim = &idleSW1;
+	else if (Enemy_Soldier_Static::calculateAngle() >= -80 && Enemy_Soldier_Static::calculateAngle() < -45) currentAnim = &idleSW2;
 }
 
-void Enemy_Soldier::Attack()
+void Enemy_Soldier_Static::Attack()
 {
 	//find_player();
 
@@ -282,80 +283,80 @@ void Enemy_Soldier::Attack()
 	//	position.y += sin(angle) * 3;
 	//}
 
-	if (Enemy_Soldier::calculateAngle() >= -90 && Enemy_Soldier::calculateAngle() < -80) {
+	if (Enemy_Soldier_Static::calculateAngle() >= -90 && Enemy_Soldier_Static::calculateAngle() < -80) {
 		shootDownL.Reset();
 		currentAnim = &shootDownL;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 9, position.y + 30, NULL, 1, Collider::Type::ENEMY_SHOT);
 	}
-	else if (Enemy_Soldier::calculateAngle() >= -100 && Enemy_Soldier::calculateAngle() < -90) {
+	else if (Enemy_Soldier_Static::calculateAngle() >= -100 && Enemy_Soldier_Static::calculateAngle() < -90) {
 		shootDownR.Reset();
 		currentAnim = &shootDownR;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y + 31, NULL, 1, Collider::Type::ENEMY_SHOT);
 	}
-	else if (Enemy_Soldier::calculateAngle() >= -135 && Enemy_Soldier::calculateAngle() < -100) {
+	else if (Enemy_Soldier_Static::calculateAngle() >= -135 && Enemy_Soldier_Static::calculateAngle() < -100) {
 		shootSE1.Reset();
 		currentAnim = &shootSE1;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 19, position.y + 28, 1, 1, Collider::Type::ENEMY_SHOT);
 	}
-	else if (Enemy_Soldier::calculateAngle() >= -170 && Enemy_Soldier::calculateAngle() < -135) {
+	else if (Enemy_Soldier_Static::calculateAngle() >= -170 && Enemy_Soldier_Static::calculateAngle() < -135) {
 		shootSE2.Reset();
 		currentAnim = &shootSE2;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 26, position.y + 26, 2, 1, Collider::Type::ENEMY_SHOT);
 	}
-	else if ((Enemy_Soldier::calculateAngle() >= -179 && Enemy_Soldier::calculateAngle() < -170) || (Enemy_Soldier::calculateAngle() >= 170 && Enemy_Soldier::calculateAngle() < 180)){
+	else if ((Enemy_Soldier_Static::calculateAngle() >= -179 && Enemy_Soldier_Static::calculateAngle() < -170) || (Enemy_Soldier_Static::calculateAngle() >= 170 && Enemy_Soldier_Static::calculateAngle() < 180)){
 		shootRight.Reset();
 		currentAnim = &shootRight;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 41, position.y + 16, 1, 0, Collider::Type::ENEMY_SHOT);
 	}
-	else if (Enemy_Soldier::calculateAngle() <= 170 && Enemy_Soldier::calculateAngle() > 135) {
+	else if (Enemy_Soldier_Static::calculateAngle() <= 170 && Enemy_Soldier_Static::calculateAngle() > 135) {
 		shootNE1.Reset();
 		currentAnim = &shootNE1;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 34, position.y + 5, 2, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Soldier::calculateAngle() <= 135 && Enemy_Soldier::calculateAngle() > 100) {
+	else if (Enemy_Soldier_Static::calculateAngle() <= 135 && Enemy_Soldier_Static::calculateAngle() > 100) {
 		shootNE2.Reset();
 		currentAnim = &shootNE2;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 28, position.y + 4, 1, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Soldier::calculateAngle() <= 100 && Enemy_Soldier::calculateAngle() > 90) {
+	else if (Enemy_Soldier_Static::calculateAngle() <= 100 && Enemy_Soldier_Static::calculateAngle() > 90) {
 		shootUpL.Reset();
 		currentAnim = &shootUpL;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y -5, NULL, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Soldier::calculateAngle() <= 90 && Enemy_Soldier::calculateAngle() > 80) {
+	else if (Enemy_Soldier_Static::calculateAngle() <= 90 && Enemy_Soldier_Static::calculateAngle() > 80) {
 		shootUpR.Reset();
 		currentAnim = &shootUpR;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, NULL, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Soldier::calculateAngle() <= 80 && Enemy_Soldier::calculateAngle() > 45) {
+	else if (Enemy_Soldier_Static::calculateAngle() <= 80 && Enemy_Soldier_Static::calculateAngle() > 45) {
 		shootNW1.Reset();
 		currentAnim = &shootNW1;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 6, position.y + 4, -1, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Soldier::calculateAngle() <= 45 && Enemy_Soldier::calculateAngle() > 10) {
+	else if (Enemy_Soldier_Static::calculateAngle() <= 45 && Enemy_Soldier_Static::calculateAngle() > 10) {
 		shootNW2.Reset();
 		currentAnim = &shootNW2;
 		App->particles->AddParticle(App->particles->enemyShot, position.x + 3, position.y + 6, -2, -1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if ((Enemy_Soldier::calculateAngle() <= 10 && Enemy_Soldier::calculateAngle() > 0) || (Enemy_Soldier::calculateAngle() >= -10 && Enemy_Soldier::calculateAngle() < -1)) {
+	else if ((Enemy_Soldier_Static::calculateAngle() <= 10 && Enemy_Soldier_Static::calculateAngle() > 0) || (Enemy_Soldier_Static::calculateAngle() >= -10 && Enemy_Soldier_Static::calculateAngle() < -1)) {
 		shootLeft.Reset();
 		currentAnim = &shootLeft;
 		App->particles->AddParticle(App->particles->enemyShot, position.x-5, position.y + 17, -2, NULL, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Soldier::calculateAngle() <= -10 && Enemy_Soldier::calculateAngle() > -45) {
+	else if (Enemy_Soldier_Static::calculateAngle() <= -10 && Enemy_Soldier_Static::calculateAngle() > -45) {
 		shootSW1.Reset();
 		currentAnim = &shootSW1;
 		App->particles->AddParticle(App->particles->enemyShot, position.x-5, position.y + 32, -2, 1, Collider::Type::ENEMY_SHOT);
 	}
 
-	else if (Enemy_Soldier::calculateAngle() <= -45 && Enemy_Soldier::calculateAngle() > -90) {
+	else if (Enemy_Soldier_Static::calculateAngle() <= -45 && Enemy_Soldier_Static::calculateAngle() > -90) {
 		shootSW2.Reset();
 		currentAnim = &shootSW2;
 		App->particles->AddParticle(App->particles->enemyShot, position.x-8, position.y +32, -1, 1, Collider::Type::ENEMY_SHOT);
@@ -371,10 +372,10 @@ void Enemy::OnCollision(Collider* collider)
 	App->particles->AddParticle(App->particles->enemy_death, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
 	App->audio->PlayFx(damagedEnemy);
 
-	int randomValue = rand() % 100;
+
 	// Probabilidad de aparición de los BLUEDIAMONDS 
 	int spawnProbability = 30;
 	// Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
-	if (randomValue < spawnProbability) App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x, position.y);
+	if (randomValue < spawnProbability) App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x + 12, position.y+4);
 	
 }

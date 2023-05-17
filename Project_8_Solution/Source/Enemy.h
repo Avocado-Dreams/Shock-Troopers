@@ -40,6 +40,8 @@ public:
 
 	// Sound fx when destroyed
 	int damagedEnemy = 0;
+
+	int randomValue;
 	
 
 protected:

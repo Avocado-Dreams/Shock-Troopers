@@ -1,6 +1,6 @@
 #include "SceneLevel1.h"
 #include "Enemy.h"
-#include "Enemy_Soldier.h"
+#include "Enemy_Soldier_Static.h"
 #include "ModulePickUps.h"
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -79,6 +79,18 @@ Update_Status SceneLevel1::Update()
 	if (App->player->position.y < 2700 && enemy1Spawned == false) {
 		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 200, 2600);
 		enemy1Spawned = true;
+	}
+	if (App->player->position.y < 2700 && enemy2Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 170, 2580);
+		enemy2Spawned = true;
+	}
+	if (App->player->position.y < 2700 && enemy3Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 80, 2600);
+		enemy3Spawned = true;
+	}
+	if (App->player->position.y < 2700 && enemy4Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 50, 2580);
+		enemy4Spawned = true;
 	}
 	return Update_Status::UPDATE_CONTINUE;
 }

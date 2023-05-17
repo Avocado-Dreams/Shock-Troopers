@@ -27,6 +27,7 @@ const Collider* Enemy::GetCollider() const
 
 void Enemy::Update()
 {
+	randomValue = rand() % 100;
 	if (currentAnim != nullptr)
 		currentAnim->Update();
 
