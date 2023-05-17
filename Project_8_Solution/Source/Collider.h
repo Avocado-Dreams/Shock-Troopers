@@ -13,6 +13,8 @@ struct Collider
 		WALL,
 		PLAYER,
 		SOLDIER,
+		TANK,
+		TANK_SHOT,
 		PLAYER_SHOT,
 		ENEMY_SHOT,
 		PICKUPS,

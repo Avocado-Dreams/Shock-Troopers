@@ -20,6 +20,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::WALL][Collider::Type::ENEMY_SHOT] = true;
 	matrix[Collider::Type::WALL][Collider::Type::BLUEDIAMOND] = false;
+	matrix[Collider::Type::WALL][Collider::Type::TANK] = false;
+	matrix[Collider::Type::WALL][Collider::Type::TANK_SHOT] = false;
 
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
@@ -27,6 +29,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::BLUEDIAMOND] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::TANK] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::TANK_SHOT] = false;
 
 	matrix[Collider::Type::SOLDIER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER] = true;
@@ -34,6 +38,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::SOLDIER][Collider::Type::BLUEDIAMOND] = false;
+	matrix[Collider::Type::SOLDIER][Collider::Type::TANK] = false;
+	matrix[Collider::Type::SOLDIER][Collider::Type::TANK_SHOT] = false;
 
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER] = false;
@@ -41,6 +47,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::BLUEDIAMOND] = false;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::TANK] = true;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::TANK_SHOT] = false;
 
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER] = true;
@@ -48,6 +56,17 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::BLUEDIAMOND] = false;
+	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::TANK] = false;
+	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::TANK_SHOT] = false;
+
+	matrix[Collider::Type::TANK_SHOT][Collider::Type::WALL] = true;
+	matrix[Collider::Type::TANK_SHOT][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::TANK_SHOT][Collider::Type::SOLDIER] = false;
+	matrix[Collider::Type::TANK_SHOT][Collider::Type::PLAYER_SHOT] = false;
+	matrix[Collider::Type::TANK_SHOT][Collider::Type::ENEMY_SHOT] = false;
+	matrix[Collider::Type::TANK_SHOT][Collider::Type::BLUEDIAMOND] = false;
+	matrix[Collider::Type::TANK_SHOT][Collider::Type::TANK] = false;
+	matrix[Collider::Type::TANK_SHOT][Collider::Type::TANK_SHOT] = false;
 
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::WALL] = false;
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::PLAYER] = true;
@@ -55,6 +74,17 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::BLUEDIAMOND] = false;
+	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::TANK] = false;
+	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::TANK_SHOT] = false;
+
+	matrix[Collider::Type::TANK][Collider::Type::WALL] = true;
+	matrix[Collider::Type::TANK][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::TANK][Collider::Type::SOLDIER] = false;
+	matrix[Collider::Type::TANK][Collider::Type::PLAYER_SHOT] = true;
+	matrix[Collider::Type::TANK][Collider::Type::ENEMY_SHOT] = false;
+	matrix[Collider::Type::TANK][Collider::Type::BLUEDIAMOND] = false;
+	matrix[Collider::Type::TANK][Collider::Type::TANK] = false;
+	matrix[Collider::Type::TANK][Collider::Type::TANK_SHOT] = false;
 }
 
 // Destructor
@@ -158,6 +188,9 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::SOLDIER: // red
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
+			case Collider::Type::TANK: // red
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+			break;
 			case Collider::Type::PLAYER_SHOT: // yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
@@ -177,12 +210,16 @@ void ModuleCollisions::God_Mode()
 	{
 		matrix[Collider::Type::PLAYER][Collider::Type::WALL] = false;
 		matrix[Collider::Type::PLAYER][Collider::Type::SOLDIER] = false;
+		matrix[Collider::Type::PLAYER][Collider::Type::TANK] = false;
 		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = false;
+		matrix[Collider::Type::PLAYER][Collider::Type::TANK_SHOT] = false;
 	}
 	else {
 		matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 		matrix[Collider::Type::PLAYER][Collider::Type::SOLDIER] = true;
+		matrix[Collider::Type::PLAYER][Collider::Type::TANK] = true;
 		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
+		matrix[Collider::Type::PLAYER][Collider::Type::TANK_SHOT] = true;
 	}
 	
 }

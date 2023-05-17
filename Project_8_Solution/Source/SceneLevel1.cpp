@@ -40,21 +40,21 @@ bool SceneLevel1::Start()
 	//App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
 
 	// Enemies ---
-	/*App->enemies->AddEnemy(Enemy_Type::REDBIRD, 250, 2400);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 625, 80);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 640, 80);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 665, 80);
+	/*App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 250, 2400);
+	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 625, 80);
+	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 640, 80);
+	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 665, 80);
 
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 735, 120);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 750, 120);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 775, 120);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 790, 120);
+	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 735, 120);
+	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 750, 120);
+	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 775, 120);
+	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 790, 120);
 
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 300, 2400);
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 850, 100);
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 870, 100);
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);*/
-
+	App->enemies->AddEnemy(Enemy_Type::TANK, 100, 2400);
 	
 	
 	

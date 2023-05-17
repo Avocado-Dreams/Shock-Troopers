@@ -11,7 +11,7 @@
 #include "PickUps.h"
 
 #include "Enemy.h"
-#include "Enemy_RedBird.h"
+#include "Enemy_Tank.h"
 #include "Enemy_BrownShip.h"
 #include "Enemy_Soldier_Static.h"
 
@@ -32,6 +32,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	texture = App->textures->Load("Assets/Sprites/Enemies/soldado_sprites.png");
+	textureL = App->textures->Load("Assets/Sprites/Enemies/tanquesL.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
 	return true;
@@ -146,8 +147,8 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-				case Enemy_Type::REDBIRD:
-					enemies[i] = new Enemy_RedBird(info.x, info.y);
+				case Enemy_Type::TANK:
+					enemies[i] = new Enemy_Tank(info.x, info.y);
 					break;
 				case Enemy_Type::BROWNSHIP:
 					enemies[i] = new Enemy_BrownShip(info.x, info.y);

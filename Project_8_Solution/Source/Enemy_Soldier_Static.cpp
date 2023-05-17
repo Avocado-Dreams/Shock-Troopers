@@ -166,6 +166,8 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	getUpR.loop = false;
 	getUpR.speed = 0.1f;
 
+
+
 	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
 
 	path.PushBack({ 0.0f, 0.0f }, 0, & idleDownL);
