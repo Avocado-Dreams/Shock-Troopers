@@ -51,19 +51,19 @@ public:
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture = nullptr;
-	SDL_Texture* enemyShots = nullptr;
+	SDL_Texture* BLUEdiamond = nullptr;
 
 	// An array to store and handle all the particles
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };
 
 public:
 	//Template particle for an explosion
-	Particle explosion;
-
+	Particle enemy_death;
 	//Template particle for a laser
 	Particle laser;
 	Particle enemyShot;
 	Particle sUp, sDown, sLeft, sRight, sNorest, sNoroest, sSudest, sSudoest;
+	Particle BlueDiamond;
 };
 
 #endif // !__MODULEPARTICLES_H__

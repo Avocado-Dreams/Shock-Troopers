@@ -30,6 +30,8 @@ public:
 	// Disables the player and the enemies
 	bool CleanUp();
 
+	bool enemy1Spawned = false;
+
 public:
 	
 	// The scene sprite sheet loaded into an SDL_Texture

@@ -54,8 +54,8 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 870, 100);
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);*/
 
-	App->enemies->AddEnemy(Enemy_Type::MECH, 200, 2600);
-	//App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, 210, 2600);
+
+	App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, 210, 2700);
 	
 
 	App->render->camera.x = 0;
@@ -65,7 +65,9 @@ bool SceneLevel1::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->sceneLayer2->Enable();
-	//App->pickUps->Enable();
+	App->pickUps->Enable();
+
+
 
 	return ret;
 }
@@ -73,7 +75,10 @@ bool SceneLevel1::Start()
 Update_Status SceneLevel1::Update()
 {
 	//App->render->camera.y -= 3;
-
+	if (App->player->position.y < 2700 && enemy1Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::MECH, 200, 2600);
+		enemy1Spawned = true;
+	}
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -95,7 +100,7 @@ bool SceneLevel1::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->sceneLayer2->Disable();
-	//App->pickUps->Disable();
+	App->pickUps->Disable();
 
 	// TODO 5: Remove All Memory Leaks - no solution here guys ;)
 
