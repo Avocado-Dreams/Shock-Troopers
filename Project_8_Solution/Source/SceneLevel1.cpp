@@ -56,7 +56,7 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);*/
 
 	
-	App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, 210, 2700);
+	
 	
 
 	App->render->camera.x = 0;

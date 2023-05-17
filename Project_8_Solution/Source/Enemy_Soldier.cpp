@@ -1,5 +1,5 @@
 #include "Enemy_Soldier.h"
-
+#include "ModulePickUps.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
@@ -9,7 +9,7 @@
 
 Enemy_Soldier::Enemy_Soldier(int x, int y) : Enemy(x, y)
 {
-	isAlive = true;
+	
 	idleDownL.PushBack({ 23, 41, 30, 48 });
 
 	shootDownL.PushBack({ 23, 41, 30, 48 });
@@ -367,7 +367,10 @@ void Enemy_Soldier::Attack()
 
 void Enemy::OnCollision(Collider* collider)
 {
-	isAlive = false;
+	
 	App->particles->AddParticle(App->particles->enemy_death, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
 	App->audio->PlayFx(damagedEnemy);
+
+	App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, 210, 2600);
+	
 }

@@ -40,7 +40,7 @@ public:
 
 	// Sound fx when destroyed
 	int damagedEnemy = 0;
-	bool isAlive;
+	
 
 protected:
 	// A ptr to the current animation
