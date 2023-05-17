@@ -77,6 +77,7 @@ public:
 	Animation upWAnim, downWAnim, rightWAnim, leftWAnim, norestWAnim, noroestWAnim, sudestWAnim, sudoestWAnim;
 	Animation upSAnim, downSAnim, rightSAnim, leftSAnim, norestSAnim, noroestSAnim, sudestSAnim, sudoestSAnim;
 	Animation upDAnim, downDAnim, rightDAnim, leftDAnim, norestDAnim, noroestDAnim, sudestDAnim, sudoestDAnim;
+	Animation upHAnim, downHAnim, rightHAnim, leftHAnim, norestHAnim, noroestHAnim, sudestHAnim, sudoestHAnim;
 	Animation winAnim; 
 
 	Animation idleAnim;
@@ -88,12 +89,15 @@ public:
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 	int win = 0;
+	int death = 0;
+	int hit = 0;
 
 	// Sound effects indices
 	uint laserFx = 0;
 	uint explosionFx = 0;
 	uint deathFx = 0;
 	uint winFx = 0;
+	uint hitFx = 0;
 
 	//timer callback
 	//SDL_TimerCallback callbackBC(Uint32 interval, void* name);

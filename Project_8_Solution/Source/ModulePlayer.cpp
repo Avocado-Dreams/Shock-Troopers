@@ -291,108 +291,172 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	winAnim.speed = 0.15f; 
 
 	//DEATH ANIMATION up
-	upDAnim.PushBack({ 1, 0, 29, 59 });
-	upDAnim.PushBack({ 29, 0, 29, 59 });
-	upDAnim.PushBack({ 58, 0, 29, 59 });
-	upDAnim.PushBack({ 85, 0, 30, 59 });
-	upDAnim.PushBack({ 115, 0, 27, 59 });
-	upDAnim.PushBack({ 142, 0, 27, 59 });
-	upDAnim.PushBack({ 169, 0, 27, 59 });
-	upDAnim.PushBack({ 169, 0, 27, 59 });
-	upDAnim.PushBack({ 169, 0, 27, 59 });
+	upDAnim.PushBack({ 2, 175, 35, 61 });
+	upDAnim.PushBack({ 42, 175, 42, 61 });
+	upDAnim.PushBack({ 86, 175, 37, 61 });
+	upDAnim.PushBack({ 122, 175, 35, 61 });
+	upDAnim.PushBack({ 157, 175, 34, 61 });
+	upDAnim.PushBack({ 198, 175, 34, 66 });
+	upDAnim.PushBack({ 231, 175, 30, 66 });
+	upDAnim.PushBack({ 262, 175, 34, 66 });
+	upDAnim.PushBack({ 296, 175, 33, 66 });
 	upDAnim.loop = false;
-	upDAnim.speed = 0.1f;
+	upDAnim.speed = 0.15f;
 
 	//DEATH ANIMATION norest
-	norestDAnim.PushBack({ 1, 0, 29, 59 });
-	norestDAnim.PushBack({ 29, 0, 29, 59 });
-	norestDAnim.PushBack({ 58, 0, 29, 59 });
-	norestDAnim.PushBack({ 85, 0, 30, 59 });
-	norestDAnim.PushBack({ 115, 0, 27, 59 });
-	norestDAnim.PushBack({ 142, 0, 27, 59 });
-	norestDAnim.PushBack({ 169, 0, 27, 59 });
-	norestDAnim.PushBack({ 169, 0, 27, 59 });
-	norestDAnim.PushBack({ 169, 0, 27, 59 });
+	norestDAnim.PushBack({ 0, 241, 33, 57 });
+	norestDAnim.PushBack({ 34, 241, 43, 57 });
+	norestDAnim.PushBack({ 77, 241, 36, 57 });
+	norestDAnim.PushBack({ 113, 241, 31, 56 });
+	norestDAnim.PushBack({ 144, 241, 31, 57 });
+	norestDAnim.PushBack({ 175, 241, 36, 61 });
+	norestDAnim.PushBack({ 215, 241, 37, 61 });
+	norestDAnim.PushBack({ 256, 241, 47, 61 });
+	norestDAnim.PushBack({ 307, 241, 49, 61 });
 	norestDAnim.loop = false;
-	norestDAnim.speed = 0.1f;
+	norestDAnim.speed = 0.15f;
 
 	//DEATH ANIMATION right
-	rightDAnim.PushBack({ 1, 0, 29, 59 });
-	rightDAnim.PushBack({ 29, 0, 29, 59 });
-	rightDAnim.PushBack({ 58, 0, 29, 59 });
-	rightDAnim.PushBack({ 85, 0, 30, 59 });
-	rightDAnim.PushBack({ 115, 0, 27, 59 });
-	rightDAnim.PushBack({ 142, 0, 27, 59 });
-	rightDAnim.PushBack({ 169, 0, 27, 59 });
-	rightDAnim.PushBack({ 169, 0, 27, 59 });
-	rightDAnim.PushBack({ 169, 0, 27, 59 });
+	rightDAnim.PushBack({ 2, 296, 30, 59 });
+	rightDAnim.PushBack({ 37, 296, 40, 59 });
+	rightDAnim.PushBack({ 82, 296, 31, 59 });
+	rightDAnim.PushBack({ 113, 296, 31, 59 });
+	rightDAnim.PushBack({ 144, 296, 30, 59 });
+	rightDAnim.PushBack({ 175, 302, 34, 51 });
+	rightDAnim.PushBack({ 214, 302, 43, 51 });
+	rightDAnim.PushBack({ 262, 302, 48, 51 });
+	rightDAnim.PushBack({ 315, 302, 51, 51 });
 	rightDAnim.loop = false;
-	rightDAnim.speed = 0.1f;
+	rightDAnim.speed = 0.15f;
 
 	//DEATH ANIMATION sudest
-	sudestDAnim.PushBack({ 1, 0, 29, 59 });
-	sudestDAnim.PushBack({ 29, 0, 29, 59 });
-	sudestDAnim.PushBack({ 58, 0, 29, 59 });
-	sudestDAnim.PushBack({ 85, 0, 30, 59 });
-	sudestDAnim.PushBack({ 115, 0, 27, 59 });
-	sudestDAnim.PushBack({ 142, 0, 27, 59 });
-	sudestDAnim.PushBack({ 169, 0, 27, 59 });
-	sudestDAnim.PushBack({ 169, 0, 27, 59 });
-	sudestDAnim.PushBack({ 169, 0, 27, 59 });
+	sudestDAnim.PushBack({ 0, 358, 36, 59 });
+	sudestDAnim.PushBack({ 37, 358, 45, 59 });
+	sudestDAnim.PushBack({ 86, 358, 31, 59 });
+	sudestDAnim.PushBack({ 118, 358, 31, 59 });
+	sudestDAnim.PushBack({ 151, 358, 27, 59 });
+	sudestDAnim.PushBack({ 180, 358, 38, 59 });
+	sudestDAnim.PushBack({ 221, 358, 42, 59 });
+	sudestDAnim.PushBack({ 266, 358, 48, 59 });
+	sudestDAnim.PushBack({ 319, 358, 48, 59 });
 	sudestDAnim.loop = false;
-	sudestDAnim.speed = 0.1f;
+	sudestDAnim.speed = 0.15f;
 
 	//DEATH ANIMATION down
-	downDAnim.PushBack({ 1, 0, 29, 59 });
-	downDAnim.PushBack({ 29, 0, 29, 59 });
-	downDAnim.PushBack({ 58, 0, 29, 59 });
-	downDAnim.PushBack({ 85, 0, 30, 59 });
-	downDAnim.PushBack({ 115, 0, 27, 59 });
-	downDAnim.PushBack({ 142, 0, 27, 59 });
-	downDAnim.PushBack({ 169, 0, 27, 59 });
-	downDAnim.PushBack({ 169, 0, 27, 59 });
-	downDAnim.PushBack({ 169, 0, 27, 59 });
+	downDAnim.PushBack({ 0, 416, 34, 59 });
+	downDAnim.PushBack({ 38, 416, 45, 59 });
+	downDAnim.PushBack({ 83, 416, 37, 59 });
+	downDAnim.PushBack({ 120, 416, 36, 59 });
+	downDAnim.PushBack({ 156, 416, 33, 59 });
+	downDAnim.PushBack({ 189, 416, 35, 59 });
+	downDAnim.PushBack({ 222, 416, 33, 59 });
+	downDAnim.PushBack({ 260, 416, 36, 59 });
+	downDAnim.PushBack({ 301, 416, 38, 59 });
 	downDAnim.loop = false;
-	downDAnim.speed = 0.1f;
+	downDAnim.speed = 0.15f;
 
 	//DEATH ANIMATION sudoest
-	sudoestDAnim.PushBack({ 1, 0, 29, 59 });
-	sudoestDAnim.PushBack({ 29, 0, 29, 59 });
-	sudoestDAnim.PushBack({ 58, 0, 29, 59 });
-	sudoestDAnim.PushBack({ 85, 0, 30, 59 });
-	sudoestDAnim.PushBack({ 115, 0, 27, 59 });
-	sudoestDAnim.PushBack({ 142, 0, 27, 59 });
-	sudoestDAnim.PushBack({ 169, 0, 27, 59 });
-	sudoestDAnim.PushBack({ 169, 0, 27, 59 });
-	sudoestDAnim.PushBack({ 169, 0, 27, 59 });
+	sudoestDAnim.PushBack({ 0, 475, 36, 59 });
+	sudoestDAnim.PushBack({ 35, 475, 48, 59 });
+	sudoestDAnim.PushBack({ 81, 475, 39, 59 });
+	sudoestDAnim.PushBack({ 120, 475, 35, 59 });
+	sudoestDAnim.PushBack({ 154, 475, 32, 59 });
+	sudoestDAnim.PushBack({ 188, 475, 39, 59 });
+	sudoestDAnim.PushBack({ 228, 475, 41, 59 });
+	sudoestDAnim.PushBack({ 271, 475, 49, 59 });
+	sudoestDAnim.PushBack({ 319, 475, 49, 59 });
 	sudoestDAnim.loop = false;
-	sudoestDAnim.speed = 0.1f;
+	sudoestDAnim.speed = 0.15f;
 
 	//DEATH ANIMATION left
-	leftDAnim.PushBack({ 1, 0, 29, 59 });
-	leftDAnim.PushBack({ 29, 0, 29, 59 });
-	leftDAnim.PushBack({ 58, 0, 29, 59 });
-	leftDAnim.PushBack({ 85, 0, 30, 59 });
-	leftDAnim.PushBack({ 115, 0, 27, 59 });
-	leftDAnim.PushBack({ 142, 0, 27, 59 });
-	leftDAnim.PushBack({ 169, 0, 27, 59 });
-	leftDAnim.PushBack({ 169, 0, 27, 59 });
-	leftDAnim.PushBack({ 169, 0, 27, 59 });
+	leftDAnim.PushBack({ 0, 535, 31, 56 });
+	leftDAnim.PushBack({ 34, 535, 40, 56 });
+	leftDAnim.PushBack({ 74, 535, 45, 56 });
+	leftDAnim.PushBack({ 120, 535, 39, 56 });
+	leftDAnim.PushBack({ 159, 535, 33, 56 });
+	leftDAnim.PushBack({ 190, 535, 41, 56 });
+	leftDAnim.PushBack({ 231, 535, 46, 56 });
+	leftDAnim.PushBack({ 279, 535, 49, 56 });
+	leftDAnim.PushBack({ 330, 535, 54, 56 });
 	leftDAnim.loop = false;
 	leftDAnim.speed = 0.15f;
 
 	//DEATH ANIMATION noroest
-	noroestDAnim.PushBack({ 1, 0, 29, 59 });
-	noroestDAnim.PushBack({ 29, 0, 29, 59 });
-	noroestAnim.PushBack({ 58, 0, 29, 59 });
-	noroestDAnim.PushBack({ 85, 0, 30, 59 });
-	noroestDAnim.PushBack({ 115, 0, 27, 59 });
-	noroestDAnim.PushBack({ 142, 0, 27, 59 });
-	noroestDAnim.PushBack({ 169, 0, 27, 59 });
-	noroestDAnim.PushBack({ 169, 0, 27, 59 });
-	noroestDAnim.PushBack({ 169, 0, 27, 59 });
+	noroestDAnim.PushBack({ 1, 593, 37, 62 });
+	noroestDAnim.PushBack({ 37, 593, 45, 62 });
+	noroestDAnim.PushBack({ 81, 593, 42, 62 });
+	noroestDAnim.PushBack({ 123, 593, 33, 62 });
+	noroestDAnim.PushBack({ 156, 593, 27, 62 });
+	noroestDAnim.PushBack({ 185, 593, 36, 62 });
+	noroestDAnim.PushBack({ 223, 593, 37, 62 });
+	noroestDAnim.PushBack({ 263, 593, 46, 62 });
+	noroestDAnim.PushBack({ 317, 593, 48, 62 });
 	noroestDAnim.loop = false;
 	noroestDAnim.speed = 0.15f;
+
+	//HIT ANIMATION up
+	upHAnim.PushBack({ 405, 195, 28, 56 });
+	upHAnim.PushBack({ 433, 195, 28, 56 });
+	upHAnim.PushBack({ 461, 195, 29, 56 });
+	upHAnim.PushBack({ 490, 195, 32, 56 });
+	upHAnim.loop = false;
+	upHAnim.speed = 0.15f;
+
+	//HIT ANIMATION norest
+	norestHAnim.PushBack({ 403, 256, 29, 55 });
+	norestHAnim.PushBack({ 432, 256, 32, 55 });
+	norestHAnim.PushBack({ 464, 256, 31, 55 });
+	norestHAnim.PushBack({ 495, 256, 28, 55 });
+	norestHAnim.loop = false;
+	norestHAnim.speed = 0.15f;
+
+	//HIT ANIMATION right
+	rightHAnim.PushBack({ 398, 311, 29, 52 });
+	rightHAnim.PushBack({ 428, 311, 34, 52 });
+	rightHAnim.PushBack({ 463, 311, 35, 52 });
+	rightHAnim.PushBack({ 494, 311, 28, 52 });
+	rightHAnim.loop = false;
+	rightHAnim.speed = 0.15f;
+
+	//HIT ANIMATION sudest
+	sudestHAnim.PushBack({ 403, 367, 27, 52 });
+	sudestHAnim.PushBack({ 430, 367, 34, 52 });
+	sudestHAnim.PushBack({ 465, 367, 30, 52 });
+	sudestHAnim.PushBack({ 495, 367, 27, 52 });
+	sudestHAnim.loop = false;
+	sudestHAnim.speed = 0.15f;
+
+	//HIT ANIMATION down
+	downHAnim.PushBack({ 402, 426, 29, 47 });
+	downHAnim.PushBack({ 431, 426, 33 , 47 });
+	downHAnim.PushBack({ 462, 426, 29, 47 });
+	downHAnim.PushBack({ 491, 426, 32, 47 });
+	downHAnim.loop = false;
+	downHAnim.speed = 0.15f;
+
+	//HIT ANIMATION sudoest
+	noroestHAnim.PushBack({ 553, 251, 30, 55 });
+	noroestHAnim.PushBack({ 583, 251, 31, 55 });
+	noroestHAnim.PushBack({ 614, 251, 32, 55 });
+	noroestHAnim.PushBack({ 646, 251, 31, 55 });
+	noroestHAnim.loop = false;
+	noroestHAnim.speed = 0.15f;
+
+	//HIT ANIMATION left
+	leftHAnim.PushBack({ 547, 311, 27, 52 });
+	leftHAnim.PushBack({ 580, 311, 26, 52 });
+	leftHAnim.PushBack({ 614, 311, 27, 52 });
+	leftHAnim.PushBack({ 641, 311, 28, 52 });
+	leftHAnim.loop = false;
+	leftHAnim.speed = 0.15f;
+
+	//HIT ANIMATION noroest
+	sudoestHAnim.PushBack({ 548, 367, 29, 52 });
+	sudoestHAnim.PushBack({ 580, 367, 29, 52 });
+	sudoestHAnim.PushBack({ 607, 367, 30, 52 });
+	sudoestHAnim.PushBack({ 639, 367, 36, 52 });
+	sudoestHAnim.loop = false;
+	sudoestHAnim.speed = 0.15f;
 
 }
 
@@ -417,8 +481,8 @@ bool ModulePlayer::Start()
 	laserFx = App->audio->LoadFx("Assets/Fx/Main gun shots.wav");
 	deathFx = App->audio->LoadFx("Assets/Fx/Milky death.wav");
 	winFx = App->audio->LoadFx("Assets/Fx/winLine.wav");
+	hitFx = App->audio->LoadFx("Assets/Fx/DamagedMilky.wav");
 	
-
 	position.x = 150;
 	position.y = (120 + 2715);
 
@@ -885,7 +949,7 @@ Update_Status ModulePlayer::Update()
 	switch (zone)
 	{
 	case 1:UpdateZoneA(); break;
-	case 2:UpdateZoneAB(); break;
+	case 2:UpdateZoneAB(); break;  
 	case 3:UpdateZoneB(); break;
 	case 4:UpdateZoneBC(); break;
 	case 5:UpdateZoneC(); break;
@@ -1002,17 +1066,50 @@ Update_Status ModulePlayer::PostUpdate()
 {
  	if (win > 0)
 	{
-			currentStateAnimation->Update();
-			SDL_Rect rectS = currentStateAnimation->GetCurrentFrame();
-			App->render->Blit(textureState, position.x, position.y, &rectS);
-			if (win < 151) { win++; }
-			if (win == 70) { App->audio->PlayFx(winFx); }
-			if (win == 150) { 
-
-				App->audio->PlayMusic("Assets/Music/StageClear.ogg", 0.0f);
-				SDL_Delay(3600);
-				App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
-			}
+		currentStateAnimation->Update();
+		SDL_Rect rectS = currentStateAnimation->GetCurrentFrame();
+		App->render->Blit(textureState, position.x, position.y, &rectS);
+		if (win < 151) { win++; }
+		if (win == 70) { App->audio->PlayFx(winFx); }
+		if (win == 150) { 
+			App->audio->PlayMusic("Assets/Music/StageClear.ogg", 0.0f);
+			SDL_Delay(3600);
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+		}
+	}
+	else if (death > 0)
+	{
+		currentStateAnimation->Update();
+		SDL_Rect rectS = currentStateAnimation->GetCurrentFrame();
+		App->render->Blit(textureState, position.x + 3, position.y - 10, &rectS);
+		if (death < 61) { death++; }
+		if (death == 20) { App->audio->PlayFx(deathFx);	}
+		if (death == 60)
+		{
+			SDL_Delay(1000);
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+		}
+	}
+	else if (hit > 0)
+	{
+		currentStateAnimation->Update();
+		SDL_Rect rectS = currentStateAnimation->GetCurrentFrame();
+		App->render->Blit(textureState, position.x - 3, position.y - 10, &rectS);
+		if (hit < 51) { hit++; }
+		if (hit == 2) { App->audio->PlayFx(hitFx); }
+		if (hit == 50)
+		{
+			if (currentStateAnimation == &upHAnim) { currentLAnimation = &upLAnim; currentAnimation = &upAnim; }
+			if (currentStateAnimation == &downHAnim) { currentLAnimation = &downLAnim; currentAnimation = &downAnim; }
+			if (currentStateAnimation == &rightHAnim) { currentLAnimation = &rightLAnim; currentAnimation = &rightAnim; }
+			if (currentStateAnimation == &leftHAnim) { currentLAnimation = &leftLAnim; currentAnimation = &leftAnim; }
+			if (currentStateAnimation == &norestHAnim) { currentLAnimation = &norestLAnim; currentAnimation = &norestAnim; }
+			if (currentStateAnimation == &noroestHAnim) { currentLAnimation = &noroestLAnim; currentAnimation = &noroestAnim; }
+			if (currentStateAnimation == &sudestHAnim) { currentLAnimation = &sudestLAnim; currentAnimation = &sudestAnim; }
+			if (currentStateAnimation == &sudoestHAnim) { currentLAnimation = &sudoestLAnim; currentAnimation = &sudoestAnim; }
+			hit = 0;
+		}
+		
 	}
 	else if (!destroyed)
 	{
@@ -1027,15 +1124,36 @@ Update_Status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false && vida == 0)
+	if (c1 == collider && destroyed == false && vida > 0)
 	{
-
-		App->audio->PlayFx(deathFx);
-
-		//TODO 3: Go back to the intro scene when the player gets killed
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneOver, 60);
-		destroyed = true;
-		vida = 3;
+		if (vida > 0) {
+			vida--; 
+	
+		hit = 1;
+		if (currentLAnimation == &upLAnim || currentLAnimation == &upWAnim) { currentStateAnimation = &upHAnim; upHAnim.Reset(); }
+		if (currentLAnimation == &downLAnim || currentLAnimation == &downWAnim) { currentStateAnimation = &downHAnim; downHAnim.Reset(); }
+		if (currentLAnimation == &rightLAnim || currentLAnimation == &rightWAnim) { currentStateAnimation = &rightHAnim; rightHAnim.Reset(); }
+		if (currentLAnimation == &leftLAnim || currentLAnimation == &leftWAnim) { currentStateAnimation = &leftHAnim; leftHAnim.Reset(); }
+		if (currentLAnimation == &norestLAnim || currentLAnimation == &norestWAnim) { currentStateAnimation = &norestHAnim; norestHAnim.Reset(); }
+		if (currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim) { currentStateAnimation = &noroestHAnim; noroestHAnim.Reset(); }
+		if (currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) { currentStateAnimation = &sudestHAnim; sudestHAnim.Reset(); }
+		if (currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) { currentStateAnimation = &sudoestHAnim; sudoestHAnim.Reset(); }
+		if(vida == 0){destroyed = true; }
+		}
+		
 	}
-	vida--;
+
+	if (destroyed)
+	{
+		death = 1;
+
+		if (currentLAnimation == &upLAnim || currentLAnimation == &upWAnim) { currentStateAnimation = &upDAnim; upDAnim.Reset(); }
+		if (currentLAnimation == &downLAnim || currentLAnimation == &downWAnim) { currentStateAnimation = &downDAnim; downDAnim.Reset(); }
+		if (currentLAnimation == &rightLAnim || currentLAnimation == &rightWAnim) { currentStateAnimation = &rightDAnim; rightDAnim.Reset(); }
+		if (currentLAnimation == &leftLAnim || currentLAnimation == &leftWAnim) { currentStateAnimation = &leftDAnim; leftDAnim.Reset(); }
+		if (currentLAnimation == &norestLAnim || currentLAnimation == &norestWAnim) { currentStateAnimation = &norestDAnim; norestDAnim.Reset(); }
+		if (currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim) { currentStateAnimation = &noroestDAnim; noroestDAnim.Reset(); }
+		if (currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) { currentStateAnimation = &sudestDAnim; sudestDAnim.Reset(); }
+		if (currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) { currentStateAnimation = &sudoestDAnim; sudoestDAnim.Reset(); }
+	}
 }
