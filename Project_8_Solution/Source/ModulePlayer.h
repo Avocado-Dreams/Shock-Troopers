@@ -62,11 +62,13 @@ public:
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
 	SDL_Texture* textureL = nullptr;
+	SDL_Texture* textureState = nullptr;
 	
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
 	Animation* currentLAnimation = nullptr;
+	Animation* currentStateAnimation = nullptr;
 
 	// A set of animations
 	//Animation idleAnim;
@@ -74,6 +76,9 @@ public:
 	Animation upLAnim, downLAnim, rightLAnim, leftLAnim, norestLAnim, noroestLAnim, sudestLAnim, sudoestLAnim;
 	Animation upWAnim, downWAnim, rightWAnim, leftWAnim, norestWAnim, noroestWAnim, sudestWAnim, sudoestWAnim;
 	Animation upSAnim, downSAnim, rightSAnim, leftSAnim, norestSAnim, noroestSAnim, sudestSAnim, sudoestSAnim;
+	Animation upDAnim, downDAnim, rightDAnim, leftDAnim, norestDAnim, noroestDAnim, sudestDAnim, sudoestDAnim;
+	Animation upHAnim, downHAnim, rightHAnim, leftHAnim, norestHAnim, noroestHAnim, sudestHAnim, sudoestHAnim;
+	Animation winAnim; 
 
 	Animation idleAnim;
 	int bulletdir = 0;
@@ -83,12 +88,16 @@ public:
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
+	int win = 0;
+	int death = 0;
+	int hit = 0;
 
 	// Sound effects indices
 	uint laserFx = 0;
 	uint explosionFx = 0;
 	uint deathFx = 0;
-	uint damageFx = 0;
+	uint winFx = 0;
+	uint hitFx = 0;
 
 	//timer callback
 	//SDL_TimerCallback callbackBC(Uint32 interval, void* name);
