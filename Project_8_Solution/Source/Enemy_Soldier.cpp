@@ -371,6 +371,10 @@ void Enemy::OnCollision(Collider* collider)
 	App->particles->AddParticle(App->particles->enemy_death, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
 	App->audio->PlayFx(damagedEnemy);
 
-	App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, 210, 2600);
+	int randomValue = rand() % 100;
+	// Probabilidad de aparición de los BLUEDIAMONDS 
+	int spawnProbability = 30;
+	// Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
+	if (randomValue < spawnProbability) App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x, position.y);
 	
 }
