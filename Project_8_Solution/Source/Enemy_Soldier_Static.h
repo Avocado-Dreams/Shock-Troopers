@@ -34,6 +34,8 @@ public:
 
 	double  Enemy_Soldier_Static::calculateAngle();
 
+	void OnCollision(Collider* collider) override;
+
 	//Timer to control the enemy attack cooldown
 	float timer;
 	float SHOOT_INTERVAL = 5;

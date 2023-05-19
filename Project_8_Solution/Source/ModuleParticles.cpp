@@ -36,13 +36,14 @@ bool ModuleParticles::Start()
 	enemy_death.lifetime = 100;
 	//App->textures->Unload(texture);
 
-	tank_explosion.anim.PushBack({ 23, 201, 27, 37 });
-	tank_explosion.anim.PushBack({ 74, 180, 37, 55 });
-	tank_explosion.anim.PushBack({ 128, 182, 37, 52 });
-	tank_explosion.anim.PushBack({ 176, 185, 43, 39 });
-	tank_explosion.anim.PushBack({ 231, 194, 37, 37 });
-	tank_explosion.anim.PushBack({ 282, 195, 43, 39 });
-	tank_explosion.anim.PushBack({ 339, 194, 39, 40 });
+	tank_explosion.anim.PushBack({ 11, 722, 32, 32 });
+	tank_explosion.anim.PushBack({ 44, 722, 32, 32 });
+	tank_explosion.anim.PushBack({ 77, 722, 32, 32 });
+	tank_explosion.anim.PushBack({ 110, 722, 32, 32 });
+	tank_explosion.anim.PushBack({ 11, 755, 32, 32 });
+	tank_explosion.anim.PushBack({ 44, 755, 32, 32 });
+	tank_explosion.anim.PushBack({ 77, 755, 32, 32 });
+	tank_explosion.anim.PushBack({ 110, 755, 32, 32 });
 	tank_explosion.anim.loop = false;
 	tank_explosion.anim.speed = 0.1f;
 	tank_explosion.lifetime = 100;

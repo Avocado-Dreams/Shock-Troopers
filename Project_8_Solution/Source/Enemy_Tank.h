@@ -34,6 +34,8 @@ public:
 
 	double  Enemy_Tank::calculateAngle();
 
+	void OnCollision(Collider* collider) override;
+
 	float timer;
 	float SHOOT_INTERVAL = 5;
 	bool isSpawning;

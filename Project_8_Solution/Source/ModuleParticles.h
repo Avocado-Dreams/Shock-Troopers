@@ -61,7 +61,7 @@ public:
 	Particle enemy_death, tank_explosion;
 	//Template particle for a laser
 	Particle laser;
-	Particle enemyShot;
+	Particle enemyShot,tankShot;
 	Particle sUp, sDown, sLeft, sRight, sNorest, sNoroest, sSudest, sSudoest;
 	Particle BlueDiamond;
 };

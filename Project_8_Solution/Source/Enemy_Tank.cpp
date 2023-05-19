@@ -152,7 +152,7 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 
 	tankShotFx = App->audio->LoadFx("Assets/Fx/Tank shot.wav");
 
-	collider = App->collisions->AddCollider({ 0, 0, 24, 34 }, Collider::Type::TANK, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 34, 34 }, Collider::Type::TANK, (Module*)App->enemies);
 
 	currentAnim = &idleDown;
 
@@ -332,16 +332,22 @@ void Enemy_Tank::Attack()
 	timer = SHOOT_INTERVAL;
 }
 
-//void Enemy::OnCollision(Collider* collider)
-//{
-//
-//	//App->particles->AddParticle(App->particles->tank_explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
-//	//App->audio->PlayFx(damagedEnemy);
-//
-//
-//	// Probabilidad de aparición de los BLUEDIAMONDS 
-//	int spawnProbability = 30;
-//	// Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
-//	if (randomValue < spawnProbability) App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x + 12, position.y + 4);
-//
-//}
+void Enemy_Tank::OnCollision(Collider* collider)
+{
+
+	App->particles->AddParticle(App->particles->tank_explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+	App->audio->PlayFx(destroyedTank);
+	App->particles->AddParticle(App->particles->tank_explosion, position.x+9, position.y+9, NULL, NULL, Collider::Type::NONE, 4);
+	App->audio->PlayFx(destroyedTank);
+	App->particles->AddParticle(App->particles->tank_explosion, position.x+18, position.y+6, NULL, NULL, Collider::Type::NONE, 8);
+	App->audio->PlayFx(destroyedTank);
+	App->particles->AddParticle(App->particles->tank_explosion, position.x-9, position.y+18, NULL, NULL, Collider::Type::NONE, 12);
+	App->audio->PlayFx(destroyedTank);
+	App->particles->AddParticle(App->particles->tank_explosion, position.x+27, position.y+12, NULL, NULL, Collider::Type::NONE, 16);
+	App->audio->PlayFx(destroyedTank);
+	//Probabilidad de aparición de los BLUEDIAMONDS 
+	int spawnProbability = 30;
+	//Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
+	if (randomValue < spawnProbability) App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x + 12, position.y + 4);
+
+}
