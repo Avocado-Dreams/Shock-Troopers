@@ -56,19 +56,25 @@ public:
 
 	//init map zones
 	int zone = 1; //1 = zone A; 2 = zone AB; 3 = zone B; 4 = zone BC; 5 = zone C; 6 = zone D; 7 = zone E
+	int currentZone = 0;
 
-	int vida = 3;
+	float timerHit;
+	int vida = 100;
+	float HIT_INTERVAL = 2;
+	bool hitting = false;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
 	SDL_Texture* textureL = nullptr;
 	SDL_Texture* textureState = nullptr;
+	SDL_Texture* textureD = nullptr;
 	
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
 	Animation* currentLAnimation = nullptr;
 	Animation* currentStateAnimation = nullptr;
+	Animation* currentAnimationDoor = nullptr;
 
 	// A set of animations
 	//Animation idleAnim;
@@ -79,6 +85,7 @@ public:
 	Animation upDAnim, downDAnim, rightDAnim, leftDAnim, norestDAnim, noroestDAnim, sudestDAnim, sudoestDAnim;
 	Animation upHAnim, downHAnim, rightHAnim, leftHAnim, norestHAnim, noroestHAnim, sudestHAnim, sudoestHAnim;
 	Animation winAnim; 
+	Animation door;
 
 	Animation idleAnim;
 	int bulletdir = 0;
@@ -98,6 +105,13 @@ public:
 	uint deathFx = 0;
 	uint winFx = 0;
 	uint hitFx = 0;
+
+	//Time
+	int timer = 99;
+	int timerCounter = 0;
+
+	//Score
+	uint score = 000;
 
 	//timer callback
 	//SDL_TimerCallback callbackBC(Uint32 interval, void* name);

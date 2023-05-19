@@ -370,7 +370,7 @@ void Enemy_Soldier_Static::Attack()
 
 void Enemy::OnCollision(Collider* collider)
 {
-	
+	App->player->score += 3000;
 	App->particles->AddParticle(App->particles->enemy_death, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
 	App->audio->PlayFx(damagedEnemy);
 

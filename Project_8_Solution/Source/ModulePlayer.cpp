@@ -8,7 +8,8 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
-#include "SDL/include/SDL_timer.h"
+#include "SceneLayer2.h"
+#include "SDL/include/SDL.h"
 
 enum DIRECTION
 {
@@ -458,6 +459,15 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	sudoestHAnim.loop = false;
 	sudoestHAnim.speed = 0.15f;
 
+	//Door animation
+	door.PushBack({ 10, 205, 153, 19 });
+	door.PushBack({ 10, 166, 153, 19 });
+	door.PushBack({ 10, 127, 153, 19 });
+	door.PushBack({ 10, 88, 153, 19 });
+	door.PushBack({ 10, 49, 153, 19 });
+	door.PushBack({ 10, 10, 153, 19 });
+	door.loop = false;
+	door.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -477,6 +487,8 @@ bool ModulePlayer::Start()
 	currentLAnimation = &upLAnim;
 	textureState = App->textures->Load("Assets/Sprites/Animations/stateAnim.png");
 	currentStateAnimation = &winAnim;
+	textureD = App->textures->Load("Assets/Sprites/Animations/OpenDoor.png");
+	currentAnimationDoor = &door;
 
 	laserFx = App->audio->LoadFx("Assets/Fx/Main gun shots.wav");
 	deathFx = App->audio->LoadFx("Assets/Fx/Milky death.wav");
@@ -911,7 +923,6 @@ void ModulePlayer::UpdateZoneE() {
 
 Update_Status ModulePlayer::Update()
 {
-
 	if (zone == 1 && App->render->camera.y < 1796 * 3)
 	{
 		zone = 2;
@@ -1058,6 +1069,18 @@ Update_Status ModulePlayer::Update()
 
 	currentAnimation->Update();
 	currentLAnimation->Update();
+	door.Update();
+
+	//Timer
+	timerCounter++;
+	if (timerCounter == 240)
+	{
+		timerCounter = 0;
+		if (timer != 0)
+		{
+			timer--;
+		}
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -1119,6 +1142,28 @@ Update_Status ModulePlayer::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
+	//Door
+	if (zone == 1)
+	{
+		SDL_Rect doorClosed = { 10, 205, 153, 19 };
+		App->render->Blit(textureD, 100, 1795, &doorClosed);
+	}
+	if (zone == 3)
+	{
+		SDL_Rect openDoor = { 10, 10, 153, 19 };
+		App->render->Blit(textureD, 100, 1795, &openDoor);
+	}
+	if (zone == 2 && currentZone != 2) {
+		door.Reset();
+		currentZone = 2;
+	}
+	if (zone == 2)
+	{
+		SDL_Rect rectD = door.GetCurrentFrame();
+		App->render->Blit(textureD, 100, 1795, &rectD);
+	}
+
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -1128,7 +1173,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (vida > 0) {
 			vida--; 
-	
+			App->sceneLayer2->hp -= 10;
+
 		hit = 1;
 		if (currentLAnimation == &upLAnim || currentLAnimation == &upWAnim) { currentStateAnimation = &upHAnim; upHAnim.Reset(); }
 		if (currentLAnimation == &downLAnim || currentLAnimation == &downWAnim) { currentStateAnimation = &downHAnim; downHAnim.Reset(); }
@@ -1156,4 +1202,5 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) { currentStateAnimation = &sudestDAnim; sudestDAnim.Reset(); }
 		if (currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) { currentStateAnimation = &sudoestDAnim; sudoestDAnim.Reset(); }
 	}
+
 }
