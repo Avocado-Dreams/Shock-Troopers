@@ -20,7 +20,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -83,8 +83,8 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_BrownShip.h" />
-    <ClInclude Include="Enemy_Soldier.h" />
-    <ClInclude Include="Enemy_RedBird.h" />
+    <ClInclude Include="Enemy_Soldier_Static.h" />
+    <ClInclude Include="Enemy_Tank.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleEnemies.h" />
@@ -117,8 +117,8 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_BrownShip.cpp" />
-    <ClCompile Include="Enemy_Soldier.cpp" />
-    <ClCompile Include="Enemy_RedBird.cpp" />
+    <ClCompile Include="Enemy_Soldier_Static.cpp" />
+    <ClCompile Include="Enemy_Tank.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />

@@ -58,11 +58,11 @@ private:
 
 public:
 	//Template particle for an explosion
-	Particle enemy_death;
+	Particle enemy_death, tank_explosion;
 	//Template particle for a laser
 	Particle laser;
-	Particle enemyShot;
 	Particle bossDown, bossRight, bossLeft, bossSudest, bossSudoest, bossSudR, bossSudoL;
+	Particle enemyShot,tankShot;
 	Particle sUp, sDown, sLeft, sRight, sNorest, sNoroest, sSudest, sSudoest;
 	Particle BlueDiamond;
 };

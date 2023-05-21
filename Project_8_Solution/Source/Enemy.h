@@ -39,12 +39,16 @@ public:
 	SDL_Texture* texture = nullptr;
 
 	// Sound fx when destroyed
-	int damagedEnemy = 0;
+	int damagedSoldier = 0;
+	int destroyedTank = 0;
 
+	int randomValue;
+	
 
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
+	Animation* currentLAnim = nullptr;
 
 	// The enemy's collider
 	Collider* collider = nullptr;

@@ -31,6 +31,11 @@ public:
 	bool CleanUp();
 
 	bool enemy1Spawned = false;
+	bool enemy2Spawned = false;
+	bool enemy3Spawned = false;
+	bool enemy4Spawned = false;
+	bool enemy5Spawned = false;
+
 
 public:
 	

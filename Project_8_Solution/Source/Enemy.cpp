@@ -11,7 +11,8 @@ Enemy::Enemy(int x, int y) : position(x, y)
 {
 	spawnPos = position;
 
-	damagedEnemy = App->audio->LoadFx("Assets/Fx/damaged_enemy.wav");
+	damagedSoldier = App->audio->LoadFx("Assets/Fx/damaged_enemy.wav");
+	destroyedTank = App->audio->LoadFx("Assets/Fx/Tank destruction.wav");
 }
 
 Enemy::~Enemy()
@@ -27,12 +28,15 @@ const Collider* Enemy::GetCollider() const
 
 void Enemy::Update()
 {
+	randomValue = rand() % 100;
 	if (currentAnim != nullptr)
 		currentAnim->Update();
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 }
+
+void Enemy::OnCollision(Collider* collider){}
 
 void Enemy::Draw()
 {

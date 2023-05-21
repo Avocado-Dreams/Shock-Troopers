@@ -4,6 +4,7 @@
 #include "ModuleParticles.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModulePlayer.h"
 
 PickUps_BLUEDIAMOND::PickUps_BLUEDIAMOND(int x, int y) : PickUps(x, y)
 {
@@ -39,6 +40,7 @@ void PickUps_BLUEDIAMOND::Update()
 
 void PickUps::OnCollision(Collider* collider)
 {
+	App->player->score += 30000;
 	App->particles->AddParticle(App->particles->BlueDiamond, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
 	App->audio->PlayFx(getPickUps);
 }
