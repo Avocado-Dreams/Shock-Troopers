@@ -121,6 +121,9 @@
     <ClInclude Include="ModulePickUps.h" />
     <ClInclude Include="PickUps.h" />
     <ClInclude Include="PickUps_BLUEDIAMOND.h" />
+    <ClInclude Include="ModuleFinalBoss.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -212,6 +215,9 @@
     </ClCompile>
     <ClCompile Include="PickUps_BLUEDIAMOND.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFinalBoss.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

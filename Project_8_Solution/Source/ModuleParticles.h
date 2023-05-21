@@ -62,6 +62,7 @@ public:
 	//Template particle for a laser
 	Particle laser;
 	Particle enemyShot;
+	Particle bossDown, bossRight, bossLeft, bossSudest, bossSudoest, bossSudR, bossSudoL;
 	Particle sUp, sDown, sLeft, sRight, sNorest, sNoroest, sSudest, sSudoest;
 	Particle BlueDiamond;
 };

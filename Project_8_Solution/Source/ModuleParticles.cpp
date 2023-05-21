@@ -104,6 +104,33 @@ bool ModuleParticles::Start()
 	BlueDiamond.anim.speed = 0.2f;
 	BlueDiamond.lifetime = 50;
 
+	//BOSS SHOOTING
+	//shoot down
+	bossDown.anim.PushBack({ 10, 491, 32, 48 });
+	bossDown.anim.PushBack({ 10, 556, 32, 48 });
+	bossDown.lifetime = 180;
+	bossDown.anim.speed = 1.0f;
+	//shoot right
+	bossRight.anim.PushBack({ 370, 491, 48, 48 });
+	bossRight.anim.PushBack({ 344, 556, 48, 48 });
+	bossRight.lifetime = 180;
+	bossRight.anim.speed = 0.1f;
+	//shoot left
+	bossLeft.anim.PushBack({ 313, 491, 48, 48 });
+	bossLeft.anim.PushBack({ 285, 556, 48, 48 });
+	bossLeft.lifetime = 180;
+	bossLeft.anim.speed = 0.1f;
+	//shoot sudest
+	bossSudest.anim.PushBack({ 204, 491, 44, 48 });
+	bossSudest.anim.PushBack({ 237, 556, 38, 48 });
+	bossSudest.lifetime = 180;
+	bossSudest.anim.speed = 0.1f;
+	//shoot sudoest
+	bossSudoest.anim.PushBack({ 95, 491, 43, 48 });
+	bossSudoest.anim.PushBack({ 95, 556, 36, 48 });
+	bossSudoest.lifetime = 180;
+	bossSudoest.anim.speed = 0.1f;
+
 	return true;
 }
 

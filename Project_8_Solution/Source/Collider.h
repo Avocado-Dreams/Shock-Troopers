@@ -17,6 +17,8 @@ struct Collider
 		ENEMY_SHOT,
 		PICKUPS,
 		BLUEDIAMOND,
+		FINALBOSS,
+		BOSS_SHOT,
 		MAX
 	};
 

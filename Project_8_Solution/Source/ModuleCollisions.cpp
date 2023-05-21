@@ -26,10 +26,11 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::MECH] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::BLUEDIAMOND] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::BLUEDIAMOND] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::FINALBOSS] = true;
 
 	matrix[Collider::Type::MECH][Collider::Type::WALL] = true;
-	matrix[Collider::Type::MECH][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::MECH][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::MECH][Collider::Type::MECH] = false;
 	matrix[Collider::Type::MECH][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::MECH][Collider::Type::ENEMY_SHOT] = false;
@@ -49,12 +50,18 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::BLUEDIAMOND] = false;
 
+	matrix[Collider::Type::BOSS_SHOT][Collider::Type::FINALBOSS] = false;
+	matrix[Collider::Type::BOSS_SHOT][Collider::Type::PLAYER] = true;
+
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::WALL] = false;
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::MECH] = false;
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::BLUEDIAMOND] = false;
+
+	matrix[Collider::Type::FINALBOSS][Collider::Type::PLAYER] = true;
+
 }
 
 // Destructor
@@ -166,6 +173,12 @@ void ModuleCollisions::DebugDraw()
 			break;
 			case Collider::Type::BLUEDIAMOND: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
+			case Collider::Type::FINALBOSS: // pink
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alpha);
+			break;
+			case Collider::Type::BOSS_SHOT: // turquoise
+			App->render->DrawQuad(colliders[i]->rect, 48, 213, 200, alpha);
 			break;
 		}
 	}

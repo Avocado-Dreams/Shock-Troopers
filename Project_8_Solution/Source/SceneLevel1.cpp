@@ -7,6 +7,7 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
+#include "ModuleFinalBoss.h"
 #include "ModulePlayer.h"
 #include "SceneLayer2.h"
 
@@ -66,8 +67,6 @@ bool SceneLevel1::Start()
 	App->enemies->Enable();
 	App->sceneLayer2->Enable();
 	App->pickUps->Enable();
-
-
 
 	return ret;
 }

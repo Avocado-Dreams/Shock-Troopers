@@ -7,6 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleFinalBoss.h"
 #include "ModuleFadeToBlack.h"
 #include "SDL/include/SDL_timer.h"
 
@@ -935,6 +936,7 @@ Update_Status ModulePlayer::Update()
 	else if (zone == 6 && App->render->camera.y < 6)
 	{
 		zone = 7;
+		App->finalBoss->Enable();
 		App->audio->PlayMusic("Assets/Music/DarkMatter.ogg", 1.0f);
 	}
 	else if (/*zone == 7 &&*/ (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN))  //C = continue, until we have the enemy condition
@@ -943,6 +945,16 @@ Update_Status ModulePlayer::Update()
 		win = 1; 
 		winAnim.Reset();
 		App->audio->PlayMusic("Assets/Music/silence.wav", 0.0f);
+	}
+
+	if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN) { //SHORTCUT TO FINAL BOSS
+		App->render->camera.y = 2*3; 
+		App->render->camera.x = 2100 * 3; 
+		position.y = 200;
+		position.x = 2200; 
+		zone = 7; 
+		App->finalBoss->Enable();
+		App->audio->PlayMusic("Assets/Music/DarkMatter.ogg", 1.0f);
 	}
 	
 	UpdateAnim();
@@ -1067,7 +1079,7 @@ Update_Status ModulePlayer::PostUpdate()
  	if (win > 0)
 	{
 		currentStateAnimation->Update();
-		SDL_Rect rectS = currentStateAnimation->GetCurrentFrame();
+		SDL_Rect rectS = currentStateAnimation->GetCurrentFrame(); 
 		App->render->Blit(textureState, position.x, position.y, &rectS);
 		if (win < 151) { win++; }
 		if (win == 70) { App->audio->PlayFx(winFx); }
@@ -1075,6 +1087,7 @@ Update_Status ModulePlayer::PostUpdate()
 			App->audio->PlayMusic("Assets/Music/StageClear.ogg", 0.0f);
 			SDL_Delay(3600);
 			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+			win = 0;
 		}
 	}
 	else if (death > 0)
@@ -1088,16 +1101,18 @@ Update_Status ModulePlayer::PostUpdate()
 		{
 			SDL_Delay(1000);
 			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+			death = 0;
 		}
 	}
-	else if (hit > 0)
+	else if (hit > 0 && vida > 0)
 	{
 		currentStateAnimation->Update();
 		SDL_Rect rectS = currentStateAnimation->GetCurrentFrame();
 		App->render->Blit(textureState, position.x - 3, position.y - 10, &rectS);
-		if (hit < 51) { hit++; }
-		if (hit == 2) { App->audio->PlayFx(hitFx); }
-		if (hit == 50)
+		if (hit < 26) { hit++; }
+		if (hit == 2) { 
+			App->audio->PlayFx(hitFx); }
+		if (hit == 25)
 		{
 			if (currentStateAnimation == &upHAnim) { currentLAnimation = &upLAnim; currentAnimation = &upAnim; }
 			if (currentStateAnimation == &downHAnim) { currentLAnimation = &downLAnim; currentAnimation = &downAnim; }
@@ -1124,7 +1139,20 @@ Update_Status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false && vida > 0)
+	if (c1 == collider && c2->type == Collider::Type::FINALBOSS)
+	{
+		if ((currentLAnimation == &upLAnim || currentLAnimation == &upWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2;; }
+		if ((currentLAnimation == &downLAnim || currentLAnimation == &downWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; }
+		if ((currentLAnimation == &rightLAnim || currentLAnimation == &rightWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.x -= 2; }
+		if ((currentLAnimation == &leftLAnim || currentLAnimation == &leftWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.x += 2; }
+		if ((currentLAnimation == &norestLAnim || currentLAnimation == &norestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2; position.x -= 2; }
+		if ((currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2; position.x += 2; }
+		if ((currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; position.x -= 2; }
+		if ((currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; position.x += 2; }
+		LOG("Touching boss");
+
+	}
+	if (c1 == collider && c2->type == Collider::Type::ENEMY_SHOT && destroyed == false && vida > 0)
 	{
 		if (vida > 0) {
 			vida--; 
@@ -1155,5 +1183,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim) { currentStateAnimation = &noroestDAnim; noroestDAnim.Reset(); }
 		if (currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) { currentStateAnimation = &sudestDAnim; sudestDAnim.Reset(); }
 		if (currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) { currentStateAnimation = &sudoestDAnim; sudoestDAnim.Reset(); }
+
 	}
 }
