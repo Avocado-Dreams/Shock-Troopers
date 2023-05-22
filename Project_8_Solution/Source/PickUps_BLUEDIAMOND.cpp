@@ -38,7 +38,7 @@ void PickUps_BLUEDIAMOND::Update()
 	PickUps::Update();
 }
 
-void PickUps::OnCollision(Collider* collider)
+void PickUps_BLUEDIAMOND::OnCollision(Collider* collider)
 {
 	App->player->score += 30000;
 	App->particles->AddParticle(App->particles->BlueDiamond, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);

@@ -37,8 +37,4 @@ void PickUps::Draw()
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 }
 
-//void PickUps::OnCollision(Collider* collider)
-//{
-//
-//		
-//}
+void PickUps::OnCollision(Collider* collider) {}

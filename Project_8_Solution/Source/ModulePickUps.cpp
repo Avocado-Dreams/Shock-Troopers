@@ -8,6 +8,7 @@
 
 #include "PickUps.h"
 #include "PickUps_BLUEDIAMOND.h"
+#include "PickUps_LIFE.h"
 
 #define SPAWN_MARGIN 50
 
