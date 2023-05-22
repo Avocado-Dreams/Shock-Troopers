@@ -346,8 +346,17 @@ void Enemy_Tank::OnCollision(Collider* collider)
 	App->particles->AddParticle(App->particles->tank_explosion, position.x+27, position.y+12, NULL, NULL, Collider::Type::NONE, 16);
 	App->audio->PlayFx(destroyedTank);
 	//Probabilidad de aparición de los BLUEDIAMONDS 
-	int spawnProbability = 30;
-	//Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
-	if (randomValue < spawnProbability) App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x + 12, position.y + 4);
+	// Probabilidad de aparición de los BLUEDIAMONDS 
+	int prob_diamond = 30;
+	int prob_life = 50;
+	// Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
+	if (randomValue < prob_diamond && hasDropped == false) {
+		App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x + 12, position.y + 4);
+		hasDropped = true;
+	}
+	if (randomValue < prob_life && hasDropped == false) {
+		App->pickUps->AddPickUps(PickUps_Type::LIFE, position.x + 12, position.y + 4);
+		hasDropped = true;
+	}
 
 }

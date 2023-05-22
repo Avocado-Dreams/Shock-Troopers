@@ -143,6 +143,9 @@ void ModulePickUps::SpawnPickUps(const PickUpsSpawnpoint& info)
 			case PickUps_Type::BLUEDIAMOND:
 				pickUps[i] = new PickUps_BLUEDIAMOND(info.x, info.y);
 				break;
+			case PickUps_Type::LIFE:
+				pickUps[i] = new PickUps_LIFE(info.x, info.y);
+				break;
 			}
 			pickUps[i]->texture = texture;
 			pickUps[i]->getPickUps = getPickUps;

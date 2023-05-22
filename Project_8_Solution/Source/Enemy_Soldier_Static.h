@@ -41,6 +41,7 @@ public:
 	float SHOOT_INTERVAL = 5;
 	bool isSpawning;
 	float scale;
+	bool hasDropped = false;
 
 private:
 	// The path that will define the position in the world

@@ -40,6 +40,7 @@ public:
 	float SHOOT_INTERVAL = 5;
 	bool isSpawning;
 	float scale;
+	bool hasDropped = false;
 
 private:
 	// The position (as ratio) in the wave at a specific momen

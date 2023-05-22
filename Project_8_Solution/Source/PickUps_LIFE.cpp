@@ -8,14 +8,16 @@
 
 PickUps_LIFE::PickUps_LIFE(int x, int y) : PickUps(x, y)
 {
-	Life.PushBack({ 85, 68, 16, 16 });
-	Life.PushBack({ 101, 67, 16, 17 });
-	Life.PushBack({ 117, 66, 16, 18 });
-	Life.PushBack({ 133, 67, 16, 17 });
-	Life.PushBack({ 149, 68, 15, 16 });
-	Life.PushBack({ 165, 67, 16, 17 });
-	Life.PushBack({ 181, 66, 16, 18 });
-	Life.PushBack({ 197, 67, 16, 17 });
+	Life.PushBack({ 23, 150, 20, 15 });
+	Life.PushBack({ 45, 150, 20, 15 });
+	Life.PushBack({ 67, 148, 20, 17 });
+	Life.PushBack({ 89, 148, 20, 17 });
+	Life.PushBack({ 111, 148, 20, 17 });
+	Life.PushBack({ 133, 148, 20, 17 });
+	Life.PushBack({ 155, 148, 20, 17 });
+	Life.PushBack({ 177, 148, 32, 17 });
+	Life.PushBack({ 211, 148, 30, 17 });
+	Life.PushBack({ 243, 148, 30, 17 });
 
 	Life.speed = 0.1f;
 	//back.pingpong = true;
@@ -41,6 +43,6 @@ void PickUps_LIFE::Update()
 void PickUps_LIFE::OnCollision(Collider* collider)
 {
 	App->player->score += 30000;
-	App->particles->AddParticle(App->particles->BlueDiamond, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
+	App->particles->AddParticle(App->particles->Life, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
 	App->audio->PlayFx(getPickUps);
 }

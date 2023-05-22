@@ -116,6 +116,12 @@ bool ModuleParticles::Start()
 	BlueDiamond.anim.speed = 0.2f;
 	BlueDiamond.lifetime = 50;
 
+	Life.anim.PushBack({ 275, 399, 34, 17 });
+	Life.anim.PushBack({ 309, 399, 34, 17 });
+	Life.anim.PushBack({ 343, 399, 34, 17 });
+	Life.anim.speed = 0.2f;
+	Life.lifetime = 50;
+
 	//BOSS SHOOTING
 	//shoot down
 	bossDown.anim.PushBack({ 10, 491, 32, 48 });

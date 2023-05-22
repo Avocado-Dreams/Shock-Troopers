@@ -57,8 +57,6 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);*/
 	App->enemies->AddEnemy(Enemy_Type::TANK, 100, 2400);
 	
-	
-	
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 2715 * 3;

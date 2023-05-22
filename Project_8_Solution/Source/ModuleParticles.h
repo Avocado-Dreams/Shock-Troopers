@@ -64,7 +64,7 @@ public:
 	Particle bossDown, bossRight, bossLeft, bossSudest, bossSudoest, bossSudR, bossSudoL;
 	Particle enemyShot,tankShot;
 	Particle sUp, sDown, sLeft, sRight, sNorest, sNoroest, sSudest, sSudoest;
-	Particle BlueDiamond;
+	Particle BlueDiamond, Life;
 };
 
 #endif // !__MODULEPARTICLES_H__
