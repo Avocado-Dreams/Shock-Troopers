@@ -30,6 +30,26 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* introTexture = nullptr;
+	SDL_Texture* introTexture2 = nullptr;
+
+	//start message
+	int startFontt = -1;
+	char startFont[32] = { "\0" };
+
+	SDL_Rect startFontRect;
+	// The pointer to the current player animation
+	// It will be switched depending on the player's movement direction
+	Animation* CurrentIntro = nullptr;
+
+
+	// A set of animations
+	//Animation idleAnim;
+	Animation title;
+
+
+
 };
 
 #endif
+

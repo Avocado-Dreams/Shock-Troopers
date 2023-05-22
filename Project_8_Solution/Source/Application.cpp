@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "SceneTeam.h"
 #include "SceneIntro.h"
+#include "SceneMenu.h"
 #include "SceneLevel1.h"
 #include "SceneLayer2.h"
 #include "SceneGameOver.h"
@@ -33,19 +34,20 @@ Application::Application()
 
 	modules[4] =    sceneTeam =     new SceneTeam(true);
 	modules[5] =	sceneIntro =	new SceneIntro(false);
-	modules[6] =	sceneLevel_1 =	new SceneLevel1(false);	//Gameplay scene starts disabled
-	modules[7] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[8] =	enemies =		new ModuleEnemies(false);	//Enemies starts disabled
-	modules[9] =	finalBoss =		new ModuleFinalBoss(false);
-	modules[10] =	particles =		new ModuleParticles(true);//Boss starts disabled
-	modules[11] =   sceneLayer2 =   new SceneLayer2(false);
-	modules[12] =   sceneOver =     new SceneGameOver(false);
+	modules[6] =	 sceneMenu =	new SceneMenu(false);
+	modules[7] =	sceneLevel_1 =	new SceneLevel1(false);	//Gameplay scene starts disabled
+	modules[8] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[9] =	enemies =		new ModuleEnemies(false);	//Enemies starts disabled
+	modules[10] =	finalBoss =		new ModuleFinalBoss(false);
+	modules[11] =	particles =		new ModuleParticles(true);//Boss starts disabled
+	modules[12] =   sceneLayer2 =   new SceneLayer2(false);
+	modules[13] =   sceneOver =     new SceneGameOver(false);
 
-	modules[13] =	collisions =	new ModuleCollisions(true);
-	modules[14] =	fade =			new ModuleFadeToBlack(true);
-	modules[15] =   fonts =         new ModuleFonts(true);
-	modules[16] =	pickUps =		new ModulePickUps(true);
-	modules[17] =	render =		new ModuleRender(true);
+	modules[14] =	collisions =	new ModuleCollisions(true);
+	modules[15] =	fade =			new ModuleFadeToBlack(true);
+	modules[16] =   fonts =         new ModuleFonts(true);
+	modules[17] =	pickUps =		new ModulePickUps(true);
+	modules[18] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()
