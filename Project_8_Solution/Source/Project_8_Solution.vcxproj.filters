@@ -127,6 +127,9 @@
     <ClInclude Include="SceneMenu.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="PickUps_LIFE.h">
+      <Filter>Source Files\Entities\PickUps</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -224,6 +227,9 @@
     </ClCompile>
     <ClCompile Include="SceneMenu.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="PickUps_LIFE.cpp">
+      <Filter>Source Files\Entities\PickUps</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
