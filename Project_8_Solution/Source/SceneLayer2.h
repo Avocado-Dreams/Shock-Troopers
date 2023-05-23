@@ -36,6 +36,10 @@ public:
 
 	void updateHp();
 
+	Animation* currentHP = nullptr;
+
+	Animation life100, life90, life80, life70, life60, life50, life40, life30, life20, life10, life0;
+
 public:
 
 	// The scene sprite sheet loaded into an SDL_Texture
@@ -71,9 +75,9 @@ public:
 
 	//Health bar
 
-	int hp = 100;
+	int hp;
 	SDL_Texture* textureHp = nullptr;
-	iPoint position;
+	SDL_Texture* HBar = nullptr;
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;

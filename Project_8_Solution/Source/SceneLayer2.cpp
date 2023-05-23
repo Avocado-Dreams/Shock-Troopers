@@ -16,7 +16,50 @@
 
 SceneLayer2::SceneLayer2(bool startEnabled) : Module(startEnabled)
 {
-
+	//Life 100
+	life100.PushBack({ 185, 5, 8, 132 });
+	life100.loop = false;
+	life100.speed = 0.0f;
+	//Life 90
+	life90.PushBack({ 167, 5, 8, 132 });
+	life90.loop = false;
+	life90.speed = 0.0f;
+	//Life 80
+	life80.PushBack({ 149, 5, 8, 132 });
+	life80.loop = false;
+	life80.speed = 0.0f;
+	//Life 70
+	life70.PushBack({ 131, 5, 8, 132 });
+	life70.loop = false;
+	life70.speed = 0.0f;
+	//Life 60
+	life60.PushBack({ 113, 5, 8, 132 });
+	life60.loop = false;
+	life60.speed = 0.0f;
+	//Life 50
+	life50.PushBack({ 59, 5, 8, 132 });
+	life50.loop = false;
+	life50.speed = 0.0f;
+	//Life 40
+	life40.PushBack({ 95, 5, 8, 132 });
+	life40.loop = false;
+	life40.speed = 0.0f;
+	//Life 30
+	life30.PushBack({ 77, 5, 8, 132 });
+	life30.loop = false;
+	life30.speed = 0.0f;
+	//Life 20
+	life20.PushBack({ 41, 5, 8, 132 });
+	life20.loop = false;
+	life20.speed = 0.0f;
+	//Life 10
+	life10.PushBack({ 23, 5, 8, 132 });
+	life10.loop = false;
+	life10.speed = 0.0f;
+	//Life 0
+	life0.PushBack({ 5, 5, 8, 132 });
+	life0.loop = false;
+	life0.speed = 0.0f;
 }
 
 SceneLayer2::~SceneLayer2()
@@ -24,46 +67,46 @@ SceneLayer2::~SceneLayer2()
 
 }
 
-void SceneLayer2 ::updateHp()
+void SceneLayer2::updateHp()
 {
 	//Carga sprite en base a la vida del jugador
 	switch (hp) {
 	case 100:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida100%.png");
+		currentHP = &life100;
 		break;
 	case 90:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida90%.png");
+		currentHP = &life90;
 		break;
 	case 80:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida80%.png");
+		currentHP = &life80;
 		break;
 	case 70:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida70%.png");
+		currentHP = &life70;
 		break;
 	case 60:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida60%.png");
+		currentHP = &life60;
 		break;
 	case 50:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida50%.png");
+		currentHP = &life50;
 		break;
 	case 40:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida40%.png");
+		currentHP = &life40;
 		break;
 	case 30:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida30%.png");
+		currentHP = &life30;;
 		break;
 	case 20:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida20%.png");
+		currentHP = &life20;
 		break;
 	case 10:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida10%.png");
+		currentHP = &life10;
 		break;
 	case 0:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida0%.png");
+		currentHP = &life0;
 		destroyed = true;
 		break;
 	default:
-		textureHp = App->textures->Load("Assets/Sprites/UI/Vida100%.png");
+		currentHP = &life100;
 		break;
 	}
 }
@@ -89,7 +132,9 @@ bool SceneLayer2::Start()
 	timerRect = { 0, 0, 30, 8 };
 	char lookupTable[] = { "0123456789:;(=)? abcdefghijklmnopqrstuvwxyz@!.-." };
 	scoreFont = App->fonts->Load("Assets/Sprites/Fonts/OrangeFont.png", lookupTable, 3);
-	updateHp();
+
+	HBar = App->textures->Load("Assets/Sprites/UI/HBar.png");
+	hp = App->player->vida;
 
 	return ret;
 }
@@ -150,8 +195,10 @@ Update_Status SceneLayer2::PostUpdate()
 
 
 	//Health Bar
-	SDL_Rect HBar = { 0, 0, 8, 132 };
-	App->render->Blit(textureHp, 8, 60, &HBar, 0);
+	updateHp();
+	SDL_Rect hpBarPosition = { 8, 60, 8, 132 };
+	App->render->Blit(HBar, hpBarPosition.x, hpBarPosition.y, &(currentHP->GetCurrentFrame()), 0);
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }

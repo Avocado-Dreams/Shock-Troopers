@@ -1123,7 +1123,7 @@ Update_Status ModulePlayer::PostUpdate()
 		if (death == 60)
 		{
 			SDL_Delay(1000);
-			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneOver, 60);
 			death = 0;
 		}
 	}
