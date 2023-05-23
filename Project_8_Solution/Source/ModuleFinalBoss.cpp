@@ -76,6 +76,8 @@ ModuleFinalBoss::ModuleFinalBoss(bool startEnabled) : Module(startEnabled)
 	sudoLBSAnim.loop = false;
 	sudoLBSAnim.speed = 0.3f;
 
+	timer = 1.0f;
+
 }
 
 ModuleFinalBoss::~ModuleFinalBoss()
@@ -103,12 +105,10 @@ bool ModuleFinalBoss::Start()
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 109, 162 }, Collider::Type::FINALBOSS, this);
 
-
 	return ret;
 }
 Update_Status ModuleFinalBoss::Update()
 {
-	Attack();
 	loop++;
 	if (loop % 3 == 0 && life > 50) {
 		if (state == 1)
@@ -178,12 +178,32 @@ Update_Status ModuleFinalBoss::Update()
 		bossShot--;
 	}
 	if (life < 50) { currentBAnim = &idleAnim; }
+	//if (life == 0) { currentBAnim = &destroyedAnim; bossDestroyed = true; }
 
+	if (ModuleFinalBoss::find_player())
+	{
+		if (timer <= 0.0f && isShooting == false)
+		{
+			Attack();
+		}
+		else if (timer > 0.0f && isShooting == false)Idle();
+	}
 	collider->SetPos(position.x, position.y);
 	currentBAnim->Update();
 	calculateAngle();
+	timer -= 1.0f / 60.0f;
+	if (timer <= 4.2) isShooting = false;
 
 	return Update_Status::UPDATE_CONTINUE;
+}
+
+bool ModuleFinalBoss::find_player()
+{
+	dx = position.x - (App->player->position.x);
+	dy = position.y - (App->player->position.y);
+	distance = sqrt((dx * dx) + (dy * dy));
+	if (distance < 550) return true;
+	else return false;
 }
 
 double ModuleFinalBoss::calculateAngle()
@@ -195,62 +215,53 @@ double ModuleFinalBoss::calculateAngle()
 	return angle;
 	
 }
-
+void ModuleFinalBoss::Idle()
+{
+	if (life > 50) {
+		if (ModuleFinalBoss::calculateAngle() >= -101.25 && ModuleFinalBoss::calculateAngle() < -78.75) currentBSAnim = &downBSAnim;
+		else if (ModuleFinalBoss::calculateAngle() <= -157.5 && ModuleFinalBoss::calculateAngle() < 90) currentBSAnim = &rightBSAnim;
+		else if (ModuleFinalBoss::calculateAngle() >= -22.5 && ModuleFinalBoss::calculateAngle() < 90) currentBSAnim = &leftBSAnim;	
+		else if (ModuleFinalBoss::calculateAngle() <= -33.75 && ModuleFinalBoss::calculateAngle() > -56.25) currentBSAnim = &sudoestBSAnim;
+		else if (ModuleFinalBoss::calculateAngle() <= -123.75 && ModuleFinalBoss::calculateAngle() > -146.25) currentBSAnim = &sudestBSAnim;
+		else if (ModuleFinalBoss::calculateAngle() <= -56.25 && ModuleFinalBoss::calculateAngle() > -78.75) currentBSAnim = &sudoLBSAnim;
+		else if (ModuleFinalBoss::calculateAngle() <= -101.25 && ModuleFinalBoss::calculateAngle() > -123.75) currentBSAnim = &sudRBSAnim;
+	}
+}
 void ModuleFinalBoss::Attack()
 {
 	if (life > 50) {
 		if (ModuleFinalBoss::calculateAngle() >= -101.25 && ModuleFinalBoss::calculateAngle() < -78.75) {
 			currentBSAnim = &downBSAnim;
-			/*if (shootTimer == 0) {
-				LOG("Boss shooting")
-				App->particles->AddParticle(App->particles->bossDown, position.x -60, position.y, NULL, 1, Collider::Type::BOSS_SHOT);
-				shootTimer = shootInterval; 
-			}*/
+			App->particles->AddParticle(App->particles->bossDown, position.x + 44, position.y + 91, NULL, NULL, Collider::Type::BOSS_SHOT);
 		}
 		else if (ModuleFinalBoss::calculateAngle() <= -157.5 && ModuleFinalBoss::calculateAngle() < 90) {
 			currentBSAnim = &rightBSAnim;
-		/*	if (shootTimer == 0) {
-				App->particles->AddParticle(App->particles->bossRight, position.x + 9, position.y + 30, NULL, 1, Collider::Type::BOSS_SHOT);
-				shootTimer = shootInterval;
-			}*/
+			App->particles->AddParticle(App->particles->bossRight, position.x + 106, position.y + 60, NULL, NULL, Collider::Type::BOSS_SHOT);
 		}
 		else if (ModuleFinalBoss::calculateAngle() >= -22.5 && ModuleFinalBoss::calculateAngle() < 90) {
 			currentBSAnim = &leftBSAnim;
-			/*if (shootTimer == 0) {
-				App->particles->AddParticle(App->particles->bossLeft, position.x + 9, position.y + 30, NULL, 1, Collider::Type::BOSS_SHOT);
-				shootTimer = shootInterval;
-			}*/
+			App->particles->AddParticle(App->particles->bossLeft, position.x + 5, position.y + 60, NULL, NULL, Collider::Type::BOSS_SHOT);
 		}
 		else if (ModuleFinalBoss::calculateAngle() <= -33.75 && ModuleFinalBoss::calculateAngle() > -56.25) {
 			currentBSAnim = &sudoestBSAnim;
-			/*if (shootTimer == 0) {
-				App->particles->AddParticle(App->particles->bossSudoest, position.x + 9, position.y + 30, NULL, 1, Collider::Type::BOSS_SHOT);
-				shootTimer = shootInterval;
-			}*/
+			App->particles->AddParticle(App->particles->bossSudoest, position.x + 10, position.y + 82, NULL, NULL, Collider::Type::BOSS_SHOT);
 		}
 		else if (ModuleFinalBoss::calculateAngle() <= -123.75 && ModuleFinalBoss::calculateAngle() > -146.25) {
 			currentBSAnim = &sudestBSAnim;
-			/*if (shootTimer == 0) {
-				App->particles->AddParticle(App->particles->bossSudest, position.x + 9, position.y + 30, NULL, 1, Collider::Type::BOSS_SHOT);
-				shootTimer = shootInterval;
-			}*/
+			App->particles->AddParticle(App->particles->bossSudest, position.x + 105, position.y + 82, NULL, NULL, Collider::Type::BOSS_SHOT);
 		}
 		else if (ModuleFinalBoss::calculateAngle() <= -56.25 && ModuleFinalBoss::calculateAngle() > -78.75) {
 			currentBSAnim = &sudoLBSAnim;
-			/*if (shootTimer == 0) {
-				App->particles->AddParticle(App->particles->bossSudoL, position.x + 9, position.y + 30, NULL, 1, Collider::Type::BOSS_SHOT);
-				shootTimer = shootInterval;
-			}*/
+			App->particles->AddParticle(App->particles->bossSudoL, position.x + 37, position.y + 91, NULL, NULL, Collider::Type::BOSS_SHOT);
 		}
 		else if (ModuleFinalBoss::calculateAngle() <= -101.25 && ModuleFinalBoss::calculateAngle() > -123.75) {
 			currentBSAnim = &sudRBSAnim;
-			/*if (shootTimer == 0) {
-				App->particles->AddParticle(App->particles->bossSudR, position.x + 9, position.y + 30, NULL, 1, Collider::Type::BOSS_SHOT);
-				shootTimer = shootInterval;
-			}*/
+			App->particles->AddParticle(App->particles->bossSudR, position.x + 58, position.y + 91, NULL, NULL, Collider::Type::BOSS_SHOT);
 		}
 	}
-	//shootTimer--;
+	isShooting = true;
+	//App->audio->PlayFx(enemyShotFx);
+	timer = SHOOT_INTERVAL;
 }
 
 Update_Status ModuleFinalBoss::PostUpdate()
@@ -268,22 +279,9 @@ Update_Status ModuleFinalBoss::PostUpdate()
 	}
 	return Update_Status::UPDATE_CONTINUE;
 }
-
-// Called before quitting
 bool ModuleFinalBoss::CleanUp()
 {
-	/*LOG("Freeing all enemies");
-
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr)
-		{
-			delete enemies[i];
-			enemies[i] = nullptr;
-		}
-	}*/
-
-	return true;
+	return true; 
 }
 
 void ModuleFinalBoss::OnCollision(Collider* c1, Collider* c2)
@@ -298,7 +296,7 @@ void ModuleFinalBoss::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == collider && c2->type == Collider::Type::PLAYER)
 	{
 		if (currentBAnim == &downAnim) {
-			if (App->player->position.y > position.y + 160) {
+			if (App->player->position.y > position.y + 160) { //diagonales para abajo no van 
 				App->player->position.y++; } 
 		}
 		LOG("Touching player. Pos boss: %d. Pos player: %d", position.y, App->player->position.y)
