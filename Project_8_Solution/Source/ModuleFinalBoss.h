@@ -45,6 +45,30 @@ public:
 	Animation idleAnim, upAnim, downAnim, flickerAnim, damagedAnim, destroyedAnim;
 	Animation downBSAnim, leftBSAnim, rightBSAnim, sudoestBSAnim, sudestBSAnim, sudoRBSAnim, sudoLBSAnim, sudRBSAnim, sudLBSAnim;
 
+	int distance;
+	int numShots = 0;
+	int MAXSHOTS = 5;
+	bool moveToPlayer = false;
+	bool isShooting = false;
+	
+	void Idle();
+	bool find_player();
+
+	float timer;
+	float SHOOT_INTERVAL = 5;
+	bool isSpawning;
+	float scale;
+
+	/*const int shootInterval = 5;
+	int shootTimer = shootInterval;*/
+	double dx;
+	double dy;
+	float angle;
+
+	void Attack();
+
+	double ModuleFinalBoss::calculateAngle(); 
+
 public:
 	// Position of the boss in the map
 	iPoint position;
@@ -77,18 +101,9 @@ public:
 	//boss being shot 
 	int bossShot = 0;
 
+	bool bossDestroyed = false; 
 	// The finale boss collider
 	Collider* collider = nullptr;
-
-	const int shootInterval = 5;
-	int shootTimer = shootInterval;
-	double dx;
-	double dy;
-	float angle;
-
-	void Attack();
-
-	double  ModuleFinalBoss::calculateAngle();
 
 private:
 

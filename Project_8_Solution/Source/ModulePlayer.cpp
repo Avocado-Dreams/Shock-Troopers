@@ -950,7 +950,7 @@ Update_Status ModulePlayer::Update()
 		App->finalBoss->Enable();
 		App->audio->PlayMusic("Assets/Music/DarkMatter.ogg", 1.0f);
 	}
-	else if (/*zone == 7 &&*/ (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN))  //C = continue, until we have the enemy condition
+	else if (zone == 7 &&/* App->finalBoss->bossDestroyed == true */(App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN))  //C = continue, until we have the enemy condition
 	{
 		//END OF LEVEL (After defeating enemies)
 		win = 1; 
@@ -1197,7 +1197,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		LOG("Touching boss");
 
 	}
-	if (c1 == collider && c2->type == Collider::Type::ENEMY_SHOT && destroyed == false && vida > 0)
+	if (c1 == collider && (c2->type == Collider::Type::ENEMY_SHOT || c2->type == Collider::Type::BOSS_SHOT) && destroyed == false && vida > 0)
 	{
 		if (vida > 0) {
 			vida -= 10; 
@@ -1212,11 +1212,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim) { currentStateAnimation = &noroestHAnim; noroestHAnim.Reset(); }
 		if (currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) { currentStateAnimation = &sudestHAnim; sudestHAnim.Reset(); }
 		if (currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) { currentStateAnimation = &sudoestHAnim; sudoestHAnim.Reset(); }
-		if(vida == 0){destroyed = true; }
+		if(vida == 0 && App->sceneLayer2->hp == 0){destroyed = true; }
 		}
 		
 	}
-
 	if (destroyed)
 	{
 		death = 1;
