@@ -1200,7 +1200,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == collider && c2->type == Collider::Type::ENEMY_SHOT && destroyed == false && vida > 0)
 	{
 		if (vida > 0) {
-			vida--; 
+			vida -= 10; 
 			App->sceneLayer2->hp -= 10;
 
 		hit = 1;

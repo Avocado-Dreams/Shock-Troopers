@@ -141,7 +141,7 @@ bool SceneLayer2::Start()
 
 Update_Status SceneLayer2::Update()
 {
-
+	LOG("%d", App->player->vida);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
