@@ -365,7 +365,7 @@ void Enemy_Soldier_Static::Attack()
 	}
 	isShooting = true;
 	App->audio->PlayFx(enemyShotFx);
-	timer = SHOOT_INTERVAL;
+	timer = SHOOT_INTERVAL - (randomValue = rand() % 3);
 }
 
 void Enemy_Soldier_Static::OnCollision(Collider* collider)

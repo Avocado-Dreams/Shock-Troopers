@@ -30,11 +30,11 @@ public:
 	// Disables the player and the enemies
 	bool CleanUp();
 
-	bool enemy1Spawned = false;
-	bool enemy2Spawned = false;
-	bool enemy3Spawned = false;
-	bool enemy4Spawned = false;
-	bool enemy5Spawned = false;
+	bool enemy1Spawned;
+	bool enemy2Spawned;
+	bool enemy3Spawned;
+	bool enemy4Spawned;
+	bool enemy5Spawned;
 
 
 public:
