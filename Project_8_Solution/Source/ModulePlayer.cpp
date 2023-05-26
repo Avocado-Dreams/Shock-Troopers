@@ -1216,6 +1216,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 		
 	}
+	if (c1 == collider && (c2->type == Collider::Type::LIFE))
+	{
+		/*vida += 64;
+		App->sceneLayer2->hp += 64;*/
+		App->sceneLayer2->currentHP += 64;
+	}
 	if (destroyed)
 	{
 		death = 1;

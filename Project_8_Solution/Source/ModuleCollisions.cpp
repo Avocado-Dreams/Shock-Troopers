@@ -1,7 +1,8 @@
 #include "ModuleCollisions.h"
-
+#include "ModuleEnemies.h"
+#include "ModuleParticles.h"
 #include "Application.h"
-
+#include "ModulePickUps.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneGameOver.h"
@@ -181,7 +182,21 @@ Update_Status ModuleCollisions::Update()
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneOver, 60);
     
 	}
-
+	if (App->input->keys[SDL_SCANCODE_O] == KEY_DOWN && contador <= MAX_COLLIDERS)
+	{
+		App->pickUps->AddPickUps(PickUps_Type::LIFE, App->player->position.x , App->player->position.y -30);
+		contador++;
+	}
+	if (App->input->keys[SDL_SCANCODE_P] == KEY_DOWN && contador <= MAX_COLLIDERS)
+	{
+		App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, App->player->position.x, App->player->position.y - 30);
+		contador++;
+	}
+	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN && contador <= MAX_COLLIDERS)
+	{
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, App->player->position.x , App->player->position.y-50);
+		contador++;
+	}
 	return Update_Status::UPDATE_CONTINUE;
 }
 

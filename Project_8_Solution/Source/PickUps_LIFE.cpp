@@ -1,5 +1,7 @@
 #include "PickUps_LIFE.h"
 
+#include "ModuleInput.h"
+#include "SDL/include/SDL_Scancode.h"
 #include "ModuleAudio.h"
 #include "ModuleParticles.h"
 #include "Application.h"
@@ -35,6 +37,9 @@ void PickUps_LIFE::Update()
 	path.Update();
 	currentAnim = path.GetCurrentAnimation();
 
+	
+		
+
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	PickUps::Update();
@@ -42,7 +47,7 @@ void PickUps_LIFE::Update()
 
 void PickUps_LIFE::OnCollision(Collider* collider)
 {
-	App->player->score += 30000;
+	App->player->vida += 64;
 	App->particles->AddParticle(App->particles->Life, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
 	App->audio->PlayFx(getPickUps);
 }
