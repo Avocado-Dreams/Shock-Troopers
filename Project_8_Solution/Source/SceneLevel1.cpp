@@ -27,6 +27,12 @@ bool SceneLevel1::Start()
 {
 	LOG("Loading background assets");
 
+	enemy1Spawned = false;
+	enemy2Spawned = false;
+	enemy3Spawned = false;
+	enemy4Spawned = false;
+	enemy5Spawned = false;
+
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Sprites/Background/Mapa.png");
@@ -88,6 +94,10 @@ Update_Status SceneLevel1::Update()
 	if (App->player->position.y < 2700 && enemy4Spawned == false) {
 		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 50, 2580);
 		enemy4Spawned = true;
+	}
+	if (App->player->position.y < 2700 && enemy5Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::TANK, 100, 2400);
+		enemy5Spawned = true;
 	}
 	return Update_Status::UPDATE_CONTINUE;
 }
