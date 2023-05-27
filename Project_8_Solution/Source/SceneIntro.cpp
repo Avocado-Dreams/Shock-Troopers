@@ -94,7 +94,7 @@ bool SceneIntro::Start()
 	CurrentIntro = &title;
 	char lookupTable1[] = { "0123456789:;(=)? ABCDEFGHIJKLMNOPQRSTUVWXYZc!,-." };
 	startFontt = App->fonts->Load("Assets/Sprites/Fonts/OrangeFont.png", lookupTable1, 3);
-	startFontRect = { 0,0,128,8 };  //LAIA
+	startFontRect = { 0,0,128,8 }; 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
@@ -105,7 +105,12 @@ Update_Status SceneIntro::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneMenu, 90); //LAIA redireccionat al  modul menu!
+		App->fade->FadeToBlack(this, (Module*)App->sceneMenu, 90); 
+	}
+
+	if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN) //saltar-se la intro  ir al juego
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
 	}
 	title.Update();
 	return Update_Status::UPDATE_CONTINUE;
@@ -120,8 +125,8 @@ Update_Status SceneIntro::PostUpdate()
 	App->render->Blit(introTexture, 0, 0, &rect);
 
 
-	sprintf_s(startFont, 48, "%c", App->sceneIntro->title);
-	App->fonts->BlitText(20, 190, startFontt, "PRESS THE SPACE BUTTON TO START"); //LAIA
+	sprintf_s(startFont, 32, "%c", App->sceneIntro->title);
+	App->fonts->BlitText(20, 190, startFontt, "PRESS THE SPACE BUTTON TO START"); 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
