@@ -12,7 +12,7 @@ Enemy::Enemy(int x, int y) : position(x, y)
 	spawnPos = position;
 
 	damagedSoldier = App->audio->LoadFx("Assets/Fx/damaged_enemy.wav");
-	destroyedTank = App->audio->LoadFx("Assets/Fx/Tank destruction.wav");
+	destroyedTank = App->audio->LoadFx("Assets/Fx/tankDestroyed.wav");
 }
 
 Enemy::~Enemy()

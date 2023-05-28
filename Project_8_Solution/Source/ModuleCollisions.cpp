@@ -34,6 +34,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::TANK] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::TANK_SHOT] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::LIFE] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::EXPLOSION] = false;
 
 	matrix[Collider::Type::SOLDIER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER] = true;
@@ -65,11 +66,14 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::TANK] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::TANK_SHOT] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::LIFE] = false;
+	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::FINALBOSS] = false;
+	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::BOSS_SHOT] = false;
 
 	matrix[Collider::Type::BOSS_SHOT][Collider::Type::FINALBOSS] = false;
 	matrix[Collider::Type::BOSS_SHOT][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::BOSS_SHOT][Collider::Type::LIFE] = false;
 	matrix[Collider::Type::BOSS_SHOT][Collider::Type::PLAYER_SHOT] = false;
+	matrix[Collider::Type::BOSS_SHOT][Collider::Type::ENEMY_SHOT] = false;
 
 	matrix[Collider::Type::TANK_SHOT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::TANK_SHOT][Collider::Type::PLAYER] = true;
@@ -91,6 +95,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 
 	matrix[Collider::Type::FINALBOSS][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::FINALBOSS][Collider::Type::BOSS_SHOT] = false;
+	matrix[Collider::Type::FINALBOSS][Collider::Type::EXPLOSION] = false;
 
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::TANK] = false;
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::TANK_SHOT] = false;
@@ -114,6 +119,11 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::LIFE][Collider::Type::TANK] = false;
 	matrix[Collider::Type::LIFE][Collider::Type::TANK_SHOT] = false;
 	matrix[Collider::Type::LIFE][Collider::Type::LIFE] = false;
+
+	matrix[Collider::Type::EXPLOSION][Collider::Type::FINALBOSS] = false;
+	matrix[Collider::Type::EXPLOSION][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::EXPLOSION][Collider::Type::PLAYER_SHOT] = false;
+
 }
 
 // Destructor
@@ -234,6 +244,9 @@ void ModuleCollisions::DebugDraw()
 			break;
 			case Collider::Type::BOSS_SHOT: // turquoise
 			App->render->DrawQuad(colliders[i]->rect, 48, 213, 200, alpha);
+			break;
+			case Collider::Type::EXPLOSION: // dark blue
+			App->render->DrawQuad(colliders[i]->rect, 0, 0, 139, alpha);
 			break;
 		}
 	}

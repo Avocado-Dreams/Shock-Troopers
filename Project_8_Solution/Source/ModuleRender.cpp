@@ -56,20 +56,20 @@ Update_Status ModuleRender::PreUpdate()
 
 Update_Status ModuleRender::Update()
 {
-	//Handle positive vertical movement
-	if (App->input->keys[SDL_SCANCODE_UP] == KEY_REPEAT)
-		camera.y -= cameraSpeed;
+	////Handle positive vertical movement
+	//if (App->input->keys[SDL_SCANCODE_UP] == KEY_REPEAT)
+	//	camera.y -= cameraSpeed;
 
-	//Handle negative vertical movement
-	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_REPEAT)
-		camera.y += cameraSpeed;
+	////Handle negative vertical movement
+	//if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_REPEAT)
+	//	camera.y += cameraSpeed;
 
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT)
-		camera.x -= cameraSpeed;
-	if (camera.x < 0) camera.x = 0;
+	//if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT)
+	//	camera.x -= cameraSpeed;
+	//if (camera.x < 0) camera.x = 0;
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT)
-		camera.x += cameraSpeed;
+	//if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT)
+	//	camera.x += cameraSpeed;
 
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -120,7 +120,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* sect
 
 	if (SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
-		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
+ 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 		ret = false;
 	}
 

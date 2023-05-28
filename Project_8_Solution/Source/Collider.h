@@ -22,6 +22,7 @@ struct Collider
 		LIFE,
 		FINALBOSS,
 		BOSS_SHOT,
+		EXPLOSION,
 		MAX
 	};
 

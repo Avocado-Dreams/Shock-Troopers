@@ -143,7 +143,7 @@ Update_Status SceneMenu::Update()
 Update_Status SceneMenu::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, NULL);
+	/*App->render->Blit(bgTexture, 0, 0, NULL);*/
 	SDL_Rect rectM = menu.GetCurrentFrame();
 	App->render->Blit(Texture1, 0, 0, &rectM);
 

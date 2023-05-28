@@ -150,7 +150,7 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 
 	isSpawning = false;
 
-	tankShotFx = App->audio->LoadFx("Assets/Fx/Tank shot.wav");
+	tankShotFx = App->audio->LoadFx("Assets/Fx/tankShot.wav");
 
 	collider = App->collisions->AddCollider({ 0, 0, 34, 34 }, Collider::Type::TANK, (Module*)App->enemies);
 

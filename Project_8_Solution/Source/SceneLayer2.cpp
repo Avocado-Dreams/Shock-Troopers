@@ -141,7 +141,7 @@ bool SceneLayer2::Start()
 
 Update_Status SceneLayer2::Update()
 {
-	LOG("%d", App->player->vida);
+	//LOG("%d", App->player->vida);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -178,14 +178,14 @@ Update_Status SceneLayer2::PostUpdate()
 
 	//Time
 
-	if (timerpass < 180)
-	{
-		App->render->Blit(bgTexture2, 0, 0);
-	}
-	if (timerpass > 180)
-	{
-		App->render->Blit(bgTexture3, 0, 0);
-	}
+	//if (timerpass < 180)
+	//{
+	//	App->render->Blit(bgTexture2, 0, 0);
+	//}
+	//if (timerpass > 180)
+	//{
+	//	App->render->Blit(bgTexture3, 0, 0);
+	//}
 
 	sprintf_s(scoreText, 10, "%08d", App->player->score);
 	App->fonts->BlitText(38, 5, scoreFont, scoreText);

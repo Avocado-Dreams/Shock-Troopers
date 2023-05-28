@@ -115,7 +115,7 @@ Update_Status SceneIntro::Update()
 Update_Status SceneIntro::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, NULL);
+	/*App->render->Blit(bgTexture, 0, 0, NULL);*/
 	SDL_Rect rect = title.GetCurrentFrame();
 	App->render->Blit(introTexture, 0, 0, &rect);
 

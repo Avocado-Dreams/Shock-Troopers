@@ -67,6 +67,16 @@ bool SceneLevel1::Start()
 	App->sceneLayer2->Enable();
 	App->pickUps->Enable();
 
+	App->player->vida = 100;
+	App->sceneLayer2->hp = 100;
+	App->player->win = 0; 
+	App->player->zone = 1; 
+	App->finalBoss->bossDestroyed = false; 
+	App->finalBoss->life = 100; 
+	App->finalBoss->position.x = 2182;
+	App->finalBoss->position.y = -162;
+	App->finalBoss->state = 1;
+
 	return ret;
 }
 

@@ -110,6 +110,12 @@ bool ModuleParticles::Start()
 	enemyShot.lifetime = 180;
 	enemyShot.anim.speed = 0.2f;
 
+	normalBShot.anim.PushBack({ 18, 32, 8, 9 });
+	normalBShot.anim.PushBack({ 5, 32, 8, 9 });
+	normalBShot.anim.PushBack({ 30, 32, 8, 9 });
+	normalBShot.lifetime = 380;
+	normalBShot.anim.speed = 0.2f;
+
 	BlueDiamond.anim.PushBack({ 215,318,28,16 });
 	BlueDiamond.anim.PushBack({ 243,318,28,16 });
 	BlueDiamond.anim.PushBack({ 271,318,28,16 });
@@ -124,37 +130,48 @@ bool ModuleParticles::Start()
 
 	//BOSS SHOOTING
 	//shoot down
-	bossDown.anim.PushBack({ 10, 491, 32, 48 });
-	bossDown.anim.PushBack({ 10, 556, 32, 48 });
-	bossDown.speed.y = 2;
+	bossDown.anim.PushBack({ 10, 491, 32, 49 });
+	bossDown.anim.PushBack({ 10, 559, 32, 49 });
+	bossDown.speed.y = 1;
 	bossDown.lifetime = 180;
-	bossDown.anim.speed = 1.0f;
+	bossDown.anim.speed = 0.8f;
 	//shoot right
 	bossRight.anim.PushBack({ 370, 491, 48, 48 });
-	bossRight.anim.PushBack({ 344, 556, 48, 48 });
-	bossRight.speed.x = 2;
+	bossRight.anim.PushBack({ 344, 559, 48, 48 });
+	bossRight.speed.x = 1;
 	bossRight.lifetime = 180;
-	bossRight.anim.speed = 1.0f;
+	bossRight.anim.speed = 0.8f;
 	//shoot left
 	bossLeft.anim.PushBack({ 313, 491, 48, 48 });
-	bossLeft.anim.PushBack({ 285, 556, 48, 48 });
-	bossLeft.speed.x = -2;
+	bossLeft.anim.PushBack({ 285, 559, 48, 48 });
+	bossLeft.speed.x = -1;
 	bossLeft.lifetime = 180;
-	bossLeft.anim.speed = 1.0f;
+	bossLeft.anim.speed = 0.8f;
 	//shoot sudest
 	bossSudest.anim.PushBack({ 204, 491, 44, 48 });
-	bossSudest.anim.PushBack({ 237, 556, 38, 48 });
+	bossSudest.anim.PushBack({ 230, 551, 46, 50 });
 	bossSudest.speed.y = 1;
 	bossSudest.speed.x = 1;
 	bossSudest.lifetime = 180;
-	bossSudest.anim.speed = 1.0f;
+	bossSudest.anim.speed = 0.8f;
 	//shoot sudoest
 	bossSudoest.anim.PushBack({ 95, 491, 43, 48 });
-	bossSudoest.anim.PushBack({ 95, 556, 36, 48 });
+	bossSudoest.anim.PushBack({ 95, 553, 36, 48 });
 	bossSudoest.speed.y = 1;
 	bossSudoest.speed.x = -1;
 	bossSudoest.lifetime = 180;
-	bossSudoest.anim.speed = 1.0f;
+	bossSudoest.anim.speed = 0.8f;
+
+	//Boss explosion
+	bossExplosion.anim.PushBack({ 10, 795, 95, 102 });
+	bossExplosion.anim.PushBack({ 119, 795, 95, 102 });
+	bossExplosion.anim.PushBack({ 241, 795, 95, 102 });
+	bossExplosion.anim.PushBack({ 376, 795, 95, 102 });
+	bossExplosion.anim.PushBack({ 19, 640, 133, 137 });
+	bossExplosion.anim.PushBack({ 187, 640, 133, 137 });
+	bossExplosion.anim.PushBack({ 330, 640, 133, 137 });
+	bossExplosion.anim.loop = false; 
+	bossExplosion.anim.speed = 0.2f;
 
 	return true;
 }

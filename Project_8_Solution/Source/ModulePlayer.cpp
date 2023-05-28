@@ -950,18 +950,11 @@ Update_Status ModulePlayer::Update()
 		App->finalBoss->Enable();
 		App->audio->PlayMusic("Assets/Music/DarkMatter.ogg", 1.0f);
 	}
-	else if (zone == 7 &&/* App->finalBoss->bossDestroyed == true */(App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN))  //C = continue, until we have the enemy condition
-	{
-		//END OF LEVEL (After defeating enemies)
-		win = 1; 
-		winAnim.Reset();
-		App->audio->PlayMusic("Assets/Music/silence.wav", 0.0f);
-	}
 
 	if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN) { //SHORTCUT TO FINAL BOSS
 		App->render->camera.y = 2*3; 
 		App->render->camera.x = 2100 * 3; 
-		position.y = 200;
+		position.y = 150;
 		position.x = 2200; 
 		zone = 7; 
 		App->finalBoss->Enable();
@@ -982,7 +975,7 @@ Update_Status ModulePlayer::Update()
 
 	//SHOOTING
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN && win == 0 && death == 0 && hit == 0)
 	{
 		shot = 12;
 		if (currentAnimation == &upAnim) currentAnimation = &upSAnim;
@@ -1101,16 +1094,31 @@ Update_Status ModulePlayer::PostUpdate()
 {
  	if (win > 0)
 	{
-		currentStateAnimation->Update();
-		SDL_Rect rectS = currentStateAnimation->GetCurrentFrame(); 
-		App->render->Blit(textureState, position.x, position.y, &rectS);
-		if (win < 151) { win++; }
-		if (win == 70) { App->audio->PlayFx(winFx); }
-		if (win == 150) { 
+		
+		if (win < 70) {
+			SDL_Rect rectL = currentLAnimation->GetCurrentFrame();
+			App->render->Blit(textureL, position.x, position.y + 18, &rectL);
+			SDL_Rect rect = currentAnimation->GetCurrentFrame();
+			App->render->Blit(texture, position.x, position.y, &rect);
+		}
+  		if (win == 70) {
+  			App->finalBoss->currentBAnim = nullptr;
+			App->finalBoss->currentBSAnim = nullptr;
+			currentStateAnimation = &winAnim;
+			winAnim.Reset();
+
+		}
+		if (win > 70) {
+			currentStateAnimation->Update();
+			SDL_Rect rectS = currentStateAnimation->GetCurrentFrame();
+			App->render->Blit(textureState, position.x, position.y, &rectS);
+		}
+		if (win < 221) { win++; }
+		if (win == 140) { App->audio->PlayFx(winFx); }
+		if (win == 220) { 
 			App->audio->PlayMusic("Assets/Music/StageClear.ogg", 0.0f);
 			SDL_Delay(3600);
 			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
-			win = 0;
 		}
 	}
 	else if (death > 0)
@@ -1228,7 +1236,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim) { currentStateAnimation = &noroestDAnim; noroestDAnim.Reset(); }
 		if (currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) { currentStateAnimation = &sudestDAnim; sudestDAnim.Reset(); }
 		if (currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) { currentStateAnimation = &sudoestDAnim; sudoestDAnim.Reset(); }
-
+		
 	}
-
 }
