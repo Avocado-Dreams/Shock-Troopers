@@ -38,6 +38,7 @@ public:
 	// Draws all existing colliders with some transparency
 	void DebugDraw();
 	void God_Mode();
+	int contador = 0;
 
 private:
 	// All existing colliders in the scene

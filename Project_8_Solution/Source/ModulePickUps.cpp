@@ -26,7 +26,7 @@ ModulePickUps::~ModulePickUps()
 bool ModulePickUps::Start()
 {
 	texture = App->textures->Load("Assets/Sprites/Others/PickUps.png");
-	getPickUps = App->audio->LoadFx("Assets/Fx/laser.wav");
+	getPickUps = App->audio->LoadFx("Assets/Fx/Scoring diamond.wav");
 
 	return true;
 }

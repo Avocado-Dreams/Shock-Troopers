@@ -69,8 +69,53 @@ SceneLayer2::~SceneLayer2()
 
 void SceneLayer2::updateHp()
 {
+	if (hp > 90)
+	{
+		currentHP = &life100;
+	}
+	else if (hp > 80 && hp <= 90)
+	{
+		currentHP = &life90;
+	}
+	else if (hp > 70 && hp <= 80)
+	{
+		currentHP = &life80;
+	}
+	else if (hp > 60 && hp <= 70)
+	{
+		currentHP = &life70;
+	}
+	else if (hp > 50 && hp <= 60)
+	{
+		currentHP = &life60;
+	}
+	else if (hp > 40 && hp <= 50)
+	{
+		currentHP = &life50;
+	}
+	else if (hp > 30 && hp <= 40)
+	{
+		currentHP = &life40;
+	}
+	else if (hp > 20 && hp <= 30)
+	{
+		currentHP = &life30;
+	}
+	else if (hp > 10 && hp <= 20)
+	{
+		currentHP = &life20;
+	}
+	else if (hp > 0 && hp <= 10)
+	{
+		currentHP = &life10;
+	}
+	else if (hp <= 0)
+	{
+		currentHP = &life0;
+		destroyed = true;
+	}
 	//Carga sprite en base a la vida del jugador
-	switch (hp) {
+	/*switch (hp) {
 	case 100:
 		currentHP = &life100;
 		break;
@@ -108,13 +153,15 @@ void SceneLayer2::updateHp()
 	default:
 		currentHP = &life100;
 		break;
-	}
+	}*/
 }
 
 // Load assets
 bool SceneLayer2::Start()
 {
 	LOG("Loading UI assets");
+
+	currentHP = &life100;
 
 	bool ret = true;
 	palms = App->textures->Load("Assets/Sprites/Background/Palmeras.png");

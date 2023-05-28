@@ -33,25 +33,20 @@ public:
 	Uint32 startTime = 0;
 
 	// to show characters
-	bool showCharacters[2][4];
-	/*
-	bool showJackal = true;
-	bool showMilky = false;
-	bool showLoki = false;
-	bool showSouthernCross = false;
-	bool showMarieBee = false;
-	bool showRio = false;
-	bool showHaru = false;
-	bool showBigMama = false; */
+	int QuadPos_x;
+	int QuadPos_y;
+
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* CurrentAnimaton1 = nullptr;
+	Animation* CurrentAnimaton2 = nullptr;
 
 
 	// A set of animations
 	//Animation idleAnim;
 	Animation menu;
+	Animation QuadSelect;
 
 
 	// The scene sprite sheet loaded into an SDL_Texture
@@ -66,18 +61,28 @@ public:
 	SDL_Texture* Haru = nullptr;
 	SDL_Texture* BigMama = nullptr;
 	SDL_Texture* LonelyWolf = nullptr;
-	SDL_Texture* QuadSelect = nullptr;
+	SDL_Texture* TimeText = nullptr;
+	SDL_Texture* PlayerSelect = nullptr;
+	SDL_Texture* QuadSelect1 = nullptr;
+
 
 
 	//NAMES TEXT
+	//BlueFont and BlueFontSmall
 	int NameFont = -1;
-	char MenuFont[26] = { "\0" };
-
 	int NameFont2 = -1;
-	char MenuFont2[52] = { "\0" };
+	int startFontt = -1;
+
+
+	char MenuFont[65] = { "\0" };
+	char MenuFont2[43] = { "\0" };
+	char startFont[49] = { "\0" };
+
+
 
 	SDL_Rect menuFontRect;
 	SDL_Rect menuFontRect2;
+	SDL_Rect startFontRect;
 	SDL_Rect CharRect;
 
 
