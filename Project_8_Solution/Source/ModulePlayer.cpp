@@ -7,6 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleHelicopter.h"
 #include "ModuleFinalBoss.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneLayer2.h"
@@ -960,6 +961,17 @@ Update_Status ModulePlayer::Update()
 		App->finalBoss->Enable();
 		App->audio->PlayMusic("Assets/Music/DarkMatter.ogg", 1.0f);
 	}
+
+	if (App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_DOWN) { //SHORTCUT TO HELICOPTER
+		App->render->camera.y = 1795 * 3;
+		App->render->camera.x = 880 * 3;
+		position.y = 1970;
+		position.x = 1020;
+		zone = 3;
+		App->helicopter->Enable();
+		App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
+	}
+
 	
 	UpdateAnim();
 	switch (zone)

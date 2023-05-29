@@ -9,7 +9,6 @@ enum class Enemy_Type
 {
 	NO_TYPE,
 	TANK,
-	BROWNSHIP,
 	SOLDIER,
 };
 

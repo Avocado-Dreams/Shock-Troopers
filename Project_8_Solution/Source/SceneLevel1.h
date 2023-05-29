@@ -36,12 +36,16 @@ public:
 	bool enemy4Spawned;
 	bool enemy5Spawned;
 
+	Animation* currentBox = nullptr;
+	Animation box;
+
 
 public:
 	
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* sky = nullptr;
+	SDL_Texture* textureBox = nullptr;
 };
 
 #endif

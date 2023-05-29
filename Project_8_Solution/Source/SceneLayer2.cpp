@@ -60,6 +60,7 @@ SceneLayer2::SceneLayer2(bool startEnabled) : Module(startEnabled)
 	life0.PushBack({ 5, 5, 8, 132 });
 	life0.loop = false;
 	life0.speed = 0.0f;
+
 }
 
 SceneLayer2::~SceneLayer2()
@@ -173,6 +174,7 @@ bool SceneLayer2::Start()
 	Credits = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	Weapon = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	Grenade = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
+
 
 	char lookupTableTimer[] = { "0123456789" };
 	timerFont = App->fonts->Load("Assets/Sprites/Fonts/numberTime.png", lookupTableTimer);

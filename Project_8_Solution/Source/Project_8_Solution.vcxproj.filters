@@ -85,9 +85,6 @@
     <ClInclude Include="Enemy.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_BrownShip.h">
-      <Filter>Source Files\Entities\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy_Soldier_Static.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
@@ -129,6 +126,9 @@
     </ClInclude>
     <ClInclude Include="PickUps_LIFE.h">
       <Filter>Source Files\Entities\PickUps</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleHelicopter.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -180,9 +180,6 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_BrownShip.cpp">
-      <Filter>Source Files\Entities\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy_Soldier_Static.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
@@ -230,6 +227,9 @@
     </ClCompile>
     <ClCompile Include="PickUps_LIFE.cpp">
       <Filter>Source Files\Entities\PickUps</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleHelicopter.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
