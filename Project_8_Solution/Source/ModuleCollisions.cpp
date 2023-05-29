@@ -33,12 +33,12 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::BLUEDIAMOND] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::FINALBOSS] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::TANK] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::TANK_SHOT] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::TANK_SHOT] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::LIFE] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::EXPLOSION] = false;
 
 	matrix[Collider::Type::SOLDIER][Collider::Type::WALL] = true;
-	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::SOLDIER][Collider::Type::SOLDIER] = false;
 	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::ENEMY_SHOT] = false;

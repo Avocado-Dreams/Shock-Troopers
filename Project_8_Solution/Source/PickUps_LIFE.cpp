@@ -47,7 +47,15 @@ void PickUps_LIFE::Update()
 
 void PickUps_LIFE::OnCollision(Collider* collider)
 {
-	App->player->vida += 64;
+	
+	for (int i = 0; i <= 64; i++)
+	{
+		if (App->player->vida < 100)
+		{
+			App->player->vida += 1;
+		}
+	}
+
 	App->particles->AddParticle(App->particles->Life, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
 	App->audio->PlayFx(getPickUps);
 }

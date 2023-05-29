@@ -73,43 +73,43 @@ void SceneLayer2::updateHp()
 	{
 		currentHP = &life100;
 	}
-	else if (hp > 80 && hp <= 90)
+	if (hp > 80 && hp <= 90)
 	{
 		currentHP = &life90;
 	}
-	else if (hp > 70 && hp <= 80)
+	if (hp > 70 && hp <= 80)
 	{
 		currentHP = &life80;
 	}
-	else if (hp > 60 && hp <= 70)
+	 if (hp > 60 && hp <= 70)
 	{
 		currentHP = &life70;
 	}
-	else if (hp > 50 && hp <= 60)
+	 if (hp > 50 && hp <= 60)
 	{
 		currentHP = &life60;
 	}
-	else if (hp > 40 && hp <= 50)
+	 if (hp > 40 && hp <= 50)
 	{
 		currentHP = &life50;
 	}
-	else if (hp > 30 && hp <= 40)
+	 if (hp > 30 && hp <= 40)
 	{
 		currentHP = &life40;
 	}
-	else if (hp > 20 && hp <= 30)
+	 if (hp > 20 && hp <= 30)
 	{
 		currentHP = &life30;
 	}
-	else if (hp > 10 && hp <= 20)
+	 if (hp > 10 && hp <= 20)
 	{
 		currentHP = &life20;
 	}
-	else if (hp > 0 && hp <= 10)
+	 if (hp > 0 && hp <= 10)
 	{
 		currentHP = &life10;
 	}
-	else if (hp <= 0)
+	 if (hp <= 0)
 	{
 		currentHP = &life0;
 		destroyed = true;
@@ -189,6 +189,7 @@ bool SceneLayer2::Start()
 Update_Status SceneLayer2::Update()
 {
 	//LOG("%d", App->player->vida);
+	hp = App->player->vida;
 	return Update_Status::UPDATE_CONTINUE;
 }
 
