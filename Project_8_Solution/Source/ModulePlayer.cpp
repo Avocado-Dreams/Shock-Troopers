@@ -1217,7 +1217,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		LOG("Touching boss");
 
 	}
-	if (c1 == collider && (c2->type == Collider::Type::ENEMY_SHOT || c2->type == Collider::Type::BOSS_SHOT) && destroyed == false && vida > 0)
+	if (c1 == collider && (c2->type == Collider::Type::ENEMY_SHOT || c2->type == Collider::Type::BOSS_SHOT || c2->type == Collider::Type::TANK_SHOT) && destroyed == false && vida > 0)
 	{
 		if (vida > 0) {
 			vida -= 10; 
