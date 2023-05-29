@@ -424,8 +424,8 @@ void Enemy_Soldier_Static::OnCollision(Collider* collider)
 
 
 	// Probabilidad de aparición de los BLUEDIAMONDS 
-	int prob_diamond = 30;
-	int prob_life = 90;
+	int prob_diamond = 35;
+	int prob_life = 17;
 	// Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
 	if (randomValue < prob_diamond && hasDropped == false) {
 		App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x + 12, position.y + 4);
