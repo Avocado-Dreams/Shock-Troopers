@@ -239,92 +239,92 @@ void Enemy_Tank::Attack()
 	if (Enemy_Tank::calculateAngle() >= -100 && Enemy_Tank::calculateAngle() < -80) {
 		shootDown.Reset();
 		currentAnim = &shootDown;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 9, position.y + 30, NULL, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankDown, position.x + 9, position.y + 30, NULL, 1, Collider::Type::TANK_SHOT);
 	}
 	else if (Enemy_Tank::calculateAngle() >= -120 && Enemy_Tank::calculateAngle() < -100) {
 		shootSE3.Reset();
 		currentAnim = &shootSE3;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y + 31, NULL, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankSE3, position.x + 16, position.y + 31, NULL, 1, Collider::Type::TANK_SHOT);
 	}
 	else if (Enemy_Tank::calculateAngle() >= -145 && Enemy_Tank::calculateAngle() < -120) {
 		shootSE2.Reset();
 		currentAnim = &shootSE2;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 19, position.y + 28, 1, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankSE2, position.x + 19, position.y + 28, 1, 1, Collider::Type::TANK_SHOT);
 	}
 	else if (Enemy_Tank::calculateAngle() >= -170 && Enemy_Tank::calculateAngle() < -145) {
 		shootSE1.Reset();
 		currentAnim = &shootSE1;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 26, position.y + 26, 2, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankSE1, position.x + 26, position.y + 26, 2, 1, Collider::Type::TANK_SHOT);
 	}
 	else if ((Enemy_Tank::calculateAngle() >= -179 && Enemy_Tank::calculateAngle() < -170) || (Enemy_Tank::calculateAngle() >= 170 && Enemy_Tank::calculateAngle() < 180)) {
 		shootRight.Reset();
 		currentAnim = &shootRight;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 41, position.y + 16, 1, 0, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankRight, position.x + 41, position.y + 16, 1, 0, Collider::Type::TANK_SHOT);
 	}
 	else if (Enemy_Tank::calculateAngle() <= 170 && Enemy_Tank::calculateAngle() > 150) {
 		shootNE3.Reset();
 		currentAnim = &shootNE3;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 34, position.y + 5, 2, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankNE3, position.x + 34, position.y + 5, 2, -1, Collider::Type::TANK_SHOT);
 	}
 
 	else if (Enemy_Tank::calculateAngle() <= 150 && Enemy_Tank::calculateAngle() > 125) {
 		shootNE2.Reset();
 		currentAnim = &shootNE2;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 28, position.y + 4, 1, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankNE2, position.x + 28, position.y + 4, 1, -1, Collider::Type::TANK_SHOT);
 	}
 
 	else if (Enemy_Tank::calculateAngle() <= 125 && Enemy_Tank::calculateAngle() > 100) {
 		shootNE1.Reset();
 		currentAnim = &shootNE1;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, NULL, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankNE1, position.x + 16, position.y - 5, NULL, -1, Collider::Type::TANK_SHOT);
 	}
 
 	else if (Enemy_Tank::calculateAngle() <= 100 && Enemy_Tank::calculateAngle() > 80) {
 		shootUp.Reset();
 		currentAnim = &shootUp;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, NULL, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankUp, position.x + 16, position.y - 5, NULL, -1, Collider::Type::TANK_SHOT);
 	}
 
 	else if (Enemy_Tank::calculateAngle() <= 80 && Enemy_Tank::calculateAngle() > 60) {
 		shootNW1.Reset();
 		currentAnim = &shootNW1;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 6, position.y + 4, -1, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankNO1, position.x + 6, position.y + 4, -1, -1, Collider::Type::TANK_SHOT);
 	}
 
 	else if (Enemy_Tank::calculateAngle() <= 60 && Enemy_Tank::calculateAngle() > 35) {
 		shootNW2.Reset();
 		currentAnim = &shootNW2;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 3, position.y + 6, -2, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankNO2, position.x + 3, position.y + 6, -2, -1, Collider::Type::TANK_SHOT);
 	}
 
 	else if (Enemy_Tank::calculateAngle() <= 35 && Enemy_Tank::calculateAngle() > 10) {
 		shootNW3.Reset();
 		currentAnim = &shootNW3;
-		App->particles->AddParticle(App->particles->enemyShot, position.x + 3, position.y + 6, -2, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankNO3, position.x + 3, position.y + 6, -2, -1, Collider::Type::TANK_SHOT);
 	}
 
 	else if ((Enemy_Tank::calculateAngle() <= 10 && Enemy_Tank::calculateAngle() >= 0) || (Enemy_Tank::calculateAngle() >= -10 && Enemy_Tank::calculateAngle() < -1)) {
 		shootLeft.Reset();
 		currentAnim = &shootLeft;
-		App->particles->AddParticle(App->particles->enemyShot, position.x - 5, position.y + 17, -2, NULL, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankLeft, position.x - 5, position.y + 17, -2, NULL, Collider::Type::TANK_SHOT);
 	}
 
 	else if (Enemy_Tank::calculateAngle() <= -10 && Enemy_Tank::calculateAngle() > -30) {
 		shootSW3.Reset();
 		currentAnim = &shootSW3;
-		App->particles->AddParticle(App->particles->enemyShot, position.x - 5, position.y + 32, -2, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankSO3, position.x - 5, position.y + 32, -2, 1, Collider::Type::TANK_SHOT);
 	}
 
 	else if (Enemy_Tank::calculateAngle() <= -30 && Enemy_Tank::calculateAngle() > -55) {
 		shootSW2.Reset();
 		currentAnim = &shootSW2;
-		App->particles->AddParticle(App->particles->enemyShot, position.x - 8, position.y + 32, -1, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankSO2, position.x - 8, position.y + 32, -1, 1, Collider::Type::TANK_SHOT);
 	}
 
 	else if (Enemy_Tank::calculateAngle() <= -55 && Enemy_Tank::calculateAngle() > -80) {
 		shootSW1.Reset();
 		currentAnim = &shootSW1;
-		App->particles->AddParticle(App->particles->enemyShot, position.x - 8, position.y + 32, -1, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankSO1, position.x - 8, position.y + 32, -1, 1, Collider::Type::TANK_SHOT);
 	}
 
 	isShooting = true;
