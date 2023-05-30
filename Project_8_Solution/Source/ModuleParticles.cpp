@@ -36,6 +36,7 @@ bool ModuleParticles::Start()
 	enemy_death.lifetime = 100;
 	//App->textures->Unload(texture);
 
+	//TANK
 	tank_explosion.anim.PushBack({ 11, 722, 32, 32 });
 	tank_explosion.anim.PushBack({ 44, 722, 32, 32 });
 	tank_explosion.anim.PushBack({ 77, 722, 32, 32 });
@@ -48,6 +49,85 @@ bool ModuleParticles::Start()
 	tank_explosion.anim.speed = 0.1f;
 	tank_explosion.lifetime = 100;
 
+	tankUp.anim.PushBack({ 448,18,15,25 });
+	tankUp.anim.PushBack({ 475,18,16,25 });
+	tankUp.anim.PushBack({ 508,18,15,25 });
+	tankUp.anim.PushBack({ 535,18,16,24 });
+
+	tankDown.anim.PushBack({ 448,66,15,25 });
+	tankDown.anim.PushBack({ 475,66,16,25 });
+	tankDown.anim.PushBack({ 508,66,15,25 });
+	tankDown.anim.PushBack({ 535,66,16,24 });
+
+	tankLeft.anim.PushBack({ 448,96,25,16 });
+	tankLeft.anim.PushBack({ 475,96,25,16 });
+	tankLeft.anim.PushBack({ 501,96,26,16 });
+	tankLeft.anim.PushBack({ 528,96,24,16 });
+
+	tankRight.anim.PushBack({ 448,51,25,15 });
+	tankRight.anim.PushBack({ 475,51,25,15 });
+	tankRight.anim.PushBack({ 501,51,26,15 });
+	tankRight.anim.PushBack({ 531,51,24,15 });
+
+	tankNE1.anim.PushBack({ 448,371,16,25 });
+	tankNE1.anim.PushBack({ 474,371,16,24 });
+	tankNE1.anim.PushBack({ 501,371,16,25 });
+	tankNE1.anim.PushBack({ 528,371,17,24 });
+
+	tankNE2.anim.PushBack({ 448,398,18,23 });
+	tankNE2.anim.PushBack({ 473,398,18,22 });
+	tankNE2.anim.PushBack({ 498,398,19,22 });
+	tankNE2.anim.PushBack({ 523,398,19,22 });
+
+	tankNE3.anim.PushBack({ 448,349,24,18 });
+	tankNE3.anim.PushBack({ 472,349,23,17 });
+	tankNE3.anim.PushBack({ 497,349,24,17 });
+	tankNE3.anim.PushBack({ 525,349,22,18 });
+
+	tankSE1.anim.PushBack({ 448,274,24,17 });
+	tankSE1.anim.PushBack({ 476,274,23,17 });
+	tankSE1.anim.PushBack({ 505,274,24,17 });
+	tankSE1.anim.PushBack({ 532,274,23,17 });
+
+	tankSE2.anim.PushBack({ 448,295,21,21 });
+	tankSE2.anim.PushBack({ 478,295,20,21 });
+	tankSE2.anim.PushBack({ 507,295,21,21 });
+	tankSE2.anim.PushBack({ 536,295,19,20 });
+
+	tankSE3.anim.PushBack({ 448,320,17,25 });
+	tankSE3.anim.PushBack({ 476,320,16,24 });
+	tankSE3.anim.PushBack({ 501,320,17,25 });
+	tankSE3.anim.PushBack({ 528,321,16,23 });
+
+	tankSO1.anim.PushBack({ 448,114,16,25 });
+	tankSO1.anim.PushBack({ 475,114,16,24 });
+	tankSO1.anim.PushBack({ 507,114,16,25 });
+	tankSO1.anim.PushBack({ 535,113,16,24 });
+
+	tankSO2.anim.PushBack({ 448,140,18,24 });
+	tankSO2.anim.PushBack({ 474,140,17,23 });
+	tankSO2.anim.PushBack({ 503,140,18,24 });
+	tankSO2.anim.PushBack({ 532,140,17,22 });
+
+	tankSO3.anim.PushBack({ 448,171,22,20 });
+	tankSO3.anim.PushBack({ 474,171,21,19 });
+	tankSO3.anim.PushBack({ 502,171,22,20 });
+	tankSO3.anim.PushBack({ 529,172,20,19 });
+
+	tankNO1.anim.PushBack({ 448,196,22,19 });
+	tankNO1.anim.PushBack({ 474,196,22,19 });
+	tankNO1.anim.PushBack({ 502,197,23,19 });
+	tankNO1.anim.PushBack({ 528,197,22,18 });
+
+	tankNO2.anim.PushBack({ 448,221,20,21 });
+	tankNO2.anim.PushBack({ 474,220,20,21 });
+	tankNO2.anim.PushBack({ 503,221,20,21 });
+	tankNO2.anim.PushBack({ 530,221,19,20 });
+
+	tankNO3.anim.PushBack({ 448,245,15,25 });
+	tankNO3.anim.PushBack({ 476,246,16,24 });
+	tankNO3.anim.PushBack({ 507,245,16,25 });
+	tankNO3.anim.PushBack({ 531,246,16,23 });
 	//BURST
 	//shoot up
 	sUp.anim.PushBack({ 0, 0, 11, 17 });

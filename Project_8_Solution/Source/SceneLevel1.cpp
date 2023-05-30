@@ -8,13 +8,29 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
+#include "ModuleHelicopter.h"
 #include "ModuleFinalBoss.h"
 #include "ModulePlayer.h"
 #include "SceneLayer2.h"
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
+	//Inactive box
+	box.PushBack({ 85, 50, 29, 38 });
+	box.loop = false;
 
+	//Destroy box
+	boxDestroyed.PushBack({ 95, 50, 29, 38 });
+	boxDestroyed.PushBack({ 135, 44, 43, 44 });
+	boxDestroyed.PushBack({ 188, 38, 54, 51 });
+	boxDestroyed.PushBack({ 255, 37, 64, 52 });
+	boxDestroyed.PushBack({ 329, 38, 63, 53 });
+	boxDestroyed.PushBack({ 403, 41, 63, 50 });
+	boxDestroyed.PushBack({ 476, 49, 64, 39 });
+	boxDestroyed.PushBack({ 550, 54, 64, 34 });
+	boxDestroyed.PushBack({ 625, 59, 63, 31 });
+	boxDestroyed.loop = false;
+	boxDestroyed.speed = 0.3f;
 }
 
 SceneLevel1::~SceneLevel1()
@@ -34,6 +50,9 @@ bool SceneLevel1::Start()
 	enemy5Spawned = false;
 
 	bool ret = true;
+
+	textureBox = App->textures->Load("Assets/Sprites/Others/Box.png");
+	currentBox = &box;
 
 	bgTexture = App->textures->Load("Assets/Sprites/Background/Mapa.png");
 	sky = App->textures->Load("Assets/Sprites/Background/Cielo.png");
@@ -56,11 +75,7 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 750, 120);
 	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 775, 120);
 	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 790, 120);
-
-	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 300, 2400);
-	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 850, 100);
-	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 870, 100);
-	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);*/
+*/
 	App->enemies->AddEnemy(Enemy_Type::TANK, 100, 2400);
 	
 
@@ -109,6 +124,7 @@ Update_Status SceneLevel1::Update()
 		App->enemies->AddEnemy(Enemy_Type::TANK, 100, 2400);
 		enemy5Spawned = true;
 	}
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -119,6 +135,12 @@ Update_Status SceneLevel1::PostUpdate()
 	SDL_Rect cielo{ 0, 0, 433, 142 };
 	App->render->Blit(sky, 890, 1795, &cielo);
 	
+
+	box.Update();
+	SDL_Rect boxPosition = { 95, 50, 29, 38 };
+	App->render->Blit(textureBox, 95, 50, &currentBox->GetCurrentFrame(), 0);
+
+
 	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -135,4 +157,16 @@ bool SceneLevel1::CleanUp()
 	// TODO 5: Remove All Memory Leaks - no solution here guys ;)
 
 	return true;
+}
+
+void SceneLevel1::OnCollision()
+{
+	/*if (boxActive && App->player->collider->CheckCollision(boxCollider))
+	{
+		boxActive = false;
+		currentBox = &boxDestroyed;
+		currentBox->Reset();
+		currentBox->speed = 0.3f;
+	}*/
+
 }

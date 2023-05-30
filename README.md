@@ -31,6 +31,10 @@ Your mission is to kill the terrorrist and mercenaries of BSG who appear on her 
 - S+A: move southwest
 - SPACE: shooting
 - C: pass from zone to zone
+- K: telport to final boss zone
+- M: teleport to helicopter zone
+- F2: god mode
+- F3: lose screen
 <br>
 
 **Additional comments**

@@ -56,13 +56,14 @@ bool SceneMenu::Start()
 	QuadPos_y = 39;
 
 
-	/*bgTexture = App->textures->Load("Assets/Sprites/startScreen.png");*/
-	App->audio->PlayMusic("Assets/Music/STIntro.ogg", 1.0f); // MENú MUSIC?
+
+	App->audio->PlayMusic("Assets/Music/STIntro.ogg", 1.0f); // MENú MUSIC
+	selectFx = App->audio->LoadFx("Assets/Fx/Change selection.wav");
 
 	Texture1 = App->textures->Load("Assets/Sprites/intro_sprites/menu.png");
 	CurrentAnimaton1 = &menu;
 
-	QuadSelect1 = App->textures->Load("Assets/Sprites/UI/Spritesheet of all the UI/elements/QuadSelect.png");
+	QuadSelect1 = App->textures->Load("Assets/Sprites/UI/Spritesheet of all the UI elements/QuadSelect.png");
 	CurrentAnimaton2 = &QuadSelect;
 
 
@@ -149,26 +150,33 @@ Update_Status SceneMenu::Update()
 		}
 	}
 
+	menu.Update();
+	QuadSelect.Update();
 
-		menu.Update();
-		QuadSelect.Update();
-
-		return Update_Status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 	
 }
-	Update_Status SceneMenu::PostUpdate()
-	{
+
+Update_Status SceneMenu::PostUpdate()
+{
 		// Draw everything --------------------------------------
-		App->render->Blit(bgTexture, 0, 0, NULL);
 		SDL_Rect rectM = menu.GetCurrentFrame();
 		App->render->Blit(Texture1, 0, 0, &rectM);
 
-
 		//Calculate time transcurred
 		Uint32 currentTime = SDL_GetTicks() - startTime;
+
+		if (lastPos_x == QuadPos_x && lastPos_y == QuadPos_y) {
+			soundPlayed = true;
+		}
+		else {
+			soundPlayed = false;
+		}
+	
 		if (currentTime >= 2000) //(2 seconds!)
 		{
 			//Draw characters
+
 			if ((QuadPos_x == 137) && (QuadPos_y == 39)) {
 				SDL_Rect IsJackal{ 0,249,91,62 };
 				App->render->Blit(Jackal, 42, 47, &IsJackal, 0);
@@ -179,9 +187,16 @@ Update_Status SceneMenu::Update()
 				SDL_Rect rectQuadSelect = QuadSelect.GetCurrentFrame();
 				App->render->Blit(QuadSelect1, 136, 38, &rectQuadSelect);
 
+				if (!soundPlayed)
+				{
+					App->audio->PlayFx(selectFx);
+					soundPlayed = true;
+				}
+
 			}
 
 			else if ((QuadPos_x == 169) && (QuadPos_y == 39)) {
+
 				SDL_Rect IsMilky{ 103, 250, 91, 62 };
 				App->render->Blit(Milky, 40, 47, &IsMilky, 0);
 
@@ -191,9 +206,15 @@ Update_Status SceneMenu::Update()
 				SDL_Rect rectQuadSelect = QuadSelect.GetCurrentFrame();
 				App->render->Blit(QuadSelect1, 168, 38, &rectQuadSelect);
 
+				if (!soundPlayed)
+				{
+					App->audio->PlayFx(selectFx);
+					soundPlayed = true;
+				}
+				
 				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 				{
-					App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+					App->fade->FadeToBlack(this, (Module*)App->sceneRoute, 90);
 				}
 
 			}
@@ -208,6 +229,12 @@ Update_Status SceneMenu::Update()
 				SDL_Rect rectQuadSelect = QuadSelect.GetCurrentFrame();
 				App->render->Blit(QuadSelect1, 200, 38, &rectQuadSelect);
 
+				if (!soundPlayed)
+				{
+					App->audio->PlayFx(selectFx);
+					soundPlayed = true;
+				}
+				
 			}
 
 			else if ((QuadPos_x == 233) && (QuadPos_y == 39)) {
@@ -223,6 +250,12 @@ Update_Status SceneMenu::Update()
 				SDL_Rect rectQuadSelect = QuadSelect.GetCurrentFrame();
 				App->render->Blit(QuadSelect1, 232, 38, &rectQuadSelect); 
 
+				if (!soundPlayed)
+				{
+					App->audio->PlayFx(selectFx);
+					soundPlayed = true;
+				}
+				
 			}
 
 			else if ((QuadPos_x == 137) && (QuadPos_y == 71)) {
@@ -237,6 +270,12 @@ Update_Status SceneMenu::Update()
 				SDL_Rect rectQuadSelect = QuadSelect.GetCurrentFrame();
 				App->render->Blit(QuadSelect1, 136, 70, &rectQuadSelect); 
 
+				if (!soundPlayed)
+				{
+					App->audio->PlayFx(selectFx);
+					soundPlayed = true;
+				}
+				
 			}
 
 			else if ((QuadPos_x == 169) && (QuadPos_y == 71)) {
@@ -249,6 +288,12 @@ Update_Status SceneMenu::Update()
 				SDL_Rect rectQuadSelect = QuadSelect.GetCurrentFrame();
 				App->render->Blit(QuadSelect1, 168, 70, &rectQuadSelect);
 
+				if (!soundPlayed)
+				{
+					App->audio->PlayFx(selectFx);
+					soundPlayed = true;
+				}
+				
 			}
 
 			else if ((QuadPos_x == 201) && (QuadPos_y == 71)) {
@@ -261,6 +306,12 @@ Update_Status SceneMenu::Update()
 				SDL_Rect rectQuadSelect = QuadSelect.GetCurrentFrame();
 				App->render->Blit(QuadSelect1, 200, 70, &rectQuadSelect);
 
+				if (!soundPlayed)
+				{
+					App->audio->PlayFx(selectFx);
+					soundPlayed = true;
+				}
+				
 			}
 
 			else if ((QuadPos_x == 233) && (QuadPos_y == 71)) {
@@ -274,10 +325,16 @@ Update_Status SceneMenu::Update()
 
 				SDL_Rect rectQuadSelect = QuadSelect.GetCurrentFrame();
 				App->render->Blit(QuadSelect1, 232, 70, &rectQuadSelect);
-
+				
+				if (!soundPlayed)
+				{
+					App->audio->PlayFx(selectFx);
+					soundPlayed = true;
+				}
 
 			}
 
+			soundPlayed = false;
 			//draw design items
 			SDL_Rect rectLonelyWolf{ 1631, 3, 66,34 };
 			App->render->Blit(LonelyWolf, 7, 25, &rectLonelyWolf);
@@ -286,6 +343,8 @@ Update_Status SceneMenu::Update()
 			App->render->Blit(TimeText, 152, 112, &rectTimeText);
 			//TEMPORITZADOR?
 
+			lastPos_x = QuadPos_x;
+			lastPos_y = QuadPos_y;
 		}
 
 		SDL_Rect rectPlayerSelect{ 48, 7, 208, 17 };
@@ -297,11 +356,8 @@ Update_Status SceneMenu::Update()
 
 
 
-
-
-
 		return Update_Status::UPDATE_CONTINUE;
-	}
+}
 
 
 

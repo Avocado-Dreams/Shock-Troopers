@@ -7,6 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleHelicopter.h"
 #include "ModuleFinalBoss.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneLayer2.h"
@@ -495,6 +496,7 @@ bool ModulePlayer::Start()
 	deathFx = App->audio->LoadFx("Assets/Fx/Milky death.wav");
 	winFx = App->audio->LoadFx("Assets/Fx/winLine.wav");
 	hitFx = App->audio->LoadFx("Assets/Fx/DamagedMilky.wav");
+	doorFx = App->audio->LoadFx("Assets/Fx/Door opening.wav");
 	
 	position.x = 150;
 	position.y = (120 + 2715);
@@ -509,7 +511,6 @@ bool ModulePlayer::Start()
 }
 void ModulePlayer::UpdateAnim()
 {
-
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
 		if (currentLAnimation != &leftWAnim)
@@ -962,6 +963,18 @@ Update_Status ModulePlayer::Update()
 		App->finalBoss->Enable();
 		App->audio->PlayMusic("Assets/Music/DarkMatter.ogg", 1.0f);
 	}
+
+	if (App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_DOWN) { //SHORTCUT TO HELICOPTER
+		App->render->camera.y = 1795 * 3;
+		App->render->camera.x = 880 * 3;
+		position.y = 1970;
+		position.x = 1020;
+		zone = 3;
+		App->helicopter->Enable();
+		App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
+	}
+
+	
 	if (position.y < 1070 && position.y > 808)
 	{
 		if (position.x <= 2158) position.x++;
@@ -1086,7 +1099,6 @@ Update_Status ModulePlayer::Update()
 
 	}*/
 
-	
 	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
@@ -1187,11 +1199,13 @@ Update_Status ModulePlayer::PostUpdate()
 	{
 		SDL_Rect doorClosed = { 10, 205, 153, 19 };
 		App->render->Blit(textureD, 100, 1795, &doorClosed);
+		soundPlayed = false;
 	}
 	if (zone == 3)
 	{
 		SDL_Rect openDoor = { 10, 10, 153, 19 };
 		App->render->Blit(textureD, 100, 1795, &openDoor);
+		soundPlayed = false;
 	}
 	if (zone == 2 && currentZone != 2) {
 		door.Reset();
@@ -1201,8 +1215,13 @@ Update_Status ModulePlayer::PostUpdate()
 	{
 		SDL_Rect rectD = door.GetCurrentFrame();
 		App->render->Blit(textureD, 100, 1795, &rectD);
-	}
 
+		if (!soundPlayed)
+		{
+			App->audio->PlayFx(doorFx);
+			soundPlayed = true;
+		}
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -1227,7 +1246,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		//LOG("Touching boss posy+161: %d FBposy: %d", position.y, App->finalBoss->position.y+161);
 	}
-	if (c1 == collider && (c2->type == Collider::Type::ENEMY_SHOT || c2->type == Collider::Type::BOSS_SHOT) && destroyed == false && vida > 0)
+	if (c1 == collider && (c2->type == Collider::Type::ENEMY_SHOT || c2->type == Collider::Type::BOSS_SHOT || c2->type == Collider::Type::TANK_SHOT) && destroyed == false && vida > 0)
 	{
 		if (vida > 0) {
 			vida -= 10; 

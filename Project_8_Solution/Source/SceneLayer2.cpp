@@ -60,6 +60,7 @@ SceneLayer2::SceneLayer2(bool startEnabled) : Module(startEnabled)
 	life0.PushBack({ 5, 5, 8, 132 });
 	life0.loop = false;
 	life0.speed = 0.0f;
+
 }
 
 SceneLayer2::~SceneLayer2()
@@ -73,43 +74,43 @@ void SceneLayer2::updateHp()
 	{
 		currentHP = &life100;
 	}
-	else if (hp > 80 && hp <= 90)
+	if (hp > 80 && hp <= 90)
 	{
 		currentHP = &life90;
 	}
-	else if (hp > 70 && hp <= 80)
+	if (hp > 70 && hp <= 80)
 	{
 		currentHP = &life80;
 	}
-	else if (hp > 60 && hp <= 70)
+	 if (hp > 60 && hp <= 70)
 	{
 		currentHP = &life70;
 	}
-	else if (hp > 50 && hp <= 60)
+	 if (hp > 50 && hp <= 60)
 	{
 		currentHP = &life60;
 	}
-	else if (hp > 40 && hp <= 50)
+	 if (hp > 40 && hp <= 50)
 	{
 		currentHP = &life50;
 	}
-	else if (hp > 30 && hp <= 40)
+	 if (hp > 30 && hp <= 40)
 	{
 		currentHP = &life40;
 	}
-	else if (hp > 20 && hp <= 30)
+	 if (hp > 20 && hp <= 30)
 	{
 		currentHP = &life30;
 	}
-	else if (hp > 10 && hp <= 20)
+	 if (hp > 10 && hp <= 20)
 	{
 		currentHP = &life20;
 	}
-	else if (hp > 0 && hp <= 10)
+	 if (hp > 0 && hp <= 10)
 	{
 		currentHP = &life10;
 	}
-	else if (hp <= 0)
+	 if (hp <= 0)
 	{
 		currentHP = &life0;
 		destroyed = true;
@@ -174,6 +175,7 @@ bool SceneLayer2::Start()
 	Weapon = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	Grenade = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 
+
 	char lookupTableTimer[] = { "0123456789" };
 	timerFont = App->fonts->Load("Assets/Sprites/Fonts/numberTime.png", lookupTableTimer);
 	timerRect = { 0, 0, 30, 8 };
@@ -189,6 +191,7 @@ bool SceneLayer2::Start()
 Update_Status SceneLayer2::Update()
 {
 	//LOG("%d", App->player->vida);
+	hp = App->player->vida;
 	return Update_Status::UPDATE_CONTINUE;
 }
 
