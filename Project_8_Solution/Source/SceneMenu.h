@@ -36,6 +36,9 @@ public:
 	int QuadPos_x;
 	int QuadPos_y;
 
+	int lastPos_x; // Position X variable reminder for the sound player in the character selection.
+	int lastPos_y; // Position Y variable reminder for the sound player in the character selection.
+
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
@@ -85,6 +88,9 @@ public:
 	SDL_Rect startFontRect;
 	SDL_Rect CharRect;
 
+
+	uint selectFx = 0;
+	bool soundPlayed = false;
 
 
 

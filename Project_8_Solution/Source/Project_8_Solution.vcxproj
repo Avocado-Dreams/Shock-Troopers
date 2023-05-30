@@ -82,7 +82,6 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Enemy_BrownShip.h" />
     <ClInclude Include="Enemy_Soldier_Static.h" />
     <ClInclude Include="Enemy_Tank.h" />
     <ClInclude Include="ModuleAudio.h" />
@@ -91,6 +90,7 @@
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFinalBoss.h" />
     <ClInclude Include="ModuleFonts.h" />
+    <ClInclude Include="ModuleHelicopter.h" />
     <ClInclude Include="PickUps_LIFE.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneLayer2.h" />
@@ -118,7 +118,6 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Enemy_BrownShip.cpp" />
     <ClCompile Include="Enemy_Soldier_Static.cpp" />
     <ClCompile Include="Enemy_Tank.cpp" />
     <ClCompile Include="Globals.cpp" />
@@ -128,6 +127,7 @@
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFinalBoss.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
+    <ClCompile Include="ModuleHelicopter.cpp" />
     <ClCompile Include="PickUps_LIFE.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneLayer2.cpp" />

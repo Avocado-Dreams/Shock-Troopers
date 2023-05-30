@@ -24,8 +24,6 @@ PickUps_BLUEDIAMOND::PickUps_BLUEDIAMOND(int x, int y) : PickUps(x, y)
 	/*path.PushBack({0.3f, 0.0f}, 0, &back);*/
 	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::BLUEDIAMOND, (Module*)App->pickUps);
 
-	
-
 }
 
 void PickUps_BLUEDIAMOND::Update()

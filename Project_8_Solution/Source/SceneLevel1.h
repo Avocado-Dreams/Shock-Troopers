@@ -30,11 +30,18 @@ public:
 	// Disables the player and the enemies
 	bool CleanUp();
 
+	void OnCollision();
+
 	bool enemy1Spawned;
 	bool enemy2Spawned;
 	bool enemy3Spawned;
 	bool enemy4Spawned;
 	bool enemy5Spawned;
+
+	bool boxActive = true;
+
+	Animation* currentBox = nullptr;
+	Animation box, boxDestroyed;
 
 
 public:
@@ -42,6 +49,8 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* sky = nullptr;
+	SDL_Texture* textureBox = nullptr;
+
 };
 
 #endif

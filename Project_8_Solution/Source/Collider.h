@@ -20,9 +20,13 @@ struct Collider
 		PICKUPS,
 		BLUEDIAMOND,
 		LIFE,
+		HELICOPTER,
+		HELICOPTER_SHOT,
 		FINALBOSS,
 		BOSS_SHOT,
 		EXPLOSION,
+		BOX,
+
 		MAX
 	};
 

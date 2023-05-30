@@ -105,6 +105,9 @@ public:
 	uint deathFx = 0;
 	uint winFx = 0;
 	uint hitFx = 0;
+	uint doorFx = 0;
+
+	bool soundPlayed = false;
 
 	//Time
 	int timer = 99;
