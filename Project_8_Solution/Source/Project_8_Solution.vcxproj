@@ -112,6 +112,7 @@
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="SceneMenu.h" />
+    <ClInclude Include="SceneRouteSelect.h" />
     <ClInclude Include="SceneTeam.h" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +148,7 @@
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
+    <ClCompile Include="SceneRouteSelect.cpp" />
     <ClCompile Include="SceneTeam.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

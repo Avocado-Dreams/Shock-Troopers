@@ -127,6 +127,9 @@
     <ClInclude Include="PickUps_LIFE.h">
       <Filter>Source Files\Entities\PickUps</Filter>
     </ClInclude>
+    <ClInclude Include="SceneRouteSelect.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleHelicopter.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
@@ -227,6 +230,9 @@
     </ClCompile>
     <ClCompile Include="PickUps_LIFE.cpp">
       <Filter>Source Files\Entities\PickUps</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneRouteSelect.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="ModuleHelicopter.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>

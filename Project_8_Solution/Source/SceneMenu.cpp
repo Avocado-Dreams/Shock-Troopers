@@ -56,14 +56,14 @@ bool SceneMenu::Start()
 	QuadPos_y = 39;
 
 
-	/*bgTexture = App->textures->Load("Assets/Sprites/startScreen.png");*/
-	App->audio->PlayMusic("Assets/Music/STIntro.ogg", 1.0f); // MENú MUSIC?
+
+	App->audio->PlayMusic("Assets/Music/STIntro.ogg", 1.0f); // MENú MUSIC
 	selectFx = App->audio->LoadFx("Assets/Fx/Change selection.wav");
 
 	Texture1 = App->textures->Load("Assets/Sprites/intro_sprites/menu.png");
 	CurrentAnimaton1 = &menu;
 
-	QuadSelect1 = App->textures->Load("Assets/Sprites/UI/Spritesheet of all the UI/elements/QuadSelect.png");
+	QuadSelect1 = App->textures->Load("Assets/Sprites/UI/Spritesheet of all the UI elements/QuadSelect.png");
 	CurrentAnimaton2 = &QuadSelect;
 
 
@@ -156,10 +156,10 @@ Update_Status SceneMenu::Update()
 	return Update_Status::UPDATE_CONTINUE;
 	
 }
-	Update_Status SceneMenu::PostUpdate()
-	{
+
+Update_Status SceneMenu::PostUpdate()
+{
 		// Draw everything --------------------------------------
-		App->render->Blit(bgTexture, 0, 0, NULL);
 		SDL_Rect rectM = menu.GetCurrentFrame();
 		App->render->Blit(Texture1, 0, 0, &rectM);
 
@@ -214,7 +214,7 @@ Update_Status SceneMenu::Update()
 				
 				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 				{
-					App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+					App->fade->FadeToBlack(this, (Module*)App->sceneRoute, 90);
 				}
 
 			}
@@ -357,7 +357,7 @@ Update_Status SceneMenu::Update()
 
 
 		return Update_Status::UPDATE_CONTINUE;
-	}
+}
 
 
 
