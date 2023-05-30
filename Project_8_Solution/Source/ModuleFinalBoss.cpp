@@ -290,8 +290,8 @@ void ModuleFinalBoss::Idle()
 		else if (ModuleFinalBoss::calculateAngle() >= -22.5 && ModuleFinalBoss::calculateAngle() < 22.5) currentSSAnim = &leftSSAnim;
 		else if (ModuleFinalBoss::calculateAngle() <= -22.5 && ModuleFinalBoss::calculateAngle() > -67.5) currentSSAnim = &sudoestSSAnim;
 		else if (ModuleFinalBoss::calculateAngle() <= -112.5 && ModuleFinalBoss::calculateAngle() > -157.5) currentSSAnim = &sudestSSAnim;
-		else if (ModuleFinalBoss::calculateAngle() <= 90 && ModuleFinalBoss::calculateAngle() > 15.5) currentSSAnim = &noroestSSAnim;
-		else if (ModuleFinalBoss::calculateAngle() >= 90 && ModuleFinalBoss::calculateAngle() > 157.5) currentSSAnim = &norestSSAnim;
+		else if (ModuleFinalBoss::calculateAngle() <= 90 && ModuleFinalBoss::calculateAngle() > 15.5) currentSSAnim = &leftSSAnim;
+		else if (ModuleFinalBoss::calculateAngle() >= 90 && ModuleFinalBoss::calculateAngle() > 157.5) currentSSAnim = &rightSSAnim;
 
 		//LOG("Torreta pos x: %d", torretaPosX);
 		//LOG("Torreta pos x: %d", torretaPosX);
@@ -379,6 +379,7 @@ Update_Status ModuleFinalBoss::PostUpdate()
 }
 bool ModuleFinalBoss::CleanUp()
 {
+	App->finalBoss->Disable();
 	return true; 
 }
 
@@ -392,14 +393,15 @@ void ModuleFinalBoss::OnCollision(Collider* c1, Collider* c2)
 		if (life == 0) { bossDestroyed = true; }
 	}
 
-	if (c1 == collider && c2->type == Collider::Type::PLAYER)
-	{
-		if (currentBAnim == &downAnim) {
-			if (App->player->position.y > position.y + 160) { //diagonales para abajo no van 
-				App->player->position.y++; } 
-		}
-		LOG("Touching player. Pos boss: %d. Pos player: %d", position.y, App->player->position.y)
-	}
+	//if (c1 == collider && c2->type == Collider::Type::PLAYER)
+	//{
+	//	if (currentBAnim == &downAnim) {
+	//		if (App->player->position.y > position.y + 160) { //diagonales para abajo no van 
+	//			App->player->position.y++; } 
+	//	}
+
+	//	LOG("Touching player. Pos boss: %d. Pos player: %d", position.y, App->player->position.y)
+	//}
 
 	if (bossDestroyed && App->player->win == 0)
 	{	

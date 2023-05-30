@@ -7,6 +7,7 @@
 #include "Application.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
+#include "SceneLayer2.h"
 
 PickUps_LIFE::PickUps_LIFE(int x, int y) : PickUps(x, y)
 {
@@ -47,7 +48,8 @@ void PickUps_LIFE::Update()
 
 void PickUps_LIFE::OnCollision(Collider* collider)
 {
-	App->player->vida += 64;
+	App->player->vida += 60;
+	if (App->player->vida > 100) App->player->vida = 100; App->sceneLayer2->hp = 100;//limitar la vida a max 100
 	App->particles->AddParticle(App->particles->Life, position.x, position.y, NULL, NULL, Collider::Type::NONE, 14);
 	App->audio->PlayFx(getPickUps);
 }

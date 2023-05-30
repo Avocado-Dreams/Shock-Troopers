@@ -764,6 +764,7 @@ void ModulePlayer::UpdateZoneB()
 		}
 		position.y -= speed;
 	}
+
 }
 void ModulePlayer::UpdateZoneBC()
 {
@@ -814,6 +815,7 @@ void ModulePlayer::UpdateZoneBC()
 
 		position.y -= speed;
 	}
+	if (position.y > 1998) position.y--;
 }
 void ModulePlayer::UpdateZoneC()
 {
@@ -903,9 +905,9 @@ void ModulePlayer::UpdateZoneE() {
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y + 216 < 50)
+		if ((App->render->camera.y / 3) - position.y + 216 < 10)
 		{
-			position.y = (App->render->camera.y / 3) + 216 - 50;
+			position.y = (App->render->camera.y / 3) + 216 - 10;
 		}
 
 		position.y += speed;
@@ -960,19 +962,34 @@ Update_Status ModulePlayer::Update()
 		App->finalBoss->Enable();
 		App->audio->PlayMusic("Assets/Music/DarkMatter.ogg", 1.0f);
 	}
+	if (position.y < 1070 && position.y > 808)
+	{
+		if (position.x <= 2158) position.x++;
+		else if (position.x >= 2289) position.x--;
+	}
+	if (position.y < 738 && position.y > 550)
+	{
+		if (position.x <= 2158) position.x++;
+		else if (position.x >= 2215) position.x--;
+	}
+	if (position.x > 735 && position.x < 780 && position. y < 1900 && zone != 4) position.x--;
+	if (position.x > 780 && position.x < 1250 && position.y < 1900 && zone != 4) position.y++;
 	
 	UpdateAnim();
-	switch (zone)
+	if (!destroyed)
 	{
-	case 1:UpdateZoneA(); break;
-	case 2:UpdateZoneAB(); break;  
-	case 3:UpdateZoneB(); break;
-	case 4:UpdateZoneBC(); break;
-	case 5:UpdateZoneC(); break;
-	case 6:UpdateZoneD(); break;
-	case 7:UpdateZoneE();
+		switch (zone)
+		{
+		case 1:UpdateZoneA(); break;
+		case 2:UpdateZoneAB(); break;
+		case 3:UpdateZoneB(); break;
+		case 4:UpdateZoneBC(); break;
+		case 5:UpdateZoneC(); break;
+		case 6:UpdateZoneD(); break;
+		case 7:UpdateZoneE();
+		}
 	}
-
+	
 	//SHOOTING
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN && win == 0 && death == 0 && hit == 0)
@@ -1132,8 +1149,8 @@ Update_Status ModulePlayer::PostUpdate()
 		{
 			SDL_Delay(1000);
 			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneOver, 60);
-			death = 0;
 		}
+		LOG("death: %d", death)
 	}
 	else if (hit > 0 && vida > 0)
 	{
@@ -1155,7 +1172,7 @@ Update_Status ModulePlayer::PostUpdate()
 			if (currentStateAnimation == &sudoestHAnim) { currentLAnimation = &sudoestLAnim; currentAnimation = &sudoestAnim; }
 			hit = 0;
 		}
-		
+		//LOG("Player hit")
 	}
 	else if (!destroyed)
 	{
@@ -1194,7 +1211,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && c2->type == Collider::Type::FINALBOSS)
 	{
-		if ((currentLAnimation == &upLAnim || currentLAnimation == &upWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2;; }
+		if (App->finalBoss->currentBAnim == &App->finalBoss->downAnim) {
+			if (position.y > App->finalBoss->position.y + 160) { 
+				position.y+=2;
+			}
+		}
+		if ((currentLAnimation == &upLAnim || currentLAnimation == &upWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2; }
 		if ((currentLAnimation == &downLAnim || currentLAnimation == &downWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; }
 		if ((currentLAnimation == &rightLAnim || currentLAnimation == &rightWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.x -= 2; }
 		if ((currentLAnimation == &leftLAnim || currentLAnimation == &leftWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.x += 2; }
@@ -1202,14 +1224,15 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if ((currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2; position.x += 2; }
 		if ((currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; position.x -= 2; }
 		if ((currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; position.x += 2; }
-		LOG("Touching boss");
 
+		//LOG("Touching boss posy+161: %d FBposy: %d", position.y, App->finalBoss->position.y+161);
 	}
 	if (c1 == collider && (c2->type == Collider::Type::ENEMY_SHOT || c2->type == Collider::Type::BOSS_SHOT) && destroyed == false && vida > 0)
 	{
 		if (vida > 0) {
 			vida -= 10; 
-			App->sceneLayer2->hp -= 10;
+			if (vida < 0) vida = 0;
+			App->sceneLayer2->hp = vida;
 
 		hit = 1;
 		if (currentLAnimation == &upLAnim || currentLAnimation == &upWAnim) { currentStateAnimation = &upHAnim; upHAnim.Reset(); }
@@ -1220,8 +1243,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim) { currentStateAnimation = &noroestHAnim; noroestHAnim.Reset(); }
 		if (currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) { currentStateAnimation = &sudestHAnim; sudestHAnim.Reset(); }
 		if (currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) { currentStateAnimation = &sudoestHAnim; sudoestHAnim.Reset(); }
-		if(vida == 0 && App->sceneLayer2->hp == 0){destroyed = true; }
+		if (vida == 0) { destroyed = true; }
 		}
+		LOG("vida: %d", vida)
 		
 	}
 	if (c1 == collider && (c2->type == Collider::Type::LIFE))
@@ -1230,7 +1254,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->sceneLayer2->hp += 64;*/
 		App->sceneLayer2->currentHP += 64;
 	}
-	if (destroyed)
+	if (destroyed && death == 0)
 	{
 		death = 1;
 
@@ -1242,6 +1266,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim) { currentStateAnimation = &noroestDAnim; noroestDAnim.Reset(); }
 		if (currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) { currentStateAnimation = &sudestDAnim; sudestDAnim.Reset(); }
 		if (currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) { currentStateAnimation = &sudoestDAnim; sudoestDAnim.Reset(); }
-		
+		LOG("Player dead")
 	}
 }

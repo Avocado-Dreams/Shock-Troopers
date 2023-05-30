@@ -132,7 +132,7 @@ bool ModuleParticles::Start()
 	//shoot down
 	bossDown.anim.PushBack({ 10, 491, 32, 49 });
 	bossDown.anim.PushBack({ 10, 559, 32, 49 });
-	bossDown.speed.y = 1;
+	bossDown.speed.y = 2;
 	bossDown.lifetime = 180;
 	bossDown.anim.speed = 0.8f;
 	//shoot right
@@ -144,7 +144,7 @@ bool ModuleParticles::Start()
 	//shoot left
 	bossLeft.anim.PushBack({ 313, 491, 48, 48 });
 	bossLeft.anim.PushBack({ 285, 559, 48, 48 });
-	bossLeft.speed.x = -1;
+	bossLeft.speed.x = -2;
 	bossLeft.lifetime = 180;
 	bossLeft.anim.speed = 0.8f;
 	//shoot sudest

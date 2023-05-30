@@ -9,7 +9,8 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollisions.h"
-
+#include "ModulePlayer.h"
+#include "ModuleFinalBoss.h"
 
 SceneGameOver::SceneGameOver(bool startEnabled) : Module(startEnabled)
 {
@@ -35,6 +36,9 @@ bool SceneGameOver::Start()
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
+
+	App->player->death = 0;
+	App->finalBoss->Disable();
 
 	return ret;
 }
