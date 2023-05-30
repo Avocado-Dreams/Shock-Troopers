@@ -61,6 +61,25 @@ SceneLayer2::SceneLayer2(bool startEnabled) : Module(startEnabled)
 	life0.loop = false;
 	life0.speed = 0.0f;
 
+	//Inactive box
+	box.PushBack({ 85, 50, 29, 38 });
+	box.loop = false;
+
+	//Destroy box
+	boxDestroyed.PushBack({ 95, 50, 29, 38 });
+	boxDestroyed.PushBack({ 135, 44, 43, 44 });
+	boxDestroyed.PushBack({ 188, 38, 54, 51 });
+	boxDestroyed.PushBack({ 255, 37, 64, 52 });
+	boxDestroyed.PushBack({ 329, 38, 63, 53 });
+	boxDestroyed.PushBack({ 403, 41, 63, 50 });
+	boxDestroyed.PushBack({ 476, 49, 64, 39 });
+	boxDestroyed.PushBack({ 550, 54, 64, 34 });
+	boxDestroyed.PushBack({ 625, 59, 63, 31 });
+	boxDestroyed.loop = false;
+	boxDestroyed.speed = 0.3f;
+
+	//collider = App->collisions->AddCollider({ 0, 0, 29, 38 }, Collider::Type::BOX, (Module*)App->enemies);
+
 }
 
 SceneLayer2::~SceneLayer2()
@@ -163,6 +182,8 @@ bool SceneLayer2::Start()
 	LOG("Loading UI assets");
 
 	currentHP = &life100;
+	currentBox = &box;
+	currentDBox = &boxDestroyed; 
 
 	bool ret = true;
 	palms = App->textures->Load("Assets/Sprites/Background/Palmeras.png");
@@ -171,9 +192,10 @@ bool SceneLayer2::Start()
 	FacePhoto = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	PhotoFrame = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	Time = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
-	Credits = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	Weapon = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	Grenade = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
+
+	textureBox = App->textures->Load("Assets/Sprites/Others/Box.png");
 
 
 	char lookupTableTimer[] = { "0123456789" };
@@ -192,6 +214,9 @@ Update_Status SceneLayer2::Update()
 {
 	//LOG("%d", App->player->vida);
 	hp = App->player->vida;
+
+	box.Update();
+	boxDestroyed.Update();
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -199,6 +224,11 @@ Update_Status SceneLayer2::Update()
 Update_Status SceneLayer2::PostUpdate()
 {
 	// Draw everything --------------------------------------
+
+	SDL_Rect boxPosition = { 95, 50, 29, 38 };
+	App->render->Blit(textureBox, 80, 2880, &boxPosition);
+
+
 
 	SDL_Rect palmeras{ 40, 0, 374, 1164 };
 	App->render->Blit(palms, 0, 2226, &palmeras);
@@ -214,9 +244,6 @@ Update_Status SceneLayer2::PostUpdate()
 
 	SDL_Rect Timer = { 137, 8, 30, 8 };
 	App->render->Blit(Time, 136, 7, &Timer, 0);
-
-	SDL_Rect NameCredits = { 207, 216, 58, 8 };
-	App->render->Blit(Credits, 200, 205, &NameCredits, 0);
 
 	SDL_Rect IconWeapon = { 48, 199, 33, 18 };
 	App->render->Blit(Weapon, 48, 198, &IconWeapon, 0);

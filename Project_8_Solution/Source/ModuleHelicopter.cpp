@@ -14,30 +14,63 @@
 
 ModuleHelicopter::ModuleHelicopter(bool startEnabled) : Module(startEnabled)
 {
-	//FLY ANIMATION
-	flyAnim.PushBack({ 314, 0, 118, 102 });
-	flyAnim.PushBack({ 196, 0, 118, 102 });
-	flyAnim.PushBack({ 76, 0, 118, 102 });
-	flyAnim.loop = true;
-	flyAnim.speed = 0.2f;
-
-/*//FLICKER ANIMATION
-	flickerAnim.PushBack({ 20, 364, 109, 162 });
-	flickerAnim.loop = false;
-	flickerAnim.speed = 0.3f;
-
-	//DAMAGED ANIMATION
-	destroyedAnim.PushBack({ 151, 364, 109, 162 });
-	destroyedAnim.loop = false;
+	//DESTROYED ANIMATION
+	destroyedAnim.PushBack({ 83, 5, 112, 98 });
+	destroyedAnim.PushBack({ 203, 5, 112, 98 });
+	destroyedAnim.PushBack({ 323, 5, 112, 98 });
+	destroyedAnim.loop = true;
 	destroyedAnim.speed = 0.3f;
 
-	//NORMAL SHOT
-	downSSAnim.PushBack({ 15, 14, 32, 27 });
-	downSSAnim.loop = false;
-	downSSAnim.speed = 0.3f;*/	
+	//FLICKER ANIMATION
+	flickerAnim.PushBack({ 9, 214, 112, 98 });
+
+	//FLY ANIMATION
+	flyAnim.PushBack({ 83, 5, 112, 98 });
+
+	//NORMAL SHOT YELLOW
+	shotYAnim.PushBack({ 135, 227, 4, 4 });
+
+	//NORMAL SHOT GREY
+	shotGAnim.PushBack({ 151, 227, 4, 4 });
+
+	//SHOT FIRE DOWN
+	shotSFire.PushBack({ 167, 226, 7, 12 });
+	shotSFire.PushBack({ 273, 227, 15, 15 });
+	shotSFire.PushBack({ 367, 227, 25, 29 });
+	shotSFire.loop = false;
+	shotSFire.speed = 0.3f;
+
+	//SHOT FIRE SUDEST
+	shotEFire.PushBack({ 204, 227, 10, 13 });
+	shotEFire.PushBack({ 249, 227, 13, 15 });
+	shotEFire.PushBack({ 299, 226, 23, 26 });
+	shotEFire.loop = false;
+	shotEFire.speed = 0.3f;
+
+	//SHOT FIRE SUDOEST
+	shotOFire.PushBack({ 185, 227, 9, 13 });
+	shotOFire.PushBack({ 225, 227, 13, 15 });
+	shotOFire.PushBack({ 333, 226, 23, 26 });
+	shotOFire.loop = false;
+	shotOFire.speed = 0.3f;
+
+	//EXPLOSION HELICOPTER
+	explosionAnim.PushBack({9, 511, 121, 144});
+	explosionAnim.PushBack({ 136, 457, 129, 87 });
+	explosionAnim.PushBack({ 245, 338, 98, 121 });
+	explosionAnim.PushBack({ 341, 338, 58, 63 });
+	explosionAnim.PushBack({ 404, 277, 68, 56 });
+	explosionAnim.PushBack({ 468, 212, 66, 68 });
+	explosionAnim.PushBack({ 539, 154, 70, 86 });
+	explosionAnim.PushBack({ 608, 68, 48, 77 });
+	explosionAnim.PushBack({ 620, 33, 67, 53 });
+	explosionAnim.PushBack({ 722, 4, 27, 74 });
+	explosionAnim.PushBack({ 697, 26, 26, 25 });
+	explosionAnim.loop = true;
+	explosionAnim.speed = 0.3f;
+
 
 	timer = 1.0f;
-
 }
 
 ModuleHelicopter::~ModuleHelicopter()
@@ -48,20 +81,20 @@ ModuleHelicopter::~ModuleHelicopter()
 bool ModuleHelicopter::Start()
 {
 	LOG("Loading helicopter textures");
-	propellers = App->textures->Load("Assets/Sprites/Enemies/Helicopter.png");
+	textureH = App->textures->Load("Assets/Sprites/Enemies/Helicoptero.png");
 
-	helicopterDestroyedFx = App->audio->LoadFx("Assets/Fx/tankDestroyed.wav");
-	helicopterShotFx = App->audio->LoadFx("Assets/Fx/tankShot.wav");
-	helicopterMovingFx = App->audio->LoadFx("Assets/Fx/tankMoving.wav");
+	helicopterDestroyedFx = App->audio->LoadFx("Assets/Fx/Helicopter breaking.wav");
+	helicopterShotFx = App->audio->LoadFx("Assets/Fx/Helicopter shots.wav");
+	helicopterMovingFx = App->audio->LoadFx("Assets/Fx/Helicopter arrival.wav");
 
 	currentFAnim = &flyAnim;
-	currentBSAnim = &downBSAnim;
-	currentSSAnim = &downSSAnim;
+	currentShotAnim = &shotYAnim;
 
 	bool ret = true;
+	startTime = SDL_GetTicks();
 
 	position.x = 967;
-	position.y = 1806;
+	position.y = 1928;
 
 	//// TODO 4: Retrieve the player when playing a second time
 	//destroyed = false;
@@ -72,36 +105,39 @@ bool ModuleHelicopter::Start()
 }
 Update_Status ModuleHelicopter::Update()
 {
+	Uint32 currentTime = SDL_GetTicks() - startTime;
+
 	if (!helicopterDestroyed) {
 
-		loop++;
-		ModulePlayer* player = App->player;
-		if (player->position.x < position.x) 
+		if (state == 1)
 		{
-			directionX = -1; //move left
-		}
-		else if (player->position.x > position.x)
-		{
-			directionX = 1;
+			currentFAnim = &flyAnim;
+			if (position.y > 1794) { position.y--; }
+			if (position.y == 1794) { App->audio->PlayFx(helicopterMovingFx); }
 		}
 
-		if (timer <= 0.0f && !isShooting)
+		if (currentTime >= 7000) //(2 seconds!)
 		{
-			isShooting = true;
-		}
+			Uint32 delayTime = 2000;
 
-		position.x += speed * directionX;
-
-		if (position.x <= -100 || position.x >= SCREEN_WIDTH + 100)
-		{
-			directionX = -directionX;
-		}
-
-		if (find_player())
-		{
-			if (timer <= 0.0f && isShooting == false)
+			if (currentTime >= 7000)
 			{
-				Attack();
+				if (App->player->position.x < position.x)
+				{
+					directionX = -1;
+				}
+
+				else if (App->player->position.x > position.x)
+				{
+					directionX = 1;
+				}
+
+				position.x += speed * directionX;
+
+				if (position.x <= -100 || position.x >= SCREEN_WIDTH + 100)
+				{
+				directionX = -directionX;
+				}
 			}
 		}
 
@@ -116,8 +152,7 @@ Update_Status ModuleHelicopter::Update()
 
 		collider->SetPos(position.x, position.y);
 		currentFAnim->Update();
-		currentBSAnim->Update();
-		currentSSAnim->Update();
+		currentShotAnim->Update();
 		calculateAngle();
 		timer -= 1.0f / 60.0f;
 		if (timer <= 4.2) isShooting = false;
@@ -158,34 +193,29 @@ void ModuleHelicopter::Idle()
 {
 	if (life > 50) {
 		if (ModuleHelicopter::calculateAngle() >= -101.25 && ModuleHelicopter::calculateAngle() < -78.75) {
-			currentBSAnim = &downBSAnim;
-			torretaPosX = position.x + 52 + 5;
-			torretaPosY = position.y + 10 + 21;
+			currentShotAnim = &shotYAnim;
+
 		}
 		else if (ModuleHelicopter::calculateAngle() <= -22.5 && ModuleHelicopter::calculateAngle() > -56.25) {
-			currentBSAnim = &sudoestBSAnim;
-			torretaPosX = position.x + 47 + 5;
-			torretaPosY = position.y + 27 + 21;
+			currentShotAnim = &shotYAnim;
+
 		}
 		else if (ModuleHelicopter::calculateAngle() <= -123.75 && ModuleHelicopter::calculateAngle() > -157.5) {
-			currentBSAnim = &sudestBSAnim;
-			torretaPosX = position.x + 46 + 5;
-			torretaPosY = position.y + 13 + 21;
+			currentShotAnim = &shotYAnim;
+
 		}
 		else if (ModuleHelicopter::calculateAngle() <= -56.25 && ModuleHelicopter::calculateAngle() > -78.75) {
-			currentBSAnim = &sudoLBSAnim;
-			torretaPosX = position.x + 49 + 5;
-			torretaPosY = position.y + 14 + 21;
+			currentShotAnim = &shotYAnim;
+
 		}
 		else if (ModuleHelicopter::calculateAngle() <= -101.25 && ModuleHelicopter::calculateAngle() > -123.75) {
-			currentBSAnim = &sudRBSAnim;
-			torretaPosX = position.x + 50 + 5;
-			torretaPosY = position.y + 9 + 21;
+			currentShotAnim = &shotYAnim;
+
 		}
 
-		if (ModuleHelicopter::calculateAngle() >= -112.5 && ModuleHelicopter::calculateAngle() < -67.5) currentSSAnim = &downSSAnim;
-		else if (ModuleHelicopter::calculateAngle() <= -22.5 && ModuleHelicopter::calculateAngle() > -67.5) currentSSAnim = &sudoestSSAnim;
-		else if (ModuleHelicopter::calculateAngle() <= -112.5 && ModuleHelicopter::calculateAngle() > -157.5) currentSSAnim = &sudestSSAnim;
+		if (ModuleHelicopter::calculateAngle() >= -112.5 && ModuleHelicopter::calculateAngle() < -67.5) currentShotAnim = &shotYAnim;
+		else if (ModuleHelicopter::calculateAngle() <= -22.5 && ModuleHelicopter::calculateAngle() > -67.5) currentShotAnim = &shotYAnim;
+		else if (ModuleHelicopter::calculateAngle() <= -112.5 && ModuleHelicopter::calculateAngle() > -157.5) currentShotAnim = &shotYAnim;
 
 		//LOG("Torreta pos x: %d", torretaPosX);
 		//LOG("Torreta pos x: %d", torretaPosX);
@@ -214,10 +244,9 @@ Update_Status ModuleHelicopter::PostUpdate()
 {
 	Idle();
 	if (currentFAnim != nullptr) {
-		App->render->Blit(propellers, position.x, position.y, &(currentFAnim->GetCurrentFrame()));
+		App->render->Blit(textureH, position.x, position.y, &(currentFAnim->GetCurrentFrame()));
 		if (currentFAnim != &flickerAnim) {
-			App->render->Blit(propellers, position.x + 5, position.y + 21, &(currentBSAnim->GetCurrentFrame()));
-			App->render->Blit(propellers, torretaPosX, torretaPosY, &(currentSSAnim->GetCurrentFrame()));
+			App->render->Blit(textureH, position.x + 5, position.y + 21, &(currentShotAnim->GetCurrentFrame()));
 		}
 	}
 
@@ -226,16 +255,19 @@ Update_Status ModuleHelicopter::PostUpdate()
 		if (BTint <= 30) { BTintInc = 10; }
 		if (BTint >= 255) { BTintInc = -10; }
 		BTint += BTintInc;
-		SDL_SetTextureColorMod(propellers, 255, BTint, BTint);
+		SDL_SetTextureColorMod(textureH, 255, BTint, BTint);
 	}
 	else
 	{
-		SDL_SetTextureColorMod(propellers, 255, 255, 255);
+		SDL_SetTextureColorMod(textureH, 255, 255, 255);
 	}
+
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 bool ModuleHelicopter::CleanUp()
 {
+	App->helicopter->Disable();
 	return true;
 }
 

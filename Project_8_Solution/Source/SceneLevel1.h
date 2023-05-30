@@ -40,16 +40,15 @@ public:
 
 	bool boxActive = true;
 
-	Animation* currentBox = nullptr;
-	Animation box, boxDestroyed;
-
 
 public:
 	
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-	SDL_Texture* sky = nullptr;
-	SDL_Texture* textureBox = nullptr;
+
+	SDL_Texture* textureSky = nullptr;
+	SDL_Rect sky;
+
 
 };
 

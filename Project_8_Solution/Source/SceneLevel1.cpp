@@ -15,22 +15,8 @@
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
-	//Inactive box
-	box.PushBack({ 85, 50, 29, 38 });
-	box.loop = false;
-
-	//Destroy box
-	boxDestroyed.PushBack({ 95, 50, 29, 38 });
-	boxDestroyed.PushBack({ 135, 44, 43, 44 });
-	boxDestroyed.PushBack({ 188, 38, 54, 51 });
-	boxDestroyed.PushBack({ 255, 37, 64, 52 });
-	boxDestroyed.PushBack({ 329, 38, 63, 53 });
-	boxDestroyed.PushBack({ 403, 41, 63, 50 });
-	boxDestroyed.PushBack({ 476, 49, 64, 39 });
-	boxDestroyed.PushBack({ 550, 54, 64, 34 });
-	boxDestroyed.PushBack({ 625, 59, 63, 31 });
-	boxDestroyed.loop = false;
-	boxDestroyed.speed = 0.3f;
+	//Background / sky
+	sky = { 0, 0, 433, 142 };
 }
 
 SceneLevel1::~SceneLevel1()
@@ -51,11 +37,8 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
-	textureBox = App->textures->Load("Assets/Sprites/Others/Box.png");
-	currentBox = &box;
-
 	bgTexture = App->textures->Load("Assets/Sprites/Background/Mapa.png");
-	sky = App->textures->Load("Assets/Sprites/Background/Cielo.png");
+	textureSky = App->textures->Load("Assets/Sprites/Background/Cielo.png");
 	App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
 
 	////Bottomside collider
@@ -132,13 +115,12 @@ Update_Status SceneLevel1::Update()
 Update_Status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	SDL_Rect cielo{ 0, 0, 433, 142 };
-	App->render->Blit(sky, 890, 1795, &cielo);
+	App->render->Blit(textureSky, 890, 1795, &sky);
 	
 
-	box.Update();
-	SDL_Rect boxPosition = { 95, 50, 29, 38 };
-	App->render->Blit(textureBox, 95, 50, &currentBox->GetCurrentFrame(), 0);
+	//box.Update();
+	//SDL_Rect boxPosition = { 95, 50, 29, 38 };
+	//App->render->Blit(textureBox, 95, 50, &currentBox->GetCurrentFrame(), 0);
 
 
 	App->render->Blit(bgTexture, 0, 0, NULL);
