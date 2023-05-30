@@ -15,7 +15,7 @@ public:
 	float angle;
 	int numShots = 0;
 	int MAXSHOTS = 5;
-	bool moveToPlayer = false;
+	bool isMoving = false;
 	bool melee = false;
 	bool isShooting = false;
 	// Constructor (x y coordinates in the world)
@@ -29,6 +29,8 @@ public:
 	void Attack();
 
 	void Idle();
+
+	void Move();
 
 	bool find_player();
 
@@ -48,7 +50,7 @@ private:
 	Path path;
 
 	// Enemy animations
-	Animation enemy_airspawnL,getUpL, enemy_airspawnR, getUpR, idleDownL,shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleUpL,shootUpL,idleUpR,shootUpR,idleSW1,shootSW1,idleSW2,shootSW2,idleLeft,shootLeft,idleNW1,shootNW1,idleNW2,shootNW2;
+	Animation moveUp,moveDown,moveLeft,moveRight,moveNE,moveNW,moveSE,moveSW,enemy_airspawnL,getUpL, enemy_airspawnR, getUpR, idleDownL,shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleUpL,shootUpL,idleUpR,shootUpR,idleSW1,shootSW1,idleSW2,shootSW2,idleLeft,shootLeft,idleNW1,shootNW1,idleNW2,shootNW2;
 
 	uint enemyShotFx = 0;
 };

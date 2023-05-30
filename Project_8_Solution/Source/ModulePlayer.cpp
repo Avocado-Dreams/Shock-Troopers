@@ -496,6 +496,7 @@ bool ModulePlayer::Start()
 	deathFx = App->audio->LoadFx("Assets/Fx/Milky death.wav");
 	winFx = App->audio->LoadFx("Assets/Fx/winLine.wav");
 	hitFx = App->audio->LoadFx("Assets/Fx/DamagedMilky.wav");
+	doorFx = App->audio->LoadFx("Assets/Fx/Door opening.wav");
 	
 	position.x = 150;
 	position.y = (120 + 2715);
@@ -510,7 +511,6 @@ bool ModulePlayer::Start()
 }
 void ModulePlayer::UpdateAnim()
 {
-
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
 		if (currentLAnimation != &leftWAnim)
@@ -1081,7 +1081,6 @@ Update_Status ModulePlayer::Update()
 
 	}*/
 
-	
 	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
@@ -1182,11 +1181,13 @@ Update_Status ModulePlayer::PostUpdate()
 	{
 		SDL_Rect doorClosed = { 10, 205, 153, 19 };
 		App->render->Blit(textureD, 100, 1795, &doorClosed);
+		soundPlayed = false;
 	}
 	if (zone == 3)
 	{
 		SDL_Rect openDoor = { 10, 10, 153, 19 };
 		App->render->Blit(textureD, 100, 1795, &openDoor);
+		soundPlayed = false;
 	}
 	if (zone == 2 && currentZone != 2) {
 		door.Reset();
@@ -1196,8 +1197,13 @@ Update_Status ModulePlayer::PostUpdate()
 	{
 		SDL_Rect rectD = door.GetCurrentFrame();
 		App->render->Blit(textureD, 100, 1795, &rectD);
-	}
 
+		if (!soundPlayed)
+		{
+			App->audio->PlayFx(doorFx);
+			soundPlayed = true;
+		}
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
