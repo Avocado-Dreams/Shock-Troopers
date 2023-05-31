@@ -40,6 +40,10 @@ public:
 	//pointer to current boss animation
 	Animation* currentFAnim = nullptr;
 	Animation* currentShotAnim = nullptr;
+	Animation* currentDestroyedAnim = nullptr;
+
+	SDL_Texture* textureSky = nullptr;
+	SDL_Rect sky;
 
 	//set of animations
 	Animation flyAnim, flickerAnim, destroyedAnim, explosionAnim;
@@ -96,9 +100,11 @@ public:
 	//count 
 	int count = 0;
 
-	//boss life
+	//helicopter life
 	int life = 100;
 
+	int gunPosX = 0;
+	int gunPosY = 0;
 
 	//red opacity when damaged
 	Uint8 BTint = 255;
@@ -106,6 +112,8 @@ public:
 
 	//helicopter being shot 
 	int helicopterShot = 0;
+
+	SDL_Texture* Destroyed = nullptr;
 
 	bool helicopterDestroyed = false;
 	// The helicopter collider

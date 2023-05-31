@@ -15,8 +15,7 @@
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
-	//Background / sky
-	sky = { 0, 0, 433, 142 };
+
 }
 
 SceneLevel1::~SceneLevel1()
@@ -38,7 +37,6 @@ bool SceneLevel1::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Sprites/Background/Mapa.png");
-	textureSky = App->textures->Load("Assets/Sprites/Background/Cielo.png");
 	App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
 
 	////Bottomside collider
@@ -115,7 +113,6 @@ Update_Status SceneLevel1::Update()
 Update_Status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(textureSky, 890, 1795, &sky);
 	
 
 	//box.Update();

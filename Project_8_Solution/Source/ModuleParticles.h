@@ -51,6 +51,7 @@ public:
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture = nullptr;
+
 	SDL_Texture* BLUEdiamond = nullptr;
 
 	// An array to store and handle all the particles
@@ -62,7 +63,7 @@ public:
 	//Template particle for a laser
 	Particle laser;
 	Particle bossDown, bossRight, bossLeft, bossSudest, bossSudoest, bossSudR, bossSudoL, bossExplosion, normalBShot;
-	Particle helicopterShotDown, helicopterShotSudest, helicopterShotSudoest;
+	Particle shotYAnim, shotGAnim, shotSFire, shotEFire, shotOFire, explosionAnim;
 	Particle enemyShot,tankShot;
 	Particle sUp, sDown, sLeft, sRight, sNorest, sNoroest, sSudest, sSudoest;
 	Particle tankUp, tankDown, tankLeft, tankRight, tankNE1, tankNE2, tankNE3, tankSE1, tankSE2, tankSE3, tankSO1, tankSO2, tankSO3, tankNO1, tankNO2, tankNO3;

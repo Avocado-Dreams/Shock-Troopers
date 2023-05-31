@@ -30,6 +30,7 @@ bool SceneGameOver::Start()
 	bool ret = true;
 
 	teamTexture = App->textures->Load("Assets/Sprites/intro_sprites/GameOver.png");
+	App->audio->PlayMusic("Assets/Music/silence.wav", 0.0f);
 	gameOver = App->audio->LoadFx("Assets/Music/Game Over.wav");
 
 	App->audio->PlayFx(gameOver);

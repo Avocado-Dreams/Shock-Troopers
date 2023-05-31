@@ -63,7 +63,6 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture2 = nullptr;
 	SDL_Texture* bgTexture3 = nullptr;
-	SDL_Texture* textureBox = nullptr;
 
 	int timerFont = -1;
 	int timerCounter = 0;
@@ -87,7 +86,7 @@ public:
 
 protected:
 
-	Collider* collider = nullptr;
+	Collider* boxCollider = nullptr;
 
 };
 

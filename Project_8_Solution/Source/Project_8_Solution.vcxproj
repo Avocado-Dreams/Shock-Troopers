@@ -91,6 +91,7 @@
     <ClInclude Include="ModuleFinalBoss.h" />
     <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleHelicopter.h" />
+    <ClInclude Include="ModuleObstacles.h" />
     <ClInclude Include="PickUps_LIFE.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneLayer2.h" />
@@ -129,6 +130,7 @@
     <ClCompile Include="ModuleFinalBoss.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleHelicopter.cpp" />
+    <ClCompile Include="ModuleObstacles.cpp" />
     <ClCompile Include="PickUps_LIFE.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneLayer2.cpp" />

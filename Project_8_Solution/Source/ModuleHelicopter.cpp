@@ -14,6 +14,10 @@
 
 ModuleHelicopter::ModuleHelicopter(bool startEnabled) : Module(startEnabled)
 {
+	//Background / sky
+	sky = { 0, 0, 433, 142 };
+
+
 	//DESTROYED ANIMATION
 	destroyedAnim.PushBack({ 83, 5, 112, 98 });
 	destroyedAnim.PushBack({ 203, 5, 112, 98 });
@@ -27,47 +31,7 @@ ModuleHelicopter::ModuleHelicopter(bool startEnabled) : Module(startEnabled)
 	//FLY ANIMATION
 	flyAnim.PushBack({ 83, 5, 112, 98 });
 
-	//NORMAL SHOT YELLOW
-	shotYAnim.PushBack({ 135, 227, 4, 4 });
 
-	//NORMAL SHOT GREY
-	shotGAnim.PushBack({ 151, 227, 4, 4 });
-
-	//SHOT FIRE DOWN
-	shotSFire.PushBack({ 167, 226, 7, 12 });
-	shotSFire.PushBack({ 273, 227, 15, 15 });
-	shotSFire.PushBack({ 367, 227, 25, 29 });
-	shotSFire.loop = false;
-	shotSFire.speed = 0.3f;
-
-	//SHOT FIRE SUDEST
-	shotEFire.PushBack({ 204, 227, 10, 13 });
-	shotEFire.PushBack({ 249, 227, 13, 15 });
-	shotEFire.PushBack({ 299, 226, 23, 26 });
-	shotEFire.loop = false;
-	shotEFire.speed = 0.3f;
-
-	//SHOT FIRE SUDOEST
-	shotOFire.PushBack({ 185, 227, 9, 13 });
-	shotOFire.PushBack({ 225, 227, 13, 15 });
-	shotOFire.PushBack({ 333, 226, 23, 26 });
-	shotOFire.loop = false;
-	shotOFire.speed = 0.3f;
-
-	//EXPLOSION HELICOPTER
-	explosionAnim.PushBack({9, 511, 121, 144});
-	explosionAnim.PushBack({ 136, 457, 129, 87 });
-	explosionAnim.PushBack({ 245, 338, 98, 121 });
-	explosionAnim.PushBack({ 341, 338, 58, 63 });
-	explosionAnim.PushBack({ 404, 277, 68, 56 });
-	explosionAnim.PushBack({ 468, 212, 66, 68 });
-	explosionAnim.PushBack({ 539, 154, 70, 86 });
-	explosionAnim.PushBack({ 608, 68, 48, 77 });
-	explosionAnim.PushBack({ 620, 33, 67, 53 });
-	explosionAnim.PushBack({ 722, 4, 27, 74 });
-	explosionAnim.PushBack({ 697, 26, 26, 25 });
-	explosionAnim.loop = true;
-	explosionAnim.speed = 0.3f;
 
 
 	timer = 1.0f;
@@ -82,6 +46,7 @@ bool ModuleHelicopter::Start()
 {
 	LOG("Loading helicopter textures");
 	textureH = App->textures->Load("Assets/Sprites/Enemies/Helicoptero.png");
+	textureSky = App->textures->Load("Assets/Sprites/Background/Cielo.png");
 
 	helicopterDestroyedFx = App->audio->LoadFx("Assets/Fx/Helicopter breaking.wav");
 	helicopterShotFx = App->audio->LoadFx("Assets/Fx/Helicopter shots.wav");
@@ -89,6 +54,7 @@ bool ModuleHelicopter::Start()
 
 	currentFAnim = &flyAnim;
 	currentShotAnim = &shotYAnim;
+	currentDestroyedAnim = &destroyedAnim;
 
 	bool ret = true;
 	startTime = SDL_GetTicks();
@@ -99,7 +65,7 @@ bool ModuleHelicopter::Start()
 	//// TODO 4: Retrieve the player when playing a second time
 	//destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 110, 98 }, Collider::Type::HELICOPTER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 112, 98 }, Collider::Type::HELICOPTER, this);
 
 	return ret;
 }
@@ -112,35 +78,35 @@ Update_Status ModuleHelicopter::Update()
 		if (state == 1)
 		{
 			currentFAnim = &flyAnim;
-			if (position.y > 1794) { position.y--; }
-			if (position.y == 1794) { App->audio->PlayFx(helicopterMovingFx); }
+			if (position.y > 1788) { position.y--; }
+			if (position.y == 1788) { App->audio->PlayFx(helicopterMovingFx); }
 		}
 
-		if (currentTime >= 7000) //(2 seconds!)
-		{
-			Uint32 delayTime = 2000;
+		loop++;
+		if (loop % 3 == 0 && life > 50) {
 
-			if (currentTime >= 7000)
+			if (currentTime >= 5000) //(2 seconds!)
 			{
 				if (App->player->position.x < position.x)
 				{
-					directionX = -1;
+					position.x = (App->player->position.x) - 39;
 				}
 
 				else if (App->player->position.x > position.x)
 				{
-					directionX = 1;
+					position.x = (App->player->position.x) - 39;
 				}
 
 				position.x += speed * directionX;
 
 				if (position.x <= -100 || position.x >= SCREEN_WIDTH + 100)
 				{
-				directionX = -directionX;
+					directionX = -directionX;
 				}
+			
 			}
-		}
 
+		}
 
 		/*	Idle();*/
 		if (ModuleHelicopter::find_player())
@@ -157,7 +123,7 @@ Update_Status ModuleHelicopter::Update()
 		timer -= 1.0f / 60.0f;
 		if (timer <= 4.2) isShooting = false;
 
-		if (helicopterShot > 0 && life > 50)
+		if (helicopterShot > 0 && life != 0)
 		{
 			if (helicopterShot % 2 == 0)
 			{
@@ -165,8 +131,18 @@ Update_Status ModuleHelicopter::Update()
 			}
 			helicopterShot--;
 		}
-		if (life < 50) { currentFAnim = &flyAnim; }
+	
 	}
+
+	//if(helicopterDestroyed)
+	//{
+	//	currentDestroyedAnim = &destroyedAnim;
+	//	SDL_Rect rectHelicopter = destroyedAnim.GetCurrentFrame();
+	//	App->render->Blit(Destroyed, 136, 70, &rectHelicopter);
+	//	if (position.y > 1928) { position.y++; }
+	//	if (position.y == 1928) { App->audio->PlayFx(helicopterDestroyedFx); }
+
+	//}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -194,23 +170,28 @@ void ModuleHelicopter::Idle()
 	if (life > 50) {
 		if (ModuleHelicopter::calculateAngle() >= -101.25 && ModuleHelicopter::calculateAngle() < -78.75) {
 			currentShotAnim = &shotYAnim;
-
+			gunPosX = position.x + 56;
+			gunPosY = position.y + 97;
 		}
 		else if (ModuleHelicopter::calculateAngle() <= -22.5 && ModuleHelicopter::calculateAngle() > -56.25) {
 			currentShotAnim = &shotYAnim;
-
+			gunPosX = position.x + 56;
+			gunPosY = position.y + 97;
 		}
 		else if (ModuleHelicopter::calculateAngle() <= -123.75 && ModuleHelicopter::calculateAngle() > -157.5) {
 			currentShotAnim = &shotYAnim;
-
+			gunPosX = position.x + 56;
+			gunPosY = position.y + 97;
 		}
 		else if (ModuleHelicopter::calculateAngle() <= -56.25 && ModuleHelicopter::calculateAngle() > -78.75) {
 			currentShotAnim = &shotYAnim;
-
+			gunPosX = position.x + 56;
+			gunPosY = position.y + 97;
 		}
 		else if (ModuleHelicopter::calculateAngle() <= -101.25 && ModuleHelicopter::calculateAngle() > -123.75) {
 			currentShotAnim = &shotYAnim;
-
+			gunPosX = position.x + 56;
+			gunPosY = position.y + 97;
 		}
 
 		if (ModuleHelicopter::calculateAngle() >= -112.5 && ModuleHelicopter::calculateAngle() < -67.5) currentShotAnim = &shotYAnim;
@@ -226,13 +207,19 @@ void ModuleHelicopter::Attack()
 {
 	if (life > 50) {
 		if (ModuleHelicopter::calculateAngle() >= -101.25 && ModuleHelicopter::calculateAngle() < -78.75) {
-			App->particles->AddParticle(App->particles->helicopterShotDown, position.x + 40, position.y + 87, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
+			currentShotAnim = &shotYAnim;
+			App->particles->AddParticle(App->particles->shotYAnim, position.x + 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
+			App->particles->AddParticle(App->particles->shotGAnim, position.x + 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
 		}
 		else if (ModuleHelicopter::calculateAngle() <= -33.75 && ModuleHelicopter::calculateAngle() > -56.25) {
-			App->particles->AddParticle(App->particles->helicopterShotSudoest, position.x - 20, position.y + 60, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
+			currentShotAnim = &shotYAnim;
+			App->particles->AddParticle(App->particles->shotYAnim, position.x - 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
+			App->particles->AddParticle(App->particles->shotGAnim, position.x - 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
 		}
 		else if (ModuleHelicopter::calculateAngle() <= -123.75 && ModuleHelicopter::calculateAngle() > -146.25) {
-			App->particles->AddParticle(App->particles->helicopterShotSudest, position.x + 95, position.y + 66, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
+			currentShotAnim = &shotYAnim;
+			App->particles->AddParticle(App->particles->shotYAnim, position.x + 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
+			App->particles->AddParticle(App->particles->shotGAnim, position.x + 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
 		}
 	}
 	isShooting = true;
@@ -242,26 +229,24 @@ void ModuleHelicopter::Attack()
 
 Update_Status ModuleHelicopter::PostUpdate()
 {
+	App->render->Blit(textureSky, 890, 1795, &sky);
+
 	Idle();
 	if (currentFAnim != nullptr) {
 		App->render->Blit(textureH, position.x, position.y, &(currentFAnim->GetCurrentFrame()));
 		if (currentFAnim != &flickerAnim) {
-			App->render->Blit(textureH, position.x + 5, position.y + 21, &(currentShotAnim->GetCurrentFrame()));
+			App->render->Blit(textureH, gunPosX, gunPosY, &(currentShotAnim->GetCurrentFrame()));
 		}
 	}
 
-	if (life < 50)
+	if (helicopterDestroyed)
 	{
-		if (BTint <= 30) { BTintInc = 10; }
-		if (BTint >= 255) { BTintInc = -10; }
-		BTint += BTintInc;
-		SDL_SetTextureColorMod(textureH, 255, BTint, BTint);
+		currentDestroyedAnim = &destroyedAnim;
+		SDL_Rect rectHelicopter = destroyedAnim.GetCurrentFrame();
+		App->render->Blit(Destroyed, 136, 70, &rectHelicopter);
+		if (position.y > 1928) { position.y++; }
+		if (position.y == 1928) { App->audio->PlayFx(helicopterDestroyedFx); }
 	}
-	else
-	{
-		SDL_SetTextureColorMod(textureH, 255, 255, 255);
-	}
-
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -281,14 +266,13 @@ void ModuleHelicopter::OnCollision(Collider* c1, Collider* c2)
 		if (life == 0) { helicopterDestroyed = true; }
 	}
 
-	if (c1 == collider && c2->type == Collider::Type::PLAYER)
+	if (helicopterDestroyed)
 	{
-		if (currentFAnim == &flyAnim) {
-			if (App->player->position.y > position.y + 160) { //diagonales para abajo no van 
-				App->player->position.y++;
-			}
-		}
-		LOG("Touching player. Pos Helicopter: %d. Pos player: %d", position.y, App->player->position.y)
+		App->particles->AddParticle(App->particles->explosionAnim, position.x, position.y, NULL, NULL, Collider::Type::EXPLOSION);
+		if (App->helicopter->position.y < 1928) { position.y++; }
+		if (App->helicopter->position.y == 1928) { App->helicopter->CleanUp(); }
+		App->audio->PlayFx(helicopterDestroyedFx);
+		App->particles->explosionAnim.anim.Reset();
 	}
 
 }
