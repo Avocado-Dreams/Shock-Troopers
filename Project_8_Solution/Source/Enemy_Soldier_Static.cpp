@@ -264,8 +264,6 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 
 	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
 
-	path.PushBack({ 0.0f, 0.0f }, 0, & idleDownL);
-
 	isSpawning = true;
 
 	if (isSpawning == true && spawnPos.x - App->player->position.x > 0){
@@ -277,6 +275,7 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	}
 
 	timer = 1.0f;
+	position = spawnPos;
 }
 
 void Enemy_Soldier_Static::Update()
@@ -312,13 +311,27 @@ void Enemy_Soldier_Static::Update()
 	{
 		if (timer <= 0.0f && isShooting == false)
 		{
+			isMoving = false;
+			isIdle = false;
+			hasDecided = false;
 			Attack();
 		}
-		else if (timer>0.0f && isShooting ==false)Idle();
+		else if (timer < 4.2f && timer >2.0f && isShooting == false)isIdle = true;
+		else if (timer > 0 && timer < 2.0f && hasDecided == false) {
+			if ((randomValue = rand() % 100) > 50) {
+				isIdle = false;
+				isMoving = true;
+			}
+			hasDecided = true;
+		}
 	}
-	
-	path.Update();
-	position = spawnPos + path.GetRelativePosition();
+	if (isMoving)
+	{
+		Move();
+	}
+	if (isIdle) {
+		Idle();
+	}
 	//currentAnim = path.GetCurrentAnimation();
 	timer -= 1.0f / 60.0f;
 	if (timer <= 4.2)isShooting = false;
@@ -351,9 +364,47 @@ double  Enemy_Soldier_Static::calculateAngle()
 
 void Enemy_Soldier_Static::Move()
 {
-	isMoving = true;
+	loop++;
+	if (loop%2==0) {
+		if (Enemy_Soldier_Static::calculateAngle() >= -100 && Enemy_Soldier_Static::calculateAngle() < -80) {
+			currentAnim = &moveDown;
+			position.y++;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() >= -170 && Enemy_Soldier_Static::calculateAngle() < -100) {
+			currentAnim = &moveSE;
+			position.y++;
+			position.x++;
+		}
+		else if ((Enemy_Soldier_Static::calculateAngle() >= -179 && Enemy_Soldier_Static::calculateAngle() < -170) || (Enemy_Soldier_Static::calculateAngle() >= 170 && Enemy_Soldier_Static::calculateAngle() < 180)) {
+			currentAnim = &moveRight;
+			position.x++;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 170 && Enemy_Soldier_Static::calculateAngle() > 100) {
+			currentAnim = &moveNE;
+			position.y--;
+			position.x++;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 100 && Enemy_Soldier_Static::calculateAngle() > 80) {
+			currentAnim = &moveUp;
+			position.y--;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 80 && Enemy_Soldier_Static::calculateAngle() > 10) {
+			currentAnim = &moveNW;
+			position.y--;
+			position.x--;
+		}
+		else if ((Enemy_Soldier_Static::calculateAngle() <= 10 && Enemy_Soldier_Static::calculateAngle() >= 0) || (Enemy_Soldier_Static::calculateAngle() >= -10 && Enemy_Soldier_Static::calculateAngle() < -1)) {
+			currentAnim = &idleLeft;
+			position.x--;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() >= -80 && Enemy_Soldier_Static::calculateAngle() < -10) {
+			currentAnim = &moveSW;
+			position.y++;
+			position.x--;
+		}
+	}
+	collider->SetPos(position.x, position.y);
 }
-
 void Enemy_Soldier_Static::Idle()
 {
 	if (Enemy_Soldier_Static::calculateAngle() >= -90 && Enemy_Soldier_Static::calculateAngle() < -80) currentAnim = &idleDownL;

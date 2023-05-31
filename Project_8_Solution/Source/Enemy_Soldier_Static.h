@@ -18,6 +18,9 @@ public:
 	bool isMoving = false;
 	bool melee = false;
 	bool isShooting = false;
+	bool hasDecided = false;
+	bool isIdle = false;
+	int loop = 3;
 	// Constructor (x y coordinates in the world)
 	// Creates animation and movement data and the collider
 	Enemy_Soldier_Static(int x, int y);
