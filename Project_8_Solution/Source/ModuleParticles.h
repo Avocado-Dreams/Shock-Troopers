@@ -59,7 +59,7 @@ private:
 
 public:
 	//Template particle for an explosion
-	Particle enemy_death, tank_explosion;
+	Particle enemy_deathDown, enemy_deathSE, enemy_deathSW, enemy_deathLeft, enemy_deathRight, enemy_deathNE, enemy_deathNW, tank_explosion;
 	//Template particle for a laser
 	Particle laser;
 	Particle bossDown, bossRight, bossLeft, bossSudest, bossSudoest, bossSudR, bossSudoL, bossExplosion, normalBShot;
