@@ -39,7 +39,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::EXPLOSION] = false;
 
 	matrix[Collider::Type::SOLDIER][Collider::Type::WALL] = true;
-	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::SOLDIER] = false;
 	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::HELICOPTER_SHOT] = false;
@@ -223,7 +223,7 @@ Update_Status ModuleCollisions::Update()
 	}
 	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN && contador <= MAX_COLLIDERS)
 	{
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, App->player->position.x , App->player->position.y-50);
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, App->player->position.x + 10 , App->player->position.y-40);
 		contador++;
 	}
 	return Update_Status::UPDATE_CONTINUE;

@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModuleCollisions.h"
 
 #include "ModulePickUps.h"
 
@@ -168,10 +169,13 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
-
-			delete enemies[i];
-			enemies[i] = nullptr;
-			break;
+			if (c2->type == Collider::Type::PLAYER_SHOT)
+			{
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
+			
 		}
 	}
 }

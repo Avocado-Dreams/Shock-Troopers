@@ -97,13 +97,13 @@ bool ModuleParticles::Start()
 	enemy_deathNW.anim.speed = 0.1f;
 	enemy_deathNW.lifetime = 100;
 
-	enemy_deathRight.anim.PushBack({ 579, 169, 55, 55 });
-	enemy_deathRight.anim.PushBack({ 635, 169, 55, 55 });
-	enemy_deathRight.anim.PushBack({ 691, 169, 55, 55 });
-	enemy_deathRight.anim.PushBack({ 747, 169, 55, 55 });
-	enemy_deathRight.anim.PushBack({ 803, 169, 55, 55 });
-	enemy_deathRight.anim.PushBack({ 859, 169, 55, 55 });
-	enemy_deathRight.anim.PushBack({ 915, 169, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 579, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 635, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 691, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 747, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 803, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 859, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 915, 238, 55, 55 });
 
 	enemy_deathRight.anim.loop = false;
 	enemy_deathRight.anim.speed = 0.1f;
