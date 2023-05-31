@@ -59,7 +59,7 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 775, 120);
 	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 790, 120);
 */
-	App->enemies->AddEnemy(Enemy_Type::TANK, 100, 2400);
+//	App->enemies->AddEnemy(Enemy_Type::TANK, 100, 2400);
 	
 
 	App->render->camera.x = 0;

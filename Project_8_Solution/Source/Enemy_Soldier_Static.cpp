@@ -202,6 +202,66 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	moveSW.loop = true;
 	moveSW.speed = 0.2f;
 
+	moveRight.PushBack({ 20, 485, 42, 56 });
+	moveRight.PushBack({ 65, 485, 42, 56 });
+	moveRight.PushBack({ 110, 485, 42, 56 });
+	moveRight.PushBack({ 155, 485, 42, 56 });
+	moveRight.PushBack({ 200, 485, 42, 56 });
+	moveRight.PushBack({ 245, 485, 42, 56 });
+	moveRight.PushBack({ 290, 485, 42, 56 });
+	moveRight.PushBack({ 335, 485, 42, 56 });
+
+	moveRight.loop = true;
+	moveRight.speed = 0.2f;
+
+	moveLeft.PushBack({ 411, 485, 42, 56 });
+	moveLeft.PushBack({ 456, 485, 42, 56 });
+	moveLeft.PushBack({ 501, 485, 42, 56 });
+	moveLeft.PushBack({ 546, 485, 42, 56 });
+	moveLeft.PushBack({ 591, 485, 42, 56 });
+	moveLeft.PushBack({ 636, 485, 42, 56 });
+	moveLeft.PushBack({ 681, 485, 42, 56 });
+	moveLeft.PushBack({ 726, 485, 42, 56 });
+
+	moveLeft.loop = true;
+	moveLeft.speed = 0.2f;
+
+	moveNE.PushBack({ 802, 485, 42, 56 });
+	moveNE.PushBack({ 847, 485, 42, 56 });
+	moveNE.PushBack({ 892, 485, 42, 56 });
+	moveNE.PushBack({ 937, 485, 42, 56 });
+	moveNE.PushBack({ 982, 485, 42, 56 });
+	moveNE.PushBack({ 1027, 485, 42, 56 });
+	moveNE.PushBack({ 1072, 485, 42, 56 });
+	moveNE.PushBack({ 1117, 485, 42, 56 });
+
+	moveNE.loop = true;
+	moveNE.speed = 0.2f;
+
+	moveNW.PushBack({ 20, 555, 42, 56 });
+	moveNW.PushBack({ 65, 555, 42, 56 });
+	moveNW.PushBack({ 110, 555, 42, 56 });
+	moveNW.PushBack({ 155, 555, 42, 56 });
+	moveNW.PushBack({ 200, 555, 42, 56 });
+	moveNW.PushBack({ 245, 555, 42, 56 });
+	moveNW.PushBack({ 290, 555, 42, 56 });
+	moveNW.PushBack({ 335, 555, 42, 56 });
+
+	moveNW.loop = true;
+	moveNW.speed = 0.2f;
+
+	moveUp.PushBack({ 411, 555, 42, 56 });
+	moveUp.PushBack({ 456, 555, 42, 56 });
+	moveUp.PushBack({ 501, 555, 42, 56 });
+	moveUp.PushBack({ 546, 555, 42, 56 });
+	moveUp.PushBack({ 591, 555, 42, 56 });
+	moveUp.PushBack({ 636, 555, 42, 56 });
+	moveUp.PushBack({ 681, 555, 42, 56 });
+	moveUp.PushBack({ 726, 555, 42, 56 });
+
+	moveUp.loop = true;
+	moveUp.speed = 0.2f;
+
 	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
 
 	path.PushBack({ 0.0f, 0.0f }, 0, & idleDownL);
