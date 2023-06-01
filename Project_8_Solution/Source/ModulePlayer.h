@@ -116,6 +116,11 @@ public:
 	//Score
 	uint score = 000;
 
+	//stage text
+	int stageFont = -1;
+	char LevelFont[49] = { "\0" };
+	SDL_Rect stageFontRect;
+
 	//timer callback
 	//SDL_TimerCallback callbackBC(Uint32 interval, void* name);
 	//SDL_TimerCallback callbackAB(Uint32 interval, void* name);
