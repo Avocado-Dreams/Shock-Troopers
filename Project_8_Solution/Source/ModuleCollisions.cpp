@@ -40,7 +40,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 
 	matrix[Collider::Type::SOLDIER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::SOLDIER][Collider::Type::SOLDIER] = false;
+	matrix[Collider::Type::SOLDIER][Collider::Type::SOLDIER] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::HELICOPTER_SHOT] = false;
 	matrix[Collider::Type::SOLDIER][Collider::Type::ENEMY_SHOT] = false;

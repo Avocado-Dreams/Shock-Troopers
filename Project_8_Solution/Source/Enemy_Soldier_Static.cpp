@@ -319,14 +319,14 @@ void Enemy_Soldier_Static::Update()
 		}
 		else if (timer < 4.2f && timer >2.0f && isShooting == false)isIdle = true;
 		else if (timer > 0 && timer < 2.0f && hasDecided == false) {
-			if (rand()%100 > 70 && distance > 40) {
+			if (rand()%100 > 70 && distance > 35) {
 				isIdle = false;
 				isMoving = true;
 			}
 			hasDecided = true;
 		}
 	}
-	if (isMoving && distance > 40)
+	if (isMoving)
 	{
 		Move();
 	}
@@ -572,4 +572,21 @@ void Enemy_Soldier_Static::OnCollision(Collider* collider)
 			hasDropped = true;
 		}
 	}
+
+	else if (collider->type == Collider::Type::PLAYER) {
+		isMoving = false;
+		isIdle = true;
+	}
+	/* Choque entre soldados
+	else if (collider->type == Collider::Type::SOLDIER) {
+		if (currentAnim == &moveUp) { position.y += 1; }
+		if (currentAnim == &moveDown) { position.y -= 1; }
+		if (currentAnim == &moveRight) { position.x -= 1; }
+		if (currentAnim == &moveLeft) { position.x += 1; }
+		if (currentAnim == &moveNE) { position.y += 1; position.x -= 1; }
+		if (currentAnim == &moveNW) { position.y += 1; position.x += 1; }
+		if (currentAnim == &moveSE) { position.y -= 1; position.x -= 1; }
+		if (currentAnim == &moveSW) { position.y -= 1; position.x += 1; }
+
+	}*/
 }
