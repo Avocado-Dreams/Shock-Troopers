@@ -292,7 +292,7 @@ void Enemy_Soldier_Static::Update()
 	{
 		isSpawning = false;
 		currentAnim = &idleDownL;
-		timer = 0.0f;
+		timer = rand()%3;
 	}
 
 	else if (currentAnim == &enemy_airspawnR && timer <= 0) {
@@ -304,7 +304,7 @@ void Enemy_Soldier_Static::Update()
 	{
 		isSpawning = false;
 		currentAnim = &idleDownR;
-		timer = 0.0f;
+		timer = rand() % 3;
 		
 	}
 

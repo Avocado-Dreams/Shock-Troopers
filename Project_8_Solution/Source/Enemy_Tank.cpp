@@ -10,6 +10,7 @@
 
 Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 {
+	Enemy::life = 50;
 	idleDown.PushBack({ 904, 705, 66, 44 });
 
 	shootDown.PushBack({ 904, 705, 66, 44 });
@@ -140,13 +141,15 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 	shootSE3.loop = false;
 	shootSE3.speed = 0.1f;
 
-	tankStop.PushBack({ 1294, 834, 66, 44 });
+	tankStop.PushBack({ 905, 977, 72, 66 });
 
-	tankMove.PushBack({ 1294, 834, 66, 44 });
-	tankMove.PushBack({ 1359, 834, 66, 44 });
-	tankMove.PushBack({ 1424, 834, 66, 44 });
-	tankMove.loop = false;
+	tankMove.PushBack({ 905, 977, 72, 66 });
+	tankMove.PushBack({ 986, 977, 72, 66 });
+	tankMove.PushBack({ 1067, 977, 72, 66 });
+	tankMove.loop = true;
 	tankMove.speed = 0.1f;
+
+	tankHurt.PushBack({ 1148, 977, 72, 66 });
 
 	isSpawning = false;
 
@@ -154,11 +157,12 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 
 	collider = App->collisions->AddCollider({ 0, 0, 34, 34 }, Collider::Type::TANK, (Module*)App->enemies);
 
+
+	currentBAnim = &tankStop;
 	currentAnim = &idleDown;
 
-	path.PushBack({ 0.0f, 0.0f }, 0, &idleDown);
-
-	timer = 0.0f;
+	timer = rand() % 3;
+	timerM = rand() % 4;
 }
 
 void Enemy_Tank::Update()
@@ -167,16 +171,46 @@ void Enemy_Tank::Update()
 	{
 		if (timer <= 0.0f && isShooting == false)
 		{
+			isIdle = false;
 			Attack();
 		}
-		else if (timer > 0.0f && isShooting == false)Idle();
+		if (timerM <= 0.0f)
+		{
+			timerM = 5.0f - rand()%2;
+			isMoving = false;
+			isStopped = true;
+			hasDecided = false;
+		}
+		else if (timer < 4.2f && timer >2.0f && isShooting == false)isIdle = true;
+		else if (timerM > 0 && timer < 2.0f && hasDecided == false) {
+			if (rand() % 100 > 50) {
+				isStopped = false;
+				isMoving = true;
+			}
+			hasDecided = true;
+		}
 	}
-
-	path.Update();
-	position = spawnPos + path.GetRelativePosition();
+	if (isMoving)
+	{
+		Move();
+	}
+	if (isIdle) {
+		Idle();
+	}
+	if (isStopped)
+	{
+		Stop();
+	}
+	if (isShot)
+	{
+		currentBAnim = &tankHurt;
+		isShot = false;
+	}
 	//currentAnim = path.GetCurrentAnimation();
 	timer -= 1.0f / 60.0f;
+	timerM -= 1.0f / 60.0f;
 	if (timer <= 4.2)isShooting = false;
+
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();
@@ -204,6 +238,26 @@ double  Enemy_Tank::calculateAngle()
 	return angle;
 }
 
+void Enemy_Tank::Move()
+{
+	loop++;
+	if (loop % 4 == 0) {
+		if (Enemy_Tank::calculateAngle() >= -179 && Enemy_Tank::calculateAngle() <= -1) {
+			position.y++;
+		}
+		else if (Enemy_Tank::calculateAngle() >= 1 && Enemy_Tank::calculateAngle() <= 179) {
+			position.y--;
+			
+		}
+		currentBAnim = &tankMove;
+	}
+	collider->SetPos(position.x, position.y);
+	
+}
+void Enemy_Tank::Stop()
+{
+	currentBAnim = &tankStop;
+}
 void Enemy_Tank::Idle()
 {
 	if (Enemy_Tank::calculateAngle() >= -100 && Enemy_Tank::calculateAngle() < -80) currentAnim = &idleDown;
@@ -223,6 +277,7 @@ void Enemy_Tank::Idle()
 	else if (Enemy_Tank::calculateAngle() >= -30 && Enemy_Tank::calculateAngle() < -10) currentAnim = &idleSW3;
 	else if (Enemy_Tank::calculateAngle() >= -55 && Enemy_Tank::calculateAngle() < -30) currentAnim = &idleSW2;
 	else if (Enemy_Tank::calculateAngle() >= -80 && Enemy_Tank::calculateAngle() < -55) currentAnim = &idleSW1;
+
 }
 
 void Enemy_Tank::Attack()
@@ -334,29 +389,40 @@ void Enemy_Tank::Attack()
 
 void Enemy_Tank::OnCollision(Collider* collider)
 {
+	if (collider->type == Collider::Type::PLAYER_SHOT) {
 
-	App->particles->AddParticle(App->particles->tank_explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
-	App->audio->PlayFx(destroyedTank);
-	App->particles->AddParticle(App->particles->tank_explosion, position.x+9, position.y+9, NULL, NULL, Collider::Type::NONE, 4);
-	App->audio->PlayFx(destroyedTank);
-	App->particles->AddParticle(App->particles->tank_explosion, position.x+18, position.y+6, NULL, NULL, Collider::Type::NONE, 8);
-	App->audio->PlayFx(destroyedTank);
-	App->particles->AddParticle(App->particles->tank_explosion, position.x-9, position.y+18, NULL, NULL, Collider::Type::NONE, 12);
-	App->audio->PlayFx(destroyedTank);
-	App->particles->AddParticle(App->particles->tank_explosion, position.x+27, position.y+12, NULL, NULL, Collider::Type::NONE, 16);
-	App->audio->PlayFx(destroyedTank);
-	
-	// Probabilidad de aparición de los BLUEDIAMONDS 
-	int prob_diamond = 30;
-	int prob_life = 50;
-	// Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
-	if (randomValue < prob_diamond && hasDropped == false) {
-		App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x + 12, position.y + 4);
-		hasDropped = true;
+		life--;
+		if (life == 0) { tankDestroyed = true; }
+		isShot = true;
 	}
-	if (randomValue < prob_life && hasDropped == false) {
-		App->pickUps->AddPickUps(PickUps_Type::LIFE, position.x + 12, position.y + 4);
-		hasDropped = true;
-	}
+	if (tankDestroyed)
+	{
+		App->particles->AddParticle(App->particles->tank_explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+		App->audio->PlayFx(destroyedTank);
+		App->particles->AddParticle(App->particles->tank_explosion, position.x + 9, position.y + 9, NULL, NULL, Collider::Type::NONE, 4);
+		App->audio->PlayFx(destroyedTank);
+		App->particles->AddParticle(App->particles->tank_explosion, position.x + 18, position.y + 6, NULL, NULL, Collider::Type::NONE, 8);
+		App->audio->PlayFx(destroyedTank);
+		App->particles->AddParticle(App->particles->tank_explosion, position.x - 9, position.y + 18, NULL, NULL, Collider::Type::NONE, 12);
+		App->audio->PlayFx(destroyedTank);
+		App->particles->AddParticle(App->particles->tank_explosion, position.x + 27, position.y + 12, NULL, NULL, Collider::Type::NONE, 16);
+		App->audio->PlayFx(destroyedTank);
 
+		// Probabilidad de aparición de los BLUEDIAMONDS 
+		int prob_diamond = 30;
+		int prob_life = 50;
+		// Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
+		if (randomValue < prob_diamond && hasDropped == false) {
+			App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x + 12, position.y + 4);
+			hasDropped = true;
+		}
+		if (randomValue < prob_life && hasDropped == false) {
+			App->pickUps->AddPickUps(PickUps_Type::LIFE, position.x + 12, position.y + 4);
+			hasDropped = true;
+		}
+	}
+	else if (collider->type == Collider::Type::PLAYER) {
+		isMoving = false;
+		isStopped = true;
+	}
 }

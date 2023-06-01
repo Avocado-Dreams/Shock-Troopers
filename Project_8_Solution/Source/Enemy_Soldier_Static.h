@@ -15,11 +15,11 @@ public:
 	float angle;
 	int numShots = 0;
 	int MAXSHOTS = 5;
-	bool isMoving = false;
 	bool melee = false;
 	bool isShooting = false;
 	bool hasDecided = false;
 	bool isIdle = false;
+	bool isMoving = false;
 	int loop = 3;
 	// Constructor (x y coordinates in the world)
 	// Creates animation and movement data and the collider

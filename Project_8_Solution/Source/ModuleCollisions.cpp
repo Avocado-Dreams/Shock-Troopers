@@ -226,6 +226,11 @@ Update_Status ModuleCollisions::Update()
 		App->enemies->AddEnemy(Enemy_Type::SOLDIER, App->player->position.x + 10 , App->player->position.y-40);
 		contador++;
 	}
+	if (App->input->keys[SDL_SCANCODE_I] == KEY_DOWN && contador <= MAX_COLLIDERS)
+	{
+	App->enemies->AddEnemy(Enemy_Type::TANK, App->player->position.x - 10, App->player->position.y - 40);
+	contador++;
+	}
 	return Update_Status::UPDATE_CONTINUE;
 }
 

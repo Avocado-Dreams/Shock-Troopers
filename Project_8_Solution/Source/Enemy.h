@@ -20,6 +20,8 @@ public:
 	// Returns the enemy's collider
 	const Collider* GetCollider() const;
 
+	int GetLife();
+
 	// Called from inhering enemies' Udpate
 	// Updates animation and collider position
 	virtual void Update();
@@ -43,12 +45,13 @@ public:
 	int destroyedTank = 0;
 
 	int randomValue;
+	int life;
 	
 
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
-	Animation* currentLAnim = nullptr;
+	Animation* currentBAnim = nullptr;
 
 	// The enemy's collider
 	Collider* collider = nullptr;
