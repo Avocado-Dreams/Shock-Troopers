@@ -26,11 +26,21 @@ const Collider* Enemy::GetCollider() const
 	return collider;
 }
 
+int Enemy::GetLife()
+{
+	return life;
+}
+
 void Enemy::Update()
 {
 	randomValue = rand() % 100;
+
+	if (currentBAnim != nullptr)
+		currentBAnim->Update();
+
 	if (currentAnim != nullptr)
 		currentAnim->Update();
+
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
@@ -40,7 +50,12 @@ void Enemy::OnCollision(Collider* collider){}
 
 void Enemy::Draw()
 {
+
+	if (currentBAnim != nullptr)
+		App->render->Blit(texture, position.x, position.y, &(currentBAnim->GetCurrentFrame()));
+
 	if (currentAnim != nullptr)
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+
 }
 

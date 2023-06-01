@@ -39,13 +39,16 @@ public:
 
 	//pointer to current boss animation
 	Animation* currentFAnim = nullptr;
-	Animation* currentBSAnim = nullptr;
-	Animation* currentSSAnim = nullptr;
+	Animation* currentShotAnim = nullptr;
+	Animation* currentDestroyedAnim = nullptr;
+
+	SDL_Texture* textureSky = nullptr;
+	SDL_Rect sky;
 
 	//set of animations
-	Animation flyAnim, rightAnim, leftAnim, flickerAnim, destroyedAnim;
-	Animation downBSAnim, leftBSAnim, rightBSAnim, sudoestBSAnim, sudestBSAnim, sudoRBSAnim, sudoLBSAnim, sudRBSAnim, sudLBSAnim;
-	Animation downSSAnim, leftSSAnim, rightSSAnim, sudoestSSAnim, sudestSSAnim, sudoRSSAnim, sudoLSSAnim, norestSSAnim, noroestSSAnim;
+	Animation flyAnim, flickerAnim, destroyedAnim, explosionAnim;
+	Animation shotYAnim, shotGAnim, shotSFire, shotEFire, shotOFire;
+
 
 	int distance;
 	/*int numShots = 0;
@@ -58,7 +61,6 @@ public:
 
 	float timer;
 	float SHOOT_INTERVAL = 5;
-	float SHOOT_INTERVAL2 = 5;
 	bool isSpawning;
 	float scale;
 
@@ -74,7 +76,10 @@ public:
 	double ModuleHelicopter::calculateAngle();
 
 public:
-	// Position of the boss in the map
+
+	Uint32 startTime = 0;
+
+	// Position of the helicopter in the map
 	iPoint position;
 
 	// burst counter
@@ -86,7 +91,7 @@ public:
 	//state of the boss
 	int state = 1;
 
-	// The speed in which we move the boss (pixels per frame)
+	// The speed in which we move the helicopter (pixels per frame)
 	int speed = 1;
 
 	//timer
@@ -95,19 +100,20 @@ public:
 	//count 
 	int count = 0;
 
-	//boss life
+	//helicopter life
 	int life = 100;
 
-	//torreta grande positions
-	int torretaPosX = 0;
-	int torretaPosY = 0;
+	int gunPosX = 0;
+	int gunPosY = 0;
 
 	//red opacity when damaged
 	Uint8 BTint = 255;
 	int BTintInc = 0;
 
-	//boss being shot 
+	//helicopter being shot 
 	int helicopterShot = 0;
+
+	SDL_Texture* Destroyed = nullptr;
 
 	bool helicopterDestroyed = false;
 	// The helicopter collider
@@ -115,9 +121,8 @@ public:
 
 private:
 
-
 	// The enemies sprite sheet
-	SDL_Texture* propellers = nullptr;
+	SDL_Texture* textureH = nullptr;
 
 	// The audio fx for destroying an enemy
 	uint helicopterDestroyedFx = 0;

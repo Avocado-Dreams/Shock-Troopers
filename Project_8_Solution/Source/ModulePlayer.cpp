@@ -9,6 +9,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleHelicopter.h"
 #include "ModuleFinalBoss.h"
+#include "ModuleObstacles.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneLayer2.h"
 #include "SDL/include/SDL.h"
@@ -937,9 +938,10 @@ Update_Status ModulePlayer::Update()
 	}
 	else if (zone == 3 && App->render->camera.x > 880 * 3)
 	{
+		App->helicopter->Enable();
 		zone = 4;
 	}
-	else if (zone == 4 && (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN))  //C = continue, until we have the enemy condition
+	else if (zone == 4 && App->helicopter->life == 0)  //C = continue, until we have the enemy condition
 	{
 		zone = 5;
 	}
@@ -974,7 +976,6 @@ Update_Status ModulePlayer::Update()
 		App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
 	}
 
-	
 	if (position.y < 1070 && position.y > 808)
 	{
 		if (position.x <= 2158) position.x++;
@@ -1095,8 +1096,6 @@ Update_Status ModulePlayer::Update()
 				break;
 			}
 		}
-
-
 	}*/
 
 	collider->SetPos(position.x, position.y);
@@ -1246,6 +1245,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		//LOG("Touching boss posy+161: %d FBposy: %d", position.y, App->finalBoss->position.y+161);
 	}
+	else if (c1 == collider && c2->type == Collider::Type::SOLDIER)
+	{
+		if ((currentLAnimation == &upLAnim || currentLAnimation == &upWAnim)) { position.y += 2; }
+		if ((currentLAnimation == &downLAnim || currentLAnimation == &downWAnim)) { position.y -= 2; }
+		if ((currentLAnimation == &rightLAnim || currentLAnimation == &rightWAnim)) { position.x -= 2; }
+		if ((currentLAnimation == &leftLAnim || currentLAnimation == &leftWAnim)) { position.x += 2; }
+		if ((currentLAnimation == &norestLAnim || currentLAnimation == &norestWAnim)) { position.y += 2; position.x -= 2; }
+		if ((currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim)) { position.y += 2; position.x += 2; }
+		if ((currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim)) { position.y -= 2; position.x -= 2; }
+		if ((currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim)) { position.y -= 2; position.x += 2; }
+	}
+		//LOG("Touching boss posy+161: %d FBposy: %d", position.y, App->finalBoss->position.y+161);
 	if (c1 == collider && (c2->type == Collider::Type::ENEMY_SHOT || c2->type == Collider::Type::BOSS_SHOT || c2->type == Collider::Type::TANK_SHOT) && destroyed == false && vida > 0)
 	{
 		if (vida > 0) {

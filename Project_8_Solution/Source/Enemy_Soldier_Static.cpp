@@ -6,6 +6,9 @@
 #include "ModuleAudio.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "SDL/include/SDL_Scancode.h"
+#include "Application.h"
+#include "ModuleInput.h"
 
 Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 {
@@ -202,9 +205,67 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	moveSW.loop = true;
 	moveSW.speed = 0.2f;
 
-	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
+	moveRight.PushBack({ 20, 485, 42, 56 });
+	moveRight.PushBack({ 65, 485, 42, 56 });
+	moveRight.PushBack({ 110, 485, 42, 56 });
+	moveRight.PushBack({ 155, 485, 42, 56 });
+	moveRight.PushBack({ 200, 485, 42, 56 });
+	moveRight.PushBack({ 245, 485, 42, 56 });
+	moveRight.PushBack({ 290, 485, 42, 56 });
+	moveRight.PushBack({ 335, 485, 42, 56 });
 
-	path.PushBack({ 0.0f, 0.0f }, 0, & idleDownL);
+	moveRight.loop = true;
+	moveRight.speed = 0.2f;
+
+	moveLeft.PushBack({ 411, 485, 42, 56 });
+	moveLeft.PushBack({ 456, 485, 42, 56 });
+	moveLeft.PushBack({ 501, 485, 42, 56 });
+	moveLeft.PushBack({ 546, 485, 42, 56 });
+	moveLeft.PushBack({ 591, 485, 42, 56 });
+	moveLeft.PushBack({ 636, 485, 42, 56 });
+	moveLeft.PushBack({ 681, 485, 42, 56 });
+	moveLeft.PushBack({ 726, 485, 42, 56 });
+
+	moveLeft.loop = true;
+	moveLeft.speed = 0.2f;
+
+	moveNE.PushBack({ 802, 485, 42, 56 });
+	moveNE.PushBack({ 847, 485, 42, 56 });
+	moveNE.PushBack({ 892, 485, 42, 56 });
+	moveNE.PushBack({ 937, 485, 42, 56 });
+	moveNE.PushBack({ 982, 485, 42, 56 });
+	moveNE.PushBack({ 1027, 485, 42, 56 });
+	moveNE.PushBack({ 1072, 485, 42, 56 });
+	moveNE.PushBack({ 1117, 485, 42, 56 });
+
+	moveNE.loop = true;
+	moveNE.speed = 0.2f;
+
+	moveNW.PushBack({ 20, 555, 42, 56 });
+	moveNW.PushBack({ 65, 555, 42, 56 });
+	moveNW.PushBack({ 110, 555, 42, 56 });
+	moveNW.PushBack({ 155, 555, 42, 56 });
+	moveNW.PushBack({ 200, 555, 42, 56 });
+	moveNW.PushBack({ 245, 555, 42, 56 });
+	moveNW.PushBack({ 290, 555, 42, 56 });
+	moveNW.PushBack({ 335, 555, 42, 56 });
+
+	moveNW.loop = true;
+	moveNW.speed = 0.2f;
+
+	moveUp.PushBack({ 411, 555, 42, 56 });
+	moveUp.PushBack({ 456, 555, 42, 56 });
+	moveUp.PushBack({ 501, 555, 42, 56 });
+	moveUp.PushBack({ 546, 555, 42, 56 });
+	moveUp.PushBack({ 591, 555, 42, 56 });
+	moveUp.PushBack({ 636, 555, 42, 56 });
+	moveUp.PushBack({ 681, 555, 42, 56 });
+	moveUp.PushBack({ 726, 555, 42, 56 });
+
+	moveUp.loop = true;
+	moveUp.speed = 0.2f;
+
+	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
 
 	isSpawning = true;
 
@@ -217,12 +278,11 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	}
 
 	timer = 1.0f;
+	position = spawnPos;
 }
 
 void Enemy_Soldier_Static::Update()
 {
-
-
 	if (currentAnim == &enemy_airspawnL && timer <= 0) {
 		currentAnim = &getUpL;
 		collider = App->collisions->AddCollider({ 0, 0, 24, 34 }, Collider::Type::SOLDIER, (Module*)App->enemies);
@@ -232,7 +292,7 @@ void Enemy_Soldier_Static::Update()
 	{
 		isSpawning = false;
 		currentAnim = &idleDownL;
-		timer = 0.0f;
+		timer = rand()%3;
 	}
 
 	else if (currentAnim == &enemy_airspawnR && timer <= 0) {
@@ -244,7 +304,7 @@ void Enemy_Soldier_Static::Update()
 	{
 		isSpawning = false;
 		currentAnim = &idleDownR;
-		timer = 0.0f;
+		timer = rand() % 3;
 		
 	}
 
@@ -252,13 +312,27 @@ void Enemy_Soldier_Static::Update()
 	{
 		if (timer <= 0.0f && isShooting == false)
 		{
+			isMoving = false;
+			isIdle = false;
+			hasDecided = false;
 			Attack();
 		}
-		else if (timer>0.0f && isShooting ==false)Idle();
+		else if (timer < 4.2f && timer >2.0f && isShooting == false)isIdle = true;
+		else if (timer > 0 && timer < 2.0f && hasDecided == false) {
+			if (rand()%100 > 70 && distance > 35) {
+				isIdle = false;
+				isMoving = true;
+			}
+			hasDecided = true;
+		}
 	}
-	
-	path.Update();
-	position = spawnPos + path.GetRelativePosition();
+	if (isMoving)
+	{
+		Move();
+	}
+	if (isIdle) {
+		Idle();
+	}
 	//currentAnim = path.GetCurrentAnimation();
 	timer -= 1.0f / 60.0f;
 	if (timer <= 4.2)isShooting = false;
@@ -291,9 +365,47 @@ double  Enemy_Soldier_Static::calculateAngle()
 
 void Enemy_Soldier_Static::Move()
 {
-	isMoving = true;
+	loop++;
+	if (loop%2==0) {
+		if (Enemy_Soldier_Static::calculateAngle() >= -110 && Enemy_Soldier_Static::calculateAngle() < -70) {
+			currentAnim = &moveDown;
+			position.y++;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() >= -160 && Enemy_Soldier_Static::calculateAngle() < -110) {
+			currentAnim = &moveSE;
+			position.y++;
+			position.x++;
+		}
+		else if ((Enemy_Soldier_Static::calculateAngle() >= -179 && Enemy_Soldier_Static::calculateAngle() < -160) || (Enemy_Soldier_Static::calculateAngle() >= 160 && Enemy_Soldier_Static::calculateAngle() < 180)) {
+			currentAnim = &moveRight;
+			position.x++;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 160 && Enemy_Soldier_Static::calculateAngle() > 110) {
+			currentAnim = &moveNE;
+			position.y--;
+			position.x++;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 110 && Enemy_Soldier_Static::calculateAngle() > 70) {
+			currentAnim = &moveUp;
+			position.y--;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 70 && Enemy_Soldier_Static::calculateAngle() > 20) {
+			currentAnim = &moveNW;
+			position.y--;
+			position.x--;
+		}
+		else if ((Enemy_Soldier_Static::calculateAngle() <= 20 && Enemy_Soldier_Static::calculateAngle() >= 0) || (Enemy_Soldier_Static::calculateAngle() >= -20 && Enemy_Soldier_Static::calculateAngle() < -1)) {
+			currentAnim = &moveLeft;
+			position.x--;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() >= -70 && Enemy_Soldier_Static::calculateAngle() < -20) {
+			currentAnim = &moveSW;
+			position.y++;
+			position.x--;
+		}
+	}
+	collider->SetPos(position.x, position.y);
 }
-
 void Enemy_Soldier_Static::Idle()
 {
 	if (Enemy_Soldier_Static::calculateAngle() >= -90 && Enemy_Soldier_Static::calculateAngle() < -80) currentAnim = &idleDownL;
@@ -418,22 +530,63 @@ void Enemy_Soldier_Static::Attack()
 
 void Enemy_Soldier_Static::OnCollision(Collider* collider)
 {
-	App->player->score += 3000;
-	App->particles->AddParticle(App->particles->enemy_death, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
-	App->audio->PlayFx(damagedSoldier);
+	if (collider->type == Collider::Type::PLAYER_SHOT) {
+		if (Enemy_Soldier_Static::calculateAngle() >= -100 && Enemy_Soldier_Static::calculateAngle() < -80) {
+			App->particles->AddParticle(App->particles->enemy_deathDown, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() >= -170 && Enemy_Soldier_Static::calculateAngle() < -100) {
+			App->particles->AddParticle(App->particles->enemy_deathSE, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+		}
+		else if ((Enemy_Soldier_Static::calculateAngle() >= -179 && Enemy_Soldier_Static::calculateAngle() < -170) || (Enemy_Soldier_Static::calculateAngle() >= 170 && Enemy_Soldier_Static::calculateAngle() < 180)) {
+			App->particles->AddParticle(App->particles->enemy_deathRight, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 170 && Enemy_Soldier_Static::calculateAngle() > 100) {
+			App->particles->AddParticle(App->particles->enemy_deathNE, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 100 && Enemy_Soldier_Static::calculateAngle() > 80) {
+			App->particles->AddParticle(App->particles->enemy_deathDown, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 80 && Enemy_Soldier_Static::calculateAngle() > 10) {
+			App->particles->AddParticle(App->particles->enemy_deathNW, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+		}
+		else if ((Enemy_Soldier_Static::calculateAngle() <= 10 && Enemy_Soldier_Static::calculateAngle() >= 0) || (Enemy_Soldier_Static::calculateAngle() >= -10 && Enemy_Soldier_Static::calculateAngle() < -1)) {
+			App->particles->AddParticle(App->particles->enemy_deathLeft, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() >= -80 && Enemy_Soldier_Static::calculateAngle() < -10) {
+			App->particles->AddParticle(App->particles->enemy_deathSW, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+		}
 
+		App->player->score += 3000;
+		App->audio->PlayFx(damagedSoldier);
 
-	// Probabilidad de aparición de los BLUEDIAMONDS 
-	int prob_diamond = 35;
-	int prob_life = 17;
-	// Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
-	if (randomValue < prob_diamond && hasDropped == false) {
-		App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x + 12, position.y + 4);
-		hasDropped = true;
+		// Probabilidad de aparición de los BLUEDIAMONDS 
+		int prob_diamond = 35;
+		int prob_life = 17;
+		// Comprobar si el número aleatorio esta dentro de la probabilidad de aparicion
+		if (randomValue < prob_diamond && hasDropped == false) {
+			App->pickUps->AddPickUps(PickUps_Type::BLUEDIAMOND, position.x + 12, position.y + 4);
+			hasDropped = true;
+		}
+		if (randomValue > 100 - prob_life && hasDropped == false) {
+			App->pickUps->AddPickUps(PickUps_Type::LIFE, position.x + 12, position.y + 4);
+			hasDropped = true;
+		}
 	}
-	if (randomValue < prob_life && hasDropped == false) {
-		App->pickUps->AddPickUps(PickUps_Type::LIFE, position.x + 12, position.y + 4);
-		hasDropped = true;
+
+	else if (collider->type == Collider::Type::PLAYER) {
+		isMoving = false;
+		isIdle = true;
 	}
-	
+	/* Choque entre soldados
+	else if (collider->type == Collider::Type::SOLDIER) {
+		if (currentAnim == &moveUp) { position.y += 1; }
+		if (currentAnim == &moveDown) { position.y -= 1; }
+		if (currentAnim == &moveRight) { position.x -= 1; }
+		if (currentAnim == &moveLeft) { position.x += 1; }
+		if (currentAnim == &moveNE) { position.y += 1; position.x -= 1; }
+		if (currentAnim == &moveNW) { position.y += 1; position.x += 1; }
+		if (currentAnim == &moveSE) { position.y -= 1; position.x -= 1; }
+		if (currentAnim == &moveSW) { position.y -= 1; position.x += 1; }
+
+	}*/
 }

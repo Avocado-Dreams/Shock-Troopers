@@ -23,18 +23,91 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	texture = App->textures->Load("Assets/Sprites/Enemies/particulas.png");
+
 	//enemy_death particle
-	enemy_death.anim.PushBack({23, 201, 27, 37});
-	enemy_death.anim.PushBack({ 74, 180, 37, 55 });
-	enemy_death.anim.PushBack({ 128, 182, 37, 52 });
-	enemy_death.anim.PushBack({ 176, 185, 43, 39 });
-	enemy_death.anim.PushBack({ 231, 194, 37, 37 });
-	enemy_death.anim.PushBack({ 282, 195, 43, 39 });
-	enemy_death.anim.PushBack({ 339, 194, 39, 40 });
-	enemy_death.anim.loop = false;
-	enemy_death.anim.speed = 0.1f;
-	enemy_death.lifetime = 100;
+	enemy_deathDown.anim.PushBack({23, 201, 27, 37});
+	enemy_deathDown.anim.PushBack({ 74, 180, 37, 55 });
+	enemy_deathDown.anim.PushBack({ 128, 182, 37, 52 });
+	enemy_deathDown.anim.PushBack({ 176, 185, 43, 39 });
+	enemy_deathDown.anim.PushBack({ 231, 194, 37, 37 });
+	enemy_deathDown.anim.PushBack({ 282, 195, 43, 39 });
+	enemy_deathDown.anim.PushBack({ 339, 194, 39, 40 });
+	enemy_deathDown.anim.loop = false;
+	enemy_deathDown.anim.speed = 0.1f;
+	enemy_deathDown.lifetime = 100;
 	//App->textures->Unload(texture);
+
+	enemy_deathSE.anim.PushBack({ 341, 63, 55, 55 });
+	enemy_deathSE.anim.PushBack({ 285, 63, 55, 55 });
+	enemy_deathSE.anim.PushBack({ 229, 63, 55, 55 });
+	enemy_deathSE.anim.PushBack({ 173, 63, 55, 55 });
+	enemy_deathSE.anim.PushBack({ 117, 63, 55, 55 });
+	enemy_deathSE.anim.PushBack({ 61, 63, 55, 55 });
+	enemy_deathSE.anim.PushBack({ 5, 63, 55, 55 });
+
+	enemy_deathSE.anim.loop = false;
+	enemy_deathSE.anim.speed = 0.1f;
+	enemy_deathSE.lifetime = 100;
+
+	enemy_deathNE.anim.PushBack({ 341, 119, 55, 55 });
+	enemy_deathNE.anim.PushBack({ 285, 119, 55, 55 });
+	enemy_deathNE.anim.PushBack({ 229, 119, 55, 55 });
+	enemy_deathNE.anim.PushBack({ 173, 119, 55, 55 });
+	enemy_deathNE.anim.PushBack({ 117, 119, 55, 55 });
+	enemy_deathNE.anim.PushBack({ 61, 119, 55, 55 });
+	enemy_deathNE.anim.PushBack({ 5, 119, 55, 55 });
+
+	enemy_deathNE.anim.loop = false;
+	enemy_deathNE.anim.speed = 0.1f;
+	enemy_deathNE.lifetime = 100;
+
+	enemy_deathLeft.anim.PushBack({ 341, 244, 55, 55 });
+	enemy_deathLeft.anim.PushBack({ 285, 244, 55, 55 });
+	enemy_deathLeft.anim.PushBack({ 229, 244, 55, 55 });
+	enemy_deathLeft.anim.PushBack({ 173, 244, 55, 55 });
+	enemy_deathLeft.anim.PushBack({ 117, 244, 55, 55 });
+	enemy_deathLeft.anim.PushBack({ 61, 244, 55, 55 });
+	enemy_deathLeft.anim.PushBack({ 5, 244, 55, 55 });
+
+	enemy_deathLeft.anim.loop = false;
+	enemy_deathLeft.anim.speed = 0.1f;
+	enemy_deathLeft.lifetime = 100;
+
+	enemy_deathSW.anim.PushBack({ 579, 57, 55, 55 });
+	enemy_deathSW.anim.PushBack({ 635, 57, 55, 55 });
+	enemy_deathSW.anim.PushBack({ 691, 57, 55, 55 });
+	enemy_deathSW.anim.PushBack({ 747, 57, 55, 55 });
+	enemy_deathSW.anim.PushBack({ 803, 57, 55, 55 });
+	enemy_deathSW.anim.PushBack({ 859, 57, 55, 55 });
+	enemy_deathSW.anim.PushBack({ 915, 57, 55, 55 });
+
+	enemy_deathSW.anim.loop = false;
+	enemy_deathSW.anim.speed = 0.1f;
+	enemy_deathSW.lifetime = 100;
+
+	enemy_deathNW.anim.PushBack({ 579, 113, 55, 55 });
+	enemy_deathNW.anim.PushBack({ 635, 113, 55, 55 });
+	enemy_deathNW.anim.PushBack({ 691, 113, 55, 55 });
+	enemy_deathNW.anim.PushBack({ 747, 113, 55, 55 });
+	enemy_deathNW.anim.PushBack({ 803, 113, 55, 55 });
+	enemy_deathNW.anim.PushBack({ 859, 113, 55, 55 });
+	enemy_deathNW.anim.PushBack({ 915, 113, 55, 55 });
+
+	enemy_deathNW.anim.loop = false;
+	enemy_deathNW.anim.speed = 0.1f;
+	enemy_deathNW.lifetime = 100;
+
+	enemy_deathRight.anim.PushBack({ 579, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 635, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 691, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 747, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 803, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 859, 238, 55, 55 });
+	enemy_deathRight.anim.PushBack({ 915, 238, 55, 55 });
+
+	enemy_deathRight.anim.loop = false;
+	enemy_deathRight.anim.speed = 0.1f;
+	enemy_deathRight.lifetime = 100;
 
 	//TANK
 	tank_explosion.anim.PushBack({ 11, 722, 32, 32 });
@@ -252,6 +325,48 @@ bool ModuleParticles::Start()
 	bossExplosion.anim.PushBack({ 330, 640, 133, 137 });
 	bossExplosion.anim.loop = false; 
 	bossExplosion.anim.speed = 0.2f;
+
+	//HELICOPTER SHOT
+	//NORMAL SHOT YELLOW
+	shotYAnim.anim.PushBack({ 6, 60, 4, 4 });
+	shotYAnim.lifetime = 180;
+
+	//NORMAL SHOT GREY
+	shotGAnim.anim.PushBack({ 22, 60, 4, 4 });
+	shotGAnim.lifetime = 180;
+
+	//SHOT FIRE DOWN
+	shotSFire.anim.PushBack({ 167, 226, 7, 12 });
+	shotSFire.anim.PushBack({ 273, 227, 15, 15 });
+	shotSFire.anim.PushBack({ 367, 227, 25, 29 });
+	shotSFire.anim.loop = false;
+	shotSFire.anim.speed = 0.3f;
+
+	//SHOT FIRE SUDEST
+	shotEFire.anim.PushBack({ 204, 227, 10, 13 });
+	shotEFire.anim.PushBack({ 249, 227, 13, 15 });
+	shotEFire.anim.PushBack({ 299, 226, 23, 26 });
+	shotEFire.anim.loop = false;
+	shotEFire.anim.speed = 0.3f;
+
+	//SHOT FIRE SUDOEST
+	shotOFire.anim.PushBack({ 185, 227, 9, 13 });
+	shotOFire.anim.PushBack({ 225, 227, 13, 15 });
+	shotOFire.anim.PushBack({ 333, 226, 23, 26 });
+	shotOFire.anim.loop = false;
+	shotOFire.anim.speed = 0.3f;
+
+	//EXPLOSION HELICOPTER
+	explosionAnim.anim.PushBack({ 17, 638, 137, 141 });
+	explosionAnim.anim.PushBack({ 168, 638, 137, 141 });
+	explosionAnim.anim.PushBack({ 309, 638, 137, 141 });
+	explosionAnim.anim.PushBack({ 0, 804, 103, 106 });
+	explosionAnim.anim.PushBack({ 113, 804, 103, 106 });
+	explosionAnim.anim.PushBack({ 236, 802, 103, 106 });
+	explosionAnim.anim.PushBack({ 358, 794, 103, 106 });
+	explosionAnim.anim.loop = false;
+	explosionAnim.anim.speed = 0.2f;
+
 
 	return true;
 }

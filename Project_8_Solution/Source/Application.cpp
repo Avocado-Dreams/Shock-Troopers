@@ -11,13 +11,14 @@
 #include "SceneMenu.h"
 #include "SceneRouteSelect.h"
 #include "SceneLevel1.h"
+#include "ModuleHelicopter.h"
 #include "SceneLayer2.h"
 #include "SceneGameOver.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
-#include "ModuleHelicopter.h"
 #include "ModuleFinalBoss.h"
 #include "ModuleCollisions.h"
+#include "ModuleObstacles.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePickUps.h"
 #include "ModuleFonts.h"
@@ -36,11 +37,11 @@ Application::Application()
 
 	modules[4] =    sceneTeam =     new SceneTeam(true);
 	modules[5] =	sceneIntro =	new SceneIntro(false);
-	modules[6] =	 sceneMenu =	new SceneMenu(false);
+	modules[6] =	sceneMenu =		new SceneMenu(false);
 	modules[7] =	sceneRoute =	new SceneRouteSelect(false);
-	modules[8] =	sceneLevel_1 =	new SceneLevel1(false);	//Gameplay scene starts disabled
-	modules[9] =	enemies =		new ModuleEnemies(false);	//Enemies starts disabled
-	modules[10] =	helicopter =	new ModuleHelicopter(false);
+	modules[8] =	helicopter =	new ModuleHelicopter(false);
+	modules[9] =	sceneLevel_1 =	new SceneLevel1(false);	//Gameplay scene starts disabled
+	modules[10] =	enemies =		new ModuleEnemies(false);	//Enemies starts disabled
 	modules[11] =	finalBoss =		new ModuleFinalBoss(false);
 	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
 	modules[13] =	particles =		new ModuleParticles(true);//Boss starts disabled
@@ -48,10 +49,11 @@ Application::Application()
 	modules[15] =   sceneOver =     new SceneGameOver(false);
 
 	modules[16] =	collisions =	new ModuleCollisions(true);
-	modules[17] =	fade =			new ModuleFadeToBlack(true);
-	modules[18] =   fonts =         new ModuleFonts(true);
-	modules[19] =	pickUps =		new ModulePickUps(true);
-	modules[20] =	render =		new ModuleRender(true);
+	modules[17] =	obstacles =		new ModuleObstacles(true);
+	modules[18] =	fade =			new ModuleFadeToBlack(true);
+	modules[19] =   fonts =         new ModuleFonts(true);
+	modules[20] =	pickUps =		new ModulePickUps(true);
+	modules[21] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()

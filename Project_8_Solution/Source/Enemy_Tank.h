@@ -15,9 +15,14 @@ public:
 	float angle;
 	int numShots = 0;
 	int MAXSHOTS = 5;
-	bool moveToPlayer = false;
-	bool melee = false;
 	bool isShooting = false;
+	bool hasDecided = false;
+	bool isIdle = false;
+	bool isMoving = false;
+	bool isStopped = false;
+	int loop = 3;
+	bool tankDestroyed = false;
+	bool isShot;
 
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
@@ -30,6 +35,10 @@ public:
 
 	void Idle();
 
+	void Move();
+
+	void Stop();
+
 	bool find_player();
 
 	double  Enemy_Tank::calculateAngle();
@@ -37,10 +46,13 @@ public:
 	void OnCollision(Collider* collider) override;
 
 	float timer;
+	float timerM;
 	float SHOOT_INTERVAL = 5;
 	bool isSpawning;
 	float scale;
 	bool hasDropped = false;
+
+
 
 private:
 	// The position (as ratio) in the wave at a specific momen
@@ -51,7 +63,7 @@ private:
 
 	// The enemy animation
 	Animation idleDown, shootDown, idleSE1, shootSE1, idleSE2, shootSE2, idleSE3, shootSE3, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleNE3,shootNE3, idleUp, shootUp, idleSW1, shootSW1, idleSW2, shootSW2,idleSW3,shootSW3, idleLeft, shootLeft, idleNW1, shootNW1, idleNW2, shootNW2, idleNW3, shootNW3;
-	Animation tankStop, tankMove;
+	Animation tankStop, tankMove,tankHurt;
 	uint tankShotFx = 0;
 };
 

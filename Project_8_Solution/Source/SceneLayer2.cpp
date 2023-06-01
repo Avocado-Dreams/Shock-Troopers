@@ -171,7 +171,6 @@ bool SceneLayer2::Start()
 	FacePhoto = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	PhotoFrame = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	Time = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
-	Credits = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	Weapon = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 	Grenade = App->textures->Load("Assets/Sprites/UI/FacePhoto.png");
 
@@ -192,6 +191,7 @@ Update_Status SceneLayer2::Update()
 {
 	//LOG("%d", App->player->vida);
 	hp = App->player->vida;
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -214,9 +214,6 @@ Update_Status SceneLayer2::PostUpdate()
 
 	SDL_Rect Timer = { 137, 8, 30, 8 };
 	App->render->Blit(Time, 136, 7, &Timer, 0);
-
-	SDL_Rect NameCredits = { 207, 216, 58, 8 };
-	App->render->Blit(Credits, 200, 205, &NameCredits, 0);
 
 	SDL_Rect IconWeapon = { 48, 199, 33, 18 };
 	App->render->Blit(Weapon, 48, 198, &IconWeapon, 0);
