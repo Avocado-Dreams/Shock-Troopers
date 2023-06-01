@@ -137,7 +137,7 @@ Update_Status ModuleFinalBoss::Update()
 	if (!bossDestroyed) {
 
 		loop++;
-		if (loop % 3 == 0 && life > 50) {
+		if (loop % 3 == 0 && life > 30) {
 			if (state == 1)
 			{
 				currentBAnim = &downAnim;
@@ -214,7 +214,7 @@ Update_Status ModuleFinalBoss::Update()
 		if (timer <= 4.2) isShooting = false;
 		if (timer2 <= 4.2) isShooting = false;
 
-		if (bossShot > 0 && life > 50)
+		if (bossShot > 0 && life > 30)
 		{
 			if (bossShot % 2 == 0)
 			{
@@ -222,7 +222,7 @@ Update_Status ModuleFinalBoss::Update()
 			}
 			bossShot--;
 		}
-		if (life < 50) { currentBAnim = &idleAnim; }
+		if (life < 30) { currentBAnim = &idleAnim; }
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -248,7 +248,7 @@ double ModuleFinalBoss::calculateAngle()
 }
 void ModuleFinalBoss::Idle()
 {
-	if (life > 50) {
+	if (life > 30) {
 		if (ModuleFinalBoss::calculateAngle() >= -101.25 && ModuleFinalBoss::calculateAngle() < -78.75) {
 			currentBSAnim = &downBSAnim;
 			torretaPosX = position.x + 52 + 5;
@@ -301,7 +301,7 @@ void ModuleFinalBoss::Idle()
 }
 void ModuleFinalBoss::Attack()
 {
-	if (life > 50) {
+	if (life > 30) {
 		if (ModuleFinalBoss::calculateAngle() >= -101.25 && ModuleFinalBoss::calculateAngle() < -78.75) {
 			App->particles->AddParticle(App->particles->bossDown, position.x + 40, position.y + 87, NULL, NULL, Collider::Type::BOSS_SHOT);
 		}
@@ -324,7 +324,7 @@ void ModuleFinalBoss::Attack()
 }
 void ModuleFinalBoss::NormalAttack()
 {
-	if (life > 50) {
+	if (life > 30) {
 		if (ModuleFinalBoss::calculateAngle() >= -112.5 && ModuleFinalBoss::calculateAngle() < -67.5) {
 			App->particles->AddParticle(App->particles->normalBShot, torretaPosX + 11, torretaPosY + 28, NULL, 1, Collider::Type::ENEMY_SHOT);
 		}
@@ -364,7 +364,7 @@ Update_Status ModuleFinalBoss::PostUpdate()
 		}
 	}
 
-	if (life < 50)
+	if (life < 30)
 	{
  		if (BTint <= 30) {BTintInc = 10; }
 		if (BTint >= 255) { BTintInc = -10; }

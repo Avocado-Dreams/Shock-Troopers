@@ -97,7 +97,7 @@ public:
 	int count = 0;
 
 	//boss life
-	int life = 100; 
+	int life = 150; 
 
 	//torreta grande positions
 	int torretaPosX = 0;
