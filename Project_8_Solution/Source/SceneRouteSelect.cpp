@@ -83,19 +83,10 @@ bool SceneRouteSelect::Start()
 	bool ret = true;
 	startTime = SDL_GetTicks();
 
-	//App->audio->PlayMusic("Assets/Music/STIntro.ogg", 1.0f); // MENú MUSIC!!!
+	App->audio->PlayMusic("Assets/Music/MusicMenuSelect.ogg", 1.0f); 
 
 	Route1 = App->textures->Load("Assets/Sprites/intro_sprites/ruta jungle.png");
 	CurrentAnimaton1 = &jungleRoute;
-
-	////obj
-	//Jackal = App->textures->Load("Assets/Sprites/intro_sprites/menu.png");
-	//
-
-
-	//char lookupTable1[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz?!" };
-	//NameFont = App->fonts->Load("Assets/Sprites/Fonts/BlueFont.png", lookupTable1, 4);
-	//menuFontRect = { 0, 0, 128, 9 };  //lletres maj big blue font
 
 
 	App->render->camera.x = 0;
@@ -125,12 +116,6 @@ Update_Status SceneRouteSelect::PostUpdate()
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
 
 	}
-	////draw design items
-	//SDL_Rect rectPlayerSelect{ 48, 7, 208, 17 }; //obj
-	//App->render->Blit(PlayerSelect, 48, 6, &rectPlayerSelect);
-
-	//sprintf_s(MenuFont, 32, "%c", App->sceneRoute->jungleRoute); //!!!
-	//App->fonts->BlitText(15, 194, NameFont, "HINT: SELECT MILKY TO PLAY"); //font
 
 
 	return Update_Status::UPDATE_CONTINUE;

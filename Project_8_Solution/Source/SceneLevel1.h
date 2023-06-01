@@ -43,6 +43,7 @@ public:
 	SDL_Rect sky;
 
 
+
 public:
 	
 	// The scene sprite sheet loaded into an SDL_Texture
