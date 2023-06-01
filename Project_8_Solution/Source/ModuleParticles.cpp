@@ -328,31 +328,31 @@ bool ModuleParticles::Start()
 
 	//HELICOPTER SHOOTING
 	//NORMAL SHOT YELLOW
-	shotYAnim.anim.PushBack({ 6, 60, 4, 4 });
+	shotYAnim.anim.PushBack({ 49, 28, 4, 4 });
 	shotYAnim.lifetime = 180;
 
 	//NORMAL SHOT GREY
-	shotGAnim.anim.PushBack({ 22, 60, 4, 4 });
+	shotGAnim.anim.PushBack({ 65, 28, 4, 4 });
 	shotGAnim.lifetime = 180;
 
 	//SHOT FIRE DOWN
-	shotSFire.anim.PushBack({ 167, 226, 7, 12 });
-	shotSFire.anim.PushBack({ 273, 227, 15, 15 });
-	shotSFire.anim.PushBack({ 367, 227, 25, 29 });
+	shotSFire.anim.PushBack({ 80, 27, 9, 13 });
+	shotSFire.anim.PushBack({ 186, 27, 17, 17 });
+	shotSFire.anim.PushBack({ 278, 27, 30, 31 });
 	shotSFire.anim.loop = false;
 	shotSFire.anim.speed = 0.3f;
 
 	//SHOT FIRE SUDEST
-	shotEFire.anim.PushBack({ 204, 227, 10, 13 });
-	shotEFire.anim.PushBack({ 249, 227, 13, 15 });
-	shotEFire.anim.PushBack({ 299, 226, 23, 26 });
+	shotEFire.anim.PushBack({ 117, 27, 12, 15 });
+	shotEFire.anim.PushBack({ 162, 27, 15, 17 });
+	shotEFire.anim.PushBack({ 211, 26, 26, 28 });
 	shotEFire.anim.loop = false;
 	shotEFire.anim.speed = 0.3f;
 
 	//SHOT FIRE SUDOEST
-	shotOFire.anim.PushBack({ 185, 227, 9, 13 });
-	shotOFire.anim.PushBack({ 225, 227, 13, 15 });
-	shotOFire.anim.PushBack({ 333, 226, 23, 26 });
+	shotOFire.anim.PushBack({ 99, 27, 10, 15 });
+	shotOFire.anim.PushBack({ 138, 27, 14, 17 });
+	shotOFire.anim.PushBack({ 246, 26, 26, 28 });
 	shotOFire.anim.loop = false;
 	shotOFire.anim.speed = 0.3f;
 
