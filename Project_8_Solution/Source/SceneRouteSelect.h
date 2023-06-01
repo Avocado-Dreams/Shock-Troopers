@@ -46,9 +46,22 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* Route1 = nullptr;
+	SDL_Texture* Jackal = nullptr;
 	
+	SDL_Texture* LonelyWolf = nullptr;
+	SDL_Texture* TimeText = nullptr;
+	SDL_Texture* PlayerSelect = nullptr;
+	SDL_Texture* QuadSelect1 = nullptr;
 
 
+
+	//NAMES TEXT
+	//BlueFont and BlueFontSmall
+	int NameFont = -1;
+	char MenuFont[65] = { "\0" };
+
+
+	SDL_Rect menuFontRect;
 
 };
 

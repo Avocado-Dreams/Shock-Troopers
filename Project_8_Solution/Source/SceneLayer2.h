@@ -33,7 +33,6 @@ public:
 	bool CleanUp();
 
 	void FramePlayer();
-	void FrameGO();
 
 	void updateHp();
 
@@ -56,19 +55,11 @@ public:
 	SDL_Texture* Weapon = nullptr;
 	SDL_Texture* Grenade = nullptr;
 
-	SDL_Texture* GoUp = nullptr;
-	SDL_Texture* GoRight = nullptr;
-
 	int timer = 0;
 	bool NameColor = true;
 
-	int timer2 = 0;
-	bool NameColor2 = true;
-
 	//Timer
 	int timerpass;
-	Uint32 Time1 = 0; //necessary for "stage 1 start"
-
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture2 = nullptr;
 	SDL_Texture* bgTexture3 = nullptr;
@@ -77,11 +68,6 @@ public:
 	int timerCounter = 0;
 	char timerText[10] = { "\0" };
 	SDL_Rect timerRect;
-
-	//stage text
-	int stageFont = -1;
-	char LevelFont[49] = { "\0" };
-	SDL_Rect stageFontRect;
 
 	//Score
 	int scoreFont = -1;
