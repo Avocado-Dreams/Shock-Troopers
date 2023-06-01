@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "ModuleFonts.h"
 #include "ModuleCollisions.h"
 #include "ModuleHelicopter.h"
 #include "ModuleFinalBoss.h"
@@ -13,6 +14,7 @@
 #include "ModuleFadeToBlack.h"
 #include "SceneLayer2.h"
 #include "SDL/include/SDL.h"
+#include <stdio.h>
 
 enum DIRECTION
 {
@@ -498,7 +500,11 @@ bool ModulePlayer::Start()
 	winFx = App->audio->LoadFx("Assets/Fx/winLine.wav");
 	hitFx = App->audio->LoadFx("Assets/Fx/DamagedMilky.wav");
 	doorFx = App->audio->LoadFx("Assets/Fx/Door opening.wav");
-	
+
+	char lookupTableStages[] = { "    ABCDEFGHIJKLMNOPQRSTUVWXYZ   1234567890?!;:-" };
+	stageFont = App->fonts->Load("Assets/Sprites/Fonts/FontStage.png", lookupTableStages, 6);
+	stageFontRect = { 0, 0, 128, 16 };
+
 	position.x = 150;
 	position.y = (120 + 2715);
 
@@ -1140,10 +1146,14 @@ Update_Status ModulePlayer::PostUpdate()
 			currentStateAnimation->Update();
 			SDL_Rect rectS = currentStateAnimation->GetCurrentFrame();
 			App->render->Blit(textureState, position.x, position.y, &rectS);
+			sprintf_s(LevelFont, 49, "%c", App->sceneLayer2->bgTexture3);
+			App->fonts->BlitText(100, 80, stageFont, "STAGE 1");
+			App->fonts->BlitText(110, 100, stageFont, "CLEAR");
 		}
-		if (win < 221) { win++; }
+		if (win < 221) { win++;
+		}
 		if (win == 140) { App->audio->PlayFx(winFx); }
-		if (win == 220) { 
+		if (win == 220) {
 			App->audio->PlayMusic("Assets/Music/StageClear.ogg", 0.0f);
 			SDL_Delay(3600);
 			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
@@ -1192,7 +1202,8 @@ Update_Status ModulePlayer::PostUpdate()
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
-
+	
+	
 	//Door
 	if (zone == 1)
 	{

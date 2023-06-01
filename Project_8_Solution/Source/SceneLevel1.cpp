@@ -8,10 +8,12 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
+#include "ModuleFonts.h"
 #include "ModuleHelicopter.h"
 #include "ModuleFinalBoss.h"
 #include "ModulePlayer.h"
 #include "SceneLayer2.h"
+#include <stdio.h>
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
@@ -38,6 +40,7 @@ bool SceneLevel1::Start()
 
 	bgTexture = App->textures->Load("Assets/Sprites/Background/Mapa.png");
 	App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
+
 
 	////Bottomside collider
 	//App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);     //Eliminados porque eran del otro juego y destruyen el jugador cuando no deben
@@ -121,6 +124,7 @@ Update_Status SceneLevel1::PostUpdate()
 
 
 	App->render->Blit(bgTexture, 0, 0, NULL);
+	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
