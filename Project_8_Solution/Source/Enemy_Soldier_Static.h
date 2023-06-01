@@ -15,11 +15,11 @@ public:
 	float angle;
 	int numShots = 0;
 	int MAXSHOTS = 5;
-	bool melee = false;
 	bool isShooting = false;
 	bool hasDecided = false;
 	bool isIdle = false;
 	bool isMoving = false;
+	bool hasMeleed = false;
 	int loop = 3;
 	// Constructor (x y coordinates in the world)
 	// Creates animation and movement data and the collider
@@ -34,6 +34,8 @@ public:
 	void Idle();
 
 	void Move();
+
+	void Melee();
 
 	bool find_player();
 
@@ -53,7 +55,10 @@ private:
 	Path path;
 
 	// Enemy animations
-	Animation moveUp,moveDown,moveLeft,moveRight,moveNE,moveNW,moveSE,moveSW,enemy_airspawnL,getUpL, enemy_airspawnR, getUpR, idleDownL,shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleUpL,shootUpL,idleUpR,shootUpR,idleSW1,shootSW1,idleSW2,shootSW2,idleLeft,shootLeft,idleNW1,shootNW1,idleNW2,shootNW2;
+	Animation moveUp, moveDown, moveLeft, moveRight, moveNE, moveNW, moveSE, moveSW;
+	Animation enemy_airspawnL, getUpL, enemy_airspawnR, getUpR;
+	Animation idleDownL, shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2, idleUpL, shootUpL, idleUpR, shootUpR, idleSW1, shootSW1, idleSW2, shootSW2, idleLeft, shootLeft, idleNW1, shootNW1, idleNW2, shootNW2;
+	Animation meleeDown, meleeUp, meleeRight, meleeLeft, meleeNW, meleeNE, meleeSW, meleeSE;
 
 	uint enemyShotFx = 0;
 };

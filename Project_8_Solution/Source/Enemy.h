@@ -55,6 +55,7 @@ protected:
 
 	// The enemy's collider
 	Collider* collider = nullptr;
+	Collider* melee = nullptr;
 
 	// Original spawn position. Stored for movement calculations
 	iPoint spawnPos;

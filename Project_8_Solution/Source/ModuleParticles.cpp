@@ -367,6 +367,8 @@ bool ModuleParticles::Start()
 	explosionAnim.anim.loop = false;
 	explosionAnim.anim.speed = 0.2f;
 
+	
+	melee.lifetime = 1;
 
 	return true;
 }

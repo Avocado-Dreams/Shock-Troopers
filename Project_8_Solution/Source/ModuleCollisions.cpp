@@ -144,6 +144,18 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::EXPLOSION][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::EXPLOSION][Collider::Type::PLAYER_SHOT] = false;
 
+	matrix[Collider::Type::MELEE][Collider::Type::MELEE] = false;
+	matrix[Collider::Type::MELEE][Collider::Type::SOLDIER] = false;
+	matrix[Collider::Type::MELEE][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::MELEE][Collider::Type::BLUEDIAMOND] = false;
+	matrix[Collider::Type::MELEE][Collider::Type::LIFE] = false;
+	matrix[Collider::Type::MELEE][Collider::Type::ENEMY_SHOT] = false;
+	matrix[Collider::Type::MELEE][Collider::Type::PLAYER_SHOT] = false;
+	matrix[Collider::Type::MELEE][Collider::Type::WALL] = false;
+	matrix[Collider::Type::MELEE][Collider::Type::ENEMY_SHOT] = false;
+	matrix[Collider::Type::MELEE][Collider::Type::TANK] = false;
+	matrix[Collider::Type::MELEE][Collider::Type::TANK_SHOT] = false;
+
 }
 
 // Destructor

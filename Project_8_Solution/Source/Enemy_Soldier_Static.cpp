@@ -265,6 +265,102 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	moveUp.loop = true;
 	moveUp.speed = 0.2f;
 
+	meleeSW.PushBack({ 1915, 41, 82, 72 });
+	meleeSW.PushBack({ 1832, 41, 82, 72 });
+	meleeSW.PushBack({ 1749, 41, 82, 72 });
+	meleeSW.PushBack({ 1666, 41, 82, 72 });
+	meleeSW.PushBack({ 1583, 41, 82, 72 });
+	meleeSW.PushBack({ 1500, 41, 82, 72 });
+	meleeSW.PushBack({ 1417, 41, 82, 72 });
+	meleeSW.PushBack({ 1334, 41, 82, 72 });
+
+	meleeSW.loop = false;
+	meleeSW.speed = 0.2f;
+
+	meleeSE.PushBack({ 1334, 114, 82, 72 });
+	meleeSE.PushBack({ 1417, 114, 82, 72 });
+	meleeSE.PushBack({ 1500, 114, 82, 72 });
+	meleeSE.PushBack({ 1583, 114, 82, 72 });
+	meleeSE.PushBack({ 1666, 114, 82, 72 });
+	meleeSE.PushBack({ 1749, 114, 82, 72 });
+	meleeSE.PushBack({ 1832, 114, 82, 72 });
+	meleeSE.PushBack({ 1915, 114, 82, 72 });
+
+	meleeSE.loop = false;
+	meleeSE.speed = 0.2f;
+
+	meleeDown.PushBack({ 1334, 187, 82, 72 });
+	meleeDown.PushBack({ 1417, 187, 82, 72 });
+	meleeDown.PushBack({ 1500, 187, 82, 72 });
+	meleeDown.PushBack({ 1583, 187, 82, 72 });
+	meleeDown.PushBack({ 1666, 187, 82, 72 });
+	meleeDown.PushBack({ 1749, 187, 82, 72 });
+	meleeDown.PushBack({ 1832, 187, 82, 72 });
+	meleeDown.PushBack({ 1915, 187, 82, 72 });
+
+	meleeDown.loop = false;
+	meleeDown.speed = 0.2f;
+
+	meleeRight.PushBack({ 1334, 260, 82, 72 });
+	meleeRight.PushBack({ 1417, 260, 82, 72 });
+	meleeRight.PushBack({ 1500, 260, 82, 72 });
+	meleeRight.PushBack({ 1583, 260, 82, 72 });
+	meleeRight.PushBack({ 1666, 260, 82, 72 });
+	meleeRight.PushBack({ 1749, 260, 82, 72 });
+	meleeRight.PushBack({ 1832, 260, 82, 72 });
+	meleeRight.PushBack({ 1915, 260, 82, 72 });
+
+	meleeRight.loop = false;
+	meleeRight.speed = 0.2f;
+
+	meleeLeft.PushBack({ 1915, 333, 82, 72 });
+	meleeLeft.PushBack({ 1832, 333, 82, 72 });
+	meleeLeft.PushBack({ 1749, 333, 82, 72 });
+	meleeLeft.PushBack({ 1666, 333, 82, 72 });
+	meleeLeft.PushBack({ 1583, 333, 82, 72 });
+	meleeLeft.PushBack({ 1500, 333, 82, 72 });
+	meleeLeft.PushBack({ 1417, 333, 82, 72 });
+	meleeLeft.PushBack({ 1334, 333, 82, 72 });
+
+	meleeLeft.loop = false;
+	meleeLeft.speed = 0.2f;
+
+	meleeNE.PushBack({ 1334, 406, 82, 72 });
+	meleeNE.PushBack({ 1417, 406, 82, 72 });
+	meleeNE.PushBack({ 1500, 406, 82, 72 });
+	meleeNE.PushBack({ 1583, 406, 82, 72 });
+	meleeNE.PushBack({ 1666, 406, 82, 72 });
+	meleeNE.PushBack({ 1749, 406, 82, 72 });
+	meleeNE.PushBack({ 1832, 406, 82, 72 });
+	meleeNE.PushBack({ 1915, 406, 82, 72 });
+
+	meleeNE.loop = false;
+	meleeNE.speed = 0.2f;
+
+	meleeNW.PushBack({ 1915, 479, 82, 72 });
+	meleeNW.PushBack({ 1832, 479, 82, 72 });
+	meleeNW.PushBack({ 1749, 479, 82, 72 });
+	meleeNW.PushBack({ 1666, 479, 82, 72 });
+	meleeNW.PushBack({ 1583, 479, 82, 72 });
+	meleeNW.PushBack({ 1500, 479, 82, 72 });
+	meleeNW.PushBack({ 1417, 479, 82, 72 });
+	meleeNW.PushBack({ 1334, 479, 82, 72 });
+
+	meleeNW.loop = false;
+	meleeNW.speed = 0.2f;
+
+	meleeUp.PushBack({ 1334, 552, 82, 72 });
+	meleeUp.PushBack({ 1417, 552, 82, 72 });
+	meleeUp.PushBack({ 1500, 552, 82, 72 });
+	meleeUp.PushBack({ 1583, 552, 82, 72 });
+	meleeUp.PushBack({ 1666, 552, 82, 72 });
+	meleeUp.PushBack({ 1749, 552, 82, 72 });
+	meleeUp.PushBack({ 1832, 552, 82, 72 });
+	meleeUp.PushBack({ 1915, 552, 82, 72 });
+
+	meleeUp.loop = false;
+	meleeUp.speed = 0.2f;
+
 	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
 
 	isSpawning = true;
@@ -436,7 +532,7 @@ void Enemy_Soldier_Static::Attack()
 	//	position.y += sin(angle) * 3;
 	//}
 
-	if (distance < 15)
+	if (distance < 35)
 	{
 		
 	}

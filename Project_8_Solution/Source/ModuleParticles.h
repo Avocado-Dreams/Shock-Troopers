@@ -61,7 +61,7 @@ public:
 	//Template particle for an explosion
 	Particle enemy_deathDown, enemy_deathSE, enemy_deathSW, enemy_deathLeft, enemy_deathRight, enemy_deathNE, enemy_deathNW, tank_explosion;
 	//Template particle for a laser
-	Particle laser;
+	Particle laser,melee;
 	Particle bossDown, bossRight, bossLeft, bossSudest, bossSudoest, bossSudR, bossSudoL, bossExplosion, normalBShot;
 	Particle shotYAnim, shotGAnim, shotSFire, shotEFire, shotOFire, explosionAnim;
 	Particle enemyShot,tankShot;
