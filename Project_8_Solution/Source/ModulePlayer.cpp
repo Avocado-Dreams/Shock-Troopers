@@ -1122,7 +1122,6 @@ Update_Status ModulePlayer::PostUpdate()
 {
  	if (win > 0)
 	{
-		
 		if (win < 70) {
 			SDL_Rect rectL = currentLAnimation->GetCurrentFrame();
 			App->render->Blit(textureL, position.x, position.y + 18, &rectL);

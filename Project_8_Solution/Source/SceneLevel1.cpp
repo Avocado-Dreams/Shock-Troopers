@@ -15,7 +15,8 @@
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
-
+	//Background / sky
+	sky = { 0, 0, 433, 142 };
 }
 
 SceneLevel1::~SceneLevel1()
@@ -36,6 +37,7 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
+	textureSky = App->textures->Load("Assets/Sprites/Background/Cielo.png");
 	bgTexture = App->textures->Load("Assets/Sprites/Background/Mapa.png");
 	App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
 
@@ -78,6 +80,11 @@ bool SceneLevel1::Start()
 	App->finalBoss->position.x = 2182;
 	App->finalBoss->position.y = -162;
 	App->finalBoss->state = 1;
+	App->helicopter->helicopterDestroyed = false;
+	App->helicopter->life = 100;
+	App->helicopter->position.x = 967;
+	App->helicopter->position.y = 1928;
+	App->helicopter->state = 1;
 
 	return ret;
 }
@@ -114,10 +121,11 @@ Update_Status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	
-
-	//box.Update();
-	//SDL_Rect boxPosition = { 95, 50, 29, 38 };
-	//App->render->Blit(textureBox, 95, 50, &currentBox->GetCurrentFrame(), 0);
+	if (App->player->zone == 3)
+	{
+		SDL_Rect sky{ 0, 0, 433, 142 };
+		App->render->Blit(textureSky, 890, 1795, &sky);
+	}
 
 
 	App->render->Blit(bgTexture, 0, 0, NULL);
@@ -140,12 +148,6 @@ bool SceneLevel1::CleanUp()
 
 void SceneLevel1::OnCollision()
 {
-	/*if (boxActive && App->player->collider->CheckCollision(boxCollider))
-	{
-		boxActive = false;
-		currentBox = &boxDestroyed;
-		currentBox->Reset();
-		currentBox->speed = 0.3f;
-	}*/
+
 
 }

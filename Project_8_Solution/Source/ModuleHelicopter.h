@@ -106,23 +106,21 @@ public:
 	int gunPosX = 0;
 	int gunPosY = 0;
 
-	//red opacity when damaged
-	Uint8 BTint = 255;
-	int BTintInc = 0;
-
 	//helicopter being shot 
 	int helicopterShot = 0;
 
 	SDL_Texture* Destroyed = nullptr;
 
 	bool helicopterDestroyed = false;
+
 	// The helicopter collider
 	Collider* collider = nullptr;
 
-private:
-
 	// The enemies sprite sheet
 	SDL_Texture* textureH = nullptr;
+
+private:
+	ModuleHelicopter* helicopter2 = { nullptr };
 
 	// The audio fx for destroying an enemy
 	uint helicopterDestroyedFx = 0;

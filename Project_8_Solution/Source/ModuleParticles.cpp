@@ -326,7 +326,7 @@ bool ModuleParticles::Start()
 	bossExplosion.anim.loop = false; 
 	bossExplosion.anim.speed = 0.2f;
 
-	//HELICOPTER SHOT
+	//HELICOPTER SHOOTING
 	//NORMAL SHOT YELLOW
 	shotYAnim.anim.PushBack({ 6, 60, 4, 4 });
 	shotYAnim.lifetime = 180;

@@ -11,6 +11,7 @@
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
 #include "ModuleFinalBoss.h"
+#include "ModuleHelicopter.h"
 
 SceneGameOver::SceneGameOver(bool startEnabled) : Module(startEnabled)
 {
@@ -30,16 +31,15 @@ bool SceneGameOver::Start()
 	bool ret = true;
 
 	teamTexture = App->textures->Load("Assets/Sprites/intro_sprites/GameOver.png");
-	App->audio->PlayMusic("Assets/Music/silence.wav", 0.0f);
 	gameOver = App->audio->LoadFx("Assets/Music/Game Over.wav");
-
-	App->audio->PlayFx(gameOver);
+	//App->audio->PlayMusic("Assets/Music/silence.wav", 0.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
 	App->player->death = 0;
 	App->finalBoss->Disable();
+	App->helicopter->Disable();
 
 	return ret;
 }
@@ -54,6 +54,7 @@ Update_Status SceneGameOver::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
 
+	App->audio->PlayFx(gameOver);
 	App->collisions->CleanUp();
 
 	return Update_Status::UPDATE_CONTINUE;

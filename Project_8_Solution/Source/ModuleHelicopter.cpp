@@ -17,7 +17,6 @@ ModuleHelicopter::ModuleHelicopter(bool startEnabled) : Module(startEnabled)
 	//Background / sky
 	sky = { 0, 0, 433, 142 };
 
-
 	//DESTROYED ANIMATION
 	destroyedAnim.PushBack({ 83, 5, 112, 98 });
 	destroyedAnim.PushBack({ 203, 5, 112, 98 });
@@ -30,8 +29,6 @@ ModuleHelicopter::ModuleHelicopter(bool startEnabled) : Module(startEnabled)
 
 	//FLY ANIMATION
 	flyAnim.PushBack({ 83, 5, 112, 98 });
-
-
 
 
 	timer = 1.0f;
@@ -131,18 +128,14 @@ Update_Status ModuleHelicopter::Update()
 			}
 			helicopterShot--;
 		}
-	
 	}
-
-	//if(helicopterDestroyed)
-	//{
-	//	currentDestroyedAnim = &destroyedAnim;
-	//	SDL_Rect rectHelicopter = destroyedAnim.GetCurrentFrame();
-	//	App->render->Blit(Destroyed, 136, 70, &rectHelicopter);
-	//	if (position.y > 1928) { position.y++; }
-	//	if (position.y == 1928) { App->audio->PlayFx(helicopterDestroyedFx); }
-
-	//}
+	else
+	{
+		if (position.y < 1928) 
+		{ 
+			position.y++; 
+		}
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -205,7 +198,7 @@ void ModuleHelicopter::Idle()
 
 void ModuleHelicopter::Attack()
 {
-	if (life > 50) {
+	if (life != 0) {
 		if (ModuleHelicopter::calculateAngle() >= -101.25 && ModuleHelicopter::calculateAngle() < -78.75) {
 			currentShotAnim = &shotYAnim;
 			App->particles->AddParticle(App->particles->shotYAnim, position.x + 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
@@ -235,7 +228,7 @@ Update_Status ModuleHelicopter::PostUpdate()
 	if (currentFAnim != nullptr) {
 		App->render->Blit(textureH, position.x, position.y, &(currentFAnim->GetCurrentFrame()));
 		if (currentFAnim != &flickerAnim) {
-			App->render->Blit(textureH, gunPosX, gunPosY, &(currentShotAnim->GetCurrentFrame()));
+			Attack();
 		}
 	}
 
@@ -244,8 +237,13 @@ Update_Status ModuleHelicopter::PostUpdate()
 		currentDestroyedAnim = &destroyedAnim;
 		SDL_Rect rectHelicopter = destroyedAnim.GetCurrentFrame();
 		App->render->Blit(Destroyed, 136, 70, &rectHelicopter);
-		if (position.y > 1928) { position.y++; }
-		if (position.y == 1928) { App->audio->PlayFx(helicopterDestroyedFx); }
+		
+	}
+
+	if (App->player->zone == 3)
+	{
+		SDL_Rect sky { 0, 0, 433, 142 };
+		App->render->Blit(textureSky, 890, 1795, &sky);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -269,10 +267,8 @@ void ModuleHelicopter::OnCollision(Collider* c1, Collider* c2)
 	if (helicopterDestroyed)
 	{
 		App->particles->AddParticle(App->particles->explosionAnim, position.x, position.y, NULL, NULL, Collider::Type::EXPLOSION);
-		if (App->helicopter->position.y < 1928) { position.y++; }
-		if (App->helicopter->position.y == 1928) { App->helicopter->CleanUp(); }
-		App->audio->PlayFx(helicopterDestroyedFx);
 		App->particles->explosionAnim.anim.Reset();
+		App->audio->PlayFx(helicopterDestroyedFx);
 	}
 
 }

@@ -1,4 +1,4 @@
-#ifndef __MODULE_OBSATCLE_H__
+    #ifndef __MODULE_OBSATCLE_H__
 #define __MODULE_OBSATCLE_H__
 
 #include "Module.h"
@@ -44,6 +44,8 @@ public:
 
 	Animation box, boxDestroyed;
 
+	SDL_Texture* Box1 = nullptr;
+
 public:
 
 	SDL_Texture* textureBox = nullptr;
@@ -51,9 +53,12 @@ public:
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 
-protected:
+	bool removeCollider = false;
+
+	int life = 1;
 
 	Collider* collider = nullptr;
+
 
 };
 

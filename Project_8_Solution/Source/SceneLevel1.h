@@ -38,7 +38,9 @@ public:
 	bool enemy4Spawned;
 	bool enemy5Spawned;
 
-	bool boxActive = true;
+
+	SDL_Texture* textureSky = nullptr;
+	SDL_Rect sky;
 
 
 public:
