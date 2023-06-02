@@ -35,8 +35,14 @@ Your mission is to kill the terrorrist and mercenaries of BSG who appear on her 
 - C: pass from zone to zone
 - K: telport to final boss zone
 - M: teleport to helicopter zone
-- F2: god mode
-- F3: lose screen
+- F1: god mode
+- F2: debug mode
+- F3: lose condition
+- F4: win condition
+- O: spawn life 
+- P: spawn blue diamond
+- I: spawn tank
+- L: spawn soldier
 <br>
 
 **Additional comments**
