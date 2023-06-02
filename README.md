@@ -2,7 +2,7 @@
 **Link to our project :)**
 https://github.com/Avocado-Dreams/Shock-Troopers/tree/Project_8
 <br>
-**Link to our page:** https://avocado-dreams.github.io/
+**Link to our page:** https://avocado-dreams.github.io/Shock-Troopers/
 
 <br>
 
