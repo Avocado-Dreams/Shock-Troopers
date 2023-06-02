@@ -155,7 +155,7 @@ Update_Status ModuleFinalBoss::Update()
 				currentBAnim = &upAnim;
 				if (position.y > -20) { position.y--; }
 				if (position.y == -20) { state = 4; count++; currentBAnim = &idleAnim; }
-				if (count == 2) { state = 6; count = 0; currentBAnim = &downAnim; downAnim.Reset();  App->audio->PlayFx(tankMovingFx); }
+				if (count == 2) { state = 6; count = 0; currentBAnim = &downAnim; downAnim.Reset(); App->audio->PlayFx(tankMovingFx); }
 			}
 			if (state == 4)  
 			{

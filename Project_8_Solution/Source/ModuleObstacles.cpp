@@ -36,7 +36,7 @@ bool ModuleObstacles::Start()
 	currentDBox = &boxDestroyed;
 
 
-	collider = App->collisions->AddCollider({ 0, 0, 29, 38 }, Collider::Type::BOX, this);
+	collider = App->collisions->AddCollider({ 90, 2837, 29, 38 }, Collider::Type::BOX, this);
 
 	bool ret = true;
 

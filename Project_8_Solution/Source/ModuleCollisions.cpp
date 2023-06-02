@@ -60,6 +60,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::TANK_SHOT] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::LIFE] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::BOSS_SHOT] = false;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::FINALBOSS] = true;
+//	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::BOX] = false;
 
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER] = true;
@@ -113,7 +115,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::HELICOPTER][Collider::Type::EXPLOSION] = false;
 
 	matrix[Collider::Type::BOX][Collider::Type::PLAYER] = false;
-	matrix[Collider::Type::BOX][Collider::Type::PLAYER_SHOT] = true;
+	matrix[Collider::Type::BOX][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::BOX][Collider::Type::ENEMY_SHOT] = false;
 
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::TANK] = false;
@@ -202,7 +204,7 @@ Update_Status ModuleCollisions::PreUpdate()
 					c1->listener->OnCollision(c1, c2);
 				
 				if(matrix[c2->type][c1->type] && c2->listener) 
-					c2->listener->OnCollision(c2, c1);
+ 					c2->listener->OnCollision(c2, c1);
 			}
 		}
 	}
@@ -304,6 +306,9 @@ void ModuleCollisions::DebugDraw()
 			break;
 			case Collider::Type::HELICOPTER_SHOT: // salmon
 			App->render->DrawQuad(colliders[i]->rect, 255, 153, 102, alpha);
+			break;
+			case Collider::Type::BOX: // red
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
 		}
 	}
