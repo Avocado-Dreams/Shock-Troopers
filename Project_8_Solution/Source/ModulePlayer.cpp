@@ -1267,17 +1267,17 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		//LOG("Touching boss posy+161: %d FBposy: %d", position.y, App->finalBoss->position.y+161);
 	}
-	//else if (c1 == collider && c2->type == Collider::Type::SOLDIER)
-	//{
-	//	if ((currentLAnimation == &upLAnim || currentLAnimation == &upWAnim)) { position.y += 2; }
-	//	if ((currentLAnimation == &downLAnim || currentLAnimation == &downWAnim)) { position.y -= 2; }
-	//	if ((currentLAnimation == &rightLAnim || currentLAnimation == &rightWAnim)) { position.x -= 2; }
-	//	if ((currentLAnimation == &leftLAnim || currentLAnimation == &leftWAnim)) { position.x += 2; }
-	//	if ((currentLAnimation == &norestLAnim || currentLAnimation == &norestWAnim)) { position.y += 2; position.x -= 2; }
-	//	if ((currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim)) { position.y += 2; position.x += 2; }
-	//	if ((currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim)) { position.y -= 2; position.x -= 2; }
-	//	if ((currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim)) { position.y -= 2; position.x += 2; }
-	//}
+	/*else if (c1 == collider && c2->type == Collider::Type::SOLDIER)
+	{
+		if ((currentLAnimation == &upLAnim || currentLAnimation == &upWAnim)) { position.y += 2; }
+		if ((currentLAnimation == &downLAnim || currentLAnimation == &downWAnim)) { position.y -= 2; }
+		if ((currentLAnimation == &rightLAnim || currentLAnimation == &rightWAnim)) { position.x -= 2; }
+		if ((currentLAnimation == &leftLAnim || currentLAnimation == &leftWAnim)) { position.x += 2; }
+		if ((currentLAnimation == &norestLAnim || currentLAnimation == &norestWAnim)) { position.y += 2; position.x -= 2; }
+		if ((currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim)) { position.y += 2; position.x += 2; }
+		if ((currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim)) { position.y -= 2; position.x -= 2; }
+		if ((currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim)) { position.y -= 2; position.x += 2; }
+	}*/
 		//LOG("Touching boss posy+161: %d FBposy: %d", position.y, App->finalBoss->position.y+161);
 	if (c1 == collider && (c2->type == Collider::Type::ENEMY_SHOT || c2->type == Collider::Type::BOSS_SHOT || c2->type == Collider::Type::MELEE || c2->type == Collider::Type::TANK_SHOT) && destroyed == false && vida > 0)
 	{
