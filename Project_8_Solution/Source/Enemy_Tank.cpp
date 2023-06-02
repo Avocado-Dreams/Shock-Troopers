@@ -1,4 +1,7 @@
 #include "Enemy_Tank.h"
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 #include "ModulePickUps.h"
 #include "Application.h"
@@ -19,13 +22,13 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 	shootDown.loop = false;
 	shootDown.speed = 0.1f;
 
-	idleSW1.PushBack({ 1099, 705, 66, 44 });
+	/*idleSW1.PushBack({ 1099, 705, 66, 44 });
 
 	shootSW1.PushBack({ 1099, 705, 66, 44 });
 	shootSW1.PushBack({ 1164, 705, 66, 44 });
 	shootSW1.PushBack({ 1229, 705, 66, 44 });
 	shootSW1.loop = false;
-	shootSW1.speed = 0.1f;
+	shootSW1.speed = 0.1f;*/
 
 	idleSW2.PushBack({ 1294, 705, 66, 44 });
 
@@ -69,13 +72,13 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 	shootNW2.speed = 0.1f;
 
 
-	idleNW3.PushBack({ 1099, 791, 66, 44 });
+	/*idleNW3.PushBack({ 1099, 791, 66, 44 });
 
 	shootNW3.PushBack({ 1099, 791, 66, 44 });
 	shootNW3.PushBack({ 1164, 791, 66, 44 });
 	shootNW3.PushBack({ 1229, 791, 66, 44 });
 	shootNW3.loop = false;
-	shootNW3.speed = 0.1f;
+	shootNW3.speed = 0.1f;*/
 
 	idleUp.PushBack({ 1294, 791, 66, 44 });
 
@@ -85,13 +88,13 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 	shootUp.loop = false;
 	shootUp.speed = 0.1f;
 
-	idleNE1.PushBack({ 1099, 877, 66, 44 });
+	/*idleNE1.PushBack({ 1099, 877, 66, 44 });
 
 	shootNE1.PushBack({ 1099, 877, 66, 44 });
 	shootNE1.PushBack({ 1164, 877, 66, 44 });
 	shootNE1.PushBack({ 1229, 877, 66, 44 });
 	shootNE1.loop = false;
-	shootNE1.speed = 0.1f;
+	shootNE1.speed = 0.1f;*/
 
 	idleNE2.PushBack({ 1294, 877, 66, 44 });
 
@@ -106,8 +109,8 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 	shootNE3.PushBack({ 904, 877, 66, 44 });
 	shootNE3.PushBack({ 969, 877, 66, 44 });
 	shootNE3.PushBack({ 1034, 877, 66, 44 });
-	shootNE1.loop = false;
-	shootNE1.speed = 0.1f;
+	shootNE3.loop = false;
+	shootNE3.speed = 0.1f;
 
 	idleRight.PushBack({ 904, 920, 66, 44 });
 
@@ -133,13 +136,13 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 	shootSE2.loop = false;
 	shootSE2.speed = 0.1f;
 
-	idleSE3.PushBack({ 1294, 834, 66, 44 });
+	/*idleSE3.PushBack({ 1294, 834, 66, 44 });
 
 	shootSE3.PushBack({ 1294, 834, 66, 44 });
 	shootSE3.PushBack({ 1359, 834, 66, 44 });
 	shootSE3.PushBack({ 1424, 834, 66, 44 });
 	shootSE3.loop = false;
-	shootSE3.speed = 0.1f;
+	shootSE3.speed = 0.1f;*/
 
 	tankStop.PushBack({ 905, 977, 72, 66 });
 
@@ -261,22 +264,22 @@ void Enemy_Tank::Stop()
 void Enemy_Tank::Idle()
 {
 	if (Enemy_Tank::calculateAngle() >= -100 && Enemy_Tank::calculateAngle() < -80) currentAnim = &idleDown;
-	else if (Enemy_Tank::calculateAngle() >= -120 && Enemy_Tank::calculateAngle() < -100) currentAnim = &idleSE3;
-	else if (Enemy_Tank::calculateAngle() >= -145 && Enemy_Tank::calculateAngle() < -120) currentAnim = &idleSE2;
-	else if (Enemy_Tank::calculateAngle() >= -170 && Enemy_Tank::calculateAngle() < -145) currentAnim = &idleSE1;
+	/*else if (Enemy_Tank::calculateAngle() >= -120 && Enemy_Tank::calculateAngle() < -100) currentAnim = &idleSE3;*/
+	else if (Enemy_Tank::calculateAngle() >= -135 && Enemy_Tank::calculateAngle() < -100) currentAnim = &idleSE2;
+	else if (Enemy_Tank::calculateAngle() >= -170 && Enemy_Tank::calculateAngle() < -135) currentAnim = &idleSE1;
 	else if ((Enemy_Tank::calculateAngle() >= -179 && Enemy_Tank::calculateAngle() < -170) || (Enemy_Tank::calculateAngle() >= 170 && Enemy_Tank::calculateAngle() < 180)) currentAnim = &idleRight;
-	else if (Enemy_Tank::calculateAngle() <= 170 && Enemy_Tank::calculateAngle() > 150) currentAnim = &idleNE3;
-	else if (Enemy_Tank::calculateAngle() <= 150 && Enemy_Tank::calculateAngle() > 125) currentAnim = &idleNE2;
-	else if (Enemy_Tank::calculateAngle() <= 125 && Enemy_Tank::calculateAngle() > 100) currentAnim = &idleNE1;
+	else if (Enemy_Tank::calculateAngle() <= 170 && Enemy_Tank::calculateAngle() > 135) currentAnim = &idleNE3;
+	else if (Enemy_Tank::calculateAngle() <= 135 && Enemy_Tank::calculateAngle() > 100) currentAnim = &idleNE2;
+	/*else if (Enemy_Tank::calculateAngle() <= 125 && Enemy_Tank::calculateAngle() > 100) currentAnim = &idleNE1;*/
 
 	else if (Enemy_Tank::calculateAngle() <= 100 && Enemy_Tank::calculateAngle() > 80) currentAnim = &idleUp;
-	else if (Enemy_Tank::calculateAngle() <= 80 && Enemy_Tank::calculateAngle() > 60) currentAnim = &idleNW3;
-	else if (Enemy_Tank::calculateAngle() <= 60 && Enemy_Tank::calculateAngle() > 35) currentAnim = &idleNW2;
-	else if (Enemy_Tank::calculateAngle() <= 35 && Enemy_Tank::calculateAngle() > 10) currentAnim = &idleNW1;
+	/*else if (Enemy_Tank::calculateAngle() <= 80 && Enemy_Tank::calculateAngle() > 60) currentAnim = &idleNW3;*/
+	else if (Enemy_Tank::calculateAngle() <= 80 && Enemy_Tank::calculateAngle() > 45) currentAnim = &idleNW2;
+	else if (Enemy_Tank::calculateAngle() <= 45 && Enemy_Tank::calculateAngle() > 10) currentAnim = &idleNW1;
 	else if ((Enemy_Tank::calculateAngle() <= 10 && Enemy_Tank::calculateAngle() >= 0) || (Enemy_Tank::calculateAngle() >= -10 && Enemy_Tank::calculateAngle() < -1 )) currentAnim = &idleLeft;
-	else if (Enemy_Tank::calculateAngle() >= -30 && Enemy_Tank::calculateAngle() < -10) currentAnim = &idleSW3;
-	else if (Enemy_Tank::calculateAngle() >= -55 && Enemy_Tank::calculateAngle() < -30) currentAnim = &idleSW2;
-	else if (Enemy_Tank::calculateAngle() >= -80 && Enemy_Tank::calculateAngle() < -55) currentAnim = &idleSW1;
+	else if (Enemy_Tank::calculateAngle() >= -45 && Enemy_Tank::calculateAngle() < -10) currentAnim = &idleSW3;
+	else if (Enemy_Tank::calculateAngle() >= -80 && Enemy_Tank::calculateAngle() < -45) currentAnim = &idleSW2;
+	/*else if (Enemy_Tank::calculateAngle() >= -80 && Enemy_Tank::calculateAngle() < -55) currentAnim = &idleSW1;*/
 
 }
 
@@ -294,93 +297,93 @@ void Enemy_Tank::Attack()
 	if (Enemy_Tank::calculateAngle() >= -100 && Enemy_Tank::calculateAngle() < -80) {
 		shootDown.Reset();
 		currentAnim = &shootDown;
-		App->particles->AddParticle(App->particles->tankDown, position.x + 9, position.y + 30, NULL, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankDown, position.x + 25, position.y + 37, NULL, 1, Collider::Type::TANK_SHOT);
 	}
-	else if (Enemy_Tank::calculateAngle() >= -120 && Enemy_Tank::calculateAngle() < -100) {
+	/*else if (Enemy_Tank::calculateAngle() >= -120 && Enemy_Tank::calculateAngle() < -100) {
 		shootSE3.Reset();
 		currentAnim = &shootSE3;
 		App->particles->AddParticle(App->particles->tankSE3, position.x + 16, position.y + 31, NULL, 1, Collider::Type::TANK_SHOT);
-	}
-	else if (Enemy_Tank::calculateAngle() >= -145 && Enemy_Tank::calculateAngle() < -120) {
+	}*/
+	else if (Enemy_Tank::calculateAngle() >= -135 && Enemy_Tank::calculateAngle() < -100) {
 		shootSE2.Reset();
 		currentAnim = &shootSE2;
-		App->particles->AddParticle(App->particles->tankSE2, position.x + 19, position.y + 28, 1, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankSE2, position.x + 48, position.y + 35, 1, 1, Collider::Type::TANK_SHOT);
 	}
-	else if (Enemy_Tank::calculateAngle() >= -170 && Enemy_Tank::calculateAngle() < -145) {
+	else if (Enemy_Tank::calculateAngle() >= -170 && Enemy_Tank::calculateAngle() < -135) {
 		shootSE1.Reset();
 		currentAnim = &shootSE1;
-		App->particles->AddParticle(App->particles->tankSE1, position.x + 26, position.y + 26, 2, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankSE1, position.x + 56, position.y + 35, 2, 1, Collider::Type::TANK_SHOT);
 	}
 	else if ((Enemy_Tank::calculateAngle() >= -179 && Enemy_Tank::calculateAngle() < -170) || (Enemy_Tank::calculateAngle() >= 170 && Enemy_Tank::calculateAngle() < 180)) {
 		shootRight.Reset();
 		currentAnim = &shootRight;
-		App->particles->AddParticle(App->particles->tankRight, position.x + 41, position.y + 16, 1, 0, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankRight, position.x + 65, position.y + 21, 1, 0, Collider::Type::TANK_SHOT);
 	}
-	else if (Enemy_Tank::calculateAngle() <= 170 && Enemy_Tank::calculateAngle() > 150) {
+	else if (Enemy_Tank::calculateAngle() <= 170 && Enemy_Tank::calculateAngle() > 135) {
 		shootNE3.Reset();
 		currentAnim = &shootNE3;
-		App->particles->AddParticle(App->particles->tankNE3, position.x + 34, position.y + 5, 2, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankNE3, position.x + 59, position.y - 8, 2, -1, Collider::Type::TANK_SHOT);
 	}
 
-	else if (Enemy_Tank::calculateAngle() <= 150 && Enemy_Tank::calculateAngle() > 125) {
+	else if (Enemy_Tank::calculateAngle() <= 135 && Enemy_Tank::calculateAngle() > 100) {
 		shootNE2.Reset();
 		currentAnim = &shootNE2;
-		App->particles->AddParticle(App->particles->tankNE2, position.x + 28, position.y + 4, 1, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankNE2, position.x + 54, position.y - 19, 1, -1, Collider::Type::TANK_SHOT);
 	}
 
-	else if (Enemy_Tank::calculateAngle() <= 125 && Enemy_Tank::calculateAngle() > 100) {
+	/*else if (Enemy_Tank::calculateAngle() <= 125 && Enemy_Tank::calculateAngle() > 100) {
 		shootNE1.Reset();
 		currentAnim = &shootNE1;
 		App->particles->AddParticle(App->particles->tankNE1, position.x + 16, position.y - 5, NULL, -1, Collider::Type::TANK_SHOT);
-	}
+	}*/
 
 	else if (Enemy_Tank::calculateAngle() <= 100 && Enemy_Tank::calculateAngle() > 80) {
 		shootUp.Reset();
 		currentAnim = &shootUp;
-		App->particles->AddParticle(App->particles->tankUp, position.x + 16, position.y - 5, NULL, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankUp, position.x + 26, position.y - 24, NULL, -1, Collider::Type::TANK_SHOT);
 	}
 
-	else if (Enemy_Tank::calculateAngle() <= 80 && Enemy_Tank::calculateAngle() > 60) {
+	/*else if (Enemy_Tank::calculateAngle() <= 80 && Enemy_Tank::calculateAngle() > 60) {
 		shootNW1.Reset();
-		currentAnim = &shootNW1;
-		App->particles->AddParticle(App->particles->tankNO1, position.x + 6, position.y + 4, -1, -1, Collider::Type::TANK_SHOT);
-	}
+		currentAnim = &shootNW3;
+		App->particles->AddParticle(App->particles->tankNO3, position.x + 6, position.y + 4, -1, -1, Collider::Type::TANK_SHOT);
+	}*/
 
-	else if (Enemy_Tank::calculateAngle() <= 60 && Enemy_Tank::calculateAngle() > 35) {
+	else if (Enemy_Tank::calculateAngle() <= 80 && Enemy_Tank::calculateAngle() > 45) {
 		shootNW2.Reset();
 		currentAnim = &shootNW2;
-		App->particles->AddParticle(App->particles->tankNO2, position.x + 3, position.y + 6, -2, -1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankNO2, position.x - 15, position.y - 35, -1, -1, Collider::Type::TANK_SHOT);
 	}
 
-	else if (Enemy_Tank::calculateAngle() <= 35 && Enemy_Tank::calculateAngle() > 10) {
-		shootNW3.Reset();
-		currentAnim = &shootNW3;
-		App->particles->AddParticle(App->particles->tankNO3, position.x + 3, position.y + 6, -2, -1, Collider::Type::TANK_SHOT);
+	else if (Enemy_Tank::calculateAngle() <= 45 && Enemy_Tank::calculateAngle() > 10) {
+		shootNW1.Reset();
+		currentAnim = &shootNW1;
+		App->particles->AddParticle(App->particles->tankNO1, position.x - 7, position.y - 17, -2, -1, Collider::Type::TANK_SHOT);
 	}
 
 	else if ((Enemy_Tank::calculateAngle() <= 10 && Enemy_Tank::calculateAngle() >= 0) || (Enemy_Tank::calculateAngle() >= -10 && Enemy_Tank::calculateAngle() < -1)) {
 		shootLeft.Reset();
 		currentAnim = &shootLeft;
-		App->particles->AddParticle(App->particles->tankLeft, position.x - 5, position.y + 17, -2, NULL, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankLeft, position.x - 24, position.y + 19, -2, NULL, Collider::Type::TANK_SHOT);
 	}
 
-	else if (Enemy_Tank::calculateAngle() <= -10 && Enemy_Tank::calculateAngle() > -30) {
+	else if (Enemy_Tank::calculateAngle() <= -10 && Enemy_Tank::calculateAngle() > -45) {
 		shootSW3.Reset();
 		currentAnim = &shootSW3;
-		App->particles->AddParticle(App->particles->tankSO3, position.x - 5, position.y + 32, -2, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankSO3, position.x - 12, position.y + 36, -2, 1, Collider::Type::TANK_SHOT);
 	}
 
-	else if (Enemy_Tank::calculateAngle() <= -30 && Enemy_Tank::calculateAngle() > -55) {
+	else if (Enemy_Tank::calculateAngle() <= -45 && Enemy_Tank::calculateAngle() > -80) {
 		shootSW2.Reset();
 		currentAnim = &shootSW2;
-		App->particles->AddParticle(App->particles->tankSO2, position.x - 8, position.y + 32, -1, 1, Collider::Type::TANK_SHOT);
+		App->particles->AddParticle(App->particles->tankSO2, position.x + 1, position.y + 34, -1, 1, Collider::Type::TANK_SHOT);
 	}
 
-	else if (Enemy_Tank::calculateAngle() <= -55 && Enemy_Tank::calculateAngle() > -80) {
+	/*else if (Enemy_Tank::calculateAngle() <= -55 && Enemy_Tank::calculateAngle() > -80) {
 		shootSW1.Reset();
 		currentAnim = &shootSW1;
 		App->particles->AddParticle(App->particles->tankSO1, position.x - 8, position.y + 32, -1, 1, Collider::Type::TANK_SHOT);
-	}
+	}*/
 
 	isShooting = true;
 	App->audio->PlayFx(tankShotFx);
