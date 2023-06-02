@@ -65,8 +65,6 @@ Update_Status ModuleObstacles::PostUpdate()
 		App->render->Blit(textureBox, 90, 2837, &boxPosition);
 	}
 
-	
-	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -89,7 +87,7 @@ void ModuleObstacles::OnCollision(Collider* c1, Collider* c2)
 		{ 
 			SDL_Rect rectBox1 = boxDestroyed.GetCurrentFrame();
 			App->render->Blit(Box1, 90, 2802, &rectBox1);
-		
+
 		}
 	}
 

@@ -85,6 +85,8 @@ bool Application::Init()
 
 Update_Status Application::Update()
 {
+	Uint64 start = SDL_GetPerformanceCounter();
+
 	Update_Status ret = Update_Status::UPDATE_CONTINUE;
 
 	for (int i = 0; i < NUM_MODULES && ret == Update_Status::UPDATE_CONTINUE; ++i)
@@ -97,6 +99,11 @@ Update_Status Application::Update()
 		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
 
 	SDL_Delay(16.666);
+	
+
+	Uint64 end = SDL_GetPerformanceCounter();
+	float elapsed = (end - start) / (float)SDL_GetPerformanceFrequency();
+	//LOG("Current FPS: %f",(1.0f / elapsed));
 
 	return ret;
 

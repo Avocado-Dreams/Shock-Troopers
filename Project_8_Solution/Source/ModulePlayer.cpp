@@ -636,17 +636,17 @@ void ModulePlayer::UpdateZoneA()
 	//camera movement relative to player movement
 	if (position.y * 3 < App->render->camera.y + 200)
 	{
-		App->render->camera.y -= 3;
+		App->render->camera.y -= SCREEN_SIZE * speed;
 	}
 
 	if ((position.x * 3 > App->render->camera.x + 550) && App->render->camera.x < 222)
 	{
-		App->render->camera.x += 3;
+		App->render->camera.x += SCREEN_SIZE * speed;
 	}
 
 	if ((position.x * 3 < App->render->camera.x + 150) && App->render->camera.x > 0)
 	{
-		App->render->camera.x -= 3;
+		App->render->camera.x -= SCREEN_SIZE * speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -727,17 +727,17 @@ void ModulePlayer::UpdateZoneB()
 	//camera movement relative to player movement
 	if (position.x * 3 > App->render->camera.x + 135*3)
 	{
-		App->render->camera.x += 3;
+		App->render->camera.x += SCREEN_SIZE * speed;
 	}
 
 	if ((position.y * 3 > App->render->camera.y + (216 - 40) * 3) && App->render->camera.y < (1797+17) * 3)
 	{
-		App->render->camera.y += 3;
+		App->render->camera.y += SCREEN_SIZE * speed;
 	}
 
 	if ((position.y * 3 < App->render->camera.y + 40*3 ) && App->render->camera.y > 1797*3)
 	{
-		App->render->camera.y -= 3;
+		App->render->camera.y -= SCREEN_SIZE * speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -778,12 +778,12 @@ void ModulePlayer::UpdateZoneBC()
 {
 	if ((position.y * 3 > App->render->camera.y + (216 - 40) * 3) && App->render->camera.y < (1797 + 17) * 3)
 	{
-		App->render->camera.y += 3;
+		App->render->camera.y += SCREEN_SIZE * speed;
 	}
 
 	if ((position.y * 3 < App->render->camera.y + 180 * 3) && App->render->camera.y > 1797 * 3)
 	{
-		App->render->camera.y -= 3;
+		App->render->camera.y -= SCREEN_SIZE * speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -834,17 +834,17 @@ void ModulePlayer::UpdateZoneD()
 	//camera movement relative to player movement
 	if (position.y * 3 < App->render->camera.y + 200)
 	{
-		App->render->camera.y -= 3;
+		App->render->camera.y -= SCREEN_SIZE * speed;
 	}
 
 	if ((position.x * 3 > App->render->camera.x + 135*3) && App->render->camera.x < 2095*3)
 	{
-		App->render->camera.x += 3;
+		App->render->camera.x += SCREEN_SIZE * speed;
 	}
 
 	if ((position.x * 3 < App->render->camera.x + 150) && App->render->camera.x > 2051*3)
 	{
-		App->render->camera.x -= 3;
+		App->render->camera.x -= SCREEN_SIZE * speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -885,12 +885,12 @@ void ModulePlayer::UpdateZoneE() {
 
 	if ((position.x * 3 > App->render->camera.x + 135*3) && App->render->camera.x < 2095 * 3)
 	{
-		App->render->camera.x += 3;
+		App->render->camera.x += SCREEN_SIZE * speed;
 	}
 
 	if ((position.x * 3 < App->render->camera.x + 150) && App->render->camera.x > 2051 * 3)
 	{
-		App->render->camera.x -= 3;
+		App->render->camera.x -= SCREEN_SIZE * speed;;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -962,8 +962,13 @@ Update_Status ModulePlayer::Update()
 		App->audio->PlayMusic("Assets/Music/DarkMatter.ogg", 1.0f);
 	}
 
+	if (App->input->keys[SDL_SCANCODE_T] == Key_State::KEY_DOWN) { //TOGGLE TURBO MODE
+		speed = (speed == 1 ? 2 : 1);
+		LOG("Speed %d", speed)
+	}
+	
 	if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN) { //SHORTCUT TO FINAL BOSS
-		App->render->camera.y = 2*3; 
+		App->render->camera.y = 2*3;
 		App->render->camera.x = 2100 * 3; 
 		position.y = 150;
 		position.x = 2200; 
