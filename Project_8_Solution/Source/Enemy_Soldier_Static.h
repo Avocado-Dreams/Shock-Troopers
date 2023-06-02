@@ -21,6 +21,7 @@ public:
 	bool isMoving = false;
 	bool hasMeleed = false;
 	int loop = 3;
+	int tempTimer;
 	// Constructor (x y coordinates in the world)
 	// Creates animation and movement data and the collider
 	Enemy_Soldier_Static(int x, int y);

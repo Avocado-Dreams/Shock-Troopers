@@ -265,38 +265,38 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	moveUp.loop = true;
 	moveUp.speed = 0.2f;
 
-	meleeSW.PushBack({ 1915, 41, 82, 72 });
-	meleeSW.PushBack({ 1832, 41, 82, 72 });
-	meleeSW.PushBack({ 1749, 41, 82, 72 });
-	meleeSW.PushBack({ 1666, 41, 82, 72 });
-	meleeSW.PushBack({ 1583, 41, 82, 72 });
-	meleeSW.PushBack({ 1500, 41, 82, 72 });
-	meleeSW.PushBack({ 1417, 41, 82, 72 });
-	meleeSW.PushBack({ 1334, 41, 82, 72 });
-
-	meleeSW.loop = false;
-	meleeSW.speed = 0.2f;
-
-	meleeSE.PushBack({ 1334, 114, 82, 72 });
-	meleeSE.PushBack({ 1417, 114, 82, 72 });
-	meleeSE.PushBack({ 1500, 114, 82, 72 });
-	meleeSE.PushBack({ 1583, 114, 82, 72 });
-	meleeSE.PushBack({ 1666, 114, 82, 72 });
-	meleeSE.PushBack({ 1749, 114, 82, 72 });
-	meleeSE.PushBack({ 1832, 114, 82, 72 });
-	meleeSE.PushBack({ 1915, 114, 82, 72 });
+	meleeSE.PushBack({ 1361, 125, 38, 49 });
+	meleeSE.PushBack({ 1447, 126, 30, 47 });
+	meleeSE.PushBack({ 1520, 124, 82, 47 });
+	meleeSE.PushBack({ 1602, 122, 82, 46 });
+	meleeSE.PushBack({ 1690, 128, 82, 52 });
+	meleeSE.PushBack({ 1775, 127, 82, 50 });
+	meleeSE.PushBack({ 1858, 126, 82, 48 });
+	meleeSE.PushBack({ 1944, 124, 82, 49 });
 
 	meleeSE.loop = false;
 	meleeSE.speed = 0.2f;
 
-	meleeDown.PushBack({ 1334, 187, 82, 72 });
-	meleeDown.PushBack({ 1417, 187, 82, 72 });
-	meleeDown.PushBack({ 1500, 187, 82, 72 });
-	meleeDown.PushBack({ 1583, 187, 82, 72 });
-	meleeDown.PushBack({ 1666, 187, 82, 72 });
-	meleeDown.PushBack({ 1749, 187, 82, 72 });
-	meleeDown.PushBack({ 1832, 187, 82, 72 });
-	meleeDown.PushBack({ 1915, 187, 82, 72 });
+	meleeSW.PushBack({ 1350, 53, 38, 49 });
+	meleeSW.PushBack({ 1444, 55, 30, 47 });
+	meleeSW.PushBack({ 1531, 56, 26, 47 });
+	meleeSW.PushBack({ 1613, 57, 29, 46 });
+	meleeSW.PushBack({ 1696, 51, 34, 52 });
+	meleeSW.PushBack({ 1777, 53, 35, 50 });
+	meleeSW.PushBack({ 1857, 55, 28, 48 });
+	meleeSW.PushBack({ 1933, 54, 38, 49 });
+
+	meleeSW.loop = false;
+	meleeSW.speed = 0.2f;
+
+	meleeDown.PushBack({ 1361, 196, 28, 48 });
+	meleeDown.PushBack({ 1442, 198, 29, 46 });
+	meleeDown.PushBack({ 1524, 194, 44, 50 });
+	meleeDown.PushBack({ 1609, 191, 38, 53 });
+	meleeDown.PushBack({ 1686, 200, 37, 44 });
+	meleeDown.PushBack({ 1772, 198, 34, 46 });
+	meleeDown.PushBack({ 1853, 198, 37, 46 });
+	meleeDown.PushBack({ 1944, 196, 28, 48 });
 
 	meleeDown.loop = false;
 	meleeDown.speed = 0.2f;
@@ -305,10 +305,10 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	meleeRight.PushBack({ 1417, 260, 82, 72 });
 	meleeRight.PushBack({ 1500, 260, 82, 72 });
 	meleeRight.PushBack({ 1583, 260, 82, 72 });
-	meleeRight.PushBack({ 1666, 260, 82, 72 });
-	meleeRight.PushBack({ 1749, 260, 82, 72 });
-	meleeRight.PushBack({ 1832, 260, 82, 72 });
-	meleeRight.PushBack({ 1915, 260, 82, 72 });
+	meleeRight.PushBack({ 1693, 271, 30, 47 });
+	meleeRight.PushBack({ 1775, 271, 31, 47 });
+	meleeRight.PushBack({ 1857, 271, 32, 47 });
+	meleeRight.PushBack({ 1942, 269, 42, 49 });
 
 	meleeRight.loop = false;
 	meleeRight.speed = 0.2f;
@@ -388,7 +388,7 @@ void Enemy_Soldier_Static::Update()
 	{
 		isSpawning = false;
 		currentAnim = &idleDownL;
-		timer = rand()%3;
+		timer = rand() % 3;
 	}
 
 	else if (currentAnim == &enemy_airspawnR && timer <= 0) {
@@ -401,10 +401,10 @@ void Enemy_Soldier_Static::Update()
 		isSpawning = false;
 		currentAnim = &idleDownR;
 		timer = rand() % 3;
-		
+
 	}
 
-	else if (isSpawning ==false && Enemy_Soldier_Static::find_player())
+	else if (isSpawning == false && Enemy_Soldier_Static::find_player())
 	{
 		if (timer <= 0.0f && isShooting == false)
 		{
@@ -413,15 +413,19 @@ void Enemy_Soldier_Static::Update()
 			hasDecided = false;
 			Attack();
 		}
-		else if (timer < 4.2f && timer >2.0f && isShooting == false)isIdle = true;
-		else if (timer > 0 && timer < 2.0f && hasDecided == false) {
-			if (rand()%100 > 70 && distance > 35) {
+		else if (isShooting == false && hasDecided == false) {
+			if (rand() % 100 > 55 && distance > 35) {
 				isIdle = false;
 				isMoving = true;
 			}
 			hasDecided = true;
 		}
+		else if (isMoving == false && isShooting == false)
+		{
+			isIdle = true;
+		}
 	}
+
 	if (isMoving)
 	{
 		Move();
@@ -431,7 +435,7 @@ void Enemy_Soldier_Static::Update()
 	}
 	//currentAnim = path.GetCurrentAnimation();
 	timer -= 1.0f / 60.0f;
-	if (timer <= 4.2)isShooting = false;
+	if (timer <= (tempTimer - 0.8))isShooting = false;
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();
@@ -462,7 +466,7 @@ double  Enemy_Soldier_Static::calculateAngle()
 void Enemy_Soldier_Static::Move()
 {
 	loop++;
-	if (loop%2==0) {
+	if (loop % 2 == 0) {
 		if (Enemy_Soldier_Static::calculateAngle() >= -110 && Enemy_Soldier_Static::calculateAngle() < -70) {
 			currentAnim = &moveDown;
 			position.y++;
@@ -472,7 +476,7 @@ void Enemy_Soldier_Static::Move()
 			position.y++;
 			position.x++;
 		}
-		else if ((Enemy_Soldier_Static::calculateAngle() >= -179 && Enemy_Soldier_Static::calculateAngle() < -160) || (Enemy_Soldier_Static::calculateAngle() >= 160 && Enemy_Soldier_Static::calculateAngle() < 180)) {
+		else if ((Enemy_Soldier_Static::calculateAngle() >= -180 && Enemy_Soldier_Static::calculateAngle() < -160) || (Enemy_Soldier_Static::calculateAngle() >= 160 && Enemy_Soldier_Static::calculateAngle() <= 180)) {
 			currentAnim = &moveRight;
 			position.x++;
 		}
@@ -512,7 +516,7 @@ void Enemy_Soldier_Static::Idle()
 	else if (Enemy_Soldier_Static::calculateAngle() <= 170 && Enemy_Soldier_Static::calculateAngle() > 135) currentAnim = &idleNE1;
 	else if (Enemy_Soldier_Static::calculateAngle() <= 135 && Enemy_Soldier_Static::calculateAngle() > 100) currentAnim = &idleNE2;
 	else if (Enemy_Soldier_Static::calculateAngle() <= 100 && Enemy_Soldier_Static::calculateAngle() > 90) currentAnim = &idleUpL;
-	
+
 	else if (Enemy_Soldier_Static::calculateAngle() <= 90 && Enemy_Soldier_Static::calculateAngle() > 80) currentAnim = &idleUpR;
 	else if (Enemy_Soldier_Static::calculateAngle() <= 80 && Enemy_Soldier_Static::calculateAngle() > 45) currentAnim = &idleNW1;
 	else if (Enemy_Soldier_Static::calculateAngle() <= 45 && Enemy_Soldier_Static::calculateAngle() > 10) currentAnim = &idleNW2;
@@ -534,7 +538,39 @@ void Enemy_Soldier_Static::Attack()
 
 	if (distance < 35)
 	{
-		
+		if (Enemy_Soldier_Static::calculateAngle() >= -110 && Enemy_Soldier_Static::calculateAngle() < -70) {
+			meleeDown.Reset();
+			currentAnim = &meleeDown;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() >= -160 && Enemy_Soldier_Static::calculateAngle() < -110) {
+			meleeSE.Reset();
+			currentAnim = &meleeSE;
+
+		}
+		else if ((Enemy_Soldier_Static::calculateAngle() >= -180 && Enemy_Soldier_Static::calculateAngle() < -160) || (Enemy_Soldier_Static::calculateAngle() >= 160 && Enemy_Soldier_Static::calculateAngle() <= 180)) {
+			meleeRight.Reset();
+			currentAnim = &meleeRight;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 160 && Enemy_Soldier_Static::calculateAngle() > 110) {
+			meleeNE.Reset();
+			currentAnim = &meleeNE;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 110 && Enemy_Soldier_Static::calculateAngle() > 70) {
+			meleeUp.Reset();
+			currentAnim = &meleeUp;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() <= 70 && Enemy_Soldier_Static::calculateAngle() > 20) {
+			meleeNW.Reset();
+			currentAnim = &meleeNW;
+		}
+		else if ((Enemy_Soldier_Static::calculateAngle() <= 20 && Enemy_Soldier_Static::calculateAngle() >= 0) || (Enemy_Soldier_Static::calculateAngle() >= -20 && Enemy_Soldier_Static::calculateAngle() < -1)) {
+			meleeLeft.Reset();
+			currentAnim = &meleeLeft;
+		}
+		else if (Enemy_Soldier_Static::calculateAngle() >= -70 && Enemy_Soldier_Static::calculateAngle() < -20) {
+			meleeSW.Reset();
+			currentAnim = &meleeSW;
+		}
 	}
 	else
 	{
@@ -558,7 +594,7 @@ void Enemy_Soldier_Static::Attack()
 			currentAnim = &shootSE2;
 			App->particles->AddParticle(App->particles->enemyShot, position.x + 26, position.y + 26, 2, 1, Collider::Type::ENEMY_SHOT);
 		}
-		else if ((Enemy_Soldier_Static::calculateAngle() >= -179 && Enemy_Soldier_Static::calculateAngle() < -170) || (Enemy_Soldier_Static::calculateAngle() >= 170 && Enemy_Soldier_Static::calculateAngle() < 180)) {
+		else if ((Enemy_Soldier_Static::calculateAngle() >= -180 && Enemy_Soldier_Static::calculateAngle() < -170) || (Enemy_Soldier_Static::calculateAngle() >= 170 && Enemy_Soldier_Static::calculateAngle() <= 180)) {
 			shootRight.Reset();
 			currentAnim = &shootRight;
 			App->particles->AddParticle(App->particles->enemyShot, position.x + 41, position.y + 16, 1, 0, Collider::Type::ENEMY_SHOT);
@@ -619,9 +655,10 @@ void Enemy_Soldier_Static::Attack()
 		App->audio->PlayFx(enemyShotFx);
 	}
 
-	
+
 	isShooting = true;
-	timer = SHOOT_INTERVAL - (randomValue = rand() % 3);
+	timer = SHOOT_INTERVAL - (randomValue = rand() % 2);
+	tempTimer = timer;
 }
 
 void Enemy_Soldier_Static::OnCollision(Collider* collider)
@@ -671,8 +708,8 @@ void Enemy_Soldier_Static::OnCollision(Collider* collider)
 
 	else if (collider->type == Collider::Type::PLAYER) {
 		isMoving = false;
-		isIdle = true;
 	}
+
 	/* Choque entre soldados
 	else if (collider->type == Collider::Type::SOLDIER) {
 		if (currentAnim == &moveUp) { position.y += 1; }

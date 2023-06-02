@@ -397,15 +397,11 @@ void Enemy_Tank::OnCollision(Collider* collider)
 	}
 	if (tankDestroyed)
 	{
-		App->particles->AddParticle(App->particles->tank_explosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
+		App->particles->AddParticle(App->particles->bossExplosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
 		App->audio->PlayFx(destroyedTank);
-		App->particles->AddParticle(App->particles->tank_explosion, position.x + 9, position.y + 9, NULL, NULL, Collider::Type::NONE, 4);
+		App->particles->AddParticle(App->particles->bossExplosion, position.x + 3, position.y + 4, NULL, NULL, Collider::Type::NONE, 4);
 		App->audio->PlayFx(destroyedTank);
-		App->particles->AddParticle(App->particles->tank_explosion, position.x + 18, position.y + 6, NULL, NULL, Collider::Type::NONE, 8);
-		App->audio->PlayFx(destroyedTank);
-		App->particles->AddParticle(App->particles->tank_explosion, position.x - 9, position.y + 18, NULL, NULL, Collider::Type::NONE, 12);
-		App->audio->PlayFx(destroyedTank);
-		App->particles->AddParticle(App->particles->tank_explosion, position.x + 27, position.y + 12, NULL, NULL, Collider::Type::NONE, 16);
+		App->particles->AddParticle(App->particles->bossExplosion, position.x -4, position.y - 7, NULL, NULL, Collider::Type::NONE, 8);
 		App->audio->PlayFx(destroyedTank);
 
 		App->player->score += 3000;
