@@ -57,6 +57,7 @@ bool SceneMenu::Start()
 
 	App->audio->PlayMusic("Assets/Music/MusicMenuSelect.ogg", 1.0f); 
 	selectFx = App->audio->LoadFx("Assets/Fx/Change selection.wav"); //això posar-ho en el Update!!
+	acceptSelectFx = App->audio->LoadFx("Assets/Fx/Accept selection.wav");
 
 	Texture1 = App->textures->Load("Assets/Sprites/intro_sprites/menu.png");
 	CurrentAnimaton1 = &menu;
@@ -212,6 +213,7 @@ Update_Status SceneMenu::PostUpdate()
 				
 				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 				{
+					App->audio->PlayFx(acceptSelectFx);
 					App->fade->FadeToBlack(this, (Module*)App->sceneRoute, 90);
 				}
 
