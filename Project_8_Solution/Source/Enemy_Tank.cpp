@@ -154,6 +154,7 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 	isSpawning = false;
 
 	tankShotFx = App->audio->LoadFx("Assets/Fx/tankShot.wav");
+	tankMovingFX = App->audio->LoadFx("Assets/Fx/tankMoving.wav");
 
 	collider = App->collisions->AddCollider({ 0, 0, 34, 34 }, Collider::Type::TANK, (Module*)App->enemies);
 
@@ -242,6 +243,7 @@ void Enemy_Tank::Move()
 {
 	loop++;
 	if (loop % 4 == 0) {
+		App->audio->PlayFx(tankMovingFX);
 		if (Enemy_Tank::calculateAngle() >= -179 && Enemy_Tank::calculateAngle() <= -1) {
 			position.y++;
 		}
@@ -252,7 +254,6 @@ void Enemy_Tank::Move()
 		currentBAnim = &tankMove;
 	}
 	collider->SetPos(position.x, position.y);
-	
 }
 void Enemy_Tank::Stop()
 {
@@ -397,6 +398,7 @@ void Enemy_Tank::OnCollision(Collider* collider)
 	}
 	if (tankDestroyed)
 	{
+		App->audio->PlayFx(destroyedTank);
 		App->particles->AddParticle(App->particles->bossExplosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
 		App->audio->PlayFx(destroyedTank);
 		App->particles->AddParticle(App->particles->bossExplosion, position.x + 3, position.y + 4, NULL, NULL, Collider::Type::NONE, 4);

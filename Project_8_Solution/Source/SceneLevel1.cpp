@@ -44,25 +44,18 @@ bool SceneLevel1::Start()
 	App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
 
 
-	////Bottomside collider
-	//App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);     //Eliminados porque eran del otro juego y destruyen el jugador cuando no deben
 
-	////First two columns colliders
-	//App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
-
-	// Enemies ---
-	/*App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 250, 2400);
-	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 625, 80);
-	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 640, 80);
-	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 665, 80);
-
-	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 735, 120);
-	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 750, 120);
-	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 775, 120);
-	App->enemies->AddEnemy(Enemy_Type::Enemy_Tank, 790, 120);
-*/
-//	App->enemies->AddEnemy(Enemy_Type::TANK, 100, 2400);
+App->enemies->AddEnemy(Enemy_Type::SOLDIER, 260, 2675);
+App->enemies->AddEnemy(Enemy_Type::SOLDIER, 300, 2675);
+App->enemies->AddEnemy(Enemy_Type::SOLDIER, 65, 2690);
+App->enemies->AddEnemy(Enemy_Type::SOLDIER, 100, 2690);
+App->enemies->AddEnemy(Enemy_Type::SOLDIER, 165, 2635);
+App->enemies->AddEnemy(Enemy_Type::SOLDIER, 100, 2345);
+App->enemies->AddEnemy(Enemy_Type::SOLDIER, 110, 2300);
+App->enemies->AddEnemy(Enemy_Type::SOLDIER, 220, 2345);
+App->enemies->AddEnemy(Enemy_Type::SOLDIER, 210, 2300);
+App->enemies->AddEnemy(Enemy_Type::TANK, 150, 2000);
+App->enemies->AddEnemy(Enemy_Type::SOLDIER, 160, 1990);
 	
 
 	App->render->camera.x = 0;
@@ -95,25 +88,53 @@ bool SceneLevel1::Start()
 Update_Status SceneLevel1::Update()
 {
 	//App->render->camera.y -= 3;
-	if (App->player->position.y < 2700 && enemy1Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 200, 2600);
+	if (App->player->position.y < 2850 && enemy1Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 170, 2700);
 		enemy1Spawned = true;
 	}
-	if (App->player->position.y < 2700 && enemy2Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 170, 2580);
+	if (App->player->position.y < 2850 && enemy2Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 200, 2680);
 		enemy2Spawned = true;
 	}
-	if (App->player->position.y < 2700 && enemy3Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 80, 2600);
+	if (App->player->position.y < 2850 && enemy3Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 50, 2700);
 		enemy3Spawned = true;
 	}
-	if (App->player->position.y < 2700 && enemy4Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 50, 2580);
+	if (App->player->position.y < 2850 && enemy4Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 80, 2680);
 		enemy4Spawned = true;
 	}
-	if (App->player->position.y < 2700 && enemy5Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::TANK, 100, 2400);
+	if (App->player->position.y < 2530 && enemy5Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 170, 2400);
 		enemy5Spawned = true;
+	}
+	if (App->player->position.y < 2530 && enemy6Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 200, 2380);
+		enemy6Spawned = true;
+	}
+	if (App->player->position.y < 2530 && enemy7Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 50, 2400);
+		enemy7Spawned = true;
+	}
+	if (App->player->position.y < 2530 && enemy8Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 80, 2380);
+		enemy8Spawned = true;
+	}
+	if (App->player->position.y < 2350 && enemy9Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 95, 2265);
+		enemy9Spawned = true;
+	}
+	if (App->player->position.y < 2350 && enemy10Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 105, 2225);
+		enemy10Spawned = true;
+	}
+	if (App->player->position.y < 2300 && enemy11Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 195, 2220);
+		enemy11Spawned = true;
+	}
+	if (App->player->position.y < 2300 && enemy12Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 205, 2180);
+		enemy12Spawned = true;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;

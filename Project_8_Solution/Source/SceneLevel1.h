@@ -37,6 +37,13 @@ public:
 	bool enemy3Spawned;
 	bool enemy4Spawned;
 	bool enemy5Spawned;
+	bool enemy6Spawned;
+	bool enemy7Spawned;
+	bool enemy8Spawned;
+	bool enemy9Spawned;
+	bool enemy10Spawned;
+	bool enemy11Spawned;
+	bool enemy12Spawned;
 
 
 	SDL_Texture* textureSky = nullptr;

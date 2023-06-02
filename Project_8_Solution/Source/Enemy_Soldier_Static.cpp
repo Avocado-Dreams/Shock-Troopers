@@ -362,6 +362,7 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	meleeUp.speed = 0.2f;
 
 	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
+	enemyKnifeFx = App->audio->LoadFx("Assets/Fx/Knife.wav");
 
 	isSpawning = true;
 
@@ -541,6 +542,7 @@ void Enemy_Soldier_Static::Attack()
 
 	if (distance < 40)
 	{
+		App->audio->PlayFx(enemyKnifeFx);
 		if (Enemy_Soldier_Static::calculateAngle() >= -110 && Enemy_Soldier_Static::calculateAngle() < -70) {
 			meleeDown.Reset();
 			currentAnim = &meleeDown;

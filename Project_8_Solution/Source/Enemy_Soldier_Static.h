@@ -62,6 +62,7 @@ private:
 	Animation meleeDown, meleeUp, meleeRight, meleeLeft, meleeNW, meleeNE, meleeSW, meleeSE;
 
 	uint enemyShotFx = 0;
+	uint enemyKnifeFx = 0;
 };
 
 #endif // __Enemy_Soldier_Static_H__
