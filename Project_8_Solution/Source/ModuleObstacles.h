@@ -44,7 +44,6 @@ public:
 
 	Animation box, boxDestroyed;
 
-	SDL_Texture* Box1 = nullptr;
 
 public:
 
