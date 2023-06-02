@@ -265,14 +265,14 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	moveUp.loop = true;
 	moveUp.speed = 0.2f;
 
-	meleeSE.PushBack({ 1361, 125, 38, 49 });
-	meleeSE.PushBack({ 1447, 126, 30, 47 });
-	meleeSE.PushBack({ 1520, 124, 82, 47 });
-	meleeSE.PushBack({ 1602, 122, 82, 46 });
-	meleeSE.PushBack({ 1690, 128, 82, 52 });
-	meleeSE.PushBack({ 1775, 127, 82, 50 });
-	meleeSE.PushBack({ 1858, 126, 82, 48 });
 	meleeSE.PushBack({ 1944, 124, 82, 49 });
+	meleeSE.PushBack({ 1858, 126, 82, 48 });
+	meleeSE.PushBack({ 1775, 127, 82, 50 });
+	meleeSE.PushBack({ 1690, 128, 82, 52 });
+	meleeSE.PushBack({ 1602, 122, 82, 46 });
+	meleeSE.PushBack({ 1520, 124, 82, 47 });
+	meleeSE.PushBack({ 1447, 126, 30, 47 });
+	meleeSE.PushBack({ 1361, 125, 38, 49 });
 
 	meleeSE.loop = false;
 	meleeSE.speed = 0.2f;
@@ -337,22 +337,22 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	meleeNE.loop = false;
 	meleeNE.speed = 0.2f;
 
-	meleeNW.PushBack({ 1923, 491, 40, 48 });
-	meleeNW.PushBack({ 1843, 492, 42, 48 });
-	meleeNW.PushBack({ 1757, 479, 48, 46 });
-	meleeNW.PushBack({ 1679, 491, 34, 48 });
-	meleeNW.PushBack({ 1596, 491, 33, 48 });
-	meleeNW.PushBack({ 1513, 493, 38, 45 });
-	meleeNW.PushBack({ 1428, 493, 35, 46 });
-	meleeNW.PushBack({ 1349, 493, 38, 46 });
+	meleeNW.PushBack({ 1932, 494, 40, 48 });
+	meleeNW.PushBack({ 1851+4, 493, 42, 48 });
+	meleeNW.PushBack({ 1760+12, 495, 48, 46 });
+	meleeNW.PushBack({ 1691, 494, 34, 48 });
+	meleeNW.PushBack({ 1609, 494, 33, 48 });
+	meleeNW.PushBack({ 1526, 496, 38, 45 });
+	meleeNW.PushBack({ 1443, 496, 35, 46 });
+	meleeNW.PushBack({ 1360, 496, 38, 46 });
 
 	meleeNW.loop = false;
 	meleeNW.speed = 0.2f;
 
 	meleeUp.PushBack({ 1360, 566, 36, 48 });
 	meleeUp.PushBack({ 1446, 568, 34, 46 });
-	meleeUp.PushBack({ 1512, 566, 47, 48 });
-	meleeUp.PushBack({ 1594, 566, 48, 48 });
+	meleeUp.PushBack({ 1512+19, 566, 47-19, 48 });
+	meleeUp.PushBack({ 1594+20, 566, 48-20, 48 });
 	meleeUp.PushBack({ 1696, 569, 39, 45 });
 	meleeUp.PushBack({ 1779, 569, 35, 45 });
 	meleeUp.PushBack({ 1862, 569, 39, 45 });
