@@ -19,6 +19,19 @@ ModuleObstacles::ModuleObstacles(bool startEnabled) : Module(startEnabled)
 	//Inactive box
 	box.PushBack({ 85, 50, 29, 38 });
 
+	//Destroy box
+	boxDestroyed.PushBack({ 95, 50, 29, 38 });
+	boxDestroyed.PushBack({ 135, 44, 43, 44 });
+	boxDestroyed.PushBack({ 188, 38, 54, 51 });
+	boxDestroyed.PushBack({ 255, 37, 64, 52 });
+	boxDestroyed.PushBack({ 329, 38, 63, 53 });
+	boxDestroyed.PushBack({ 403, 41, 63, 50 });
+	boxDestroyed.PushBack({ 476, 49, 64, 39 });
+	boxDestroyed.PushBack({ 550, 54, 64, 34 });
+	boxDestroyed.PushBack({ 625, 59, 63, 31 });
+	boxDestroyed.loop = false;
+	boxDestroyed.speed = 0.3f;
+
 }
 
 ModuleObstacles::~ModuleObstacles()
@@ -35,18 +48,16 @@ bool ModuleObstacles::Start()
 	currentBox = &box;
 	currentDBox = &boxDestroyed;
 
-
 	collider = App->collisions->AddCollider({ 90, 2837, 29, 38 }, Collider::Type::BOX, this);
 
 	bool ret = true;
-
-
 
 	return ret;
 }
 
 Update_Status ModuleObstacles::Update()
 {
+	
 
 
 	boxDestroyed.Update();
@@ -79,14 +90,15 @@ bool ModuleObstacles::CleanUp()
 
 void ModuleObstacles::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == Collider::Type::BOX && c2->type == Collider::Type::PLAYER_SHOT)
+	if (c1->type == Collider::Type::PLAYER_SHOT && c2->type == Collider::Type::BOX)
 	{
 		LOG("Box being shot")
-		life--;
-		if (life == 0) 
-		{ 
+		life = 0;
+		if (life <= 0)
+		{
 			SDL_Rect rectBox1 = boxDestroyed.GetCurrentFrame();
-			App->render->Blit(Box1, 90, 2802, &rectBox1);
+			App->render->Blit(textureBox, 90, 2837, &rectBox1);
+			boxIsDestroyed = true;
 
 		}
 	}
