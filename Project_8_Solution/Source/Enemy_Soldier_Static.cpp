@@ -544,35 +544,44 @@ void Enemy_Soldier_Static::Attack()
 		if (Enemy_Soldier_Static::calculateAngle() >= -110 && Enemy_Soldier_Static::calculateAngle() < -70) {
 			meleeDown.Reset();
 			currentAnim = &meleeDown;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 13, position.y + 30, NULL, 1, Collider::Type::ENEMY_SHOT);
+
 		}
 		else if (Enemy_Soldier_Static::calculateAngle() >= -160 && Enemy_Soldier_Static::calculateAngle() < -110) {
 			meleeSE.Reset();
 			currentAnim = &meleeSE;
 
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 23, position.y + 27, 2, 1, Collider::Type::ENEMY_SHOT);
 		}
 		else if ((Enemy_Soldier_Static::calculateAngle() >= -180 && Enemy_Soldier_Static::calculateAngle() < -160) || (Enemy_Soldier_Static::calculateAngle() >= 160 && Enemy_Soldier_Static::calculateAngle() <= 180)) {
 			meleeRight.Reset();
 			currentAnim = &meleeRight;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 41, position.y + 16, 1, 0, Collider::Type::ENEMY_SHOT);
 		}
 		else if (Enemy_Soldier_Static::calculateAngle() <= 160 && Enemy_Soldier_Static::calculateAngle() > 110) {
 			meleeNE.Reset();
 			currentAnim = &meleeNE;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 31, position.y + 4, 1, -1, Collider::Type::ENEMY_SHOT);
 		}
 		else if (Enemy_Soldier_Static::calculateAngle() <= 110 && Enemy_Soldier_Static::calculateAngle() > 70) {
 			meleeUp.Reset();
 			currentAnim = &meleeUp;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, NULL, -1, Collider::Type::ENEMY_SHOT);
 		}
 		else if (Enemy_Soldier_Static::calculateAngle() <= 70 && Enemy_Soldier_Static::calculateAngle() > 20) {
 			meleeNW.Reset();
 			currentAnim = &meleeNW;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 4, position.y + 5, -2, -1, Collider::Type::ENEMY_SHOT);
 		}
 		else if ((Enemy_Soldier_Static::calculateAngle() <= 20 && Enemy_Soldier_Static::calculateAngle() >= 0) || (Enemy_Soldier_Static::calculateAngle() >= -20 && Enemy_Soldier_Static::calculateAngle() < -1)) {
 			meleeLeft.Reset();
 			currentAnim = &meleeLeft;
+			App->particles->AddParticle(App->particles->enemyShot, position.x - 5, position.y + 17, -2, NULL, Collider::Type::ENEMY_SHOT);
 		}
 		else if (Enemy_Soldier_Static::calculateAngle() >= -70 && Enemy_Soldier_Static::calculateAngle() < -20) {
 			meleeSW.Reset();
 			currentAnim = &meleeSW;
+			App->particles->AddParticle(App->particles->enemyShot, position.x - 6, position.y + 32, -1, 1, Collider::Type::ENEMY_SHOT);
 		}
 	}
 	else
