@@ -100,9 +100,7 @@ Update_Status ModuleHelicopter::Update()
 				{
 					directionX = -directionX;
 				}
-			
 			}
-
 		}
 
 		/*	Idle();*/
@@ -268,7 +266,7 @@ void ModuleHelicopter::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->particles->AddParticle(App->particles->explosionAnim, position.x, position.y, NULL, NULL, Collider::Type::EXPLOSION);
 		App->particles->explosionAnim.anim.Reset();
-		App->audio->PlayFx(helicopterDestroyedFx);
+		//App->audio->PlayFx(helicopterDestroyedFx);
 	}
 
 }
