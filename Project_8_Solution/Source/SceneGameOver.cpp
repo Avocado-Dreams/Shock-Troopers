@@ -55,6 +55,7 @@ Update_Status SceneGameOver::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneLayer2, 90);
 	}
 
+	App->audio->PlayMusic("Assets/Music/SilenceGameOver.ogg", 1.0f);
 	App->audio->PlayFx(gameOver);
 	App->collisions->CleanUp();
 

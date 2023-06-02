@@ -408,6 +408,8 @@ void Enemy_Tank::OnCollision(Collider* collider)
 		App->particles->AddParticle(App->particles->tank_explosion, position.x + 27, position.y + 12, NULL, NULL, Collider::Type::NONE, 16);
 		App->audio->PlayFx(destroyedTank);
 
+		App->player->score += 3000;
+
 		// Probabilidad de aparición de los BLUEDIAMONDS 
 		int prob_diamond = 30;
 		int prob_life = 50;

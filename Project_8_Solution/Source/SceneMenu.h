@@ -89,6 +89,7 @@ public:
 
 
 	uint selectFx = 0;
+	uint acceptSelectFx = 0;
 	bool soundPlayed = false;
 
 
