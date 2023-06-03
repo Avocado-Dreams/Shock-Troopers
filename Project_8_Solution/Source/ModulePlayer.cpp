@@ -956,7 +956,7 @@ Update_Status ModulePlayer::Update()
 	{
 		zone = 2;
 	}
-	else if (zone == 2 && (App->input->keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN))  //C = continue, until we have the enemy condition
+	else if (zone == 2 && App->sceneLayer2->GoRight)  
 	{
 		zone = 3; 
 	}
@@ -965,7 +965,7 @@ Update_Status ModulePlayer::Update()
 		App->helicopter->Enable();
 		zone = 4;
 	}
-	else if (zone == 4 && App->helicopter->life == 0)  //C = continue, until we have the enemy condition
+	else if (zone == 4 && App->helicopter->life == 0)  
 	{
 		zone = 5;
 	}

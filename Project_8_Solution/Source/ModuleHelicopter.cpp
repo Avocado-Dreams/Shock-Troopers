@@ -75,7 +75,7 @@ Update_Status ModuleHelicopter::Update()
 		if (state == 1)
 		{
 			currentFAnim = &flyAnim;
-			if (position.y > 1788) { position.y--; }
+			if (position.y > 1788) { position.y--;}
 			if (position.y == 1788) { App->audio->PlayFx(helicopterMovingFx); }
 		}
 
@@ -94,7 +94,7 @@ Update_Status ModuleHelicopter::Update()
 					position.x = (App->player->position.x) - 39;
 				}
 
-				position.x += speed * directionX;
+				position.x += speed * directionX * 0.5f;
 
 				if (position.x <= -100 || position.x >= SCREEN_WIDTH + 100)
 				{
@@ -132,6 +132,9 @@ Update_Status ModuleHelicopter::Update()
 		if (position.y < 1928) 
 		{ 
 			position.y++; 
+		}
+		if (position.y >= 1927) {
+			helicopterMovingFx = NULL;
 		}
 	}
 
@@ -197,20 +200,20 @@ void ModuleHelicopter::Idle()
 void ModuleHelicopter::Attack()
 {
 	if (life != 0) {
-		if (ModuleHelicopter::calculateAngle() >= -101.25 && ModuleHelicopter::calculateAngle() < -78.75) {
+		if (ModuleHelicopter::calculateAngle() >= -101.25 && ModuleHelicopter::calculateAngle() < -80.75) {
 			currentShotAnim = &shotYAnim;
-			App->particles->AddParticle(App->particles->shotYAnim, position.x + 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
-			App->particles->AddParticle(App->particles->shotGAnim, position.x + 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
+			App->particles->AddParticle(App->particles->shotYAnim, position.x + 56, position.y + 97, NULL, 1, Collider::Type::HELICOPTER_SHOT);
+			App->particles->AddParticle(App->particles->shotGAnim, position.x + 56, position.y + 97, NULL, 1, Collider::Type::HELICOPTER_SHOT);
 		}
-		else if (ModuleHelicopter::calculateAngle() <= -33.75 && ModuleHelicopter::calculateAngle() > -56.25) {
+		else if (ModuleHelicopter::calculateAngle() <= -70.75 && ModuleHelicopter::calculateAngle() > -80.75) {
 			currentShotAnim = &shotYAnim;
-			App->particles->AddParticle(App->particles->shotYAnim, position.x - 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
-			App->particles->AddParticle(App->particles->shotGAnim, position.x - 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
+			App->particles->AddParticle(App->particles->shotYAnim, position.x - 56, position.y + 97, -1, 1, Collider::Type::HELICOPTER_SHOT);
+			App->particles->AddParticle(App->particles->shotGAnim, position.x - 56, position.y + 97, -1, 1, Collider::Type::HELICOPTER_SHOT);
 		}
-		else if (ModuleHelicopter::calculateAngle() <= -123.75 && ModuleHelicopter::calculateAngle() > -146.25) {
+		else if (ModuleHelicopter::calculateAngle() <= -123.75 && ModuleHelicopter::calculateAngle() > -101.25) {
 			currentShotAnim = &shotYAnim;
-			App->particles->AddParticle(App->particles->shotYAnim, position.x + 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
-			App->particles->AddParticle(App->particles->shotGAnim, position.x + 56, position.y + 97, NULL, NULL, Collider::Type::HELICOPTER_SHOT);
+			App->particles->AddParticle(App->particles->shotYAnim, position.x + 56, position.y + 97, 1, 1, Collider::Type::HELICOPTER_SHOT);
+			App->particles->AddParticle(App->particles->shotGAnim, position.x + 56, position.y + 97, 1, 1, Collider::Type::HELICOPTER_SHOT);
 		}
 	}
 	isShooting = true;
