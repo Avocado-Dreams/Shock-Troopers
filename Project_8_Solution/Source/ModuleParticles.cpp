@@ -336,7 +336,7 @@ bool ModuleParticles::Start()
 	bossExplosion.anim.PushBack({ 187, 640, 133, 137 });
 	bossExplosion.anim.PushBack({ 330, 640, 133, 137 });
 	bossExplosion.anim.loop = false; 
-	bossExplosion.anim.speed = 0.01f;
+	bossExplosion.anim.speed = 0.2f;
 
 	//HELICOPTER SHOOTING
 	//NORMAL SHOT YELLOW

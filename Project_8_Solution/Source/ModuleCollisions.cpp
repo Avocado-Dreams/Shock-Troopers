@@ -219,7 +219,10 @@ Update_Status ModuleCollisions::Update()
 		debug = !debug;
 
 	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
+	{
 		GodMode = !GodMode;
+		God_Mode();
+	}
 
 	if (App->input->keys[SDL_SCANCODE_F3] == KEY_DOWN)
 	{
@@ -259,8 +262,10 @@ Update_Status ModuleCollisions::PostUpdate()
 	if (debug)
 		DebugDraw();
 
-	if (GodMode)
+	/*if (GodMode)
 		God_Mode();
+	if(!GodMode)
+		NoGodMode();*/
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -330,13 +335,20 @@ void ModuleCollisions::God_Mode()
 		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = false;
 		matrix[Collider::Type::PLAYER][Collider::Type::TANK_SHOT] = false;
 	}
-	else {
+	else if (!GodMode)
+	{
 		matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 		matrix[Collider::Type::PLAYER][Collider::Type::SOLDIER] = true;
 		matrix[Collider::Type::PLAYER][Collider::Type::TANK] = true;
 		matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
 		matrix[Collider::Type::PLAYER][Collider::Type::TANK_SHOT] = true;
 	}
+	
+	
+	
+}
+void ModuleCollisions::NoGodMode()
+{
 	
 }
 
