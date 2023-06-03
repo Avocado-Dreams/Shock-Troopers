@@ -4,45 +4,45 @@
 #include "Module.h"
 #include "Animation.h"
 #include "p2Point.h"
-
+#include "Enemy.h"
 
 struct SDL_Texture;
 
-class ModuleObstacles : public Module
+class ModuleObstacles : public Enemy
 {
 public:
 	//Constructor
-	ModuleObstacles(bool startEnabled);
+	ModuleObstacles(int x, int y);
 
 	//Destructor
-	~ModuleObstacles();
+	
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
-	bool Start() override;
+	/*bool Start() override;*/
 
 	// Called at the middle of the application loop
 	// Updates the scene's background animations
-	Update_Status Update() override;
+	void Update() override;
 
 	// Called at the end of the application loop.
 	// Performs the render call of all the parts of the scene's background
-	Update_Status PostUpdate() override;
+	/*Update_Status PostUpdate() override;*/
 
 	// Disables the player and the enemies
 	bool CleanUp();
 
-	void OnCollision(Collider* c1, Collider* c2);
+	void OnCollision(Collider* collider) override;
 
 
-	iPoint position;
+	/*iPoint position;*/
 	bool boxIsDestroyed = false;
 
 	Animation* currentHP = nullptr;
 	Animation* currentBox = nullptr;
 	Animation* currentDBox = nullptr;
 
-	Animation box, boxDestroyed;
+	Animation box;
 
 
 public:
@@ -56,7 +56,7 @@ public:
 
 	int life = 1;
 
-	Collider* collider = nullptr;
+	/*Collider* collider = nullptr;*/
 
 
 };

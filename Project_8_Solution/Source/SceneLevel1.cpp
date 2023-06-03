@@ -57,6 +57,7 @@ App->enemies->AddEnemy(Enemy_Type::SOLDIER, 210, 2300);
 App->enemies->AddEnemy(Enemy_Type::TANK, 150, 2000);
 App->enemies->AddEnemy(Enemy_Type::SOLDIER, 160, 1990);
 	
+App->enemies->AddEnemy(Enemy_Type::CAJA, 90, 2837);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 2715 * 3;

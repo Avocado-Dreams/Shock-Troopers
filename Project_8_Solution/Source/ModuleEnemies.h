@@ -10,6 +10,7 @@ enum class Enemy_Type
 	NO_TYPE,
 	TANK,
 	SOLDIER,
+	CAJA
 };
 
 struct EnemySpawnpoint

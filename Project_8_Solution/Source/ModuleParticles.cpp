@@ -109,6 +109,21 @@ bool ModuleParticles::Start()
 	enemy_deathRight.anim.speed = 0.1f;
 	enemy_deathRight.lifetime = 100;
 
+	//BOX DESTROYED
+	boxDestroyed.anim.PushBack({ 9, 949, 45, 45 });
+	boxDestroyed.anim.PushBack({ 62, 943, 56, 53 });
+	boxDestroyed.anim.PushBack({ 129, 942, 65, 54 });
+	boxDestroyed.anim.PushBack({ 203, 943, 65, 55 });
+	boxDestroyed.anim.PushBack({ 277, 946, 65, 52 });
+	boxDestroyed.anim.PushBack({ 350, 958, 37, 37 });
+	boxDestroyed.anim.PushBack({ 389, 954, 27, 40 });
+	boxDestroyed.anim.PushBack({ 424, 966, 36, 29 });
+	boxDestroyed.anim.PushBack({ 460, 959, 30, 36 });
+	boxDestroyed.anim.PushBack({ 499, 964, 37, 33 });
+	boxDestroyed.anim.PushBack({ 537, 965, 27, 29 });
+	boxDestroyed.anim.loop = false;
+	boxDestroyed.anim.speed = 0.2f;
+
 	//TANK
 	tank_explosion.anim.PushBack({ 11, 722, 32, 32 });
 	tank_explosion.anim.PushBack({ 44, 722, 32, 32 });
@@ -368,7 +383,6 @@ bool ModuleParticles::Start()
 	explosionAnim.anim.speed = 0.2f;
 
 	
-	melee.lifetime = 1;
 
 	return true;
 }
