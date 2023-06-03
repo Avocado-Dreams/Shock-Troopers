@@ -38,6 +38,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::LIFE] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::EXPLOSION] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::BOX] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::BARRELS] = true;
 
 	matrix[Collider::Type::SOLDIER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER] = true;
@@ -63,6 +64,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::BOSS_SHOT] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::FINALBOSS] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::BOX] = true;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::BARRELS] = true;
 
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER] = true;
@@ -118,6 +120,10 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::BOX][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::BOX][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::BOX][Collider::Type::ENEMY_SHOT] = false;
+
+	matrix[Collider::Type::BARRELS][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::BARRELS][Collider::Type::PLAYER_SHOT] = true;
+	matrix[Collider::Type::BARRELS][Collider::Type::ENEMY_SHOT] = false;
 
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::TANK] = false;
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::TANK_SHOT] = false;
@@ -254,6 +260,11 @@ Update_Status ModuleCollisions::Update()
 		App->enemies->AddEnemy(Enemy_Type::CAJA, App->player->position.x - 10, App->player->position.y - 40);
 		contador++;
 	}
+	if (App->input->keys[SDL_SCANCODE_X] == KEY_DOWN && contador <= MAX_COLLIDERS)
+	{
+		App->enemies->AddEnemy(Enemy_Type::BARRILES, App->player->position.x - 10, App->player->position.y - 40);
+		contador++;
+	}
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -315,6 +326,9 @@ void ModuleCollisions::DebugDraw()
 			App->render->DrawQuad(colliders[i]->rect, 255, 153, 102, alpha);
 			break;
 			case Collider::Type::BOX: // red
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+			break;
+			case Collider::Type::BARRELS: // red
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
 		}

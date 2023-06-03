@@ -116,46 +116,6 @@ void SceneLayer2::updateHp()
 		currentHP = &life0;
 		destroyed = true;
 	}
-	//Carga sprite en base a la vida del jugador
-	/*switch (hp) {
-	case 100:
-		currentHP = &life100;
-		break;
-	case 90:
-		currentHP = &life90;
-		break;
-	case 80:
-		currentHP = &life80;
-		break;
-	case 70:
-		currentHP = &life70;
-		break;
-	case 60:
-		currentHP = &life60;
-		break;
-	case 50:
-		currentHP = &life50;
-		break;
-	case 40:
-		currentHP = &life40;
-		break;
-	case 30:
-		currentHP = &life30;;
-		break;
-	case 20:
-		currentHP = &life20;
-		break;
-	case 10:
-		currentHP = &life10;
-		break;
-	case 0:
-		currentHP = &life0;
-		destroyed = true;
-		break;
-	default:
-		currentHP = &life100;
-		break;
-	}*/
 }
 
 // Load assets

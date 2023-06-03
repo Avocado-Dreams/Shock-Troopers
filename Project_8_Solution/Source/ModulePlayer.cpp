@@ -10,7 +10,6 @@
 #include "ModuleCollisions.h"
 #include "ModuleHelicopter.h"
 #include "ModuleFinalBoss.h"
-#include "ModuleObstacles.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneLayer2.h"
 #include "SDL/include/SDL.h"
@@ -27,7 +26,6 @@ enum DIRECTION
 	DOWNRIGHT,
 	UPLEFT,
 	UPRIGHT,
-
 
 	MAX
 };

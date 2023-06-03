@@ -25,7 +25,6 @@ class ModuleHelicopter;
 class ModuleFinalBoss;
 class ModuleFadeToBlack;
 class ModuleFonts;
-//class ModuleObstacles;
 class ModuleRender;
 class ModulePickUps;
 
@@ -72,7 +71,6 @@ public:
 	ModuleHelicopter* helicopter = nullptr;
 	ModuleFinalBoss* finalBoss = nullptr;
 	ModuleCollisions* collisions = nullptr;
-	//ModuleObstacles* obstacles = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleFonts* fonts = nullptr;
 	ModuleRender* render = nullptr;

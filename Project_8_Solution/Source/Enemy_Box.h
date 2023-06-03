@@ -1,5 +1,5 @@
-    #ifndef __MODULE_OBSATCLE_H__
-#define __MODULE_OBSATCLE_H__
+#ifndef __ENEMY_BOX_H__
+#define __ENEMY_BOX_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -8,11 +8,11 @@
 
 struct SDL_Texture;
 
-class ModuleObstacles : public Enemy
+class Enemy_Box : public Enemy
 {
 public:
 	//Constructor
-	ModuleObstacles(int x, int y);
+	Enemy_Box(int x, int y);
 
 	//Destructor
 	

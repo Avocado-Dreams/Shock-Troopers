@@ -1,4 +1,4 @@
-#include "ModuleObstacles.h"
+#include "Enemy_Box.h"
 #include "ModuleInput.h"
 #include "ModuleParticles.h"
 #include "Application.h"
@@ -14,7 +14,7 @@
 #include <iostream>
 #include "SDL/include/SDL.h"
 
-ModuleObstacles::ModuleObstacles(int x, int y) : Enemy(x, y)
+Enemy_Box::Enemy_Box(int x, int y) : Enemy(x, y)
 {
 	//Inactive box
 	box.PushBack({ 20, 678, 31, 40 });
@@ -27,14 +27,14 @@ ModuleObstacles::ModuleObstacles(int x, int y) : Enemy(x, y)
 	Enemy::Update();
 }
 
-void ModuleObstacles::Update()
+void Enemy_Box::Update()
 {
 	randomValue = rand() % 101;
 	Enemy::Update();
 }
 
 
-void ModuleObstacles::OnCollision(Collider* collider)
+void Enemy_Box::OnCollision(Collider* collider)
 {
 	if (collider->type == Collider::Type::PLAYER_SHOT)
 	{

@@ -38,11 +38,8 @@ public:
 	void updateHp();
 
 	Animation* currentHP = nullptr;
-	Animation* currentBox = nullptr;
-	Animation* currentDBox = nullptr;
 
 	Animation life100, life90, life80, life70, life60, life50, life40, life30, life20, life10, life0;
-	Animation box;
 
 public:
 
@@ -97,10 +94,6 @@ public:
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
-
-protected:
-
-	Collider* boxCollider = nullptr;
 
 };
 

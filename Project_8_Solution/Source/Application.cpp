@@ -18,7 +18,6 @@
 #include "ModuleEnemies.h"
 #include "ModuleFinalBoss.h"
 #include "ModuleCollisions.h"
-#include "ModuleObstacles.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePickUps.h"
 #include "ModuleFonts.h"

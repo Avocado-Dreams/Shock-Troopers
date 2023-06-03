@@ -52,6 +52,7 @@ protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
 	Animation* currentBAnim = nullptr;
+	Animation* currentOAnim = nullptr;
 
 	// The enemy's collider
 	Collider* collider = nullptr;

@@ -130,9 +130,6 @@
     <ClInclude Include="ModuleHelicopter.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleObstacles.h">
-      <Filter>Source Files\Modules\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="PickUps_BLUEDIAMOND.h">
       <Filter>Source Files\Entities\PickUps</Filter>
     </ClInclude>
@@ -141,6 +138,9 @@
     </ClInclude>
     <ClInclude Include="PickUps.h">
       <Filter>Source Files\Entities\PickUps</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Box.h">
+      <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -237,9 +237,6 @@
     <ClCompile Include="ModuleHelicopter.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleObstacles.cpp">
-      <Filter>Source Files\Modules\Gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="ModulePickUps.cpp">
       <Filter>Source Files\Entities\PickUps</Filter>
     </ClCompile>
@@ -248,6 +245,9 @@
     </ClCompile>
     <ClCompile Include="PickUps_BLUEDIAMOND.cpp">
       <Filter>Source Files\Entities\PickUps</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Box.cpp">
+      <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
