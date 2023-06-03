@@ -30,13 +30,13 @@ public:
 	/*Update_Status PostUpdate() override;*/
 
 	// Disables the player and the enemies
-	bool CleanUp();
 
 	void OnCollision(Collider* collider) override;
 
 
 	/*iPoint position;*/
 	bool boxIsDestroyed = false;
+	bool hasDropped = false;
 
 	Animation* currentHP = nullptr;
 	Animation* currentBox = nullptr;
@@ -49,14 +49,12 @@ public:
 
 	SDL_Texture* textureBox = nullptr;
 
-	// A flag to detect when the player has been destroyed
+	// A flag to detect when the box has been destroyed
 	bool destroyed = false;
 
 	bool removeCollider = false;
 
 	int life = 1;
-
-	/*Collider* collider = nullptr;*/
 
 
 };

@@ -110,17 +110,14 @@ bool ModuleParticles::Start()
 	enemy_deathRight.lifetime = 100;
 
 	//BOX DESTROYED
-	boxDestroyed.anim.PushBack({ 9, 949, 45, 45 });
+	boxDestroyed.anim.PushBack({ 9, 949, 45, 44 });
 	boxDestroyed.anim.PushBack({ 62, 943, 56, 53 });
 	boxDestroyed.anim.PushBack({ 129, 942, 65, 54 });
 	boxDestroyed.anim.PushBack({ 203, 943, 65, 55 });
 	boxDestroyed.anim.PushBack({ 277, 946, 65, 52 });
-	boxDestroyed.anim.PushBack({ 350, 958, 37, 37 });
-	boxDestroyed.anim.PushBack({ 389, 954, 27, 40 });
-	boxDestroyed.anim.PushBack({ 424, 966, 36, 29 });
-	boxDestroyed.anim.PushBack({ 460, 959, 30, 36 });
-	boxDestroyed.anim.PushBack({ 499, 964, 37, 33 });
-	boxDestroyed.anim.PushBack({ 537, 965, 27, 29 });
+	boxDestroyed.anim.PushBack({ 350, 954, 66, 40 });
+	boxDestroyed.anim.PushBack({ 424, 959, 66, 36 });
+	boxDestroyed.anim.PushBack({ 499, 964, 65, 33 });
 	boxDestroyed.anim.loop = false;
 	boxDestroyed.anim.speed = 0.2f;
 
@@ -339,7 +336,7 @@ bool ModuleParticles::Start()
 	bossExplosion.anim.PushBack({ 187, 640, 133, 137 });
 	bossExplosion.anim.PushBack({ 330, 640, 133, 137 });
 	bossExplosion.anim.loop = false; 
-	bossExplosion.anim.speed = 0.2f;
+	bossExplosion.anim.speed = 0.01f;
 
 	//HELICOPTER SHOOTING
 	//NORMAL SHOT YELLOW
