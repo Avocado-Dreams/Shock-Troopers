@@ -262,10 +262,6 @@ Update_Status ModuleCollisions::PostUpdate()
 	if (debug)
 		DebugDraw();
 
-	/*if (GodMode)
-		God_Mode();
-	if(!GodMode)
-		NoGodMode();*/
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -345,10 +341,6 @@ void ModuleCollisions::God_Mode()
 	}
 	
 	
-	
-}
-void ModuleCollisions::NoGodMode()
-{
 	
 }
 
