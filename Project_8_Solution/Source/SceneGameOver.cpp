@@ -51,13 +51,19 @@ Update_Status SceneGameOver::Update()
 	SDL_RenderCopyEx(App->render->renderer, teamTexture, &srcRect, &dstRect, 0, nullptr, SDL_FLIP_NONE);*/
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
-		App->fade->FadeToBlack(this, (Module*)App->sceneLayer2, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 60);
+		/*App->fade->FadeToBlack(this, (Module*)App->sceneLayer2, 60);*/
 	}
 
-	App->audio->PlayMusic("Assets/Music/SilenceGameOver.ogg", 1.0f);
-	App->audio->PlayFx(gameOver);
-	App->collisions->CleanUp();
+	if (firstTime)
+	{
+		App->audio->PlayMusic("Assets/Music/SilenceGameOver.ogg", 1.0f);
+		App->audio->PlayFx(gameOver);
+		App->collisions->CleanUp();
+		firstTime = false; 
+	}
+	
+	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -68,4 +74,5 @@ Update_Status SceneGameOver::PostUpdate()
 	// Draw everything --------------------------------------
 	App->render->Blit(teamTexture, 0, 0, NULL);
 	return Update_Status::UPDATE_CONTINUE;
+
 }

@@ -93,7 +93,7 @@ bool SceneIntro::Start()
 	introTexture = App->textures->Load("Assets/Sprites/intro_sprites/epicintro.png");
 	CurrentIntro = &title;
 	char lookupTable1[] = { "0123456789:;(=)? ABCDEFGHIJKLMNOPQRSTUVWXYZc!,-." };
-	startFontt = App->fonts->Load("Assets/Sprites/Fonts/OrangeFont.png", lookupTable1, 3);
+	if(startFontt == -1) startFontt = App->fonts->Load("Assets/Sprites/Fonts/OrangeFont.png", lookupTable1, 3);
 	startFontRect = { 0,0,128,8 }; 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

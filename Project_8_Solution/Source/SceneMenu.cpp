@@ -81,16 +81,16 @@ bool SceneMenu::Start()
 
 
 	char lookupTable1[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz?!" };
-	NameFont = App->fonts->Load("Assets/Sprites/Fonts/BlueFont.png", lookupTable1, 4);
+	if(NameFont == -1) NameFont = App->fonts->Load("Assets/Sprites/Fonts/BlueFont.png", lookupTable1, 4);
 	menuFontRect = { 0, 0, 128, 9 };  //lletres maj big blue font
 
 	char lookupTable2[] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZ      " };
-	NameFont2 = App->fonts->Load("Assets/Sprites/Fonts/BlueFontSmall.png", lookupTable2, 4);
+	if(NameFont2 == -1) NameFont2 = App->fonts->Load("Assets/Sprites/Fonts/BlueFontSmall.png", lookupTable2, 4);
 	menuFontRect2 = { 0, 0, 64, 8 };  //small blue font 
 
 
 	char lookupTable3[] = { "0123456789:;(=)? ABCDEFGHIJKLMNOPQRSTUVWXYZc!,-." };
-	startFontt = App->fonts->Load("Assets/Sprites/Fonts/OrangeFont.png", lookupTable3, 3);
+	if(startFontt == -1) startFontt = App->fonts->Load("Assets/Sprites/Fonts/OrangeFont.png", lookupTable3, 3);
 	startFontRect = { 0,0,128,8 };
 
 

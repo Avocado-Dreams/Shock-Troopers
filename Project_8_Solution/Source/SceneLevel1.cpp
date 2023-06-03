@@ -13,6 +13,7 @@
 #include "ModuleFinalBoss.h"
 #include "ModulePlayer.h"
 #include "SceneLayer2.h"
+#include "SceneGameOver.h"
 #include <stdio.h>
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
@@ -69,6 +70,7 @@ App->enemies->AddEnemy(Enemy_Type::CAJA, 90, 2837);
 	App->pickUps->Enable();
 
 	App->player->vida = 100;
+	App->player->hit = 0;
 	App->sceneLayer2->hp = 100;
 	App->player->win = 0; 
 	App->player->zone = 1; 
@@ -82,6 +84,9 @@ App->enemies->AddEnemy(Enemy_Type::CAJA, 90, 2837);
 	App->helicopter->position.x = 967;
 	App->helicopter->position.y = 1928;
 	App->helicopter->state = 1;
+
+	App->sceneOver->firstTime = true;
+
 
 	return ret;
 }

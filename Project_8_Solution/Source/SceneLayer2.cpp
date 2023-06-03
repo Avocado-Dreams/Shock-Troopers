@@ -179,14 +179,14 @@ bool SceneLayer2::Start()
 	GoRight = App->textures->Load("Assets/Sprites/UI/GoRight.png");
 
 	char lookupTableTimer[] = { "0123456789" };
-	timerFont = App->fonts->Load("Assets/Sprites/Fonts/numberTime.png", lookupTableTimer);
+	if(timerFont == -1) timerFont = App->fonts->Load("Assets/Sprites/Fonts/numberTime.png", lookupTableTimer);
 	timerRect = { 0, 0, 30, 8 };
 
 	char lookupTable[] = { "0123456789:;(=)? abcdefghijklmnopqrstuvwxyz@!.-." };
-	scoreFont = App->fonts->Load("Assets/Sprites/Fonts/OrangeFont.png", lookupTable, 3);
+	if(scoreFont == -1) scoreFont = App->fonts->Load("Assets/Sprites/Fonts/OrangeFont.png", lookupTable, 3);
 
 	char lookupTableStages[] = { "    ABCDEFGHIJKLMNOPQRSTUVWXYZ   1234567890?!;:-" };
-	stageFont = App->fonts->Load("Assets/Sprites/Fonts/FontStage.png", lookupTableStages, 6);
+	if(stageFont == -1) stageFont = App->fonts->Load("Assets/Sprites/Fonts/FontStage.png", lookupTableStages, 6);
 	stageFontRect = { 0, 0, 128, 16 };
 
 	HBar = App->textures->Load("Assets/Sprites/UI/HBar.png");

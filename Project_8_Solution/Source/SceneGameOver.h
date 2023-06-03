@@ -34,6 +34,9 @@ public:
 	//Sound effects indices
 	uint gameOver = 0;
 
+	//firstTime
+	bool firstTime = true;
+
 };
 
 #endif

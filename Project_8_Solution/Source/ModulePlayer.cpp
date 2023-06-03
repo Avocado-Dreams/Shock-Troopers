@@ -964,7 +964,7 @@ Update_Status ModulePlayer::Update()
 
 	if (App->input->keys[SDL_SCANCODE_T] == Key_State::KEY_DOWN) { //TOGGLE TURBO MODE
 		speed = (speed == 1 ? 2 : 1);
-		LOG("Speed %d", speed)
+		LOG("Speed %d", speed) 
 	}
 	
 	if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN) { //SHORTCUT TO FINAL BOSS
@@ -987,18 +987,20 @@ Update_Status ModulePlayer::Update()
 		App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
 	}
 
+	//Limits for bridges and rocks
 	if (position.y < 1070 && position.y > 808)
 	{
-		if (position.x <= 2158) position.x++;
-		else if (position.x >= 2289) position.x--;
+		if (position.x <= 2158) position.x += speed;
+		else if (position.x >= 2289) position.x -= speed;
 	}
 	if (position.y < 738 && position.y > 550)
 	{
-		if (position.x <= 2158) position.x++;
-		else if (position.x >= 2215) position.x--;
+		if (position.x <= 2158) position.x += speed;
+		else if (position.x >= 2215) position.x -= speed;
 	}
-	if (position.x > 735 && position.x < 780 && position. y < 1900 && zone != 4) position.x--;
-	if (position.x > 780 && position.x < 1250 && position.y < 1900 && zone != 4) position.y++;
+	if (position.x > 735 && position.x < 780 && position. y < 1900 && zone != 4) position.x -= speed;
+	if (position.x > 780 && position.x < 1250 && position.y < 1900 && zone != 4) position.y += speed;
+	if (zone == 4 && position.y > 1970) position.y -= speed;
 	
 	UpdateAnim();
 	if (!destroyed)
