@@ -103,8 +103,9 @@ bool SceneMenu::Start()
 
 Update_Status SceneMenu::Update()
 {
+	GamePad& pad = App->input->pads[0];
 	// MENU CONDITIONS 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN || pad.right == Key_State::KEY_DOWN)
 	{
 		if (QuadPos_x < 233) {
 			QuadPos_x += 32;
@@ -116,7 +117,7 @@ Update_Status SceneMenu::Update()
 
 	}
 
-	else if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN)
+	else if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN || pad.left == Key_State::KEY_DOWN)
 	{
 		if (QuadPos_x > 137) {
 			QuadPos_x -= 32;
@@ -127,7 +128,7 @@ Update_Status SceneMenu::Update()
 
 	}
 
-	else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
+	else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN || pad.up == Key_State::KEY_DOWN)
 	{
 		if (QuadPos_y > 40) {
 			QuadPos_y -= 32;
@@ -138,7 +139,7 @@ Update_Status SceneMenu::Update()
 		}
 	}
 
-	else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+	else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.down == Key_State::KEY_DOWN)
 	{
 		if (QuadPos_y < 70) {
 			QuadPos_y += 32;
@@ -158,6 +159,7 @@ Update_Status SceneMenu::Update()
 
 Update_Status SceneMenu::PostUpdate()
 {
+		GamePad& pad = App->input->pads[0];
 		// Draw everything --------------------------------------
 		SDL_Rect rectM = menu.GetCurrentFrame();
 		App->render->Blit(Texture1, 0, 0, &rectM);
@@ -211,7 +213,7 @@ Update_Status SceneMenu::PostUpdate()
 					soundPlayed = true;
 				}
 				
-				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+				if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN || pad.a == true)
 				{
 					App->audio->PlayFx(acceptSelectFx);
 					App->fade->FadeToBlack(this, (Module*)App->sceneRoute, 90);

@@ -518,7 +518,9 @@ bool ModulePlayer::Start()
 }
 void ModulePlayer::UpdateAnim()
 {
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	GamePad& pad = App->input->pads[0];
+
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < -0.5f)
 	{
 		if (currentLAnimation != &leftWAnim)
 		{
@@ -528,12 +530,12 @@ void ModulePlayer::UpdateAnim()
 			currentLAnimation = &leftWAnim;
 		}
 	}
-	else if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_UP)
+	else if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_UP || currentAnimation == &leftAnim && currentLAnimation == &leftWAnim && pad.l_x == 0.0f)
 	{
 		currentLAnimation = &leftLAnim;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.5f)
 	{
 		if (currentLAnimation != &rightWAnim)
 		{
@@ -543,12 +545,12 @@ void ModulePlayer::UpdateAnim()
 			currentLAnimation = &rightWAnim;
 		}
 	}
-	else if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_UP)
+	else if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_UP || currentAnimation == &rightAnim && currentLAnimation == &rightWAnim && pad.l_x == 0.0f)
 	{
 		currentLAnimation = &rightLAnim;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.5f)
 	{
 		if (currentLAnimation != &downWAnim)
 		{
@@ -558,12 +560,12 @@ void ModulePlayer::UpdateAnim()
 			currentLAnimation = &downWAnim;
 		}
 	}
-	else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_UP)
+	else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_UP || currentAnimation == &downAnim && currentLAnimation == &downWAnim && pad.l_y == 0.0f)
 	{
 		currentLAnimation = &downLAnim;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < -0.5f)
 	{
 		if (currentLAnimation != &upWAnim)
 		{
@@ -573,12 +575,12 @@ void ModulePlayer::UpdateAnim()
 				currentLAnimation = &upWAnim;
 		}
 	}
-	else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_UP)
+	else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_UP || currentAnimation == &upAnim && currentLAnimation == &leftWAnim && pad.l_y == 0.0f)
 	{
 		currentLAnimation = &upLAnim;
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT) && (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT))
+	if ((App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < -0.5f) && (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.5f))
 	{
 		if (currentLAnimation != &norestWAnim)
 		{
@@ -586,12 +588,12 @@ void ModulePlayer::UpdateAnim()
 			currentLAnimation = &norestWAnim;
 		}
 	}
-	else if ((App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_UP) && (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_UP))
+	else if ((App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_UP || currentLAnimation == &norestWAnim && pad.l_y == 0.0f) && (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_UP || currentLAnimation == &norestWAnim && pad.l_x == 0.0f))
 	{
 		currentLAnimation = &norestLAnim;
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT) && (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT))
+	if ((App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < -0.5f) && (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < -0.5f))
 	{
 		if (currentLAnimation != &noroestWAnim)
 		{
@@ -599,12 +601,12 @@ void ModulePlayer::UpdateAnim()
 			currentLAnimation = &noroestWAnim;
 		}
 	}
-	else if ((App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_UP) && (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_UP))
+	else if ((App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_UP || currentLAnimation == &noroestWAnim && pad.l_y == 0.0f) && (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_UP || currentLAnimation == &noroestWAnim && pad.l_x == 0.0f))
 	{
 		currentLAnimation = &noroestLAnim;
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT) && (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT))
+	if ((App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.5f) && (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.5f))
 	{
 		if (currentLAnimation != &sudestWAnim)
 		{
@@ -612,12 +614,12 @@ void ModulePlayer::UpdateAnim()
 			currentLAnimation = &sudestWAnim;
 		}
 	}
-	else if ((App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_UP) && (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_UP))
+	else if ((App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_UP || currentLAnimation == &sudestWAnim && pad.l_y == 0.0f) && (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_UP || currentLAnimation == &sudestWAnim && pad.l_x == 0.0f))
 	{
 		currentLAnimation = &sudestLAnim;
 	}
 
-	if ((App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT) && (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT))
+	if ((App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.5f) && (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < -0.5f))
 	{
 		if (currentLAnimation != &sudoestWAnim)
 		{
@@ -625,7 +627,7 @@ void ModulePlayer::UpdateAnim()
 			currentLAnimation = &sudoestWAnim;
 		}
 	}
-	else if ((App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_UP) && (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_UP))
+	else if ((App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_UP || currentLAnimation == &sudoestWAnim && pad.l_y == 0.0f) && (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_UP || currentLAnimation == &sudoestWAnim && pad.l_x == 0.0f))
 	{
 		currentLAnimation = &sudoestLAnim;
 	}
@@ -633,6 +635,8 @@ void ModulePlayer::UpdateAnim()
 }
 void ModulePlayer::UpdateZoneA()
 {
+	GamePad& pad = App->input->pads[0];
+
 	//camera movement relative to player movement
 	if (position.y * SCREEN_SIZE < App->render->camera.y + 66 * SCREEN_SIZE)
 	{
@@ -649,7 +653,7 @@ void ModulePlayer::UpdateZoneA()
 		App->render->camera.x -= SCREEN_SIZE * speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < -0.5f)
 	{
 		if (position.x <= 10)
 		{
@@ -658,7 +662,7 @@ void ModulePlayer::UpdateZoneA()
 		position.x -= speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.5f)
 	{
 		if (position.x >= 315)
 		{
@@ -667,7 +671,7 @@ void ModulePlayer::UpdateZoneA()
 		position.x += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.5f)
 	{
 		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 50)
 		{
@@ -677,14 +681,16 @@ void ModulePlayer::UpdateZoneA()
 		position.y += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < -0.5f)
 	{
 		position.y -= speed;
 	}
 }
 void ModulePlayer::UpdateZoneAB()
 {
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	GamePad& pad = App->input->pads[0];
+
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < -0.5f)
 	{
 		if (position.x <= App->render->camera.x / SCREEN_SIZE + 10)
 		{
@@ -693,7 +699,7 @@ void ModulePlayer::UpdateZoneAB()
 		position.x -= speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.5f)
 	{
 		if (position.x >= (315 - 75 + App->render->camera.x / SCREEN_SIZE))
 		{
@@ -702,7 +708,7 @@ void ModulePlayer::UpdateZoneAB()
 		position.x += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.5f)
 	{
 		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 50)
 		{
@@ -712,7 +718,7 @@ void ModulePlayer::UpdateZoneAB()
 		position.y += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < -0.5f)
 	{
 		if ((App->render->camera.y / SCREEN_SIZE) - position.y > - 30)
 		{
@@ -724,6 +730,8 @@ void ModulePlayer::UpdateZoneAB()
 }
 void ModulePlayer::UpdateZoneB()
 {
+	GamePad& pad = App->input->pads[0];
+
 	//camera movement relative to player movement
 	if (position.x * SCREEN_SIZE > App->render->camera.x + 135* SCREEN_SIZE)
 	{
@@ -740,7 +748,7 @@ void ModulePlayer::UpdateZoneB()
 		App->render->camera.y -= SCREEN_SIZE * speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < -0.5f)
 	{
 		if (position.x <= App->render->camera.x/SCREEN_SIZE + 10)
 		{
@@ -749,12 +757,12 @@ void ModulePlayer::UpdateZoneB()
 		position.x -= speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.5f)
 	{
 		position.x += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.5f)
 	{
 		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 50)
 		{
@@ -764,7 +772,7 @@ void ModulePlayer::UpdateZoneB()
 		position.y += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < -0.5f)
 	{
 		if ((App->render->camera.y / SCREEN_SIZE) - position.y > - 30)
 		{
@@ -776,6 +784,9 @@ void ModulePlayer::UpdateZoneB()
 }
 void ModulePlayer::UpdateZoneBC()
 {
+
+	GamePad& pad = App->input->pads[0];
+
 	if ((position.y * SCREEN_SIZE > App->render->camera.y + (216 - 40) * SCREEN_SIZE) && App->render->camera.y < (1797 + 17) * SCREEN_SIZE)
 	{
 		App->render->camera.y += SCREEN_SIZE * speed;
@@ -786,7 +797,7 @@ void ModulePlayer::UpdateZoneBC()
 		App->render->camera.y -= SCREEN_SIZE * speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < -0.5f)
 	{
 		if (position.x <= App->render->camera.x / SCREEN_SIZE + 10)
 		{
@@ -795,7 +806,7 @@ void ModulePlayer::UpdateZoneBC()
 		position.x -= speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.5f)
 	{
 		if (position.x >= (315 - 75 + App->render->camera.x / SCREEN_SIZE))
 		{
@@ -804,7 +815,7 @@ void ModulePlayer::UpdateZoneBC()
 		position.x += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.5f)
 	{
 		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 30)
 		{
@@ -814,7 +825,7 @@ void ModulePlayer::UpdateZoneBC()
 		position.y += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < -0.5f)
 	{
 		if ((App->render->camera.y / SCREEN_SIZE) - position.y > -100)
 		{
@@ -831,6 +842,8 @@ void ModulePlayer::UpdateZoneC()
 }
 void ModulePlayer::UpdateZoneD()
 {
+	GamePad& pad = App->input->pads[0];
+
 	//camera movement relative to player movement
 	if (position.y * SCREEN_SIZE < App->render->camera.y + 66 * SCREEN_SIZE)
 	{
@@ -847,7 +860,7 @@ void ModulePlayer::UpdateZoneD()
 		App->render->camera.x -= SCREEN_SIZE * speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < -0.5f)
 	{
 		if (position.x <= App->render->camera.x / SCREEN_SIZE + 10)
 		{
@@ -856,7 +869,7 @@ void ModulePlayer::UpdateZoneD()
 		position.x -= speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.5f)
 	{
 		if (position.x >= (App->render->camera.x/ SCREEN_SIZE) + 288 - 33)
 		{
@@ -865,7 +878,7 @@ void ModulePlayer::UpdateZoneD()
 		position.x += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.5f)
 	{
 		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 50)
 		{
@@ -875,7 +888,7 @@ void ModulePlayer::UpdateZoneD()
 		position.y += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < -0.5f)
 	{
 		position.y -= speed;
 	}
@@ -883,7 +896,9 @@ void ModulePlayer::UpdateZoneD()
 void ModulePlayer::UpdateZoneE() {
 	//camera movement relative to player movement
 
-	if ((position.x * SCREEN_SIZE > App->render->camera.x + 135* SCREEN_SIZE) && App->render->camera.x < 2095 * SCREEN_SIZE)
+	GamePad& pad = App->input->pads[0];
+
+if ((position.x * SCREEN_SIZE > App->render->camera.x + 135 * SCREEN_SIZE) && App->render->camera.x < 2095 * SCREEN_SIZE)
 	{
 		App->render->camera.x += SCREEN_SIZE * speed;
 	}
@@ -893,7 +908,7 @@ void ModulePlayer::UpdateZoneE() {
 		App->render->camera.x -= SCREEN_SIZE * speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < -0.5f)
 	{
 		if (position.x <= App->render->camera.x / SCREEN_SIZE + 10)
 		{
@@ -902,7 +917,7 @@ void ModulePlayer::UpdateZoneE() {
 		position.x -= speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.5f)
 	{
 		if (position.x >= (App->render->camera.x / SCREEN_SIZE) + 288 - 33)
 		{
@@ -911,7 +926,7 @@ void ModulePlayer::UpdateZoneE() {
 		position.x += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.5f)
 	{
 		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 10)
 		{
@@ -921,7 +936,7 @@ void ModulePlayer::UpdateZoneE() {
 		position.y += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < -0.5f)
 	{
 		if ((App->render->camera.y / SCREEN_SIZE) - position.y > -30)
 		{
@@ -934,6 +949,9 @@ void ModulePlayer::UpdateZoneE() {
 
 Update_Status ModulePlayer::Update()
 {
+
+	GamePad& pad = App->input->pads[0];
+
 	if (zone == 1 && App->render->camera.y < 1796 * SCREEN_SIZE)
 	{
 		zone = 2;
@@ -1019,7 +1037,7 @@ Update_Status ModulePlayer::Update()
 	
 	//SHOOTING
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN && win == 0 && death == 0 && hit == 0)
+	if ((App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN || pad.a == true) && win == 0 && death == 0 && hit == 0)
 	{
 		shot = 12;
 		if (currentAnimation == &upAnim) currentAnimation = &upSAnim;

@@ -38,10 +38,11 @@ bool SceneTeam::Start()
 
 Update_Status SceneTeam::Update()
 {
+	GamePad& pad = App->input->pads[0];
 	/*SDL_Rect srcRect = { 0,0, teamTexture.w, teamTexture.h }; //ESTO LO COMENTO PARA QUE FUNCIONE PERO SIRVE PARA REDUCIR LA IMAGEN ENTRE 3 YA QUE EL LIENZO LO HE HECHO x3
 	SDL_Rect dstRect = { 0,0, (teamTexture.w / 3), (teamTexture.h / 3) };
 	SDL_RenderCopyEx(App->render->renderer, teamTexture, &srcRect, &dstRect, 0, nullptr, SDL_FLIP_NONE);*/
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN || pad.a == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
