@@ -11,7 +11,6 @@ enum class Enemy_Type
 	TANK,
 	SOLDIER,
 	CAJA,
-	BARRILES,
 };
 
 struct EnemySpawnpoint

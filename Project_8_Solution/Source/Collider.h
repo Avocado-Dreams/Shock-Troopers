@@ -26,7 +26,6 @@ struct Collider
 		BOSS_SHOT,
 		EXPLOSION,
 		BOX,
-		BARRELS,
 		MELEE,
 
 		MAX

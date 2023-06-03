@@ -61,7 +61,6 @@ SceneLayer2::SceneLayer2(bool startEnabled) : Module(startEnabled)
 	life0.PushBack({ 5, 5, 8, 132 });
 	life0.loop = false;
 	life0.speed = 0.0f;
-
 }
 
 SceneLayer2::~SceneLayer2()

@@ -63,7 +63,6 @@ App->enemies->AddEnemy(Enemy_Type::CAJA, 2215, 1655);
 App->enemies->AddEnemy(Enemy_Type::CAJA, 2153, 759);
 App->enemies->AddEnemy(Enemy_Type::CAJA, 2269, 756);
 
-App->enemies->AddEnemy(Enemy_Type::BARRILES, 80, 1808);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 2715 * SCREEN_SIZE;

@@ -121,25 +121,6 @@ bool ModuleParticles::Start()
 	boxDestroyed.anim.loop = false;
 	boxDestroyed.anim.speed = 0.2f;
 
-	//BARRELS DESTROYED
-	barrelsDestroyed.anim.PushBack({ 214, 1028, 54, 65 });
-	barrelsDestroyed.anim.PushBack({ 307, 1028, 61, 71 });
-	barrelsDestroyed.anim.PushBack({ 396, 1025, 67, 79 });
-	barrelsDestroyed.anim.PushBack({ 494, 1020, 68, 91 });
-	barrelsDestroyed.anim.PushBack({ 600, 1017, 73, 102 });
-	barrelsDestroyed.anim.PushBack({ 711, 1011, 76, 109 });
-	barrelsDestroyed.anim.PushBack({ 834, 1004, 79, 117 });
-	barrelsDestroyed.anim.PushBack({ 949, 997, 81, 122 });
-	barrelsDestroyed.anim.PushBack({ 1073, 997, 82, 123 });
-	barrelsDestroyed.anim.PushBack({ 1197, 1017, 76, 101 });
-	barrelsDestroyed.anim.PushBack({ 1, 1146, 75, 137 });
-	barrelsDestroyed.anim.PushBack({ 117, 1141, 72, 145 });
-	barrelsDestroyed.anim.PushBack({ 228, 1140, 73, 147 });
-	barrelsDestroyed.anim.PushBack({ 327, 1145, 75, 148 });
-	barrelsDestroyed.anim.PushBack({ 441, 1152, 77, 146 });
-	barrelsDestroyed.anim.PushBack({ 558, 1154, 80, 145 });
-	barrelsDestroyed.anim.loop = false;
-	barrelsDestroyed.anim.speed = 0.2f;
 
 	//TANK
 	tank_explosion.anim.PushBack({ 11, 722, 32, 32 });
