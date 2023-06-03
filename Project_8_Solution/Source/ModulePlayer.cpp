@@ -634,17 +634,17 @@ void ModulePlayer::UpdateAnim()
 void ModulePlayer::UpdateZoneA()
 {
 	//camera movement relative to player movement
-	if (position.y * 3 < App->render->camera.y + 200)
+	if (position.y * SCREEN_SIZE < App->render->camera.y + 66 * SCREEN_SIZE)
 	{
 		App->render->camera.y -= SCREEN_SIZE * speed;
 	}
 
-	if ((position.x * 3 > App->render->camera.x + 550) && App->render->camera.x < 222)
+	if ((position.x * SCREEN_SIZE > App->render->camera.x + 183 * SCREEN_SIZE) && App->render->camera.x < 74 * SCREEN_SIZE)
 	{
 		App->render->camera.x += SCREEN_SIZE * speed;
 	}
 
-	if ((position.x * 3 < App->render->camera.x + 150) && App->render->camera.x > 0)
+	if ((position.x * SCREEN_SIZE < App->render->camera.x + 50 * SCREEN_SIZE) && App->render->camera.x > 0)
 	{
 		App->render->camera.x -= SCREEN_SIZE * speed;
 	}
@@ -669,9 +669,9 @@ void ModulePlayer::UpdateZoneA()
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y + 216 < 50)
+		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 50)
 		{
-			position.y = (App->render->camera.y / 3) + 216 - 50;
+			position.y = (App->render->camera.y / SCREEN_SIZE) + 216 - 50;
 		}
 
 		position.y += speed;
@@ -686,27 +686,27 @@ void ModulePlayer::UpdateZoneAB()
 {
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
-		if (position.x <= App->render->camera.x / 3 + 10)
+		if (position.x <= App->render->camera.x / SCREEN_SIZE + 10)
 		{
-			position.x = App->render->camera.x / 3 + 10;
+			position.x = App->render->camera.x / SCREEN_SIZE + 10;
 		}
 		position.x -= speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 	{
-		if (position.x >= (315 - 75 + App->render->camera.x / 3))
+		if (position.x >= (315 - 75 + App->render->camera.x / SCREEN_SIZE))
 		{
-			position.x = (315 - 75 + App->render->camera.x / 3);
+			position.x = (315 - 75 + App->render->camera.x / SCREEN_SIZE);
 		}
 		position.x += speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y + 216 < 50)
+		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 50)
 		{
-			position.y = (App->render->camera.y / 3) + 216 - 50;
+			position.y = (App->render->camera.y / SCREEN_SIZE) + 216 - 50;
 		}
 
 		position.y += speed;
@@ -714,9 +714,9 @@ void ModulePlayer::UpdateZoneAB()
 
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y > - 30)
+		if ((App->render->camera.y / SCREEN_SIZE) - position.y > - 30)
 		{
-			position.y = (App->render->camera.y / 3) + 30;
+			position.y = (App->render->camera.y / SCREEN_SIZE) + 30;
 		}
 
 		position.y -= speed;
@@ -725,26 +725,26 @@ void ModulePlayer::UpdateZoneAB()
 void ModulePlayer::UpdateZoneB()
 {
 	//camera movement relative to player movement
-	if (position.x * 3 > App->render->camera.x + 135*3)
+	if (position.x * SCREEN_SIZE > App->render->camera.x + 135* SCREEN_SIZE)
 	{
 		App->render->camera.x += SCREEN_SIZE * speed;
 	}
 
-	if ((position.y * 3 > App->render->camera.y + (216 - 40) * 3) && App->render->camera.y < (1797+17) * 3)
+	if ((position.y * SCREEN_SIZE > App->render->camera.y + (216 - 40) * SCREEN_SIZE) && App->render->camera.y < (1797+17) * SCREEN_SIZE)
 	{
 		App->render->camera.y += SCREEN_SIZE * speed;
 	}
 
-	if ((position.y * 3 < App->render->camera.y + 40*3 ) && App->render->camera.y > 1797*3)
+	if ((position.y * SCREEN_SIZE < App->render->camera.y + 40* SCREEN_SIZE) && App->render->camera.y > 1797* SCREEN_SIZE)
 	{
 		App->render->camera.y -= SCREEN_SIZE * speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
-		if (position.x <= App->render->camera.x/3 + 10)
+		if (position.x <= App->render->camera.x/SCREEN_SIZE + 10)
 		{
-			position.x = App->render->camera.x/3 + 10;
+			position.x = App->render->camera.x/SCREEN_SIZE + 10;
 		}
 		position.x -= speed;
 	}
@@ -756,9 +756,9 @@ void ModulePlayer::UpdateZoneB()
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y + 216 < 50)
+		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 50)
 		{
-			position.y = (App->render->camera.y / 3) + 216 - 50;
+			position.y = (App->render->camera.y / SCREEN_SIZE) + 216 - 50;
 		}
 
 		position.y += speed;
@@ -766,9 +766,9 @@ void ModulePlayer::UpdateZoneB()
 
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y > - 30)
+		if ((App->render->camera.y / SCREEN_SIZE) - position.y > - 30)
 		{
-			position.y = (App->render->camera.y / 3) + 30;
+			position.y = (App->render->camera.y / SCREEN_SIZE) + 30;
 		}
 		position.y -= speed;
 	}
@@ -776,39 +776,39 @@ void ModulePlayer::UpdateZoneB()
 }
 void ModulePlayer::UpdateZoneBC()
 {
-	if ((position.y * 3 > App->render->camera.y + (216 - 40) * 3) && App->render->camera.y < (1797 + 17) * 3)
+	if ((position.y * SCREEN_SIZE > App->render->camera.y + (216 - 40) * SCREEN_SIZE) && App->render->camera.y < (1797 + 17) * SCREEN_SIZE)
 	{
 		App->render->camera.y += SCREEN_SIZE * speed;
 	}
 
-	if ((position.y * 3 < App->render->camera.y + 180 * 3) && App->render->camera.y > 1797 * 3)
+	if ((position.y * SCREEN_SIZE < App->render->camera.y + 180 * SCREEN_SIZE) && App->render->camera.y > 1797 * SCREEN_SIZE)
 	{
 		App->render->camera.y -= SCREEN_SIZE * speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
-		if (position.x <= App->render->camera.x / 3 + 10)
+		if (position.x <= App->render->camera.x / SCREEN_SIZE + 10)
 		{
-			position.x = App->render->camera.x / 3 + 10;
+			position.x = App->render->camera.x / SCREEN_SIZE + 10;
 		}
 		position.x -= speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 	{
-		if (position.x >= (315 - 75 + App->render->camera.x / 3))
+		if (position.x >= (315 - 75 + App->render->camera.x / SCREEN_SIZE))
 		{
-			position.x = (315 - 75 + App->render->camera.x / 3);
+			position.x = (315 - 75 + App->render->camera.x / SCREEN_SIZE);
 		}
 		position.x += speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y + 216 < 30)
+		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 30)
 		{
-			position.y = (App->render->camera.y / 3) + 216 - 30;
+			position.y = (App->render->camera.y / SCREEN_SIZE) + 216 - 30;
 		}
 
 		position.y += speed;
@@ -816,9 +816,9 @@ void ModulePlayer::UpdateZoneBC()
 
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y > -100)
+		if ((App->render->camera.y / SCREEN_SIZE) - position.y > -100)
 		{
-			position.y = (App->render->camera.y / 3) + 100;
+			position.y = (App->render->camera.y / SCREEN_SIZE) + 100;
 		}
 
 		position.y -= speed;
@@ -832,44 +832,44 @@ void ModulePlayer::UpdateZoneC()
 void ModulePlayer::UpdateZoneD()
 {
 	//camera movement relative to player movement
-	if (position.y * 3 < App->render->camera.y + 200)
+	if (position.y * SCREEN_SIZE < App->render->camera.y + 66 * SCREEN_SIZE)
 	{
 		App->render->camera.y -= SCREEN_SIZE * speed;
 	}
 
-	if ((position.x * 3 > App->render->camera.x + 135*3) && App->render->camera.x < 2095*3)
+	if ((position.x * SCREEN_SIZE > App->render->camera.x + 135* SCREEN_SIZE) && App->render->camera.x < 2095* SCREEN_SIZE)
 	{
 		App->render->camera.x += SCREEN_SIZE * speed;
 	}
 
-	if ((position.x * 3 < App->render->camera.x + 150) && App->render->camera.x > 2051*3)
+	if ((position.x * SCREEN_SIZE < App->render->camera.x + 50 * SCREEN_SIZE) && App->render->camera.x > 2051* SCREEN_SIZE)
 	{
 		App->render->camera.x -= SCREEN_SIZE * speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
-		if (position.x <= App->render->camera.x / 3 + 10)
+		if (position.x <= App->render->camera.x / SCREEN_SIZE + 10)
 		{
-			position.x = App->render->camera.x / 3 + 10;
+			position.x = App->render->camera.x / SCREEN_SIZE + 10;
 		}
 		position.x -= speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 	{
-		if (position.x >= (App->render->camera.x/3) + 288 - 33)
+		if (position.x >= (App->render->camera.x/ SCREEN_SIZE) + 288 - 33)
 		{
-			position.x = (App->render->camera.x/3) + 288 - 33; //33: player sprite width aprox
+			position.x = (App->render->camera.x/ SCREEN_SIZE) + 288 - 33; //33: player sprite width aprox
 		}
 		position.x += speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y + 216 < 50)
+		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 50)
 		{
-			position.y = (App->render->camera.y / 3) + 216 - 50;
+			position.y = (App->render->camera.y / SCREEN_SIZE) + 216 - 50;
 		}
 
 		position.y += speed;
@@ -883,39 +883,39 @@ void ModulePlayer::UpdateZoneD()
 void ModulePlayer::UpdateZoneE() {
 	//camera movement relative to player movement
 
-	if ((position.x * 3 > App->render->camera.x + 135*3) && App->render->camera.x < 2095 * 3)
+	if ((position.x * SCREEN_SIZE > App->render->camera.x + 135* SCREEN_SIZE) && App->render->camera.x < 2095 * SCREEN_SIZE)
 	{
 		App->render->camera.x += SCREEN_SIZE * speed;
 	}
 
-	if ((position.x * 3 < App->render->camera.x + 150) && App->render->camera.x > 2051 * 3)
+	if ((position.x * SCREEN_SIZE < App->render->camera.x + 150* SCREEN_SIZE) && App->render->camera.x > 2051 * SCREEN_SIZE)
 	{
-		App->render->camera.x -= SCREEN_SIZE * speed;;
+		App->render->camera.x -= SCREEN_SIZE * speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
-		if (position.x <= App->render->camera.x / 3 + 10)
+		if (position.x <= App->render->camera.x / SCREEN_SIZE + 10)
 		{
-			position.x = App->render->camera.x / 3 + 10;
+			position.x = App->render->camera.x / SCREEN_SIZE + 10;
 		}
-		position.x -= speed;;
+		position.x -= speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 	{
-		if (position.x >= (App->render->camera.x / 3) + 288 - 33)
+		if (position.x >= (App->render->camera.x / SCREEN_SIZE) + 288 - 33)
 		{
-			position.x = (App->render->camera.x / 3) + 288 - 33; //33: player sprite width aprox
+			position.x = (App->render->camera.x / SCREEN_SIZE) + 288 - 33; //33: player sprite width aprox
 		}
 		position.x += speed;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y + 216 < 10)
+		if ((App->render->camera.y / SCREEN_SIZE) - position.y + 216 < 10)
 		{
-			position.y = (App->render->camera.y / 3) + 216 - 10;
+			position.y = (App->render->camera.y / SCREEN_SIZE) + 216 - 10;
 		}
 
 		position.y += speed;
@@ -923,9 +923,9 @@ void ModulePlayer::UpdateZoneE() {
 
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 	{
-		if ((App->render->camera.y / 3) - position.y > -30)
+		if ((App->render->camera.y / SCREEN_SIZE) - position.y > -30)
 		{
-			position.y = (App->render->camera.y / 3) + 30;
+			position.y = (App->render->camera.y / SCREEN_SIZE) + 30;
 		}
 
 		position.y -= speed;
@@ -934,7 +934,7 @@ void ModulePlayer::UpdateZoneE() {
 
 Update_Status ModulePlayer::Update()
 {
-	if (zone == 1 && App->render->camera.y < 1796 * 3)
+	if (zone == 1 && App->render->camera.y < 1796 * SCREEN_SIZE)
 	{
 		zone = 2;
 	}
@@ -942,7 +942,7 @@ Update_Status ModulePlayer::Update()
 	{
 		zone = 3; 
 	}
-	else if (zone == 3 && App->render->camera.x > 880 * 3)
+	else if (zone == 3 && App->render->camera.x > 880 * SCREEN_SIZE)
 	{
 		App->helicopter->Enable();
 		zone = 4;
@@ -951,7 +951,7 @@ Update_Status ModulePlayer::Update()
 	{
 		zone = 5;
 	}
-	else if (zone == 5 && App->render->camera.x > 2050 * 3)
+	else if (zone == 5 && App->render->camera.x > 2050 * SCREEN_SIZE)
 	{
 		zone = 6;
 	}
@@ -968,8 +968,8 @@ Update_Status ModulePlayer::Update()
 	}
 	
 	if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN) { //SHORTCUT TO FINAL BOSS
-		App->render->camera.y = 2*3;
-		App->render->camera.x = 2100 * 3; 
+		App->render->camera.y = 2* SCREEN_SIZE;
+		App->render->camera.x = 2100 * SCREEN_SIZE;
 		position.y = 150;
 		position.x = 2200; 
 		zone = 7; 
@@ -978,8 +978,8 @@ Update_Status ModulePlayer::Update()
 	}
 
 	if (App->input->keys[SDL_SCANCODE_M] == Key_State::KEY_DOWN) { //SHORTCUT TO HELICOPTER
-		App->render->camera.y = 1795 * 3;
-		App->render->camera.x = 880 * 3;
+		App->render->camera.y = 1795 * SCREEN_SIZE;
+		App->render->camera.x = 880 * SCREEN_SIZE;
 		position.y = 1970;
 		position.x = 1020;
 		zone = 3;

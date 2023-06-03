@@ -61,7 +61,7 @@ App->enemies->AddEnemy(Enemy_Type::SOLDIER, 160, 1990);
 App->enemies->AddEnemy(Enemy_Type::CAJA, 90, 2837);
 
 	App->render->camera.x = 0;
-	App->render->camera.y = 2715 * 3;
+	App->render->camera.y = 2715 * SCREEN_SIZE;
 
 	// TODO 2: Enable (and properly disable) the player module
 	App->player->Enable();
