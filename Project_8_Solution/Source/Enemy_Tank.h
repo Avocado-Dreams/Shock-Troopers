@@ -65,6 +65,7 @@ private:
 	Animation idleDown, shootDown, idleSE1, shootSE1, idleSE2, shootSE2, idleSE3, shootSE3, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2,idleNE3,shootNE3, idleUp, shootUp, idleSW1, shootSW1, idleSW2, shootSW2,idleSW3,shootSW3, idleLeft, shootLeft, idleNW1, shootNW1, idleNW2, shootNW2, idleNW3, shootNW3;
 	Animation tankStop, tankMove,tankHurt;
 	uint tankShotFx = 0;
+	uint tankMovingFX = 0;
 };
 
 #endif // __ENEMY_Enemy_Tank_H__

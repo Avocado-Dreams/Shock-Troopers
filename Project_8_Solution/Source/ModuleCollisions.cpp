@@ -37,6 +37,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::TANK_SHOT] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::LIFE] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::EXPLOSION] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::BOX] = true;
 
 	matrix[Collider::Type::SOLDIER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER] = true;
@@ -114,8 +115,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::HELICOPTER][Collider::Type::HELICOPTER_SHOT] = false;
 	matrix[Collider::Type::HELICOPTER][Collider::Type::EXPLOSION] = false;
 
-	matrix[Collider::Type::BOX][Collider::Type::PLAYER] = false;
-	matrix[Collider::Type::BOX][Collider::Type::PLAYER_SHOT] = false;
+	matrix[Collider::Type::BOX][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::BOX][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::BOX][Collider::Type::ENEMY_SHOT] = false;
 
 	matrix[Collider::Type::BLUEDIAMOND][Collider::Type::TANK] = false;
@@ -244,6 +245,11 @@ Update_Status ModuleCollisions::Update()
 	{
 	App->enemies->AddEnemy(Enemy_Type::TANK, App->player->position.x - 10, App->player->position.y - 40);
 	contador++;
+	}
+	if (App->input->keys[SDL_SCANCODE_B] == KEY_DOWN && contador <= MAX_COLLIDERS)
+	{
+		App->enemies->AddEnemy(Enemy_Type::CAJA, App->player->position.x - 10, App->player->position.y - 40);
+		contador++;
 	}
 	return Update_Status::UPDATE_CONTINUE;
 }

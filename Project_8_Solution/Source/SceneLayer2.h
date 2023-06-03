@@ -42,7 +42,7 @@ public:
 	Animation* currentDBox = nullptr;
 
 	Animation life100, life90, life80, life70, life60, life50, life40, life30, life20, life10, life0;
-	Animation box, boxDestroyed;
+	Animation box;
 
 public:
 

@@ -265,14 +265,14 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	moveUp.loop = true;
 	moveUp.speed = 0.2f;
 
-	meleeSE.PushBack({ 1361, 125, 38, 49 });
-	meleeSE.PushBack({ 1447, 126, 30, 47 });
-	meleeSE.PushBack({ 1520, 124, 82, 47 });
-	meleeSE.PushBack({ 1602, 122, 82, 46 });
-	meleeSE.PushBack({ 1690, 128, 82, 52 });
-	meleeSE.PushBack({ 1775, 127, 82, 50 });
-	meleeSE.PushBack({ 1858, 126, 82, 48 });
 	meleeSE.PushBack({ 1944, 124, 82, 49 });
+	meleeSE.PushBack({ 1858, 126, 82, 48 });
+	meleeSE.PushBack({ 1775, 127, 82, 50 });
+	meleeSE.PushBack({ 1690, 128, 82, 52 });
+	meleeSE.PushBack({ 1602, 122, 82, 46 });
+	meleeSE.PushBack({ 1520, 124, 82, 47 });
+	meleeSE.PushBack({ 1447, 126, 30, 47 });
+	meleeSE.PushBack({ 1361, 125, 38, 49 });
 
 	meleeSE.loop = false;
 	meleeSE.speed = 0.2f;
@@ -301,10 +301,10 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	meleeDown.loop = false;
 	meleeDown.speed = 0.2f;
 
-	meleeRight.PushBack({ 1334, 260, 82, 72 });
-	meleeRight.PushBack({ 1417, 260, 82, 72 });
-	meleeRight.PushBack({ 1500, 260, 82, 72 });
-	meleeRight.PushBack({ 1583, 260, 82, 72 });
+	meleeRight.PushBack({ 1359, 269, 42, 49 });
+	meleeRight.PushBack({ 1444, 270, 40, 48 });
+	meleeRight.PushBack({ 1524, 268, 31, 49 });
+	meleeRight.PushBack({ 1599, 268, 41, 50 });
 	meleeRight.PushBack({ 1693, 271, 30, 47 });
 	meleeRight.PushBack({ 1775, 271, 31, 47 });
 	meleeRight.PushBack({ 1857, 271, 32, 47 });
@@ -313,55 +313,56 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	meleeRight.loop = false;
 	meleeRight.speed = 0.2f;
 
-	meleeLeft.PushBack({ 1915, 333, 82, 72 });
-	meleeLeft.PushBack({ 1832, 333, 82, 72 });
-	meleeLeft.PushBack({ 1749, 333, 82, 72 });
-	meleeLeft.PushBack({ 1666, 333, 82, 72 });
-	meleeLeft.PushBack({ 1583, 333, 82, 72 });
-	meleeLeft.PushBack({ 1500, 333, 82, 72 });
-	meleeLeft.PushBack({ 1417, 333, 82, 72 });
-	meleeLeft.PushBack({ 1334, 333, 82, 72 });
+	meleeLeft.PushBack({ 1931, 342, 42, 49 });
+	meleeLeft.PushBack({ 1848, 343, 40, 48 });
+	meleeLeft.PushBack({ 1777, 341, 31, 49 });
+	meleeLeft.PushBack({ 1692, 341, 41, 50 });
+	meleeLeft.PushBack({ 1609, 344, 30, 47 });
+	meleeLeft.PushBack({ 1526, 344, 31, 47 });
+	meleeLeft.PushBack({ 1443, 344, 32, 47 });
+	meleeLeft.PushBack({ 1348, 342, 42, 49 });
 
 	meleeLeft.loop = false;
 	meleeLeft.speed = 0.2f;
 
-	meleeNE.PushBack({ 1334, 406, 82, 72 });
-	meleeNE.PushBack({ 1417, 406, 82, 72 });
-	meleeNE.PushBack({ 1500, 406, 82, 72 });
-	meleeNE.PushBack({ 1583, 406, 82, 72 });
-	meleeNE.PushBack({ 1666, 406, 82, 72 });
-	meleeNE.PushBack({ 1749, 406, 82, 72 });
-	meleeNE.PushBack({ 1832, 406, 82, 72 });
-	meleeNE.PushBack({ 1915, 406, 82, 72 });
+	meleeNE.PushBack({ 1360, 418, 40, 48 });
+	meleeNE.PushBack({ 1439, 418, 42, 48 });
+	meleeNE.PushBack({ 1524, 419, 48, 46 });
+	meleeNE.PushBack({ 1607, 418, 34, 48 });
+	meleeNE.PushBack({ 1690, 418, 33, 48 });
+	meleeNE.PushBack({ 1768, 420, 38, 45 });
+	meleeNE.PushBack({ 1854, 420, 35, 46 });
+	meleeNE.PushBack({ 1934, 420, 38, 46 });
 
 	meleeNE.loop = false;
 	meleeNE.speed = 0.2f;
 
-	meleeNW.PushBack({ 1915, 479, 82, 72 });
-	meleeNW.PushBack({ 1832, 479, 82, 72 });
-	meleeNW.PushBack({ 1749, 479, 82, 72 });
-	meleeNW.PushBack({ 1666, 479, 82, 72 });
-	meleeNW.PushBack({ 1583, 479, 82, 72 });
-	meleeNW.PushBack({ 1500, 479, 82, 72 });
-	meleeNW.PushBack({ 1417, 479, 82, 72 });
-	meleeNW.PushBack({ 1334, 479, 82, 72 });
+	meleeNW.PushBack({ 1932, 494, 40, 48 });
+	meleeNW.PushBack({ 1851+4, 493, 42, 48 });
+	meleeNW.PushBack({ 1760+12, 495, 48, 46 });
+	meleeNW.PushBack({ 1691, 494, 34, 48 });
+	meleeNW.PushBack({ 1609, 494, 33, 48 });
+	meleeNW.PushBack({ 1526, 496, 38, 45 });
+	meleeNW.PushBack({ 1443, 496, 35, 46 });
+	meleeNW.PushBack({ 1360, 496, 38, 46 });
 
 	meleeNW.loop = false;
 	meleeNW.speed = 0.2f;
 
-	meleeUp.PushBack({ 1334, 552, 82, 72 });
-	meleeUp.PushBack({ 1417, 552, 82, 72 });
-	meleeUp.PushBack({ 1500, 552, 82, 72 });
-	meleeUp.PushBack({ 1583, 552, 82, 72 });
-	meleeUp.PushBack({ 1666, 552, 82, 72 });
-	meleeUp.PushBack({ 1749, 552, 82, 72 });
-	meleeUp.PushBack({ 1832, 552, 82, 72 });
-	meleeUp.PushBack({ 1915, 552, 82, 72 });
+	meleeUp.PushBack({ 1360, 566, 36, 48 });
+	meleeUp.PushBack({ 1446, 568, 34, 46 });
+	meleeUp.PushBack({ 1512+19, 566, 47-19, 48 });
+	meleeUp.PushBack({ 1594+20, 566, 48-20, 48 });
+	meleeUp.PushBack({ 1696, 569, 39, 45 });
+	meleeUp.PushBack({ 1779, 569, 35, 45 });
+	meleeUp.PushBack({ 1862, 569, 39, 45 });
+	meleeUp.PushBack({ 1943, 566, 36, 48 });
 
 	meleeUp.loop = false;
 	meleeUp.speed = 0.2f;
 
 	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
+	enemyKnifeFx = App->audio->LoadFx("Assets/Fx/Knife.wav");
 
 	isSpawning = true;
 
@@ -381,7 +382,7 @@ void Enemy_Soldier_Static::Update()
 {
 	if (currentAnim == &enemy_airspawnL && timer <= 0) {
 		currentAnim = &getUpL;
-		collider = App->collisions->AddCollider({ 0, 0, 24, 34 }, Collider::Type::SOLDIER, (Module*)App->enemies);
+		collider = App->collisions->AddCollider({ 0, 0, 30, 40 }, Collider::Type::SOLDIER, (Module*)App->enemies);
 		timer = 0.5f;
 	}
 	else if (currentAnim == &getUpL && timer <= 0)
@@ -393,7 +394,7 @@ void Enemy_Soldier_Static::Update()
 
 	else if (currentAnim == &enemy_airspawnR && timer <= 0) {
 		currentAnim = &getUpR;
-		collider = App->collisions->AddCollider({ 0, 0, 24, 34 }, Collider::Type::SOLDIER, (Module*)App->enemies);
+		collider = App->collisions->AddCollider({ 0, 0, 30, 40 }, Collider::Type::SOLDIER, (Module*)App->enemies);
 		timer = 0.5f;
 	}
 	else if (currentAnim == &getUpR && timer <= 0)
@@ -414,7 +415,7 @@ void Enemy_Soldier_Static::Update()
 			Attack();
 		}
 		else if (isShooting == false && hasDecided == false) {
-			if (rand() % 100 > 55 && distance > 35) {
+			if (rand() % 100 > 55 && distance > 40) {
 				isIdle = false;
 				isMoving = true;
 			}
@@ -438,6 +439,10 @@ void Enemy_Soldier_Static::Update()
 	if (timer <= (tempTimer - 0.8))isShooting = false;
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
+	if (isSpawning==false)
+	{
+		collider->SetPos(position.x, position.y);
+	}
 	Enemy::Update();
 }
 
@@ -504,7 +509,6 @@ void Enemy_Soldier_Static::Move()
 			position.x--;
 		}
 	}
-	collider->SetPos(position.x, position.y);
 }
 void Enemy_Soldier_Static::Idle()
 {
@@ -536,40 +540,50 @@ void Enemy_Soldier_Static::Attack()
 	//	position.y += sin(angle) * 3;
 	//}
 
-	if (distance < 35)
+	if (distance < 40)
 	{
+		App->audio->PlayFx(enemyKnifeFx);
 		if (Enemy_Soldier_Static::calculateAngle() >= -110 && Enemy_Soldier_Static::calculateAngle() < -70) {
 			meleeDown.Reset();
 			currentAnim = &meleeDown;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 13, position.y + 30, NULL, 1, Collider::Type::ENEMY_SHOT);
+
 		}
 		else if (Enemy_Soldier_Static::calculateAngle() >= -160 && Enemy_Soldier_Static::calculateAngle() < -110) {
 			meleeSE.Reset();
 			currentAnim = &meleeSE;
 
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 23, position.y + 27, 2, 1, Collider::Type::ENEMY_SHOT);
 		}
 		else if ((Enemy_Soldier_Static::calculateAngle() >= -180 && Enemy_Soldier_Static::calculateAngle() < -160) || (Enemy_Soldier_Static::calculateAngle() >= 160 && Enemy_Soldier_Static::calculateAngle() <= 180)) {
 			meleeRight.Reset();
 			currentAnim = &meleeRight;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 41, position.y + 16, 1, 0, Collider::Type::ENEMY_SHOT);
 		}
 		else if (Enemy_Soldier_Static::calculateAngle() <= 160 && Enemy_Soldier_Static::calculateAngle() > 110) {
 			meleeNE.Reset();
 			currentAnim = &meleeNE;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 31, position.y + 4, 1, -1, Collider::Type::ENEMY_SHOT);
 		}
 		else if (Enemy_Soldier_Static::calculateAngle() <= 110 && Enemy_Soldier_Static::calculateAngle() > 70) {
 			meleeUp.Reset();
 			currentAnim = &meleeUp;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 16, position.y - 5, NULL, -1, Collider::Type::ENEMY_SHOT);
 		}
 		else if (Enemy_Soldier_Static::calculateAngle() <= 70 && Enemy_Soldier_Static::calculateAngle() > 20) {
 			meleeNW.Reset();
 			currentAnim = &meleeNW;
+			App->particles->AddParticle(App->particles->enemyShot, position.x + 4, position.y + 5, -2, -1, Collider::Type::ENEMY_SHOT);
 		}
 		else if ((Enemy_Soldier_Static::calculateAngle() <= 20 && Enemy_Soldier_Static::calculateAngle() >= 0) || (Enemy_Soldier_Static::calculateAngle() >= -20 && Enemy_Soldier_Static::calculateAngle() < -1)) {
 			meleeLeft.Reset();
 			currentAnim = &meleeLeft;
+			App->particles->AddParticle(App->particles->enemyShot, position.x - 5, position.y + 17, -2, NULL, Collider::Type::ENEMY_SHOT);
 		}
 		else if (Enemy_Soldier_Static::calculateAngle() >= -70 && Enemy_Soldier_Static::calculateAngle() < -20) {
 			meleeSW.Reset();
 			currentAnim = &meleeSW;
+			App->particles->AddParticle(App->particles->enemyShot, position.x - 6, position.y + 32, -1, 1, Collider::Type::ENEMY_SHOT);
 		}
 	}
 	else

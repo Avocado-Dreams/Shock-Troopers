@@ -41,19 +41,19 @@ Application::Application()
 	modules[7] =	sceneRoute =	new SceneRouteSelect(false);
 	modules[8] =	helicopter =	new ModuleHelicopter(false);
 	modules[9] =	sceneLevel_1 =	new SceneLevel1(false);	//Gameplay scene starts disabled
-	modules[10] =	enemies =		new ModuleEnemies(false);	//Enemies starts disabled
-	modules[11] =	finalBoss =		new ModuleFinalBoss(false);
-	modules[12] =	particles =		new ModuleParticles(true);//Boss starts disabled
-	modules[13] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[14] =	obstacles =		new ModuleObstacles(true);
-	modules[15] =   sceneLayer2 =   new SceneLayer2(false);
-	modules[16] =   sceneOver =     new SceneGameOver(false);
+	modules[10] =	finalBoss =		new ModuleFinalBoss(false);
+	modules[11] =	particles =		new ModuleParticles(true);//Boss starts disabled
+	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[13] =	 enemies =			new ModuleEnemies(false);	//Enemies starts disabled
+	
+	modules[14] =   sceneLayer2 =   new SceneLayer2(false);
+	modules[15] =   sceneOver =     new SceneGameOver(false);
 
-	modules[17] =	collisions =	new ModuleCollisions(true);
-	modules[18] =	fade =			new ModuleFadeToBlack(true);
-	modules[19] =   fonts =         new ModuleFonts(true);
-	modules[20] =	pickUps =		new ModulePickUps(true);
-	modules[21] =	render =		new ModuleRender(true);
+	modules[16] =	collisions =	new ModuleCollisions(true);
+	modules[17] =	fade =			new ModuleFadeToBlack(true);
+	modules[18] =   fonts =         new ModuleFonts(true);
+	modules[19] =	pickUps =		new ModulePickUps(true);
+	modules[20] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()
