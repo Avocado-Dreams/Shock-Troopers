@@ -82,6 +82,7 @@ bool SceneLevel1::Start()
 	App->enemies->Enable();
 	App->sceneLayer2->Enable();
 	App->pickUps->Enable();
+	App->collisions->Enable();
 
 	App->player->vida = 100;
 	App->player->hit = 0;
@@ -266,8 +267,36 @@ bool SceneLevel1::CleanUp()
 	App->sceneLayer2->Disable();
 	App->pickUps->Disable();
 	App->particles->Disable();
+	App->helicopter->Disable();
+	App->collisions->Disable();
+	
+	App->textures->Unload(textureSky);
+	App->textures->Unload(bgTexture);
+	App->textures->Unload(App->sceneLayer2->bgTexture2);
+	App->textures->Unload(App->sceneLayer2->bgTexture3);
+	App->textures->Unload(App->sceneLayer2->palms);
+	App->textures->Unload(App->sceneLayer2->palms2);
+	App->textures->Unload(App->sceneLayer2->P1);
+	App->textures->Unload(App->sceneLayer2->PhotoFrame);
+	App->textures->Unload(App->sceneLayer2->Time);
+	App->textures->Unload(App->sceneLayer2->Weapon);
+	App->textures->Unload(App->sceneLayer2->Grenade);
+	App->textures->Unload(App->sceneLayer2->GoUp);
+	App->textures->Unload(App->sceneLayer2->GoRight);
+	App->textures->Unload(App->sceneLayer2->HBar);
 
-
+	App->textures->Unload(App->player->texture);
+	App->textures->Unload(App->player->textureD);
+	App->textures->Unload(App->player->textureL);
+	App->textures->Unload(App->player->textureState);
+	App->textures->Unload(App->helicopter->textureH);
+	App->textures->Unload(App->helicopter->textureSky);
+	
+	/*App->textures->Unload(App->player->textureD);
+	App->textures->Unload(App->player->textureL);
+	App->textures->Unload(App->player->textureState);
+	App->textures->Unload(App->helicopter->textureH);
+	App->textures->Unload(App->helicopter->textureSky);*/
 	// TODO 5: Remove All Memory Leaks - no solution here guys ;)
 
 	return true;
