@@ -503,8 +503,8 @@ bool ModulePlayer::Start()
 	stageFont = App->fonts->Load("Assets/Sprites/Fonts/FontStage.png", lookupTableStages, 6);
 	stageFontRect = { 0, 0, 128, 16 };
 
-	position.x = 150;
-	position.y = (120 + 2715);
+	position.x = 135;
+	position.y = (2860);
 
 	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;

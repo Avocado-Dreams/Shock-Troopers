@@ -33,7 +33,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::BLUEDIAMOND] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::HELICOPTER] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::FINALBOSS] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::TANK] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::TANK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::TANK_SHOT] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::LIFE] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::EXPLOSION] = false;
@@ -46,7 +46,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::SOLDIER][Collider::Type::HELICOPTER_SHOT] = false;
 	matrix[Collider::Type::SOLDIER][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::SOLDIER][Collider::Type::BLUEDIAMOND] = false;
-	matrix[Collider::Type::SOLDIER][Collider::Type::TANK] = false;
+	matrix[Collider::Type::SOLDIER][Collider::Type::TANK] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::TANK_SHOT] = false;
 	matrix[Collider::Type::SOLDIER][Collider::Type::LIFE] = false;
 
@@ -125,7 +125,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 
 	matrix[Collider::Type::TANK][Collider::Type::WALL] = true;
 	matrix[Collider::Type::TANK][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::TANK][Collider::Type::SOLDIER] = false;
+	matrix[Collider::Type::TANK][Collider::Type::SOLDIER] = true;
 	matrix[Collider::Type::TANK][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::TANK][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::TANK][Collider::Type::BLUEDIAMOND] = false;
@@ -230,6 +230,11 @@ Update_Status ModuleCollisions::Update()
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneOver, 60);
     
 	}
+	if (App->input->keys[SDL_SCANCODE_F4] == KEY_DOWN)
+	{
+		App->player->win = 1;
+		App->player->winAnim.Reset();
+	}
 	if (App->input->keys[SDL_SCANCODE_O] == KEY_DOWN && contador <= MAX_COLLIDERS)
 	{
 		App->pickUps->AddPickUps(PickUps_Type::LIFE, App->player->position.x , App->player->position.y -30);
@@ -242,12 +247,12 @@ Update_Status ModuleCollisions::Update()
 	}
 	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN && contador <= MAX_COLLIDERS)
 	{
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, App->player->position.x + 10 , App->player->position.y-40);
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, App->player->position.x + 1 , App->player->position.y-80);
 		contador++;
 	}
 	if (App->input->keys[SDL_SCANCODE_I] == KEY_DOWN && contador <= MAX_COLLIDERS)
 	{
-	App->enemies->AddEnemy(Enemy_Type::TANK, App->player->position.x - 10, App->player->position.y - 40);
+	App->enemies->AddEnemy(Enemy_Type::TANK, App->player->position.x - 1, App->player->position.y - 140);
 	contador++;
 	}
 	if (App->input->keys[SDL_SCANCODE_B] == KEY_DOWN && contador <= MAX_COLLIDERS)

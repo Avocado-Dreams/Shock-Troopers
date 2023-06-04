@@ -126,49 +126,6 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	shootSW2.loop = false;
 	shootSW2.speed = 0.1f;
 
-	//enemy_airspawnL.PushBack({ 17, 260, 64, 69 });
-	//enemy_airspawnL.PushBack({ 80, 261, 63, 67 });
-	//enemy_airspawnL.PushBack({ 143, 263, 59, 62 });
-	//enemy_airspawnL.PushBack({ 206, 264, 58, 61 });
-	//enemy_airspawnL.PushBack({ 270, 264, 54, 60 });
-	//enemy_airspawnL.PushBack({ 332, 265, 53, 58 });
-	//enemy_airspawnL.PushBack({ 395, 266, 52, 57 });
-	//enemy_airspawnL.PushBack({ 457, 267, 51, 55 });
-	//enemy_airspawnL.PushBack({ 520, 267, 50, 54 });
-	//enemy_airspawnL.PushBack({ 582, 268, 49, 53 });
-	//enemy_airspawnL.PushBack({ 645, 268, 48, 52 });
-	//enemy_airspawnL.PushBack({ 707, 269, 47, 50 });
-	//enemy_airspawnL.PushBack({ 770, 270, 46, 49 });
-	//enemy_airspawnL.PushBack({ 834, 271, 42, 47 });
-	//enemy_airspawnL.loop = false;
-	//enemy_airspawnL.speed = 0.3f;
-
-	//getUpL.PushBack({ 961, 275, 36, 38 });
-	//getUpL.loop = false;
-	//getUpL.speed = 0.1f;
-
-	//enemy_airspawnR.PushBack({ 940, 347, 64, 69 });
-	//enemy_airspawnR.PushBack({ 879, 348, 63, 67 });
-	//enemy_airspawnR.PushBack({ 819, 350, 59, 62 });
-	//enemy_airspawnR.PushBack({ 757, 351, 58, 61 });
-	//enemy_airspawnR.PushBack({ 697, 351, 54, 60 });
-	//enemy_airspawnR.PushBack({ 636, 352, 53, 58 });
-	//enemy_airspawnR.PushBack({ 574, 353, 52, 57 });
-	//enemy_airspawnR.PushBack({ 513, 354, 51, 55 });
-	//enemy_airspawnR.PushBack({ 451, 354, 50, 54 });
-	//enemy_airspawnR.PushBack({ 390, 355, 49, 53 });
-	//enemy_airspawnR.PushBack({ 328, 355, 48, 52 });
-	//enemy_airspawnR.PushBack({ 267, 356, 47, 50 });
-	//enemy_airspawnR.PushBack({ 145, 357, 46, 49 });
-	//enemy_airspawnL.PushBack({ 84, 358, 42, 47 });
-	////enemy_airspawnL.PushBack({ 834, 271, 42, 47 });
-	//enemy_airspawnR.loop = false;
-	//enemy_airspawnR.speed = 0.3f;
-
-	//getUpR.PushBack({ 24, 362, 36, 38 });
-	//getUpR.loop = false;
-	//getUpR.speed = 0.1f;
-
 	moveDown.PushBack({ 411, 417, 42, 56 });
 	moveDown.PushBack({ 456, 417, 42, 56 });
 	moveDown.PushBack({ 501, 417, 42, 56 });
@@ -364,7 +321,7 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	if (enemyShotFx == 0) enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
 	if (enemyKnifeFx == 0) enemyKnifeFx = App->audio->LoadFx("Assets/Fx/Knife.wav");
 
-	/*isSpawning = true;*/
+	isSpawning = true;
 
 	if (spawnPos.x - App->player->position.x > 0){
 		currentAnim = &idleDownR;
@@ -376,36 +333,31 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 		collider = App->collisions->AddCollider({ 0, 0, 30, 40 }, Collider::Type::SOLDIER, (Module*)App->enemies);
 	}
 
-	timer = 0.7f;
+	timer = 1.2f;
 	position = spawnPos;
 }
 
 void Enemy_Soldier_Static::Update()
 {
-	/*if (currentAnim == &enemy_airspawnL && timer <= 0) {
-		currentAnim = &getUpL;
-		collider = App->collisions->AddCollider({ 0, 0, 30, 40 }, Collider::Type::SOLDIER, (Module*)App->enemies);
-		timer = 0.5f;
-	}
-	else if (currentAnim == &getUpL && timer <= 0)
+	if (isSpawning)
 	{
-		isSpawning = false;
-		currentAnim = &idleDownL;
-		timer = rand() % 3;
+		if (spawnPos.x < 175 && spawnPos.y < 1850 && timer > 0) {
+			loop++;
+			if (loop % 2 == 0) {
+				currentAnim = &moveSW;
+				position.y++;
+				position.x--;
+			}
+		}
+		else if (spawnPos.x > 175 && spawnPos.x < 350 && spawnPos.y < 1850 && timer > 0) {
+			loop++;
+			if (loop % 2 == 0) {
+				currentAnim = &moveSE;
+				position.y++;
+				position.x++;
+			}
+		}
 	}
-
-	else if (currentAnim == &enemy_airspawnR && timer <= 0) {
-		currentAnim = &getUpR;
-		collider = App->collisions->AddCollider({ 0, 0, 30, 40 }, Collider::Type::SOLDIER, (Module*)App->enemies);
-		timer = 0.5f;
-	}
-	else if (currentAnim == &getUpR && timer <= 0)
-	{
-		isSpawning = false;
-		currentAnim = &idleDownR;
-		timer = rand() % 3;
-
-	}*/
 
 	if (Enemy_Soldier_Static::find_player())
 	{
@@ -414,9 +366,11 @@ void Enemy_Soldier_Static::Update()
 			isMoving = false;
 			isIdle = false;
 			hasDecided = false;
+			isMoving = false;
+			isSpawning = false;
 			Attack();
 		}
-		if (Enemy_Soldier_Static::position.y >= 1740 && Enemy_Soldier_Static::position.y <= 1790)
+		if (Enemy_Soldier_Static::position.y >= 1740 && Enemy_Soldier_Static::position.y <= 1780)
 		{
 			isMoving = true;
 			isIdle = false;
@@ -729,7 +683,8 @@ void Enemy_Soldier_Static::OnCollision(Collider* collider)
 		}
 	}
 
-	else if (collider->type == Collider::Type::PLAYER) {
+	//else if (collider->type == Collider::Type::PLAYER || collider->type == Collider::Type::TANK) {
+	else if(isSpawning==false){
 		isMoving = false;
 	}
 

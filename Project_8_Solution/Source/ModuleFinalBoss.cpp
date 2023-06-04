@@ -402,7 +402,7 @@ void ModuleFinalBoss::OnCollision(Collider* c1, Collider* c2)
 
 	//	LOG("Touching player. Pos boss: %d. Pos player: %d", position.y, App->player->position.y)
 	//}
-
+	
 	if (bossDestroyed && App->player->win == 0)
 	{	
 		App->audio->PlayMusic("Assets/Music/silence.wav", 0.0f);
