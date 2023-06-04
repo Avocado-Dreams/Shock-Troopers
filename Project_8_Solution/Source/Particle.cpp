@@ -44,8 +44,38 @@ bool Particle::Update()
 			ret = false;
 
 		// Update the position in the screen
-		position.x += speed.x;
-		position.y += speed.y;
+
+		
+		if (speed.x * speed.y > 0 && speed.x + speed.y == 2 || speed.x + speed.y == -2)
+		{
+			position.x += speed.x/2;
+			position.y += speed.y/2;
+		}
+		else if (speed.x * speed.y > 0 && speed.x + speed.y == 3 || speed.x + speed.y == -3)
+		{
+			position.x += speed.x / 3;
+			position.y += speed.y / 3;
+		}
+		else if (speed.x * speed.y < 0 && speed.x + speed.y == 0)
+		{
+			position.x += speed.x / 2;
+			position.y += speed.y / 2;
+		}
+		else if(speed.x * speed.y < 0 && speed.x + speed.y == -1)
+		{
+			position.x += speed.x / 3;
+			position.y += speed.y / 3;
+		}
+		else if (speed.x * speed.y < 0 && speed.x + speed.y == 1)
+		{
+			position.x += speed.x / 3;
+			position.y += speed.y / 3;
+		}
+		else
+		{
+			position.x += speed.x;
+			position.y += speed.y;
+		}
 
 		if (collider != nullptr)
 			collider->SetPos(position.x, position.y);

@@ -156,7 +156,7 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 	tankShotFx = App->audio->LoadFx("Assets/Fx/tankShot.wav");
 	tankMovingFX = App->audio->LoadFx("Assets/Fx/tankMoving.wav");
 
-	collider = App->collisions->AddCollider({ 0, 0, 34, 34 }, Collider::Type::TANK, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 70, 50 }, Collider::Type::TANK, (Module*)App->enemies);
 
 
 	currentBAnim = &tankStop;
