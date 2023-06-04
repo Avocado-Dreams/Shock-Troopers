@@ -55,6 +55,8 @@ bool ModuleHelicopter::Start()
 
 	bool ret = true;
 	startTime = SDL_GetTicks();
+	
+	life = 100;
 
 	position.x = 967;
 	position.y = 1928;
@@ -90,7 +92,7 @@ Update_Status ModuleHelicopter::Update()
 		if (ModuleHelicopter::find_player())
 		{
 			if (timer <= 0.0f && isShooting == false && position.y == 1788) Attack();
-			/*		else if (timer > 0.0f && isShooting == false)Idle();*/
+			/*	else if (timer > 0.0f && isShooting == false)Idle();*/
 		}
 
 
