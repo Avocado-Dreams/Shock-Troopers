@@ -955,6 +955,11 @@ Update_Status ModulePlayer::Update()
 	{
 		zone = 2;
 	}
+	if (zone == 2 && position.y < 1990)
+	{
+		App->sceneLayer2->GoRight;
+		zone = 3;
+	}
 	else if (zone == 3 && App->render->camera.x > 880 * SCREEN_SIZE)
 	{
 		App->helicopter->Enable();

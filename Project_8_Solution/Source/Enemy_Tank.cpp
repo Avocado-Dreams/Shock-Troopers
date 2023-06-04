@@ -442,8 +442,6 @@ void Enemy_Tank::OnCollision(Collider* collider)
 			App->pickUps->AddPickUps(PickUps_Type::LIFE, position.x + 12, position.y + 4);
 			hasDropped = true;
 		}
-		App->sceneLayer2->GoRight;
-		App->player->zone = 3;
 	}
 	else if (isSpawning == false) {
 		isMoving = false;
