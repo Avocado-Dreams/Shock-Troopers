@@ -720,7 +720,7 @@ void Enemy_Soldier_Air::OnCollision(Collider* collider)
 		}
 	}
 
-	else if (collider->type == Collider::Type::PLAYER) {
+	else if (isSpawning == false) {
 		isMoving = false;
 	}
 

@@ -32,8 +32,8 @@ public:
 
 	void OnCollision();
 
-	bool contador = false;
-	bool contador2 = false;
+	bool contador;
+	bool contador2;
 	int reloj = 120;
 
 	bool enemy1Spawned;
@@ -48,6 +48,23 @@ public:
 	bool enemy10Spawned;
 	bool enemy11Spawned;
 	bool enemy12Spawned;
+	bool enemy13Spawned;
+	bool enemy14Spawned;
+	bool enemy15Spawned;
+	bool enemy16Spawned;
+	bool enemy17Spawned;
+	bool enemy18Spawned;
+	bool enemy19Spawned;
+	bool enemy20Spawned;
+	bool enemy21Spawned;
+	bool enemy22Spawned;
+	bool enemy23Spawned;
+	bool enemy24Spawned;
+	bool enemy25Spawned;
+	bool enemy26Spawned;
+	bool enemy27Spawned;
+
+
 
 
 	SDL_Texture* textureSky = nullptr;

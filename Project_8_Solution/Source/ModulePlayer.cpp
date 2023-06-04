@@ -503,8 +503,8 @@ bool ModulePlayer::Start()
 	stageFont = App->fonts->Load("Assets/Sprites/Fonts/FontStage.png", lookupTableStages, 6);
 	stageFontRect = { 0, 0, 128, 16 };
 
-	position.x = 150;
-	position.y = (120 + 2715);
+	position.x = 135;
+	position.y = (2860);
 
 	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;
@@ -1159,6 +1159,7 @@ Update_Status ModulePlayer::PostUpdate()
 {
  	if (win > 0)
 	{
+		App->collisions->God_Mode();
 		if (win < 70) {
 			SDL_Rect rectL = currentLAnimation->GetCurrentFrame();
 			App->render->Blit(textureL, position.x, position.y + 18, &rectL);

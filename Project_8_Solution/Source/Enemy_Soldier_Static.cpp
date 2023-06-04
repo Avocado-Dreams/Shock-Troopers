@@ -364,7 +364,7 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
 	enemyKnifeFx = App->audio->LoadFx("Assets/Fx/Knife.wav");
 
-	/*isSpawning = true;*/
+	isSpawning = true;
 
 	if (spawnPos.x - App->player->position.x > 0){
 		currentAnim = &idleDownR;
@@ -376,36 +376,31 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 		collider = App->collisions->AddCollider({ 0, 0, 30, 40 }, Collider::Type::SOLDIER, (Module*)App->enemies);
 	}
 
-	timer = 0.7f;
+	timer = 1.2f;
 	position = spawnPos;
 }
 
 void Enemy_Soldier_Static::Update()
 {
-	/*if (currentAnim == &enemy_airspawnL && timer <= 0) {
-		currentAnim = &getUpL;
-		collider = App->collisions->AddCollider({ 0, 0, 30, 40 }, Collider::Type::SOLDIER, (Module*)App->enemies);
-		timer = 0.5f;
-	}
-	else if (currentAnim == &getUpL && timer <= 0)
+	if (isSpawning)
 	{
-		isSpawning = false;
-		currentAnim = &idleDownL;
-		timer = rand() % 3;
+		if (spawnPos.x < 175 && spawnPos.y < 1850 && timer > 0) {
+			loop++;
+			if (loop % 2 == 0) {
+				currentAnim = &moveSW;
+				position.y++;
+				position.x--;
+			}
+		}
+		else if (spawnPos.x > 175 && spawnPos.x < 350 && spawnPos.y < 1850 && timer > 0) {
+			loop++;
+			if (loop % 2 == 0) {
+				currentAnim = &moveSE;
+				position.y++;
+				position.x++;
+			}
+		}
 	}
-
-	else if (currentAnim == &enemy_airspawnR && timer <= 0) {
-		currentAnim = &getUpR;
-		collider = App->collisions->AddCollider({ 0, 0, 30, 40 }, Collider::Type::SOLDIER, (Module*)App->enemies);
-		timer = 0.5f;
-	}
-	else if (currentAnim == &getUpR && timer <= 0)
-	{
-		isSpawning = false;
-		currentAnim = &idleDownR;
-		timer = rand() % 3;
-
-	}*/
 
 	if (Enemy_Soldier_Static::find_player())
 	{
@@ -414,6 +409,8 @@ void Enemy_Soldier_Static::Update()
 			isMoving = false;
 			isIdle = false;
 			hasDecided = false;
+			isMoving = false;
+			isSpawning = false;
 			Attack();
 		}
 		if (Enemy_Soldier_Static::position.y >= 1740 && Enemy_Soldier_Static::position.y <= 1780)
@@ -729,7 +726,8 @@ void Enemy_Soldier_Static::OnCollision(Collider* collider)
 		}
 	}
 
-	else if (collider->type == Collider::Type::PLAYER) {
+	//else if (collider->type == Collider::Type::PLAYER || collider->type == Collider::Type::TANK) {
+	else if(isSpawning==false){
 		isMoving = false;
 	}
 
