@@ -7,6 +7,7 @@
 #include "ModuleAudio.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "SceneLayer2.h"
 
 Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 {
@@ -441,6 +442,8 @@ void Enemy_Tank::OnCollision(Collider* collider)
 			App->pickUps->AddPickUps(PickUps_Type::LIFE, position.x + 12, position.y + 4);
 			hasDropped = true;
 		}
+		App->sceneLayer2->GoRight;
+		App->player->zone = 3;
 	}
 	else if (isSpawning == false) {
 		isMoving = false;

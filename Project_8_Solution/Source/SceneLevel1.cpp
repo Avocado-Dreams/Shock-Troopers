@@ -83,6 +83,7 @@ bool SceneLevel1::Start()
 	App->sceneLayer2->Enable();
 	App->pickUps->Enable();
 	App->collisions->Enable();
+	App->particles->Enable();
 
 	App->player->vida = 100;
 	App->player->hit = 0;

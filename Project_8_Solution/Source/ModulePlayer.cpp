@@ -12,6 +12,7 @@
 #include "ModuleFinalBoss.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneLayer2.h"
+#include "Enemy_Tank.h"
 #include "SDL/include/SDL.h"
 #include <stdio.h>
 
@@ -953,10 +954,6 @@ Update_Status ModulePlayer::Update()
 	if (zone == 1 && App->render->camera.y < 1796 * SCREEN_SIZE)
 	{
 		zone = 2;
-	}
-	else if (zone == 2 && App->sceneLayer2->GoRight)  
-	{
-		zone = 3; 
 	}
 	else if (zone == 3 && App->render->camera.x > 880 * SCREEN_SIZE)
 	{
