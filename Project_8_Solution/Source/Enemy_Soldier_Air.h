@@ -1,10 +1,10 @@
-#ifndef __Enemy_Soldier_Static_H__
-#define __Enemy_Soldier_Static_H__
+#ifndef __Enemy_Soldier_Air_H__
+#define __Enemy_Soldier_Air_H__
 
 #include "Enemy.h"
 #include "Path.h"
 
-class Enemy_Soldier_Static : public Enemy
+class Enemy_Soldier_Air : public Enemy
 {
 public:
 	double playerX;
@@ -24,7 +24,7 @@ public:
 	int tempTimer;
 	// Constructor (x y coordinates in the world)
 	// Creates animation and movement data and the collider
-	Enemy_Soldier_Static(int x, int y);
+	Enemy_Soldier_Air(int x, int y);
 
 	// The enemy is going to follow the different steps in the path
 	// Position will be updated depending on the speed defined at each step
@@ -40,14 +40,14 @@ public:
 
 	bool find_player();
 
-	double  Enemy_Soldier_Static::calculateAngle();
+	double  Enemy_Soldier_Air::calculateAngle();
 
 	void OnCollision(Collider* collider) override;
 
 	//Timer to control the enemy attack cooldown
 	float timer;
 	float SHOOT_INTERVAL = 5;
-	bool isSpawning = false;
+	bool isSpawning;
 	float scale;
 	bool hasDropped = false;
 

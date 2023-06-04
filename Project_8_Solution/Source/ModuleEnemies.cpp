@@ -15,6 +15,7 @@
 #include "Enemy_Tank.h"
 #include "Enemy_Soldier_Static.h"
 #include "Enemy_Box.h"
+#include "Enemy_Soldier_Air.h"
 
 #define SPAWN_MARGIN 50
 
@@ -157,6 +158,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 				case Enemy_Type::CAJA:
 					enemies[i] = new Enemy_Box(info.x, info.y);
+					break;
+				case Enemy_Type::AIR_SOLDIER:
+					enemies[i] = new Enemy_Soldier_Air(info.x, info.y);
 					break;
 			}
 			enemies[i]->texture = texture;

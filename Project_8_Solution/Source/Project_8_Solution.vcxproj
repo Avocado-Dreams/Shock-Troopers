@@ -82,6 +82,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_Soldier_Air.h" />
     <ClInclude Include="Enemy_Soldier_Static.h" />
     <ClInclude Include="Enemy_Tank.h" />
     <ClInclude Include="ModuleAudio.h" />
@@ -120,6 +121,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_Soldier_Air.cpp" />
     <ClCompile Include="Enemy_Soldier_Static.cpp" />
     <ClCompile Include="Enemy_Tank.cpp" />
     <ClCompile Include="Globals.cpp" />

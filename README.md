@@ -2,7 +2,7 @@
 **Link to our project :)**
 https://github.com/Avocado-Dreams/Shock-Troopers/tree/Project_8
 <br>
-**Link to our page:** https://avocado-dreams.github.io/Shock-Troopers/
+
 
 <br>
 
@@ -39,6 +39,7 @@ Your mission is to kill the terrorrist and mercenaries of BSG who appear on her 
 - F2: debug mode
 - F3: lose condition
 - F4: win condition
+- T: turbo mode
 - O: spawn life 
 - P: spawn blue diamond
 - I: spawn tank
