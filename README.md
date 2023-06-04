@@ -39,6 +39,7 @@ Your mission is to kill the terrorrist and mercenaries of BSG who appear on her 
 - F2: debug mode
 - F3: lose condition
 - F4: win condition
+- T: turbo mode
 - O: spawn life 
 - P: spawn blue diamond
 - I: spawn tank
