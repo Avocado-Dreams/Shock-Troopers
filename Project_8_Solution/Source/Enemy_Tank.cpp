@@ -183,7 +183,7 @@ void Enemy_Tank::Update()
 			hasDecided = false;
 		}
 		else if (timer < 4.2f && timer >2.0f && isShooting == false)isIdle = true;
-		else if (timerM > 0 && timer < 2.0f && hasDecided == false) {
+		else if (timerM > 0 && timer < 1.0f && hasDecided == false || Enemy_Tank::position.y == 1740) {
 			if (rand() % 100 > 50) {
 				isStopped = false;
 				isMoving = true;

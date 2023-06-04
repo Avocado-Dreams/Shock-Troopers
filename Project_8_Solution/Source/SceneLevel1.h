@@ -33,6 +33,7 @@ public:
 	void OnCollision();
 
 	bool contador = false;
+	bool contador2 = false;
 	int reloj = 120;
 
 	bool enemy1Spawned;

@@ -164,9 +164,21 @@ Update_Status SceneLevel1::PostUpdate()
 	{
 		if (reloj == 0)
 		{
-			App->enemies->AddEnemy(Enemy_Type::TANK, 150, 1740);
 			contador = true;
+			App->enemies->AddEnemy(Enemy_Type::TANK, 150, 1740);
+			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 190, 1740);
+			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 110, 1740);
 		}
+		if (contador2 == false)
+		{
+			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 120, 1740);
+			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 125, 1740);
+			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 165, 1740);
+			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 180, 1740);
+			contador2 = true;
+		}
+		
+		
 		reloj--;
 	}
 	

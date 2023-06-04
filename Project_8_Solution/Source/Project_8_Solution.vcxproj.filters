@@ -142,6 +142,9 @@
     <ClInclude Include="Enemy_Box.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Soldier_Air.h">
+      <Filter>Source Files\Entities\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -247,6 +250,9 @@
       <Filter>Source Files\Entities\PickUps</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Box.cpp">
+      <Filter>Source Files\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Soldier_Air.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
