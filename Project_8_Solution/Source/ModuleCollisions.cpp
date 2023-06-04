@@ -88,6 +88,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::HELICOPTER_SHOT][Collider::Type::LIFE] = false;
 	matrix[Collider::Type::HELICOPTER_SHOT][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::HELICOPTER_SHOT][Collider::Type::ENEMY_SHOT] = false;
+	matrix[Collider::Type::HELICOPTER_SHOT][Collider::Type::HELICOPTER_SHOT] = false;
 
 	matrix[Collider::Type::TANK_SHOT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::TANK_SHOT][Collider::Type::PLAYER] = true;

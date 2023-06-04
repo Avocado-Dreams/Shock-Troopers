@@ -361,8 +361,8 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	meleeUp.loop = false;
 	meleeUp.speed = 0.2f;
 
-	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
-	enemyKnifeFx = App->audio->LoadFx("Assets/Fx/Knife.wav");
+	if (enemyShotFx == 0) enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
+	if (enemyKnifeFx == 0) enemyKnifeFx = App->audio->LoadFx("Assets/Fx/Knife.wav");
 
 	/*isSpawning = true;*/
 

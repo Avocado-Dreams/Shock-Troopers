@@ -493,11 +493,11 @@ bool ModulePlayer::Start()
 	textureD = App->textures->Load("Assets/Sprites/Animations/OpenDoor.png");
 	currentAnimationDoor = &door;
 
-	laserFx = App->audio->LoadFx("Assets/Fx/Main gun shots.wav");
-	deathFx = App->audio->LoadFx("Assets/Fx/Milky death.wav");
-	winFx = App->audio->LoadFx("Assets/Fx/winLine.wav");
-	hitFx = App->audio->LoadFx("Assets/Fx/DamagedMilky.wav");
-	doorFx = App->audio->LoadFx("Assets/Fx/Door opening.wav");
+	if (laserFx == 0) laserFx = App->audio->LoadFx("Assets/Fx/Main gun shots.wav");
+	if (deathFx == 0) deathFx = App->audio->LoadFx("Assets/Fx/Milky death.wav");
+	if (winFx == 0) winFx = App->audio->LoadFx("Assets/Fx/winLine.wav");
+	if (hitFx == 0) hitFx = App->audio->LoadFx("Assets/Fx/DamagedMilky.wav");
+	if (doorFx == 0) doorFx = App->audio->LoadFx("Assets/Fx/Door opening.wav");
 
 	char lookupTableStages[] = { "    ABCDEFGHIJKLMNOPQRSTUVWXYZ   1234567890?!;:-" };
 	stageFont = App->fonts->Load("Assets/Sprites/Fonts/FontStage.png", lookupTableStages, 6);
@@ -1320,7 +1320,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if ((currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim)) { position.y -= 2; position.x += 2; }
 	}
 
-	if (c1 == collider && (c2->type == Collider::Type::ENEMY_SHOT || c2->type == Collider::Type::BOSS_SHOT || c2->type == Collider::Type::MELEE || c2->type == Collider::Type::TANK_SHOT) && destroyed == false && vida > 0)
+	if (c1 == collider && (c2->type == Collider::Type::ENEMY_SHOT || c2->type == Collider::Type::BOSS_SHOT || c2->type == Collider::Type::MELEE || c2->type == Collider::Type::TANK_SHOT || c2->type == Collider::Type::HELICOPTER_SHOT) && destroyed == false && vida > 0)
 	{
 		if (vida > 0) {
 			vida -= 10; 

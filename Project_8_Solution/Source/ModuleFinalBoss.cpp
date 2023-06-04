@@ -112,10 +112,10 @@ bool ModuleFinalBoss::Start()
 {	
 	LOG("Loading final boss textures");
 	texture = App->textures->Load("Assets/Sprites/Enemies/FinalBoss.png");
-	tankDestroyedFx = App->audio->LoadFx("Assets/Fx/tankDestroyed.wav");
-	tankShotFx = App->audio->LoadFx("Assets/Fx/tankShot.wav");
-	tankMovingFx = App->audio->LoadFx("Assets/Fx/tankMoving.wav");
-	enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
+	if (tankDestroyedFx == 0) tankDestroyedFx = App->audio->LoadFx("Assets/Fx/tankDestroyed.wav");
+	if (tankShotFx == 0) tankShotFx = App->audio->LoadFx("Assets/Fx/tankShot.wav");
+	if (tankMovingFx == 0) tankMovingFx = App->audio->LoadFx("Assets/Fx/tankMoving.wav");
+	if (enemyShotFx == 0) enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
 	currentBAnim = &downAnim;
 	currentBSAnim = &downBSAnim; 
 	currentSSAnim = &downSSAnim; 

@@ -36,7 +36,7 @@ bool ModuleEnemies::Start()
 	texture = App->textures->Load("Assets/Sprites/Enemies/soldado_sprites.png");
 	textureL = App->textures->Load("Assets/Sprites/Enemies/tanquesL.png");
 	//textureBoss = App->textures->Load("Assets/Sprites/Enemies/FinalBoss.png");
-	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
+	if (enemyDestroyedFx == 0) enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/damaged_enemy.wav");
 
 	return true;
 }

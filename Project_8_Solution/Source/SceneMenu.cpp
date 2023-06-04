@@ -56,8 +56,8 @@ bool SceneMenu::Start()
 	QuadPos_y = 39;
 
 	App->audio->PlayMusic("Assets/Music/MusicMenuSelect.ogg", 1.0f); 
-	selectFx = App->audio->LoadFx("Assets/Fx/Change selection.wav"); //això posar-ho en el Update!!
-	acceptSelectFx = App->audio->LoadFx("Assets/Fx/Accept selection.wav");
+	if (selectFx == 0) selectFx = App->audio->LoadFx("Assets/Fx/Change selection.wav"); //això posar-ho en el Update!!
+	if (acceptSelectFx == 0) acceptSelectFx = App->audio->LoadFx("Assets/Fx/Accept selection.wav");
 
 	Texture1 = App->textures->Load("Assets/Sprites/intro_sprites/menu.png");
 	CurrentAnimaton1 = &menu;

@@ -342,32 +342,32 @@ bool ModuleParticles::Start()
 	//HELICOPTER SHOOTING
 	//NORMAL SHOT YELLOW
 	shotYAnim.anim.PushBack({ 49, 28, 4, 4 });
+	shotYAnim.anim.PushBack({ 65, 28, 4, 4 });
 	shotYAnim.lifetime = 180;
-
-	//NORMAL SHOT GREY
-	shotGAnim.anim.PushBack({ 65, 28, 4, 4 });
-	shotGAnim.lifetime = 180;
-
-	//SHOT FIRE DOWN
-	shotSFire.anim.PushBack({ 80, 27, 9, 13 });
-	shotSFire.anim.PushBack({ 186, 27, 17, 17 });
-	shotSFire.anim.PushBack({ 278, 27, 30, 31 });
-	shotSFire.anim.loop = false;
+	shotSFire.anim.loop = true;
 	shotSFire.anim.speed = 0.3f;
 
-	//SHOT FIRE SUDEST
-	shotEFire.anim.PushBack({ 117, 27, 12, 15 });
-	shotEFire.anim.PushBack({ 162, 27, 15, 17 });
-	shotEFire.anim.PushBack({ 211, 26, 26, 28 });
-	shotEFire.anim.loop = false;
-	shotEFire.anim.speed = 0.3f;
+	//SHOT FIRE DOWN
+	shotSFire.anim.PushBack({ 71, 27, 26, 12 });
+	shotSFire.anim.PushBack({ 181, 27, 26, 16 });
+	shotSFire.anim.PushBack({ 280, 27, 26, 30 });
+	shotSFire.lifetime = 10;
+	shotSFire.anim.loop = true;
+	shotSFire.anim.speed = 1.0f;
 
-	//SHOT FIRE SUDOEST
-	shotOFire.anim.PushBack({ 99, 27, 10, 15 });
-	shotOFire.anim.PushBack({ 138, 27, 14, 17 });
-	shotOFire.anim.PushBack({ 246, 26, 26, 28 });
-	shotOFire.anim.loop = false;
-	shotOFire.anim.speed = 0.3f;
+	////SHOT FIRE SUDEST
+	//shotEFire.anim.PushBack({ 117, 27, 12, 15 });
+	//shotEFire.anim.PushBack({ 162, 27, 15, 17 });
+	//shotEFire.anim.PushBack({ 211, 26, 26, 28 });
+	//shotEFire.anim.loop = false;
+	//shotEFire.anim.speed = 0.3f;
+
+	////SHOT FIRE SUDOEST
+	//shotOFire.anim.PushBack({ 99, 27, 10, 15 });
+	//shotOFire.anim.PushBack({ 138, 27, 14, 17 });
+	//shotOFire.anim.PushBack({ 246, 26, 26, 28 });
+	//shotOFire.anim.loop = false;
+	//shotOFire.anim.speed = 0.3f;
 
 	//EXPLOSION HELICOPTER
 	explosionAnim.anim.PushBack({ 17, 638, 137, 141 });

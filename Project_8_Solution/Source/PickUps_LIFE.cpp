@@ -29,7 +29,7 @@ PickUps_LIFE::PickUps_LIFE(int x, int y) : PickUps(x, y)
 	/*path.PushBack({0.3f, 0.0f}, 0, &back);*/
 	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::LIFE, (Module*)App->pickUps);
 
-	getPickUps = App->audio->LoadFx("Assets/Fx/Scoring diamond.wav");
+	if (getPickUps == 0) getPickUps = App->audio->LoadFx("Assets/Fx/Scoring diamond.wav");
 
 }
 
