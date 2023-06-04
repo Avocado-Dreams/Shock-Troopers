@@ -896,7 +896,7 @@ void ModulePlayer::UpdateZoneE() {
 
 	GamePad& pad = App->input->pads[0];
 
-if ((position.x * SCREEN_SIZE > App->render->camera.x + 135 * SCREEN_SIZE) && App->render->camera.x < 2095 * SCREEN_SIZE)
+	if ((position.x * SCREEN_SIZE > App->render->camera.x + 135 * SCREEN_SIZE) && App->render->camera.x < 2095 * SCREEN_SIZE)
 	{
 		App->render->camera.x += SCREEN_SIZE * speed;
 	}
