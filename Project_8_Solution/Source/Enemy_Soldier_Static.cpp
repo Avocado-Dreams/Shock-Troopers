@@ -416,7 +416,7 @@ void Enemy_Soldier_Static::Update()
 			hasDecided = false;
 			Attack();
 		}
-		if (Enemy_Soldier_Static::position.y >= 1740 && Enemy_Soldier_Static::position.y <= 1790)
+		if (Enemy_Soldier_Static::position.y >= 1740 && Enemy_Soldier_Static::position.y <= 1780)
 		{
 			isMoving = true;
 			isIdle = false;
