@@ -45,13 +45,14 @@ Application::Application()
 	modules[12] =	enemies =		new ModuleEnemies(false);	//Enemies starts disabled
 	modules[13] =	particles =		new ModuleParticles(true);//Boss starts disabled
 	
-	modules[14] =   sceneLayer2 =   new SceneLayer2(false);
-	modules[15] =   sceneOver =     new SceneGameOver(false);
 
-	modules[16] =	collisions =	new ModuleCollisions(true);
-	modules[17] =	fade =			new ModuleFadeToBlack(true);
-	modules[18] =   fonts =         new ModuleFonts(true);
-	modules[19] =	pickUps =		new ModulePickUps(true);
+
+	modules[14] =	collisions =	new ModuleCollisions(true);
+	modules[15] =	pickUps =		new ModulePickUps(true);
+	modules[16] =	fade =			new ModuleFadeToBlack(true);
+	modules[17] =   fonts =         new ModuleFonts(true);
+	modules[18] =	sceneLayer2 =	new SceneLayer2(false);
+	modules[19] =	sceneOver =		new SceneGameOver(false);
 	modules[20] =	render =		new ModuleRender(true);
 }
 
