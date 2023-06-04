@@ -141,7 +141,7 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	enemy_airspawnL.PushBack({ 770, 270, 46, 49 });
 	enemy_airspawnL.PushBack({ 834, 271, 42, 47 });
 	enemy_airspawnL.loop = false;
-	enemy_airspawnL.speed = 0.2f;
+	enemy_airspawnL.speed = 0.3f;
 
 	getUpL.PushBack({ 961, 275, 36, 38 });
 	getUpL.loop = false;
@@ -163,7 +163,7 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	enemy_airspawnL.PushBack({ 84, 358, 42, 47 });
 	//enemy_airspawnL.PushBack({ 834, 271, 42, 47 });
 	enemy_airspawnR.loop = false;
-	enemy_airspawnR.speed = 0.2f;
+	enemy_airspawnR.speed = 0.3f;
 
 	getUpR.PushBack({ 24, 362, 36, 38 });
 	getUpR.loop = false;
@@ -374,7 +374,7 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 		currentAnim = &enemy_airspawnL;
 	}
 
-	timer = 1.0f;
+	timer = 0.7f;
 	position = spawnPos;
 }
 

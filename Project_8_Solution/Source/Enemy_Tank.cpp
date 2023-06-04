@@ -243,7 +243,6 @@ void Enemy_Tank::Move()
 {
 	loop++;
 	if (loop % 4 == 0) {
-		App->audio->PlayFx(tankMovingFX);
 		if (Enemy_Tank::calculateAngle() >= -179 && Enemy_Tank::calculateAngle() <= -1) {
 			position.y++;
 		}
@@ -254,6 +253,9 @@ void Enemy_Tank::Move()
 		currentBAnim = &tankMove;
 	}
 	collider->SetPos(position.x, position.y);
+	if (loop % 30 == 0) {
+		App->audio->PlayFx(tankMovingFX);
+	}
 }
 void Enemy_Tank::Stop()
 {

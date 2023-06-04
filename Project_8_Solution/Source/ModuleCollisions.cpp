@@ -299,6 +299,9 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::BLUEDIAMOND: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 			break;
+			case Collider::Type::LIFE: // magenta
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
 			case Collider::Type::FINALBOSS: // pink
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alpha);
 			break;

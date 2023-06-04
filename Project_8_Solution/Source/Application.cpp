@@ -41,9 +41,9 @@ Application::Application()
 	modules[8] =	helicopter =	new ModuleHelicopter(false);
 	modules[9] =	sceneLevel_1 =	new SceneLevel1(false);	//Gameplay scene starts disabled
 	modules[10] =	finalBoss =		new ModuleFinalBoss(false);
-	modules[11] =	particles =		new ModuleParticles(true);//Boss starts disabled
-	modules[12] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[13] =	 enemies =			new ModuleEnemies(false);	//Enemies starts disabled
+	modules[11] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[12] =	enemies =		new ModuleEnemies(false);	//Enemies starts disabled
+	modules[13] =	particles =		new ModuleParticles(true);//Boss starts disabled
 	
 	modules[14] =   sceneLayer2 =   new SceneLayer2(false);
 	modules[15] =   sceneOver =     new SceneGameOver(false);

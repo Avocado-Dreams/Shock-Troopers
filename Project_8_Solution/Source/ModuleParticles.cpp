@@ -219,53 +219,53 @@ bool ModuleParticles::Start()
 	sUp.anim.PushBack({ 0, 0, 11, 17 });
 	sUp.anim.PushBack({ 22, 0, 11, 17 }); 
 	sUp.speed.y = -11;
-	sUp.lifetime = 180;
+	sUp.lifetime = 90;
 	sUp.anim.speed = 0.5f;
 	//shoot down
 	sDown.anim.PushBack({ 10, 0, 11, 17 });
 	sDown.anim.PushBack({ 32, 0, 11, 17 });
 	sDown.speed.y = 11;
-	sDown.lifetime = 180;
+	sDown.lifetime = 90;
 	sDown.anim.speed = 0.5f;
 	//shoot right
 	sRight.anim.PushBack({ 189, 0, 13, 17 });
 	sRight.anim.PushBack({ 223, 0, 13, 17 });
 	sRight.speed.x = 11;
-	sRight.lifetime = 180;
+	sRight.lifetime = 90;
 	sRight.anim.speed = 0.5f;
 	//shoot left
 	sLeft.anim.PushBack({ 172, 0, 13, 17 });
 	sLeft.anim.PushBack({ 206, 0, 13, 17 });
 	sLeft.speed.x = -11;
-	sLeft.lifetime = 180;
+	sLeft.lifetime = 90;
 	sLeft.anim.speed = 0.5f;
 	//shoot norest
 	sNorest.anim.PushBack({ 44, 0, 13, 17 });
 	sNorest.anim.PushBack({ 108, 0, 13, 17 });
 	sNorest.speed.y = -7;
 	sNorest.speed.x = 7;
-	sNorest.lifetime = 180;
+	sNorest.lifetime = 90;
 	sNorest.anim.speed = 0.5f;
 	//shoot noroest
 	sNoroest.anim.PushBack({ 60, 0, 13, 17 });
 	sNoroest.anim.PushBack({ 124, 0, 13, 17 });
 	sNoroest.speed.y = -7;
 	sNoroest.speed.x = -7;
-	sNoroest.lifetime = 180;
+	sNoroest.lifetime = 90;
 	sNoroest.anim.speed = 0.5f;
 	//shoot sudest
 	sSudest.anim.PushBack({ 75, 0, 13, 17 });
 	sSudest.anim.PushBack({ 139, 0, 13, 17 });
 	sSudest.speed.y = 7;
 	sSudest.speed.x = 7;
-	sSudest.lifetime = 180;
+	sSudest.lifetime = 90;
 	sSudest.anim.speed = 0.5f;
 	//shoot sudoest
 	sSudoest.anim.PushBack({ 92, 0, 13, 17 });
 	sSudoest.anim.PushBack({ 155, 0, 13, 17 });
 	sSudoest.speed.y = 7;
 	sSudoest.speed.x = -7;
-	sSudoest.lifetime = 180;
+	sSudoest.lifetime = 90;
 	sSudoest.anim.speed = 0.5f;
 
 	enemyShot.anim.PushBack({ 18, 32, 8, 9 });
@@ -273,7 +273,7 @@ bool ModuleParticles::Start()
 	enemyShot.anim.PushBack({ 30, 32, 8, 9 });
 	//enemyShot.speed.x = 0;
 	//enemyShot.speed.y = 1;
-	enemyShot.lifetime = 180;
+	enemyShot.lifetime = 250;
 	enemyShot.anim.speed = 0.2f;
 
 	normalBShot.anim.PushBack({ 18, 32, 8, 9 });
