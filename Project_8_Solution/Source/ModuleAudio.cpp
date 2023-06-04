@@ -142,7 +142,7 @@ uint ModuleAudio::LoadFx(const char* path)
 			}
 		}
 	}
-
+	LOG("Load wav %s. index: %d", path, ret); 
 	return ret;
 }
 

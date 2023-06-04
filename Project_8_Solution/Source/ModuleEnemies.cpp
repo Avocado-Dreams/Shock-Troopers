@@ -37,6 +37,14 @@ bool ModuleEnemies::Start()
 	textureL = App->textures->Load("Assets/Sprites/Enemies/tanquesL.png");
 	//textureBoss = App->textures->Load("Assets/Sprites/Enemies/FinalBoss.png");
 	if (enemyDestroyedFx == 0) enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/damaged_enemy.wav");
+	if (enemyShotFx == 0) enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
+	if (enemyKnifeFx == 0) enemyKnifeFx = App->audio->LoadFx("Assets/Fx/Knife.wav");
+	if (damagedSoldier == 0) damagedSoldier = App->audio->LoadFx("Assets/Fx/damaged_enemy.wav");
+	if (destroyedTank == 0) destroyedTank = App->audio->LoadFx("Assets/Fx/tankDestroyed.wav");
+	if (enemyShotFx == 0) enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
+	if (enemyKnifeFx == 0) enemyKnifeFx = App->audio->LoadFx("Assets/Fx/Knife.wav");
+	if (tankShotFx == 0) tankShotFx = App->audio->LoadFx("Assets/Fx/tankShot.wav");
+	if (tankMovingFX == 0) tankMovingFX = App->audio->LoadFx("Assets/Fx/tankMoving.wav");
 
 	return true;
 }

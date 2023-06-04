@@ -99,6 +99,8 @@ bool SceneLevel1::Start()
 	App->helicopter->position.y = 1928;
 	App->helicopter->state = 1;
 
+	App->finalBoss->Disable();
+
 	App->sceneOver->firstTime = true;
 
 

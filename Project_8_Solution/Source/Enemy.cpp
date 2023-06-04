@@ -11,8 +11,8 @@ Enemy::Enemy(int x, int y) : position(x, y)
 {
 	spawnPos = position;
 
-	if (damagedSoldier == 0) damagedSoldier = App->audio->LoadFx("Assets/Fx/damaged_enemy.wav");
-	if (destroyedTank == 0) destroyedTank = App->audio->LoadFx("Assets/Fx/tankDestroyed.wav");
+	//if (damagedSoldier == 0) damagedSoldier = App->audio->LoadFx("Assets/Fx/damaged_enemy.wav");
+	//if (destroyedTank == 0) destroyedTank = App->audio->LoadFx("Assets/Fx/tankDestroyed.wav");
 }
 
 Enemy::~Enemy()

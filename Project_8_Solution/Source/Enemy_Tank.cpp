@@ -153,8 +153,8 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 
 	isSpawning = true;
 
-	if (tankShotFx == 0) tankShotFx = App->audio->LoadFx("Assets/Fx/tankShot.wav");
-	if (tankMovingFX == 0) tankMovingFX = App->audio->LoadFx("Assets/Fx/tankMoving.wav");
+	//if (tankShotFx == 0) tankShotFx = App->audio->LoadFx("Assets/Fx/tankShot.wav");
+	//if (tankMovingFX == 0) tankMovingFX = App->audio->LoadFx("Assets/Fx/tankMoving.wav");
 
 	collider = App->collisions->AddCollider({ 0, 0, 70, 65 }, Collider::Type::TANK, (Module*)App->enemies);
 
@@ -179,7 +179,7 @@ void Enemy_Tank::Update()
 			}
 			collider->SetPos(position.x, position.y);
 			if (loop % 30 == 0) {
-				App->audio->PlayFx(tankMovingFX);
+				App->audio->PlayFx(App->enemies->tankMovingFX);
 			}
 		}
 		else if (timer <= 0){
@@ -273,7 +273,7 @@ void Enemy_Tank::Move()
 	}
 	collider->SetPos(position.x, position.y);
 	if (loop % 30 == 0) {
-		App->audio->PlayFx(tankMovingFX);
+		App->audio->PlayFx(App->enemies->tankMovingFX);
 	}
 }
 void Enemy_Tank::Stop()
@@ -405,7 +405,7 @@ void Enemy_Tank::Attack()
 	}*/
 
 	isShooting = true;
-	App->audio->PlayFx(tankShotFx);
+	App->audio->PlayFx(App->enemies->tankShotFx);
 	timer = SHOOT_INTERVAL;
 }
 
@@ -419,13 +419,13 @@ void Enemy_Tank::OnCollision(Collider* collider)
 	}
 	if (tankDestroyed)
 	{
-		App->audio->PlayFx(destroyedTank);
+		App->audio->PlayFx(App->enemies->destroyedTank);
 		App->particles->AddParticle(App->particles->bossExplosion, position.x, position.y, NULL, NULL, Collider::Type::NONE, NULL);
-		App->audio->PlayFx(destroyedTank);
+		App->audio->PlayFx(App->enemies->destroyedTank);
 		App->particles->AddParticle(App->particles->bossExplosion, position.x + 3, position.y + 4, NULL, NULL, Collider::Type::NONE, 4);
-		App->audio->PlayFx(destroyedTank);
+		App->audio->PlayFx(App->enemies->destroyedTank);
 		App->particles->AddParticle(App->particles->bossExplosion, position.x -4, position.y - 7, NULL, NULL, Collider::Type::NONE, 8);
-		App->audio->PlayFx(destroyedTank);
+		App->audio->PlayFx(App->enemies->destroyedTank);
 
 		App->player->score += 3000;
 

@@ -361,8 +361,8 @@ Enemy_Soldier_Air::Enemy_Soldier_Air(int x, int y) : Enemy(x, y)
 	meleeUp.loop = false;
 	meleeUp.speed = 0.2f;
 
-	if (enemyShotFx == 0) enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
-	if (enemyKnifeFx == 0) enemyKnifeFx = App->audio->LoadFx("Assets/Fx/Knife.wav");
+	//if (enemyShotFx == 0) enemyShotFx = App->audio->LoadFx("Assets/Fx/enemy_single_shot.wav");
+	//if (enemyKnifeFx == 0) enemyKnifeFx = App->audio->LoadFx("Assets/Fx/Knife.wav");
 
 	isSpawning = true;
 
@@ -542,7 +542,8 @@ void Enemy_Soldier_Air::Attack()
 
 	if (distance < 40)
 	{
-		App->audio->PlayFx(enemyKnifeFx);
+		App->audio->PlayFx(App->enemies->enemyKnifeFx);
+
 		if (Enemy_Soldier_Air::calculateAngle() >= -110 && Enemy_Soldier_Air::calculateAngle() < -70) {
 			meleeDown.Reset();
 			currentAnim = &meleeDown;
@@ -666,7 +667,7 @@ void Enemy_Soldier_Air::Attack()
 			currentAnim = &shootSW2;
 			App->particles->AddParticle(App->particles->enemyShot, position.x - 8, position.y + 32, -1, 1, Collider::Type::ENEMY_SHOT);
 		}
-		App->audio->PlayFx(enemyShotFx);
+		App->audio->PlayFx(App->enemies->enemyShotFx);
 	}
 
 
@@ -704,7 +705,7 @@ void Enemy_Soldier_Air::OnCollision(Collider* collider)
 		}
 
 		App->player->score += 3000;
-		App->audio->PlayFx(damagedSoldier);
+		App->audio->PlayFx(App->enemies->damagedSoldier);
 
 		// Probabilidad de aparición de los BLUEDIAMONDS 
 		int prob_diamond = 35;

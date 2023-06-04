@@ -51,7 +51,7 @@ public:
 	float scale;
 	bool hasDropped = false;
 
-private:
+public:
 	// The path that will define the position in the world
 	Path path;
 
@@ -61,8 +61,8 @@ private:
 	Animation idleDownL, shootDownL, idleDownR, shootDownR, idleSE1, shootSE1, idleSE2, shootSE2, idleRight, shootRight, idleNE1, shootNE1, idleNE2, shootNE2, idleUpL, shootUpL, idleUpR, shootUpR, idleSW1, shootSW1, idleSW2, shootSW2, idleLeft, shootLeft, idleNW1, shootNW1, idleNW2, shootNW2;
 	Animation meleeDown, meleeUp, meleeRight, meleeLeft, meleeNW, meleeNE, meleeSW, meleeSE;
 
-	uint enemyShotFx = 0;
-	uint enemyKnifeFx = 0;
+	//uint enemyShotFx = 0;
+	//uint enemyKnifeFx = 0;
 };
 
 #endif // __Enemy_Soldier_Static_H__

@@ -61,11 +61,11 @@ public:
 	// Destroys any enemies that have moved outside the camera limits
 	void HandleEnemiesDespawn();
 
-private:
+public:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
 
-private:
+public:
 	// A queue with all spawn points information
 	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
 
@@ -78,6 +78,12 @@ private:
 
 	// The audio fx for destroying an enemy
 	uint enemyDestroyedFx = 0;
+	uint enemyShotFx = 0;
+	uint enemyKnifeFx = 0;
+	int damagedSoldier = 0;
+	int destroyedTank = 0;
+	uint tankShotFx = 0;
+	uint tankMovingFX = 0;
 };
 
 #endif // __MODULE_ENEMIES_H__
