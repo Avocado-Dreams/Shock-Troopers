@@ -9,6 +9,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModuleFonts.h"
+#include "ModuleParticles.h"
 #include "ModuleHelicopter.h"
 #include "ModuleFinalBoss.h"
 #include "ModulePlayer.h"
@@ -37,6 +38,29 @@ bool SceneLevel1::Start()
 	enemy3Spawned = false;
 	enemy4Spawned = false;
 	enemy5Spawned = false;
+	enemy6Spawned = false;
+	enemy7Spawned = false;
+	enemy8Spawned = false;
+	enemy9Spawned = false;
+	enemy10Spawned = false;
+	enemy11Spawned = false;
+	enemy12Spawned = false;
+	enemy13Spawned = false;
+	enemy14Spawned = false;
+	enemy15Spawned = false;
+	enemy16Spawned = false;
+	enemy17Spawned = false;
+	enemy18Spawned = false;
+	enemy19Spawned = false;
+	enemy20Spawned = false;
+	enemy21Spawned = false;
+	enemy22Spawned = false;
+	enemy23Spawned = false;
+	enemy24Spawned = false;
+	enemy25Spawned = false;
+	enemy26Spawned = false;
+	enemy27Spawned = false;
+
 
 	bool ret = true;
 
@@ -45,23 +69,9 @@ bool SceneLevel1::Start()
 	App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
 
 
+	bool contador = false;
+	bool contador2 = false;
 
-App->enemies->AddEnemy(Enemy_Type::SOLDIER, 260, 2675);
-App->enemies->AddEnemy(Enemy_Type::SOLDIER, 300, 2675);
-App->enemies->AddEnemy(Enemy_Type::SOLDIER, 65, 2690);
-App->enemies->AddEnemy(Enemy_Type::SOLDIER, 100, 2690);
-App->enemies->AddEnemy(Enemy_Type::SOLDIER, 165, 2635);
-App->enemies->AddEnemy(Enemy_Type::SOLDIER, 100, 2345);
-App->enemies->AddEnemy(Enemy_Type::SOLDIER, 110, 2300);
-App->enemies->AddEnemy(Enemy_Type::SOLDIER, 220, 2345);
-App->enemies->AddEnemy(Enemy_Type::SOLDIER, 210, 2300);
-App->enemies->AddEnemy(Enemy_Type::TANK, 150, 2000);
-App->enemies->AddEnemy(Enemy_Type::SOLDIER, 160, 1990);
-	
-App->enemies->AddEnemy(Enemy_Type::CAJA, 1338, 1947);
-App->enemies->AddEnemy(Enemy_Type::CAJA, 2215, 1655);
-App->enemies->AddEnemy(Enemy_Type::CAJA, 2153, 759);
-App->enemies->AddEnemy(Enemy_Type::CAJA, 2269, 756);
 
 
 	App->render->camera.x = 0;
@@ -99,52 +109,112 @@ Update_Status SceneLevel1::Update()
 {
 	//App->render->camera.y -= 3;
 	if (App->player->position.y < 2850 && enemy1Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 170, 2700);
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 170, 2800);
 		enemy1Spawned = true;
 	}
 	if (App->player->position.y < 2850 && enemy2Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 200, 2680);
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 200, 2780);
 		enemy2Spawned = true;
 	}
 	if (App->player->position.y < 2850 && enemy3Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 50, 2700);
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 50, 2800);
 		enemy3Spawned = true;
 	}
 	if (App->player->position.y < 2850 && enemy4Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 80, 2680);
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 80, 2780);
 		enemy4Spawned = true;
 	}
-	if (App->player->position.y < 2530 && enemy5Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 170, 2400);
+	if (App->player->position.y < 2450 && enemy5Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 170, 2400);
 		enemy5Spawned = true;
 	}
-	if (App->player->position.y < 2530 && enemy6Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 200, 2380);
+	if (App->player->position.y < 2450 && enemy6Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 200, 2380);
 		enemy6Spawned = true;
 	}
-	if (App->player->position.y < 2530 && enemy7Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 50, 2400);
+	if (App->player->position.y < 2450 && enemy7Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 50, 2400);
 		enemy7Spawned = true;
 	}
-	if (App->player->position.y < 2530 && enemy8Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 80, 2380);
+	if (App->player->position.y < 2450 && enemy8Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 80, 2380);
 		enemy8Spawned = true;
 	}
-	if (App->player->position.y < 2350 && enemy9Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 95, 2265);
+	if (App->player->position.y < 2315 && enemy9Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 95, 2265);
 		enemy9Spawned = true;
 	}
-	if (App->player->position.y < 2350 && enemy10Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 105, 2225);
+	if (App->player->position.y < 2315 && enemy10Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 105, 2225);
 		enemy10Spawned = true;
 	}
-	if (App->player->position.y < 2300 && enemy11Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 195, 2220);
+	if (App->player->position.y < 2315 && enemy11Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 195, 2220);
 		enemy11Spawned = true;
 	}
-	if (App->player->position.y < 2300 && enemy12Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 205, 2180);
+	if (App->player->position.y < 2315 && enemy12Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 205, 2180);
 		enemy12Spawned = true;
+	}
+	if (App->player->position.y < 2875 && enemy13Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 260, 2675);
+		enemy13Spawned = true;
+	}
+	if (App->player->position.y < 2875 && enemy14Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 300, 2675);
+		enemy14Spawned = true;
+	}
+	if (App->player->position.y < 2875 && enemy15Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 65, 2690);
+		enemy15Spawned = true;
+	}
+	if (App->player->position.y < 2875 && enemy16Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 100, 2690);
+		enemy16Spawned = true;
+	}
+	if (App->player->position.y < 2835 && enemy17Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 165, 2635);
+		enemy17Spawned = true;
+	}
+	if (App->player->position.y < 2545 && enemy18Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 100, 2345);
+		enemy18Spawned = true;
+	}
+	if (App->player->position.y < 2500 && enemy19Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 110, 2300);
+		enemy19Spawned = true;
+	}
+	if (App->player->position.y < 2545 && enemy20Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 220, 2345);
+		enemy20Spawned = true;
+	}
+	if (App->player->position.y < 2500 && enemy21Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 210, 2300);
+		enemy21Spawned = true;
+	}
+	if (App->player->position.y <2200 && enemy22Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::TANK, 150, 2000);
+		enemy22Spawned = true;
+	}
+	if (App->player->position.y <2190 && enemy23Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 160, 1990);
+		enemy23Spawned = true;
+	}
+	if (App->player->position.y < 2147 && enemy23Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::CAJA, 1338, 1947);
+		enemy24Spawned = true;
+	}
+	if (App->player->position.y < 1855 && enemy25Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::CAJA, 2215, 1655);
+		enemy25Spawned = true;
+	}
+	if (App->player->position.y < 959 && enemy26Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::CAJA, 2153, 759);
+		enemy26Spawned = true;
+	}
+	if (App->player->position.y < 756 && enemy27Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::CAJA, 2269, 756);
+		enemy27Spawned = true;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -172,9 +242,9 @@ Update_Status SceneLevel1::PostUpdate()
 		if (contador2 == false)
 		{
 			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 120, 1740);
-			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 125, 1740);
-			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 165, 1740);
+			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 140, 1740);
 			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 180, 1740);
+			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 200, 1740);
 			contador2 = true;
 		}
 		
@@ -195,6 +265,8 @@ bool SceneLevel1::CleanUp()
 	App->enemies->Disable();
 	App->sceneLayer2->Disable();
 	App->pickUps->Disable();
+	App->particles->Disable();
+
 
 	// TODO 5: Remove All Memory Leaks - no solution here guys ;)
 

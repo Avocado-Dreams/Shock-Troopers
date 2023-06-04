@@ -151,23 +151,42 @@ Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 
 	tankHurt.PushBack({ 1148, 977, 72, 66 });
 
-	isSpawning = false;
+	isSpawning = true;
 
 	tankShotFx = App->audio->LoadFx("Assets/Fx/tankShot.wav");
 	tankMovingFX = App->audio->LoadFx("Assets/Fx/tankMoving.wav");
 
-	collider = App->collisions->AddCollider({ 0, 0, 70, 50 }, Collider::Type::TANK, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 70, 65 }, Collider::Type::TANK, (Module*)App->enemies);
 
 
 	currentBAnim = &tankStop;
 	currentAnim = &idleDown;
-
+	timer = 3;
+	timerM = 3;
 	timer = rand() % 3;
 	timerM = rand() % 4;
 }
 
 void Enemy_Tank::Update()
 {
+	if (isSpawning)
+	{
+		if (spawnPos.x < 360 && timer > 0) {
+			loop++;
+			if (loop % 4 == 0) {
+				position.y++;
+				currentBAnim = &tankMove;
+			}
+			collider->SetPos(position.x, position.y);
+			if (loop % 30 == 0) {
+				App->audio->PlayFx(tankMovingFX);
+			}
+		}
+		else if (timer <= 0){
+			isMoving = false;
+			isSpawning = false;
+		}
+	}
 	if (isSpawning == false && Enemy_Tank::find_player())
 	{
 		if (timer <= 0.0f && isShooting == false)
@@ -183,7 +202,7 @@ void Enemy_Tank::Update()
 			hasDecided = false;
 		}
 		else if (timer < 4.2f && timer >2.0f && isShooting == false)isIdle = true;
-		else if (timerM > 0 && timer < 1.0f && hasDecided == false || Enemy_Tank::position.y == 1740) {
+		else if (timerM > 0 && timer < 1.0f && hasDecided == false) {
 			if (rand() % 100 > 50) {
 				isStopped = false;
 				isMoving = true;
@@ -423,8 +442,7 @@ void Enemy_Tank::OnCollision(Collider* collider)
 			hasDropped = true;
 		}
 	}
-	else if (collider->type == Collider::Type::PLAYER) {
+	else if (isSpawning == false) {
 		isMoving = false;
-		isStopped = true;
 	}
 }
