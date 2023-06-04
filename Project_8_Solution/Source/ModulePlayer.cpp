@@ -1,5 +1,5 @@
 #include "ModulePlayer.h"
-
+#include "ModuleEnemies.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
@@ -1245,6 +1245,7 @@ Update_Status ModulePlayer::PostUpdate()
 		SDL_Rect openDoor = { 10, 10, 153, 19 };
 		App->render->Blit(textureD, 100, 1795, &openDoor);
 		soundPlayed = false;
+		
 	}
 	if (zone == 2 && currentZone != 2) {
 		door.Reset();
@@ -1296,7 +1297,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if ((currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim)) { position.y -= 2; position.x -= 2; }
 		if ((currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim)) { position.y -= 2; position.x += 2; }
 	}*/
-	if (c1 == collider && c2->type == Collider::Type::BOX)
+	else if (c1 == collider && c2->type == Collider::Type::BOX)
+	{
+		if ((currentLAnimation == &upLAnim || currentLAnimation == &upWAnim)) { position.y += 2; }
+		if ((currentLAnimation == &downLAnim || currentLAnimation == &downWAnim)) { position.y -= 2; }
+		if ((currentLAnimation == &rightLAnim || currentLAnimation == &rightWAnim)) { position.x -= 2; }
+		if ((currentLAnimation == &leftLAnim || currentLAnimation == &leftWAnim)) { position.x += 2; }
+		if ((currentLAnimation == &norestLAnim || currentLAnimation == &norestWAnim)) { position.y += 2; position.x -= 2; }
+		if ((currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim)) { position.y += 2; position.x += 2; }
+		if ((currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim)) { position.y -= 2; position.x -= 2; }
+		if ((currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim)) { position.y -= 2; position.x += 2; }
+	}
+	else if (c1 == collider && c2->type == Collider::Type::TANK)
 	{
 		if ((currentLAnimation == &upLAnim || currentLAnimation == &upWAnim)) { position.y += 2; }
 		if ((currentLAnimation == &downLAnim || currentLAnimation == &downWAnim)) { position.y -= 2; }

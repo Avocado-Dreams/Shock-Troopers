@@ -160,8 +160,16 @@ Update_Status SceneLevel1::PostUpdate()
 		SDL_Rect sky{ 0, 0, 433, 142 };
 		App->render->Blit(textureSky, 890, 1795, &sky);
 	}
-
-
+	if (App->player->zone == 3 && contador == false )
+	{
+		if (reloj == 0)
+		{
+			App->enemies->AddEnemy(Enemy_Type::TANK, 150, 1740);
+			contador = true;
+		}
+		reloj--;
+	}
+	
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	
 

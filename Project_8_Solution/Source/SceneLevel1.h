@@ -32,6 +32,9 @@ public:
 
 	void OnCollision();
 
+	bool contador = false;
+	int reloj = 120;
+
 	bool enemy1Spawned;
 	bool enemy2Spawned;
 	bool enemy3Spawned;
