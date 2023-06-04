@@ -126,49 +126,6 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 	shootSW2.loop = false;
 	shootSW2.speed = 0.1f;
 
-	//enemy_airspawnL.PushBack({ 17, 260, 64, 69 });
-	//enemy_airspawnL.PushBack({ 80, 261, 63, 67 });
-	//enemy_airspawnL.PushBack({ 143, 263, 59, 62 });
-	//enemy_airspawnL.PushBack({ 206, 264, 58, 61 });
-	//enemy_airspawnL.PushBack({ 270, 264, 54, 60 });
-	//enemy_airspawnL.PushBack({ 332, 265, 53, 58 });
-	//enemy_airspawnL.PushBack({ 395, 266, 52, 57 });
-	//enemy_airspawnL.PushBack({ 457, 267, 51, 55 });
-	//enemy_airspawnL.PushBack({ 520, 267, 50, 54 });
-	//enemy_airspawnL.PushBack({ 582, 268, 49, 53 });
-	//enemy_airspawnL.PushBack({ 645, 268, 48, 52 });
-	//enemy_airspawnL.PushBack({ 707, 269, 47, 50 });
-	//enemy_airspawnL.PushBack({ 770, 270, 46, 49 });
-	//enemy_airspawnL.PushBack({ 834, 271, 42, 47 });
-	//enemy_airspawnL.loop = false;
-	//enemy_airspawnL.speed = 0.3f;
-
-	//getUpL.PushBack({ 961, 275, 36, 38 });
-	//getUpL.loop = false;
-	//getUpL.speed = 0.1f;
-
-	//enemy_airspawnR.PushBack({ 940, 347, 64, 69 });
-	//enemy_airspawnR.PushBack({ 879, 348, 63, 67 });
-	//enemy_airspawnR.PushBack({ 819, 350, 59, 62 });
-	//enemy_airspawnR.PushBack({ 757, 351, 58, 61 });
-	//enemy_airspawnR.PushBack({ 697, 351, 54, 60 });
-	//enemy_airspawnR.PushBack({ 636, 352, 53, 58 });
-	//enemy_airspawnR.PushBack({ 574, 353, 52, 57 });
-	//enemy_airspawnR.PushBack({ 513, 354, 51, 55 });
-	//enemy_airspawnR.PushBack({ 451, 354, 50, 54 });
-	//enemy_airspawnR.PushBack({ 390, 355, 49, 53 });
-	//enemy_airspawnR.PushBack({ 328, 355, 48, 52 });
-	//enemy_airspawnR.PushBack({ 267, 356, 47, 50 });
-	//enemy_airspawnR.PushBack({ 145, 357, 46, 49 });
-	//enemy_airspawnL.PushBack({ 84, 358, 42, 47 });
-	////enemy_airspawnL.PushBack({ 834, 271, 42, 47 });
-	//enemy_airspawnR.loop = false;
-	//enemy_airspawnR.speed = 0.3f;
-
-	//getUpR.PushBack({ 24, 362, 36, 38 });
-	//getUpR.loop = false;
-	//getUpR.speed = 0.1f;
-
 	moveDown.PushBack({ 411, 417, 42, 56 });
 	moveDown.PushBack({ 456, 417, 42, 56 });
 	moveDown.PushBack({ 501, 417, 42, 56 });
