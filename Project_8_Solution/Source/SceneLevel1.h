@@ -34,7 +34,7 @@ public:
 
 	bool contador;
 	bool contador2;
-	int reloj = 120;
+	int reloj;
 
 	bool enemy1Spawned;
 	bool enemy2Spawned;
@@ -73,6 +73,18 @@ public:
 	bool enemy35Spawned;
 	bool enemy36Spawned;
 	bool enemy37Spawned;
+	bool enemy38Spawned;
+	bool enemy39Spawned;
+	bool enemy40Spawned;
+	bool enemy41Spawned;
+	bool enemy42Spawned;
+	bool enemy43Spawned;
+	bool enemy44Spawned;
+	bool enemy45Spawned;
+	bool enemy46Spawned;
+	bool enemy47Spawned;
+	bool enemy48Spawned;
+
 
 	SDL_Texture* textureSky = nullptr;
 	SDL_Rect sky;

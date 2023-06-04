@@ -60,7 +60,27 @@ bool SceneLevel1::Start()
 	enemy25Spawned = false;
 	enemy26Spawned = false;
 	enemy27Spawned = false;
-
+	enemy28Spawned = false;
+	enemy29Spawned = false;
+	enemy30Spawned = false;
+	enemy31Spawned = false;
+	enemy32Spawned = false;
+	enemy33Spawned = false;
+	enemy34Spawned = false;
+	enemy35Spawned = false;
+	enemy36Spawned = false;
+	enemy37Spawned = false;
+	enemy38Spawned = false;
+	enemy39Spawned = false;
+	enemy40Spawned = false;
+	enemy41Spawned = false;
+	enemy42Spawned = false;
+	enemy43Spawned = false;
+	enemy44Spawned = false;
+	enemy45Spawned = false;
+	enemy46Spawned = false;
+	enemy47Spawned = false;
+	enemy48Spawned = false;
 
 	bool ret = true;
 
@@ -71,8 +91,7 @@ bool SceneLevel1::Start()
 
 	bool contador = false;
 	bool contador2 = false;
-
-
+	int reloj = 120;
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 2715 * SCREEN_SIZE;
@@ -245,14 +264,71 @@ Update_Status SceneLevel1::Update()
 		App->enemies->AddEnemy(Enemy_Type::CAJA, 190, 2490);
 		enemy37Spawned = true;
 	}
-	//if (App->player->position.x > 565 && enemy38Spawned == false) {
-	//	App->enemies->AddEnemy(Enemy_Type::CAJA, 765, 1940);
-	//	enemy38Spawned = true;
-	//}
-	//if (App->player->position.x > 565 && enemy39Spawned == false) {
-	//	App->enemies->AddEnemy(Enemy_Type::CAJA, 765, 1980);
-	//	enemy39Spawned = true;
-	//}
+	if (App->player->position.x > 565 && enemy38Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::CAJA, 765, 1940);
+		enemy38Spawned = true;
+	}
+	if (App->player->position.x > 565 && enemy39Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::CAJA, 765, 1980);
+		enemy39Spawned = true;
+	}
+	if (App->player->position.x > 1105 && enemy40Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::CAJA, 1305, 1960);
+		enemy40Spawned = true;
+	}
+	if (App->player->position.y < 1860 && enemy41Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::CAJA, 2222, 1660);
+		enemy41Spawned = true;
+	}
+	if (App->player->position.y < 970 && enemy42Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::CAJA, 2160, 770);
+		enemy42Spawned = true;
+	}
+	if (App->player->position.y < 970 && enemy43Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::CAJA, 2270, 770);
+		enemy43Spawned = true;
+	}
+	if (App->player->position.x > 1240 && enemy44Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 1440, 1970);
+		enemy44Spawned = true;
+	}
+	if (App->player->position.x > 1240 && enemy24Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 1470, 1990);
+		enemy24Spawned = true;
+	} //24,23,10,11
+	if (App->player->position.x > 1240 && enemy23Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 1470, 1930);
+		enemy23Spawned = true;
+	}
+	if (App->player->position.x > 1240 && enemy24Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 1470, 1990);
+		enemy24Spawned = true;
+	}
+	if (App->player->position.x > 1500 && enemy10Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 1580, 1880);
+		enemy10Spawned = true;
+	}
+	if (App->player->position.x > 1500 && enemy24Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 1570, 2000);
+		enemy11Spawned = true;
+	}
+	if (App->player->position.x > 1440 && enemy45Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::TANK, 1640, 1885);
+		enemy45Spawned = true;
+	}
+	if (App->player->position.x > 1620 && enemy46Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::TANK, 1820, 1960);
+		enemy46Spawned = true;
+	}
+	if (App->player->position.x > 1670 && enemy47Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 1900, 1900);
+		enemy47Spawned = true;
+	}
+	if (App->player->position.x > 1670 && enemy48Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 1960, 1875);
+		enemy48Spawned = true;
+	}
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
