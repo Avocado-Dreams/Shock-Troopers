@@ -114,11 +114,12 @@ public:
 	// The finale boss collider
 	Collider* collider = nullptr;
 
+	// The enemies sprite sheet
+	SDL_Texture* texture = nullptr;
+
 private:
 
 
-	// The enemies sprite sheet
-	SDL_Texture* texture = nullptr;
 
 	// The audio fx for destroying an enemy
 	uint tankDestroyedFx = 0;

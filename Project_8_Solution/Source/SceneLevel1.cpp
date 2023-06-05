@@ -471,6 +471,7 @@ bool SceneLevel1::CleanUp()
 	App->particles->Disable();
 	App->helicopter->Disable();
 	App->collisions->Disable();
+	App->finalBoss->Disable();
 	
 	App->textures->Unload(textureSky);
 	App->textures->Unload(bgTexture);
@@ -493,7 +494,8 @@ bool SceneLevel1::CleanUp()
 	App->textures->Unload(App->player->textureState);
 	App->textures->Unload(App->helicopter->textureH);
 	App->textures->Unload(App->helicopter->textureSky);
-	
+	App->textures->Unload(App->finalBoss->texture);
+
 	/*App->textures->Unload(App->player->textureD);
 	App->textures->Unload(App->player->textureL);
 	App->textures->Unload(App->player->textureState);
