@@ -81,6 +81,24 @@ bool SceneLevel1::Start()
 	enemy46Spawned = false;
 	enemy47Spawned = false;
 	enemy48Spawned = false;
+	enemy49Spawned = false;
+	enemy50Spawned = false;
+	enemy51Spawned = false;
+	enemy52Spawned = false;
+	enemy53Spawned = false;
+	enemy54Spawned = false;
+	enemy55Spawned = false;
+	enemy56Spawned = false;
+	enemy57Spawned = false;
+	enemy58Spawned = false;
+	enemy59Spawned = false;
+	enemy60Spawned = false;
+	enemy61Spawned = false;
+	enemy62Spawned = false;
+	enemy63Spawned = false;
+	enemy64Spawned = false;
+	enemy65Spawned = false;
+	enemy66Spawned = false;
 
 	bool ret = true;
 
@@ -317,16 +335,88 @@ Update_Status SceneLevel1::Update()
 		enemy45Spawned = true;
 	}
 	if (App->player->position.x > 1620 && enemy46Spawned == false) {
-		App->enemies->AddEnemy(Enemy_Type::TANK, 1820, 1960);
+		App->enemies->AddEnemy(Enemy_Type::TANK, 1820, 1940);
 		enemy46Spawned = true;
 	}
-	if (App->player->position.x > 1670 && enemy47Spawned == false) {
+	if (App->player->position.x > 1850 && enemy47Spawned == false) {
 		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 1900, 1900);
 		enemy47Spawned = true;
 	}
-	if (App->player->position.x > 1670 && enemy48Spawned == false) {
+	if (App->player->position.x > 1850 && enemy48Spawned == false) {
 		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 1960, 1875);
 		enemy48Spawned = true;
+	}
+	if (App->player->position.x > 1750 && enemy66Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 1950, 1960);
+		enemy66Spawned = true;
+	}
+	if (App->player->position.x > 1880 && enemy49Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::TANK, 2080, 1960);
+		enemy49Spawned = true;
+	}
+	if (App->player->position.x > 2000 && enemy50Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2200, 1960);
+		enemy50Spawned = true;
+	}
+	if (App->player->position.x > 2100 && enemy51Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2260, 1960);
+		enemy51Spawned = true;
+	}
+	if (App->player->position.x > 2100 && enemy52Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2300, 1910);
+		enemy52Spawned = true;
+	}
+	if (App->player->position.x > 2100 && enemy53Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2340, 1910);
+		enemy53Spawned = true;
+	}
+	if (App->player->position.x > 2100 && enemy54Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2380, 1910);
+		enemy54Spawned = true;
+	}
+	if (App->player->position.y < 1930 && enemy55Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2230, 1730);
+		enemy55Spawned = true;
+	}
+	if (App->player->position.y < 1930 && enemy56Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2300, 1660);
+		enemy56Spawned = true;
+	}
+	if (App->player->position.y < 1930 && enemy57Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2150, 1660);
+		enemy57Spawned = true;
+	}
+	if (App->player->position.y < 2680 && enemy58Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2310, 2580);
+		enemy58Spawned = true;
+	}
+	if (App->player->position.y < 2680 && enemy59Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2135, 2580);
+		enemy59Spawned = true;
+	}
+	if (App->player->position.y < 1375 && enemy60Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 2150, 1275);
+		enemy60Spawned = true;
+	}
+	if (App->player->position.y < 1375 && enemy61Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::AIR_SOLDIER, 2150, 1200);
+		enemy61Spawned = true;
+	}
+	if (App->player->position.y < 1315 && enemy62Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::TANK, 2290, 1115);
+		enemy62Spawned = true;
+	}
+	if (App->player->position.y < 1200 && enemy63Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2180, 1040);
+		enemy63Spawned = true;
+	}
+	if (App->player->position.y < 1200 && enemy64Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2250, 1040);
+		enemy64Spawned = true;
+	}
+	if (App->player->position.y < 1200 && enemy65Spawned == false) {
+		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2200, 995);
+		enemy65Spawned = true;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;

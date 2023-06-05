@@ -357,6 +357,20 @@ void Enemy_Soldier_Static::Update()
 				position.x++;
 			}
 		}
+		else if (spawnPos.x > 2270 && spawnPos.y > 1850 && spawnPos.y < 1930 && timer > 0){
+			loop++;
+			if (loop % 2 == 0) {
+				currentAnim = &moveLeft;
+				position.x--;
+			}
+		}
+		else if (spawnPos.y > 1480 && spawnPos.y < 1640 && timer > 0) {
+			loop++;
+			if (loop % 2 == 0) {
+				currentAnim = &moveDown;
+				position.y++;
+			}
+		}
 	}
 
 	if (Enemy_Soldier_Static::find_player())

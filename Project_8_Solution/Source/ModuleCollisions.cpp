@@ -38,6 +38,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::LIFE] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::EXPLOSION] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::BOX] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::HELICOPTER_SHOT] = true;
 
 	matrix[Collider::Type::SOLDIER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::SOLDIER][Collider::Type::PLAYER] = true;
@@ -63,6 +64,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::BOSS_SHOT] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::FINALBOSS] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::BOX] = true;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::HELICOPTER] = true;
 
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER] = true;
@@ -114,6 +116,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FINALBOSS][Collider::Type::EXPLOSION] = false;
 
 	matrix[Collider::Type::HELICOPTER][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::HELICOPTER][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::HELICOPTER][Collider::Type::HELICOPTER_SHOT] = false;
 	matrix[Collider::Type::HELICOPTER][Collider::Type::EXPLOSION] = false;
 
