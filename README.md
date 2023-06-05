@@ -17,8 +17,8 @@ Link to our website: https://avocado-dreams.github.io/
 <br>
 
 **Short description of the game**<br>
-Our game is based on first level of the jungle rounte of the arcade game Shock Troopers. The game features run-and-gun-style gameplay in which players control the character Milky.
-Your mission is to kill the terrorrist and mercenaries of BSG who appear on her way to the lider's base. 
+Our game is based on first level of the jungle route of the arcade game Shock Troopers. The game features run-and-gun-style gameplay in which players control the character Milky.
+Your mission is to kill the terrorists and mercenaries of BSG who appear on her way to the lider's base. 
 
 <br>
 
