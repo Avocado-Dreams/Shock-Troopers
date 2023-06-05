@@ -107,9 +107,9 @@ bool SceneLevel1::Start()
 	App->audio->PlayMusic("Assets/Music/RideOn.ogg", 1.0f);
 
 
-	bool contador = false;
-	bool contador2 = false;
-	int reloj = 120;
+	contador = false;
+	contador2 = false;
+	reloj = 120;
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 2715 * SCREEN_SIZE;
@@ -418,21 +418,7 @@ Update_Status SceneLevel1::Update()
 		App->enemies->AddEnemy(Enemy_Type::SOLDIER, 2200, 995);
 		enemy65Spawned = true;
 	}
-
-	return Update_Status::UPDATE_CONTINUE;
-}
-
-// Update: draw background
-Update_Status SceneLevel1::PostUpdate()
-{
-	// Draw everything --------------------------------------
-	
-	if (App->player->zone == 3)
-	{
-		SDL_Rect sky{ 0, 0, 433, 142 };
-		App->render->Blit(textureSky, 890, 1795, &sky);
-	}
-	if (App->player->zone == 3 && contador == false )
+	if (App->player->zone == 3 && contador == false)
 	{
 		if (reloj == 0)
 		{
@@ -449,10 +435,25 @@ Update_Status SceneLevel1::PostUpdate()
 			App->enemies->AddEnemy(Enemy_Type::SOLDIER, 200, 1740);
 			contador2 = true;
 		}
-		
-		
+
+
 		reloj--;
 	}
+
+	return Update_Status::UPDATE_CONTINUE;
+}
+
+// Update: draw background
+Update_Status SceneLevel1::PostUpdate()
+{
+	// Draw everything --------------------------------------
+	
+	if (App->player->zone == 3)
+	{
+		SDL_Rect sky{ 0, 0, 433, 142 };
+		App->render->Blit(textureSky, 890, 1795, &sky);
+	}
+	
 	
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	
