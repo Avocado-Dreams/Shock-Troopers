@@ -102,7 +102,7 @@ public:
 
 	//helicopter life
 	int life = 100;
-
+	
 	int gunPosX = 0;
 	int gunPosY = 0;
 
