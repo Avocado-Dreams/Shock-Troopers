@@ -39,6 +39,8 @@ public:
 
 	void Stop();
 
+	void Draw();
+
 	bool find_player();
 
 	double  Enemy_Tank::calculateAngle();

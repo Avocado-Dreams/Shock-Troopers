@@ -8,6 +8,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "SceneLayer2.h"
+#include "ModuleRender.h"
 
 Enemy_Tank::Enemy_Tank(int x, int y) : Enemy(x, y)
 {
@@ -408,6 +409,19 @@ void Enemy_Tank::Attack()
 	isShooting = true;
 	App->audio->PlayFx(App->enemies->tankShotFx);
 	timer = SHOOT_INTERVAL;
+}
+void Enemy_Tank::Draw()
+{
+	if (currentBAnim != nullptr)
+		App->render->Blit(texture, position.x, position.y, &(currentBAnim->GetCurrentFrame()));
+	
+	if (currentAnim != nullptr) {
+		if (currentBAnim != &tankHurt) App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+	}
+
+	//if (currentOAnim != nullptr)
+	//	App->render->Blit(texture, position.x, position.y, &(currentOAnim->GetCurrentFrame()));
+
 }
 
 void Enemy_Tank::OnCollision(Collider* collider)

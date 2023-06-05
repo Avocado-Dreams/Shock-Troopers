@@ -328,7 +328,7 @@ Enemy_Soldier_Static::Enemy_Soldier_Static(int x, int y) : Enemy(x, y)
 		collider = App->collisions->AddCollider({ 0, 0, 30, 40 }, Collider::Type::SOLDIER, (Module*)App->enemies);
 	}
 	
-	else if (spawnPos.x - App->player->position.x < 0){
+	else if (spawnPos.x - App->player->position.x <= 0){
 		currentAnim = &idleDownL;
 		collider = App->collisions->AddCollider({ 0, 0, 30, 40 }, Collider::Type::SOLDIER, (Module*)App->enemies);
 	}

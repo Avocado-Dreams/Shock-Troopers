@@ -160,14 +160,6 @@ Update_Status ModuleHelicopter::PostUpdate()
 		App->render->Blit(textureH, position.x, position.y, &(currentFAnim->GetCurrentFrame()));
 	}
 
-	if (helicopterDestroyed)
-	{
-		currentDestroyedAnim = &destroyedAnim;
-		SDL_Rect rectHelicopter = destroyedAnim.GetCurrentFrame();
-		App->render->Blit(Destroyed, 136, 70, &rectHelicopter);
-		
-	}
-
 	if (App->player->zone == 3)
 	{
 		SDL_Rect sky { 0, 0, 433, 142 };
@@ -196,7 +188,11 @@ void ModuleHelicopter::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->particles->AddParticle(App->particles->explosionAnim, position.x, position.y, NULL, NULL, Collider::Type::EXPLOSION);
 		App->particles->explosionAnim.anim.Reset();
-		//App->audio->PlayFx(helicopterDestroyedFx);
+		App->audio->PlayFx(helicopterDestroyedFx);
+		currentDestroyedAnim = &destroyedAnim;
+		SDL_Rect rectHelicopter = destroyedAnim.GetCurrentFrame();
+		App->render->Blit(Destroyed, 136, 70, &rectHelicopter);
+		
 	}
 
 }

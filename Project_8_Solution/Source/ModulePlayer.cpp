@@ -955,7 +955,7 @@ Update_Status ModulePlayer::Update()
 	{
 		zone = 2;
 	}
-	if (zone == 2 && position.y < 1990)
+	if (zone == 2 && position.y < 2000)
 	{
 		App->sceneLayer2->GoRight;
 		zone = 3;
@@ -1277,14 +1277,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				position.y+=2;
 			}
 		}
-		if ((currentLAnimation == &upLAnim || currentLAnimation == &upWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2; }
-		if ((currentLAnimation == &downLAnim || currentLAnimation == &downWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; }
-		if ((currentLAnimation == &rightLAnim || currentLAnimation == &rightWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.x -= 2; }
-		if ((currentLAnimation == &leftLAnim || currentLAnimation == &leftWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.x += 2; }
-		if ((currentLAnimation == &norestLAnim || currentLAnimation == &norestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2; position.x -= 2; }
-		if ((currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2; position.x += 2; }
-		if ((currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; position.x -= 2; }
-		if ((currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; position.x += 2; }
+		if ((currentLAnimation == &upLAnim || currentLAnimation == &upWAnim || currentAnimation == &upSAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2; }
+		if ((currentLAnimation == &downLAnim || currentLAnimation == &downWAnim || currentAnimation == &downSAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; }
+		if ((currentLAnimation == &rightLAnim || currentLAnimation == &rightWAnim || currentAnimation == &rightSAnim) && (position.y < App->finalBoss->position.y + 161)) { position.x -= 2; }
+		if ((currentLAnimation == &leftLAnim || currentLAnimation == &leftWAnim || currentAnimation == &leftSAnim) && (position.y < App->finalBoss->position.y + 161)) { position.x += 2; }
+		if ((currentLAnimation == &norestLAnim || currentLAnimation == &norestWAnim || currentAnimation == &norestSAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2; position.x -= 2; }
+		if ((currentLAnimation == &noroestLAnim || currentLAnimation == &noroestWAnim || currentAnimation == &noroestSAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y += 2; position.x += 2; }
+		if ((currentLAnimation == &sudestLAnim || currentLAnimation == &sudestWAnim || currentAnimation == &sudestSAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; position.x -= 2; }
+		if ((currentLAnimation == &sudoestLAnim || currentLAnimation == &sudoestWAnim || currentAnimation == &sudoestSAnim) && (position.y < App->finalBoss->position.y + 161)) { position.y -= 2; position.x += 2; }
 
 		//LOG("Touching boss posy+161: %d FBposy: %d", position.y, App->finalBoss->position.y+161);
 	}
